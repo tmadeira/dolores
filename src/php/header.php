@@ -19,4 +19,5 @@
 <body <?php body_class(); ?>>
 <header>
   <h1>dolores</h1>
+  <!-- TODO: menu -->
 </header>
