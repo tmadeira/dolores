@@ -1,0 +1,12 @@
+@import "breakpoint";
+
+@import "compass/reset";
+
+// Breakpoints
+$break-tablet: 850px;
+$break-desktop: 1150px;
+$break-big-desktop: 1400px;
+
+* {
+  box-sizing: border-box;
+}
