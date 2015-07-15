@@ -1,5 +1,13 @@
-var $ = window.jQuery = require('jquery');
+"use strict";
+
+var $ = window.jQuery = require("jquery");
+var React = require("react");
+
+var HeroSignup = require("./components/HeroSignup.react");
 
 $(function() {
-  console.log('dolores ready');
+  var signup = $("#react-hero-signup");
+  if (signup.length === 1) {
+    React.render(<HeroSignup />, signup[0]);
+  }
 });
