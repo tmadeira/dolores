@@ -2,7 +2,7 @@
 /* Template Name: Dolores API */
 
 assert(!headers_sent());
-Header("Content-Type: application/json; charset=utf-8");
+Header('Content-Type: application/json; charset=utf-8');
 
 require_once(__DIR__ . '/dlib/api/routes.php');
 
