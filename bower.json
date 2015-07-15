@@ -1,0 +1,23 @@
+{
+  "name": "dolores",
+  "version": "0.0.1",
+  "authors": [
+    "Tiago Madeira <tmadeira@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "description": "WordPress theme to engender a participative platform",
+  "dependencies": {
+    "lodash": "~3.7.0",
+    "react": "~0.13.2",
+    "jquery": "~2.1.4",
+    "breakpoint-sass": "~2.5.0",
+    "singularity": "~1.6.2",
+    "jquery-ui": "~1.11.4",
+    "jquery.maskedinput": "~1.4.1"
+  }
+}
