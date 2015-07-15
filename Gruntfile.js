@@ -106,7 +106,11 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
+    eslint: {
+      options: {
+        envs: ['browser', 'node']
+      },
+
       dev: {
         options: {
           force: true
@@ -162,7 +166,7 @@ module.exports = function(grunt) {
 
       js: {
         files: 'src/js/**/*.js',
-        tasks: ['jshint:dev', 'browserify']
+        tasks: ['eslint:dev', 'browserify']
       },
 
       php: {
@@ -183,10 +187,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-eslint');
 
   grunt.registerTask(
     'dev',
@@ -199,7 +203,7 @@ module.exports = function(grunt) {
     'prod',
     [
       // JS
-      'jshint:prod',
+      'eslint:prod',
       'browserify',
       'closureCompiler',
       'uglify',
