@@ -30,7 +30,22 @@ get_header();
 
 <section class="site-grid">
   <div class="wrap">
-    <!-- TODO: post -->
+    <?php
+    if (have_posts()) {
+      echo '<ul>';
+      while (have_posts()) {
+        the_post();
+        ?>
+        <li>
+          <a href="<?php the_permalink(); ?>">
+            <h3><?php the_title(); ?></h3>
+          </a>
+        </li>
+        <?php
+      }
+      echo '</ul>';
+    }
+    ?>
   </div>
 </section>
 
