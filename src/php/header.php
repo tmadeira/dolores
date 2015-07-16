@@ -18,6 +18,12 @@
 
 <body <?php body_class(); ?>>
 <header>
-  <h1>dolores</h1>
-  <!-- TODO: menu -->
+  <h1><?php bloginfo('name'); ?></h1>
+  <?php
+  wp_nav_menu(Array(
+    'theme_location' => 'header-menu',
+    'container' => 'nav',
+    'container_class' => 'header-menu'
+  ));
+  ?>
 </header>
