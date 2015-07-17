@@ -1,1 +1,8 @@
 @import "basic";
+
+@import "header";
+
+.wrap {
+  margin: 0 auto;
+  max-width: $break-desktop;
+}

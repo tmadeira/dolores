@@ -9,9 +9,13 @@ $break-tablet: 850px;
 $break-desktop: 1150px;
 $break-big-desktop: 1400px;
 
+// Global dimensions
+$header-height: 60px;
+
 // Colors
+$black: #000;
 $light-gray: #eee;
-$black: #111;
+$orange: #d58316;
 
 // Fonts
 @import "fonts/bitter";

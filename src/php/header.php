@@ -17,13 +17,15 @@
 </head>
 
 <body <?php body_class(); ?>>
-<header>
-  <h1><?php bloginfo('name'); ?></h1>
-  <?php
-  wp_nav_menu(Array(
-    'theme_location' => 'header-menu',
-    'container' => 'nav',
-    'container_class' => 'header-menu'
-  ));
-  ?>
+<header class="site-header">
+  <div class="wrap">
+    <h1 class="header-logo"><span><?php bloginfo('name'); ?></span></h1>
+    <?php
+    wp_nav_menu(Array(
+      'theme_location' => 'header-menu',
+      'container' => 'nav',
+      'container_class' => 'header-menu'
+    ));
+    ?>
+  </div>
 </header>

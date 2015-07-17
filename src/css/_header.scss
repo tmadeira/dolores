@@ -1,0 +1,46 @@
+body {
+  padding-top: $header-height;
+}
+
+.site-header {
+  @include box-shadow(0 0 15px $black);
+
+  background: $orange;
+  height: $header-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  & > .wrap {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.header-logo {
+  display: table-cell;
+  vertical-align: middle;
+
+  span {
+    display: none;
+  }
+}
+
+.header-menu {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+
+  & > ul {
+    & > li {
+      display: inline-block;
+      & > a {
+        font-weight: bold;
+        padding: 10px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
