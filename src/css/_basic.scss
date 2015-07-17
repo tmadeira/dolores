@@ -1,0 +1,57 @@
+@import "breakpoint";
+@import "compass";
+
+@import "compass/reset";
+@import "wp-common";
+
+// Breakpoints
+$break-tablet: 850px;
+$break-desktop: 1150px;
+$break-big-desktop: 1400px;
+
+// Colors
+$light-gray: #eee;
+$black: #111;
+
+// Fonts
+@import "fonts/bitter";
+
+%text-font {
+  font: 400 16px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html {
+  @extend %text-font;
+  background: $light-gray;
+  color: $black;
+  font-feature-settings: "liga";
+  text-rendering: optimizelegibility;
+
+  // Fix Mac OS X font weight
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+input {
+  @extend %text-font;
+}
