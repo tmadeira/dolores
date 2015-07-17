@@ -3,9 +3,7 @@ get_header();
 ?>
 
 <section class="site-hero">
-  <div class="wrap">
-    <div id="react-hero-signup">
-    </div>
+  <div id="react-hero-signup">
   </div>
 </section>
 
