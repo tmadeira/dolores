@@ -1,7 +1,7 @@
 {
   "name": "dolores",
   "version": "0.0.1",
-  "description": "WordPress theme to engender a participative platform",
+  "description": "WordPress theme to power a participative platform",
   "devDependencies": {
     "bower": "^1.4.1",
     "browserify": "^10.2.0",

@@ -10,7 +10,7 @@
     "node_modules",
     "bower_components"
   ],
-  "description": "WordPress theme to engender a participative platform",
+  "description": "WordPress theme to power a participative platform",
   "dependencies": {
     "lodash": "~3.7.0",
     "react": "~0.13.2",
