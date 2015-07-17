@@ -23,7 +23,7 @@ $ grunt dev
 
 O Grunt vai checar modificações no diretório `src`, gerar arquivos correspondentes no diretório `build` e copiar esses arquivos para o diretório `/var/www/dolores/wp-content/themes/dolores` (contanto que essa pasta exista e seu usuário tenha permissão para escrever nela).
 
-Para ver as modificações, basta instalar um [WordPress][http://wordpress.org/] em `/var/www/dolores/` e configurá-lo para usar o tema **Dolores**.
+Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/) em `/var/www/dolores/` e configurá-lo para usar o tema **Dolores**.
 
 ### Produção ###
 
