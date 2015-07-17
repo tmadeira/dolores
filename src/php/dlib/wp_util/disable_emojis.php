@@ -1,4 +1,9 @@
 <?php
+/*
+ * Modified from Disable Emojis plugin by Ryan Hellyer, released under GPLv2
+ * https://geek.hellyer.kiwi/plugins/disable-emojis/
+ */
+
 function dolores_tinymce_disable_emojis($plugins) {
   if (is_array($plugins)) {
     return array_diff($plugins, array('wpemoji'));
