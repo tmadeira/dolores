@@ -16,6 +16,7 @@ $header-height: 60px;
 $black: #000;
 $light-gray: #eee;
 $orange: #d58316;
+$purple: #739;
 $white: #fff;
 
 // Fonts
@@ -57,6 +58,6 @@ img, video {
   max-width: 100%;
 }
 
-input {
+button, input {
   @extend %text-font;
 }

@@ -5,24 +5,34 @@ var React = require("react");
 var InputEmail = React.createClass({
   render: function() {
     // TODO
-    return <input placeholder="E-mail" />;
+    return <input
+      className="signup-input"
+      placeholder="E-mail"
+      type="text"
+      />;
   }
 });
 
 var InputLocation = React.createClass({
   render: function() {
     // TODO
-    return <input placeholder="Bairro (ou município, caso não seja capital)" />;
+    return <input
+      className="signup-input"
+      placeholder="Bairro (ou município, caso não seja capital)"
+      type="text"
+      />;
   }
 });
 
 var HeroSignup = React.createClass({
   render: function() {
     return <div className="wrap">
-      <form>
+      <form className="hero-signup-form">
         <InputEmail />
         <InputLocation />
-        <button onClick={this.join}>Participar</button>
+        <button className="signup-button" onClick={this.join}>
+          Participar
+        </button>
       </form>
     </div>;
   },

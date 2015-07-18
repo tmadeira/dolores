@@ -1,4 +1,70 @@
+.site-hero {
+  background: $purple;
+  height: 400px;
+  position: relative;
+}
+
 #react-hero-signup {
   background: $black;
+  bottom: 0;
   color: $white;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+
+  .signup-input, .signup-button {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .signup-input {
+    background: white;
+    border: 0;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .signup-button {
+    background: $orange;
+    border: 0;
+    color: $white;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  @include breakpoint($break-tablet) {
+    background: rgba(0, 0, 0, 0.7);
+
+    .hero-signup-form {
+      display: table;
+      width: 100%;
+    }
+
+    .signup-input, .signup-button {
+      display: table-cell;
+      font-size: 14px;
+      margin-right: 1%;
+      padding: 8px 12px;
+      vertical-align: middle;
+    }
+
+    .signup-input {
+      width: 39%;
+    }
+
+    .signup-button {
+      margin-right: 0;
+      width: 20%;
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    .signup-input, .signup-button {
+      font-size: 16px;
+    }
+  }
 }
