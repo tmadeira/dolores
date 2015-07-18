@@ -1,0 +1,12 @@
+.streaming-box {
+  height: 300px;
+  width: 100%;
+
+  @include breakpoint($break-tablet) {
+    height: 450px;
+  }
+
+  @include breakpoint($break-desktop) {
+    height: 600px;
+  }
+}

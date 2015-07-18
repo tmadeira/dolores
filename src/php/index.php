@@ -19,6 +19,7 @@ get_header();
 <section class="site-streaming">
   <div class="wrap">
     <iframe
+        class="streaming-box"
         src="//youtube.com/embed/u-sbPpxxYpo?controls=0&amp;showinfo=0"
         frameborder="0"
         allowfullscreen>
