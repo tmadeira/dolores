@@ -9,7 +9,8 @@ get_header();
 
 <section class="site-presentation">
   <div class="wrap">
-    <p>
+    <h3 class="presentation-title">Lorem ipsum dolor sit amet</h3>
+    <p class="presentation-text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </p>
@@ -20,7 +21,7 @@ get_header();
   <div class="wrap">
     <iframe
         class="streaming-box"
-        src="//youtube.com/embed/u-sbPpxxYpo?controls=0&amp;showinfo=0"
+        src="//youtube.com/embed/zE_I18HfeWM?controls=0&amp;showinfo=0"
         frameborder="0"
         allowfullscreen>
     </iframe>

@@ -2,6 +2,10 @@
   background: $purple;
   height: 400px;
   position: relative;
+
+  @include breakpoint($break-tablet) {
+    height: 500px;
+  }
 }
 
 #react-hero-signup {
@@ -9,7 +13,7 @@
   bottom: 0;
   color: $white;
   left: 0;
-  padding: 10px;
+  padding: 0 10px;
   position: absolute;
   right: 0;
 
@@ -41,6 +45,7 @@
 
     .hero-signup-form {
       display: table;
+      padding: 10px 0;
       width: 100%;
     }
 

@@ -1,3 +1,37 @@
+.site-presentation {
+  padding: 15px 10px;
+
+  .presentation-title {
+    @extend %title-font;
+  }
+
+  .presentation-text {
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  @include breakpoint($break-tablet) {
+    padding: 20px;
+    text-align: center;
+
+    .presentation-title, .presentation-text {
+      margin: 20px 0;
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    padding: 20px 0;
+
+    .presentation-title {
+      font-size: 24px;
+    }
+
+    .presentation-text {
+      font-size: 18px;
+    }
+  }
+}
+
 .streaming-box {
   height: 300px;
   width: 100%;

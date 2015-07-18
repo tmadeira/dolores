@@ -26,6 +26,12 @@ $white: #fff;
   font: 400 16px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
 }
 
+%title-font {
+  font: 700 20px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
