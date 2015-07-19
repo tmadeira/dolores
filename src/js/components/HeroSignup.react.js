@@ -6,7 +6,7 @@ var InputEmail = React.createClass({
   render: function() {
     // TODO
     return <input
-      className="signup-input"
+      className="signup-input signup-input-email"
       placeholder="E-mail"
       type="text"
       />;
@@ -17,7 +17,7 @@ var InputLocation = React.createClass({
   render: function() {
     // TODO
     return <input
-      className="signup-input"
+      className="signup-input signup-input-location"
       placeholder="Bairro (ou município, caso não seja capital)"
       type="text"
       />;

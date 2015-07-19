@@ -23,12 +23,24 @@
   }
 
   .signup-input {
-    background: white;
+    background: white no-repeat;
     border: 0;
     display: block;
     font-size: 12px;
-    padding: 10px;
+    padding: 10px 10px 10px 36px;
     width: 100%;
+  }
+
+  .signup-input-email {
+    background-image: inline-image('icon-email.svg');
+    background-position: 6px center;
+    background-size: auto 18px;
+  }
+
+  .signup-input-location {
+    background-image: inline-image('icon-location.svg');
+    background-position: 9px center;
+    background-size: auto 24px;
   }
 
   .signup-button {
@@ -53,7 +65,6 @@
       display: table-cell;
       font-size: 14px;
       margin-right: 1%;
-      padding: 8px 12px;
       vertical-align: middle;
     }
 
@@ -63,6 +74,7 @@
 
     .signup-button {
       margin-right: 0;
+      padding: 10px;
       width: 20%;
     }
   }
