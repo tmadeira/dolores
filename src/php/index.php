@@ -1,8 +1,13 @@
 <?php
 get_header();
+
+require_once(__DIR__ . '/dlib/assets.php');
+
+$hero_src = DoloresAssets::get_image_uri('hero-image.jpg');
 ?>
 
-<section class="site-hero">
+<section class="site-hero"
+    style="background-image: url('<?php echo $hero_src; ?>');">
   <div id="react-hero-signup">
   </div>
 </section>

@@ -1,10 +1,20 @@
 .site-hero {
-  background: $purple;
-  height: 400px;
+  background: $black no-repeat;
+  background-position: -270px 0;
+  background-size: auto 500px;
+  height: 540px;
   position: relative;
 
   @include breakpoint($break-tablet) {
-    height: 500px;
+    background-position: -360px 0;
+    background-size: auto;
+    height: 630px;
+  }
+
+  @include breakpoint($break-desktop) {
+    background-position: center top;
+    background-size: auto;
+    height: 630px;
   }
 }
 
