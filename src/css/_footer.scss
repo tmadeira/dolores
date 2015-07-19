@@ -1,5 +1,45 @@
 .site-footer {
   background: $black;
   color: $white;
+  font-size: 0;
+  line-height: 0;
+  padding: 15px 0;
   text-align: center;
+}
+
+.footer-list {
+  display: inline-block;
+  padding: 0 8px;
+  vertical-align: middle;
+
+  & > li {
+    display: inline-block;
+    padding: 5px 2px;
+  }
+
+  @include breakpoint($break-tablet) {
+    padding: 0 20px;
+
+    & > li {
+      padding: 8px 5px;
+    }
+  }
+}
+
+.footer-supporters {
+  border-left: solid 1px $white;
+}
+
+.footer-social-icon {
+  height: 20px;
+  @include breakpoint($break-tablet) {
+    height: auto;
+  }
+}
+
+.footer-supporter-banner {
+  height: 30px;
+  @include breakpoint($break-tablet) {
+    height: auto;
+  }
 }
