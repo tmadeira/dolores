@@ -1,0 +1,81 @@
+.single.wrap {
+  padding: 20px 10px;
+
+  @include breakpoint($break-desktop) {
+    padding: 30px 0;
+  }
+}
+
+.single-title {
+  @extend %title-font;
+  font-size: 24px;
+}
+
+.single-meta {
+  font-weight: 700;
+}
+
+.entry {
+  line-height: 140%;
+
+  blockquote, code, div, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
+    margin: 15px 0;
+    @include breakpoint($break-tablet) {
+      margin: 30px 0;
+    }
+  }
+
+  h2 {
+    font-size: 140%;
+  }
+
+  h3 {
+    font-size: 120%;
+  }
+
+  h4 {
+    font-size: 100%;
+    font-weight: 700;
+  }
+
+  h5 {
+    font-size: 80%;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: square;
+    margin-left: 20px;
+  }
+
+  ol {
+    list-style: decimal;
+    margin-left: 20px;
+  }
+
+  blockquote {
+    border-left: solid 10px #ddd;
+    padding-left: 20px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  small {
+    font-size: 85%;
+  }
+
+  a {
+    color: $orange;
+    word-wrap: break-word;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

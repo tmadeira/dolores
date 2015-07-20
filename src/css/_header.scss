@@ -1,17 +1,20 @@
-body {
-  //padding-top: $header-height;
+body:not(.home) {
+  padding-top: $header-height;
 }
 
 .site-header {
   @include box-shadow(0 0 15px $black);
 
   background: $orange;
-  display: none;
   height: $header-height;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
+
+  body.home & {
+    display: none;
+  }
 
   & > .wrap {
     display: table;
