@@ -31,9 +31,9 @@
 }
 
 .footer-social-icon {
-  height: 20px;
+  height: 24px;
   @include breakpoint($break-tablet) {
-    height: auto;
+    height: 36px;
   }
 }
 
