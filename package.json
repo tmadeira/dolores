@@ -22,6 +22,7 @@
     "grunt-eslint": "^16.0.0",
     "reactify": "^1.1.1"
   },
+  "repository": "tmadeira/dolores",
   "author": "Tiago Madeira <tmadeira@gmail.com>",
   "license": "GPL-3.0"
 }
