@@ -27,4 +27,10 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 
 ### Produção ###
 
-Em breve.
+Para colocar suas modificações em produção (se você tiver permissão para fazer isso), use:
+
+```sh
+$ make deploy
+```
+
+Isso vai rodar `grunt prod` para gerar arquivos minificados em `dist/` e `script/deploy.sh` para copiar os arquivos gerados para produção.
