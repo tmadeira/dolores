@@ -35,6 +35,7 @@ body:not(.home) {
 .header-logo {
   display: none;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .header-overlay {
