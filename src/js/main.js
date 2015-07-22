@@ -3,6 +3,7 @@
 var $ = window.jQuery = require("jquery");
 var React = require("react");
 
+var header = require("./header");
 var menu = require("./menu");
 
 var HeroSignup = require("./components/HeroSignup.react");
@@ -13,8 +14,9 @@ $(function() {
     React.render(<HeroSignup />, signup[0]);
   }
 
-  $(window).resize(function() {
-    menu.setupMobileMenu();
-  });
+  $(window).resize(menu.onResize);
   $(window).trigger("resize");
+
+  $(window).scroll(header.onScroll);
+  $(window).trigger("scroll");
 });

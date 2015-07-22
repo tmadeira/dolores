@@ -9,11 +9,7 @@ var handleToggleMobileMenu = function(e) {
   e.preventDefault();
 };
 
-var hideMobileMenu = function() {
-  $("body").removeClass("show-mobile-menu");
-};
-
-var setupMobileMenu = function() {
+var onResize = function() {
   var selector = $(".header-toggle-menu, .header-overlay");
 
   selector.unbind(
@@ -34,6 +30,5 @@ var setupMobileMenu = function() {
 };
 
 module.exports = {
-  hideMobileMenu: hideMobileMenu,
-  setupMobileMenu: setupMobileMenu
+  onResize: onResize
 };
