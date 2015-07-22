@@ -3,17 +3,26 @@ body:not(.home) {
 }
 
 .site-header {
-  @include box-shadow(0 0 15px $black);
-
-  background: $orange;
+  color: $white;
   height: $header-height;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 4;
 
-  body.home & {
-    display: none;
+  @include breakpoint($break-desktop) {
+    top: 30px;
+  }
+
+  body:not(.home) &, body.home.show-opaque-header & {
+    @include box-shadow(0 0 15px $black);
+    background: $purple;
+    top: 0;
+
+    .header-logo {
+      display: table-cell;
+    }
   }
 
   & > .wrap {
@@ -24,7 +33,7 @@ body:not(.home) {
 }
 
 .header-logo {
-  display: table-cell;
+  display: none;
   vertical-align: middle;
 
   span {
@@ -32,18 +41,96 @@ body:not(.home) {
   }
 }
 
+.header-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .show-mobile-menu & {
+    display: block;
+  }
+}
+
+.header-toggle-menu {
+  cursor: pointer;
+  display: none;
+  font-size: 28px;
+  padding-left: 1.25em;
+  position: relative;
+  width: 40px;
+
+  &:before {
+    box-sizing: content-box;
+    content: "";
+    position: absolute;
+    top: 21px;
+    left: 0;
+    width: 1em;
+    height: 0.125em;
+    border-top: 0.375em double $white;
+    border-bottom: 0.125em solid $white;
+  }
+}
+
 .header-menu {
-  display: table-cell;
+  @include box-shadow(0 0 15px $black);
+  @include transition(right 150ms ease-in-out);
+
+  background: $orange;
+  bottom: 0;
+  position: fixed;
+  right: -265px;
   text-align: right;
+  top: 0;
   vertical-align: middle;
+  width: 250px;
+  z-index: 8;
+
+  .show-mobile-menu & {
+    right: 0;
+  }
 
   & > ul {
     & > li {
-      display: inline-block;
       & > a {
+        border-bottom: solid 1px white;
+        display: block;
         font-weight: bold;
-        padding: 10px;
+        padding: 15px;
         text-transform: uppercase;
+      }
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    @include box-shadow(none);
+
+    background: none;
+    display: table-cell;
+    position: static;
+    width: 100%;
+
+    & > ul {
+      & > li {
+        display: inline-block;
+        padding: 0 5px;
+
+        &:first-child {
+          display: none;
+        }
+
+        & > a {
+          border: solid 2px #fff;
+          padding: 10px 20px;
+
+          body:not(.home) &, body.home.show-opaque-header & {
+            border: 0;
+          }
+        }
       }
     }
   }

@@ -22,7 +22,12 @@
 <body <?php body_class(); ?>>
 <header class="site-header">
   <div class="wrap">
-    <h1 class="header-logo"><span><?php bloginfo('name'); ?></span></h1>
+    <h1 class="header-logo">
+      <a href="<?php echo site_url(); ?>" title="Página inicial">
+        <span><?php bloginfo('name'); ?></span>
+      </a>
+    </h1>
+
     <?php
     wp_nav_menu(Array(
       'theme_location' => 'header-menu',
@@ -30,5 +35,8 @@
       'container_class' => 'header-menu'
     ));
     ?>
+
+    <div class="header-toggle-menu"></div>
   </div>
+  <div class="header-overlay"></div>
 </header>

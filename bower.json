@@ -17,7 +17,6 @@
     "jquery": "~2.1.4",
     "breakpoint-sass": "~2.5.0",
     "singularity": "~1.6.2",
-    "jquery-ui": "~1.11.4",
     "jquery.maskedinput": "~1.4.1"
   }
 }
