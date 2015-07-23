@@ -13,6 +13,8 @@ fi
 name=$1
 domain=$2
 
+theme_url=http://${domain}/wp-content/themes/${name}
+
 # Remove dist/
 rm -rf ${dist}
 if [ "$?" != "0" ]; then
@@ -84,6 +86,7 @@ for file in ${files}; do
     file=`echo $file | sed 's/\.min\././'`
   fi
   echo "    '${file}' => '${asset}'," >> ${assets_file}
+  css=$(echo $css | sed "s|${file}|${theme_url}/${asset}|g")
 done
 
 cat >> ${assets_file} <<EOF
