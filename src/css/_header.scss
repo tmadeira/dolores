@@ -17,7 +17,7 @@ body:not(.home) {
 
   body:not(.home) &, body.home.show-opaque-header & {
     @include box-shadow(0 0 15px $black);
-    background: $purple;
+    background: $purple url('static/images/bg-purple-pattern.jpg') repeat;
     top: 0;
 
     .header-logo {
@@ -34,8 +34,22 @@ body:not(.home) {
 
 .header-logo {
   display: none;
+  padding-left: 8px;
   vertical-align: middle;
   white-space: nowrap;
+
+  @include breakpoint($break-desktop) {
+    padding-left: 0;
+  }
+
+  img {
+    max-width: 240px;
+    vertical-align: middle;
+
+    @include breakpoint($break-tablet) {
+      max-width: none;
+    }
+  }
 }
 
 .header-overlay {

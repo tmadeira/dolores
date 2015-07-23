@@ -16,6 +16,7 @@
   DoloresAssets::print_style();
   DoloresAssets::print_script();
   wp_head();
+  $logo_img = DoloresAssets::get_image_uri('logo-se-a-cidade-fosse-nossa.png');
 ?>
 </head>
 
@@ -24,7 +25,7 @@
   <div class="wrap">
     <h1 class="header-logo">
       <a href="<?php echo site_url(); ?>" title="Página inicial">
-        <span><?php bloginfo('name'); ?></span>
+        <img src="<?php echo $logo_img; ?>" alt="<?php bloginfo('name'); ?>" />
       </a>
     </h1>
 
