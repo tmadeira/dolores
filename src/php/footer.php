@@ -3,6 +3,7 @@ require_once(__DIR__ . '/dlib/assets.php');
 
 $icn_facebook = DoloresAssets::get_image_uri('social-facebook.svg');
 $icn_email = DoloresAssets::get_image_uri('social-email.svg');
+$icn_youtube = DoloresAssets::get_image_uri('social-youtube.svg');
 
 $img_flc = DoloresAssets::get_image_uri('logo-flc.png');
 $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
@@ -22,6 +23,13 @@ $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
             title="E-mail">
           <img alt="E-mail" class="footer-social-icon"
               src="<?php echo $icn_email; ?>" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/channel/UCJScw9XfBIDUIlTZ8u1WyhQ"
+            target="_blank" title="YouTube">
+          <img alt="YouTube" class="footer-social-icon"
+              src="<?php echo $icn_youtube; ?>" />
         </a>
       </li>
     </ul>
