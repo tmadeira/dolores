@@ -22,6 +22,7 @@ $hero_src = DoloresAssets::get_image_uri('hero-image.jpg');
   </div>
 </section>
 
+<?php /*
 <section class="site-streaming">
   <div class="wrap">
     <iframe
@@ -32,6 +33,7 @@ $hero_src = DoloresAssets::get_image_uri('hero-image.jpg');
     </iframe>
   </div>
 </section>
+*/ ?>
 
 <?php
 include(__DIR__ . '/grid.php');
