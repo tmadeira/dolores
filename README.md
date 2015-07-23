@@ -9,8 +9,7 @@ Para desenvolver este projeto, é necessário que seu sistema operacional tenha 
 Para instalar as dependências necessárias para o desenvolvimento, depois de instalar **npm** e **bower**, use:
 
 ```sh
-$ npm install
-$ bower install
+$ make install-dev
 ```
 
 ### Desenvolvimento ###
@@ -18,7 +17,7 @@ $ bower install
 Para desenvolver, certifique-se de ter instalado **grunt** e as dependências acima, e use:
 
 ```sh
-$ grunt dev
+$ make dev
 ```
 
 O Grunt vai checar modificações no diretório `src`, gerar arquivos correspondentes no diretório `build` e copiar esses arquivos para o diretório `/var/www/dolores/wp-content/themes/dolores` (contanto que essa pasta exista e seu usuário tenha permissão para escrever nela).
@@ -30,6 +29,7 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 Para colocar suas modificações em produção (se você tiver permissão para fazer isso), use:
 
 ```sh
+$ make prod
 $ make deploy
 ```
 

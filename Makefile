@@ -11,15 +11,15 @@ clean-dev:
 	rm -rf bower_components/
 	rm -rf node_modules/
 
-dev: install-dev
+dev:
 	grunt dev
 
-deploy: prod
+deploy:
 	script/deploy.sh dolores_rj seacidadefossenossa.com.br
 
 install-dev: bower.json package.json
 	npm install
 	bower install
 
-prod: install-dev clean
+prod:
 	grunt prod
