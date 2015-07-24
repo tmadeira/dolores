@@ -3,10 +3,11 @@
 var $ = require("jquery");
 
 var async = require("./async");
+var facebookAppID = require("./config").facebookAppID;
 
 window.fbAsyncInit = function() {
   window.FB.init({
-    appId: "1143712942309791",
+    appId: facebookAppID,
     xfbml: true,
     version: "v2.4"
   });

@@ -6,5 +6,6 @@ module.exports = {
     bigDesktop: 1400
   },
 
-  ganalyticsUA: "UA-65584348-1"
+  ganalyticsUA: "UA-65584348-1",
+  facebookAppID: "1143712942309791"
 };
