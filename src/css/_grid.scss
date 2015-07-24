@@ -1,0 +1,92 @@
+.site-grid {
+  font-size: 0;
+  line-height: 0;
+
+  @include breakpoint($break-tablet) {
+    margin: 20px 0;
+  }
+
+  .grid-post {
+    background-position: center center;
+    background-size: cover;
+    display: block;
+    height: 250px;
+    position: relative;
+
+    & > a {
+      background: rgba(0, 0, 0, 0.5);
+      bottom: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      h3 {
+        @extend %text-font;
+        bottom: 0;
+        color: $white;
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 50px;
+        padding: 10px;
+        position: absolute;
+      }
+
+      .social {
+        display: none;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+
+        .social {
+          display: block;
+        }
+      }
+    }
+
+    @include breakpoint($break-tablet) {
+      display: inline-block;
+      height: 220px;
+      margin-bottom: 1%;
+      margin-right: 1%;
+      width: 24.25%;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+
+    @include breakpoint($break-desktop) {
+      height: 300px;
+    }
+  }
+
+  // FIXME: use icons
+  .btn-prev-page, .btn-next-page {
+    background: #ddd;
+  }
+
+  .btn-prev-page {
+    display: none;
+  }
+
+  .btn-next-page {
+    display: block;
+    height: 40px;
+  }
+
+  @include breakpoint($break-tablet) {
+    .grid-pagination {
+      text-align: center;
+    }
+
+    .btn-prev-page, .btn-next-page {
+      display: inline-block;
+      height: 30px;
+      margin: 5px;
+      width: 30px;
+    }
+  }
+}

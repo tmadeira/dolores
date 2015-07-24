@@ -20,6 +20,32 @@
       }
       echo '</ul>';
     }
+
+    if (!$paged) {
+      $paged = 1;
+    }
+
+    $prev_page = intval($paged) - 1;
+    $next_page = intval($paged) + 1;
+
     ?>
+    <div class="grid-pagination">
+      <?php
+
+      if ($prev_page > 0) {
+        $prev_link = get_previous_posts_page_link();
+        ?>
+        <a class="btn-prev-page" href="<?php echo $prev_link; ?>"></a>
+        <?php
+      }
+
+      if ($next_page <= $wp_query->max_num_pages) {
+        $next_link = get_next_posts_page_link();
+        ?>
+        <a class="btn-next-page" href="<?php echo $next_link; ?>"></a>
+        <?php
+      }
+      ?>
+    </div>
   </div>
 </section>

@@ -1,4 +1,17 @@
-body:not(.home) {
+/**
+ * Sorry for the weird selectors. The header has 3 states:
+ *
+ * 1. homepage [ie, .home:not(.paged)] and .show-opaque-header is not set
+ *    Don't add padding, don't show opaque header
+ *
+ * 2. homepage and .show-opaque-header is set
+ *    Don't add padding, show opaque header
+ *
+ * 3. not homepage
+ *    Add padding, show opaque header
+ */
+
+body.paged, body:not(.home) {
   padding-top: $header-height;
 }
 
@@ -15,7 +28,7 @@ body:not(.home) {
     top: 30px;
   }
 
-  body:not(.home) &, body.home.show-opaque-header & {
+  body.paged &, body:not(.home) &, body.home.show-opaque-header & {
     @include box-shadow(0 0 15px $black);
     background: $purple url('static/images/bg-purple-pattern.jpg') repeat;
     top: 0;
@@ -138,7 +151,7 @@ body:not(.home) {
           border: solid 2px #fff;
           padding: 10px 20px;
 
-          body:not(.home) &, body.home.show-opaque-header & {
+          body.paged &, body:not(.home) &, body.home.show-opaque-header & {
             border: 0;
           }
         }
