@@ -6,6 +6,8 @@ module.exports = {
     bigDesktop: 1400
   },
 
+  apiBaseURL: "/api/",
+
   ganalyticsUA: "UA-65584348-1",
   facebookAppID: "1143712942309791"
 };
