@@ -3,6 +3,7 @@
 var $ = window.jQuery = require("jquery");
 var React = require("react");
 
+var analytics = require("./analytics");
 var header = require("./header");
 var menu = require("./menu");
 
@@ -19,4 +20,6 @@ $(function() {
 
   $(window).scroll(header.onScroll);
   $(window).trigger("scroll");
+
+  analytics.setup();
 });

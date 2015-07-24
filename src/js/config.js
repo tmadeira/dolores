@@ -4,5 +4,7 @@ module.exports = {
     tablet: 850,
     desktop: 1150,
     bigDesktop: 1400
-  }
+  },
+
+  ganalyticsUA: "UA-65584348-1"
 };
