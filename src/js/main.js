@@ -7,6 +7,7 @@ var analytics = require("./analytics");
 var facebook = require("./facebook");
 var header = require("./header");
 var menu = require("./menu");
+var twitter = require("./twitter");
 
 var HeroSignup = require("./components/HeroSignup.react");
 
@@ -24,4 +25,5 @@ $(function() {
 
   analytics.setup();
   facebook.setup();
+  twitter.setup();
 });

@@ -10,6 +10,7 @@ get_header();
         <?php the_time('d \d\e F \d\e Y'); ?>
       </span>
       <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
     </div>
 
     <div class="entry">

@@ -2,6 +2,7 @@
 
 var $ = require("jquery");
 
+var async = require("./async");
 var ganalyticsUA = require("./config").ganalyticsUA;
 
 var setup = function() {
@@ -24,12 +25,7 @@ var setup = function() {
   };
   window.ga.l = (new Date()).getTime();
 
-  var gaScript = document.createElement("script");
-  gaScript.async = 1;
-  gaScript.src = "//www.google-analytics.com/analytics.js";
-
-  var firstScript = document.getElementsByTagName("script")[0];
-  firstScript.parentNode.insertBefore(gaScript, firstScript);
+  async.include("ganalytics-js", "//www.google-analytics.com/analytics.js");
 
   window.ga("create", ganalyticsUA, "none");
   window.ga("send", "pageview");

@@ -17,6 +17,7 @@
 
   & > * {
     display: inline-block;
+    margin-right: 5px;
     vertical-align: middle;
 
     &.single-date {
@@ -24,12 +25,16 @@
     }
   }
 
+  .fb-like {
+    // Hack to fix top padding
+    line-height: 0;
+  }
+
   @include breakpoint($break-tablet) {
     font-size: 14px;
 
     & > .single-date {
       display: inline-block;
-      margin-right: 10px;
     }
   }
 }

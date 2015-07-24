@@ -2,6 +2,8 @@
 
 var $ = require("jquery");
 
+var async = require("./async");
+
 window.fbAsyncInit = function() {
   window.FB.init({
     appId: "1143712942309791",
@@ -11,15 +13,8 @@ window.fbAsyncInit = function() {
 };
 
 var setup = function() {
-  var js, fjs = document.getElementsByTagName("script")[0];
-  if (document.getElementById("facebook-jssdk")) {
-    return;
-  }
   $("body").prepend("<div id='fb-root'></div>");
-  js = document.createElement("script");
-  js.id = "facebook-jssdk";
-  js.src = "//connect.facebook.net/pt_BR/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
+  async.include("facebook-jssdk", "//connect.facebook.net/pt_BR/sdk.js");
 };
 
 module.exports = {
