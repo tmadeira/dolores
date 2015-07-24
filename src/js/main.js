@@ -4,6 +4,7 @@ var $ = window.jQuery = require("jquery");
 var React = require("react");
 
 var analytics = require("./analytics");
+var facebook = require("./facebook");
 var header = require("./header");
 var menu = require("./menu");
 
@@ -22,4 +23,5 @@ $(function() {
   $(window).trigger("scroll");
 
   analytics.setup();
+  facebook.setup();
 });
