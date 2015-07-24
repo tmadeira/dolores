@@ -1,33 +1,20 @@
 .site-presentation {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 140%;
   padding: 15px 10px;
+  text-align: center;
 
-  .presentation-title {
-    @extend %title-font;
-  }
-
-  .presentation-text {
-    font-size: 14px;
-    font-style: italic;
+  p {
+    margin: 10px 0;
   }
 
   @include breakpoint($break-tablet) {
+    font-size: 18px;
     padding: 20px;
-    text-align: center;
 
-    .presentation-title, .presentation-text {
+    p {
       margin: 20px 0;
-    }
-  }
-
-  @include breakpoint($break-desktop) {
-    padding: 20px 0;
-
-    .presentation-title {
-      font-size: 24px;
-    }
-
-    .presentation-text {
-      font-size: 18px;
     }
   }
 }
