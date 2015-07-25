@@ -63,9 +63,12 @@
     }
   }
 
-  // FIXME: use icons
   .btn-prev-page, .btn-next-page {
-    background: #ddd;
+    background: no-repeat center center / 30px;
+    background-image: inline-image('arrow-down-gray.svg');
+    &:hover {
+      background-image: inline-image('arrow-down-black.svg');
+    }
   }
 
   .btn-prev-page {
@@ -74,7 +77,7 @@
 
   .btn-next-page {
     display: block;
-    height: 40px;
+    height: 50px;
   }
 
   @include breakpoint($break-tablet) {
@@ -84,9 +87,17 @@
 
     .btn-prev-page, .btn-next-page {
       display: inline-block;
-      height: 30px;
+      height: 40px;
       margin: 5px;
-      width: 30px;
+      width: 40px;
+    }
+
+    .btn-prev-page {
+      @include transform(rotate(90deg));
+    }
+
+    .btn-next-page {
+      @include transform(rotate(270deg));
     }
   }
 }
