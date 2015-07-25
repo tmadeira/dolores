@@ -17,7 +17,7 @@ var onResize = function() {
       handleToggleMobileMenu
   );
 
-  if ($(window).width() < breakpoint.tablet) {
+  if ($(window).width() < breakpoint.desktop) {
     $(".header-toggle-menu").css("display", "table-cell");
     selector.bind(
         "touchend click",
