@@ -12,7 +12,7 @@ var HeroSignup = React.createClass({
   getInitialState: function() {
     return {
       loading: false,
-      isBasicSent: false
+      isSent: false
     };
   },
 
@@ -30,7 +30,7 @@ var HeroSignup = React.createClass({
   renderInputEmail: function() {
     return <Input
       className="signup-input signup-input-email"
-      disabled={this.state.isBasicSent}
+      disabled={this.state.isSent}
       name="email"
       onChange={this.onChange}
       placeholder="E-mail"
@@ -42,7 +42,7 @@ var HeroSignup = React.createClass({
   renderInputLocation: function() {
     return <Input
       className="signup-input signup-input-location"
-      disabled={this.state.isBasicSent}
+      disabled={this.state.isSent}
       name="location"
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
@@ -55,7 +55,7 @@ var HeroSignup = React.createClass({
   renderButton: function() {
     var className = cx({
       "signup-button": true,
-      "is-basic-sent": this.state.isBasicSent
+      "is-basic-sent": this.state.isSent
     });
     return (
       <button
@@ -77,11 +77,11 @@ var HeroSignup = React.createClass({
   },
 
   renderMore: function() {
-    if (this.state.isBasicSent) {
+    if (this.state.isSent) {
       var overlayClick = function(e) {
         if (e.target.className === "lightbox-overlay-tablet") {
           this.setState({
-            isBasicSent: false
+            isSent: false
           });
           e.preventDefault();
         }
@@ -108,13 +108,11 @@ var HeroSignup = React.createClass({
       loading: true
     });
 
-    API.route("test").get({"hello": "world"}).done(function(data) {
+    API.route("test").get({"hello": "world"}).done(function() {
       this.setState({
         loading: false,
-        isBasicSent: true
+        isSent: true
       });
-
-      console.log(data);
     }.bind(this));
 
     e.preventDefault();

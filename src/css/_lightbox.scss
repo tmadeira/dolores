@@ -1,5 +1,21 @@
-.lightbox-edit-user-info > h2 {
-  display: none;
+.lightbox-edit-user-info {
+  & > h2 {
+    display: none;
+  }
+
+  & > .success {
+    color: $white;
+    font-size: 14px;
+    line-height: 1.5em;
+
+    p {
+      margin: 20px 0;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+  }
 }
 
 @include breakpoint($break-tablet) {
@@ -50,8 +66,17 @@
       }
     }
 
-    & > form {
+    & > form, & > .success {
       padding: 20px;
+    }
+
+    .success {
+      color: $black;
+      font-size: 16px;
+
+      p {
+        margin-top: 0;
+      }
     }
 
     .signup-input {

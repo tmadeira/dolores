@@ -2,11 +2,15 @@
 
 var React = require("react");
 
+var API = require("../api");
+
 var Input = require("./Input.react");
 
 var EditUserInfo = React.createClass({
   getInitialState: function() {
-    return {};
+    return {
+      isSent: false
+    };
   },
 
   renderInputName: function() {
@@ -85,19 +89,53 @@ var EditUserInfo = React.createClass({
     );
   },
 
+  renderSuccess: function() {
+    if (!this.state.isSent) {
+      return null;
+    }
+
+    return (
+      <div className="success">
+        <p>Muito obrigado por participar do <strong>Se A Cidade Fosse
+        Nossa</strong>! Nos próximos meses, teremos encontros presenciais nos
+        bairros e sobre vários temas da cidade. Além disso, em breve teremos a
+        segunda versão de nossa plataforma online, onde você poderá opinar e
+        propor políticas para a cidade. Enviaremos para o seu e-mail
+        atualizações sobre todo o processo.</p>
+        <p>Forte Abraço,<br />
+        Equipe Se A Cidade Fosse Nossa</p>
+      </div>
+    );
+  },
+
+  renderForm: function() {
+    if (this.state.isSent) {
+      return null;
+    }
+
+    return (
+      <form onSubmit={this.submit}>
+        {this.renderInputName()}
+        {this.renderInputPhone()}
+        {this.renderInputBirthday()}
+        {this.renderInputOccupation()}
+        {this.renderInputSchool()}
+        {this.renderInputCourse()}
+        {this.renderButton()}
+      </form>
+    );
+  },
+
   render: function() {
+    var title = this.state.isSent ?
+      "Muito obrigado!" :
+      "Conte-nos mais sobre você";
+
     return (
       <div className="lightbox-edit-user-info">
-        <h2>Conte-nos mais sobre você</h2>
-        <form>
-          {this.renderInputName()}
-          {this.renderInputPhone()}
-          {this.renderInputBirthday()}
-          {this.renderInputOccupation()}
-          {this.renderInputSchool()}
-          {this.renderInputCourse()}
-          {this.renderButton()}
-        </form>
+        <h2>{title}</h2>
+        {this.renderSuccess()}
+        {this.renderForm()}
       </div>
     );
   },
@@ -106,6 +144,21 @@ var EditUserInfo = React.createClass({
     var dict = {};
     dict[name] = value;
     this.setState(dict);
+  },
+
+  submit: function(e) {
+    this.setState({
+      loading: true
+    });
+
+    API.route("test").get({"hello": "world"}).done(function() {
+      this.setState({
+        loading: false,
+        isSent: true
+      });
+    }.bind(this));
+
+    e.preventDefault();
   }
 });
 
