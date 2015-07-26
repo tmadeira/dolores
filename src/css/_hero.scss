@@ -39,22 +39,6 @@
       padding: 10px 10px 10px 36px;
       width: 100%;
     }
-  }
-
-  .signup-input-email {
-    & > input {
-      background-image: inline-image('icon-email.svg');
-      background-position: 6px center;
-      background-size: auto 18px;
-    }
-  }
-
-  .signup-input-location {
-    & > input {
-      background-image: inline-image('icon-location.svg');
-      background-position: 9px center;
-      background-size: auto 24px;
-    }
 
     .suggestions {
       @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
@@ -88,6 +72,46 @@
 
     &.focused .suggestions {
       display: block;
+    }
+  }
+
+  .signup-input-email {
+    & > input {
+      background-image: inline-image('icon-email.svg');
+      background-position: 6px center;
+      background-size: auto 18px;
+    }
+  }
+
+  .signup-input-location {
+    & > input {
+      background-image: inline-image('icon-location.svg');
+      background-position: 9px center;
+      background-size: auto 24px;
+    }
+  }
+
+  .signup-input-name {
+    & > input {
+      background-image: url('static/images/icon-name.svg');
+      background-position: 6px center;
+      background-size: auto 24px;
+    }
+  }
+
+  .signup-input-phone {
+    & > input {
+      background-image: url('static/images/icon-phone.svg');
+      background-position: 6px center;
+      background-size: auto 22px;
+    }
+  }
+
+  .signup-input-birthday {
+    & > input {
+      background-image: url('static/images/icon-birthday.svg');
+      background-position: 6px center;
+      background-size: auto 20px;
     }
   }
 

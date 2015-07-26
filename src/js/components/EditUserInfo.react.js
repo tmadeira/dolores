@@ -20,6 +20,30 @@ var EditUserInfo = React.createClass({
       />;
   },
 
+  renderInputPhone: function() {
+    return <Input
+      className="signup-input signup-input-phone"
+      mask="phone"
+      name="phone"
+      onChange={this.onChange}
+      placeholder="Telefone (WhatsApp)"
+      type="text"
+      value={this.state.phone}
+      />;
+  },
+
+  renderInputBirthday: function() {
+    return <Input
+      className="signup-input signup-input-birthday"
+      mask="date"
+      name="birthday"
+      onChange={this.onChange}
+      placeholder="Data de nascimento"
+      type="type"
+      value={this.state.birthday}
+      />;
+  },
+
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
@@ -32,6 +56,8 @@ var EditUserInfo = React.createClass({
     return (
       <div className="lightbox-edit-user-info">
         {this.renderInputName()}
+        {this.renderInputPhone()}
+        {this.renderInputBirthday()}
         {this.renderButton()}
       </div>
     );

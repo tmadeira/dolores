@@ -1,8 +1,11 @@
 "use strict";
 
 var _ = require("lodash");
+var $ = require("jquery");
 var React = require("react");
 var cx = require("classnames");
+
+require("jquery.maskedinput");
 
 var Input = React.createClass({
   getInitialState: function() {
@@ -21,6 +24,26 @@ var Input = React.createClass({
       ],
       selectedSuggestion: null
     };
+  },
+
+  componentDidMount: function() {
+    var input = $(React.findDOMNode(this.refs.input));
+    switch (this.props.mask) {
+      case "date":
+        input.mask("99/99/9999");
+        break;
+      case "phone":
+        input.focusout(function() {
+          $(this).unmask();
+          var value = $(this).val().replace(/\D/g, "");
+          if (value.length > 10) {
+            $(this).mask("(99) 99999-999?9");
+          } else {
+            $(this).mask("(99) 9999-9999?9");
+          }
+        }).trigger("focusout");
+        break;
+    }
   },
 
   render: function() {
