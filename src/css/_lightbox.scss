@@ -1,4 +1,4 @@
-.lightbox-edit-user-info {
+#react-hero-signup .lightbox-edit-user-info {
   & > h2 {
     display: none;
   }
@@ -15,73 +15,80 @@
     strong {
       font-weight: 700;
     }
+
+    .signup-button {
+      display: none;
+      @include breakpoint($break-tablet) {
+        display: block;
+      }
+    }
   }
 }
 
 @include breakpoint($break-tablet) {
-  .lightbox-overlay-tablet {
-    background: rgba(0, 0, 0, 0.7);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 16;
-  }
+  #react-hero-signup {
+    .lightbox-overlay-tablet {
+      background: rgba(0, 0, 0, 0.7);
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 16;
+    }
 
-  .lightbox-edit-user-info {
-    $height: 450px;
-    $width: 450px;
+    .lightbox-edit-user-info {
+      $height: 450px;
+      $width: 450px;
 
-    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-    background: $light-gray url('static/images/bg-gray-pattern.jpg') repeat;
-    height: $height;
-    left: 50%;
-    margin-left: -$width/2;
-    margin-top: -$height/2;
-    position: fixed;
-    top: 50%;
-    width: $width;
+      @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+      background: $light-gray url('static/images/bg-gray-pattern.jpg') repeat;
+      height: $height;
+      left: 50%;
+      margin-left: -$width/2;
+      margin-top: -$height/2;
+      position: fixed;
+      top: 50%;
+      width: $width;
 
-    & > h2 {
-      @include title-font;
+      & > h2 {
+        @include title-font;
 
-      background: $orange;
-      color: $white;
-      display: block;
-      text-align: center;
-      padding: 15px 0;
-      position: relative;
+        background: $orange;
+        color: $white;
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+        position: relative;
 
-      &::after {
-        border-bottom: 5px solid #e5e0dd;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        bottom: 0;
-        content: "";
-        height: 0;
-        left: 50%;
-        margin-left: -5px;
-        position: absolute;
-        width: 0;
+        &::after {
+          border-bottom: 5px solid #e5e0dd;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          bottom: 0;
+          content: "";
+          height: 0;
+          left: 50%;
+          margin-left: -5px;
+          position: absolute;
+          width: 0;
+        }
       }
-    }
 
-    & > form, & > .success {
-      padding: 20px;
-    }
-
-    .success {
-      color: $black;
-      font-size: 16px;
-
-      p {
-        margin-top: 0;
+      & > form, & > .success {
+        padding: 20px;
       }
-    }
 
-    .signup-input {
-      &, #react-hero-signup & {
+      .success {
+        color: $black;
+        font-size: 16px;
+
+        p {
+          margin-top: 0;
+        }
+      }
+
+      .signup-input {
         display: inline-block;
         margin: 2px 0;
         width: 100%;
@@ -100,10 +107,8 @@
           font-size: 13px;
         }
       }
-    }
 
-    .signup-button {
-      &, #react-hero-signup & {
+      .signup-button {
         display: block;
         width: 100%;
       }

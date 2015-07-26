@@ -104,6 +104,10 @@ var EditUserInfo = React.createClass({
         atualizações sobre todo o processo.</p>
         <p>Forte Abraço,<br />
         Equipe Se A Cidade Fosse Nossa</p>
+
+        <button className="signup-button" onClick={this.props.close}>
+          Fechar
+        </button>
       </div>
     );
   },
