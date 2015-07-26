@@ -38,6 +38,10 @@
       font-size: 12px;
       padding: 10px 10px 10px 36px;
       width: 100%;
+
+      &[disabled] {
+        background-color: $gray;
+      }
     }
 
     .suggestions {
@@ -56,7 +60,7 @@
         cursor: pointer;
         padding: 5px;
         &.selected, &:hover {
-          background: $light-gray;
+          background: $gray;
         }
       }
 
