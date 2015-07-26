@@ -85,7 +85,7 @@ var HeroSignup = React.createClass({
           });
           e.preventDefault();
         }
-      };
+      }.bind(this);
 
       return (
         <div className="lightbox-overlay-tablet" onClick={overlayClick}>
