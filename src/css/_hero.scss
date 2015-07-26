@@ -117,6 +117,12 @@
     background-size: auto 24px;
   }
 
+  .signup-input-course > input {
+    background-image: url('static/images/icon-course.svg');
+    background-position: 6px center;
+    background-size: auto 24px;
+  }
+
   .signup-button {
     background: $orange;
     border: 0;

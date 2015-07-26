@@ -66,6 +66,17 @@ var EditUserInfo = React.createClass({
       />;
   },
 
+  renderInputCourse: function() {
+    return <Input
+      className="signup-input signup-input-course"
+      name="course"
+      onChange={this.onChange}
+      placeholder="Curso"
+      type="text"
+      value={this.state.course}
+      />;
+  },
+
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
@@ -84,6 +95,7 @@ var EditUserInfo = React.createClass({
           {this.renderInputBirthday()}
           {this.renderInputOccupation()}
           {this.renderInputSchool()}
+          {this.renderInputCourse()}
           {this.renderButton()}
         </form>
       </div>
