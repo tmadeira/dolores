@@ -105,6 +105,18 @@
     background-size: auto 20px;
   }
 
+  .signup-input-occupation > input {
+    background-image: url('static/images/icon-occupation.svg');
+    background-position: 8px center;
+    background-size: auto 20px;
+  }
+
+  .signup-input-school > input {
+    background-image: url('static/images/icon-school.svg');
+    background-position: 6px center;
+    background-size: auto 24px;
+  }
+
   .signup-button {
     background: $orange;
     border: 0;

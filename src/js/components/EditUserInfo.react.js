@@ -44,6 +44,28 @@ var EditUserInfo = React.createClass({
       />;
   },
 
+  renderInputOccupation: function() {
+    return <Input
+      className="signup-input signup-input-occupation"
+      name="occupation"
+      onChange={this.onChange}
+      placeholder="Profissão"
+      type="text"
+      value={this.state.occupation}
+      />;
+  },
+
+  renderInputSchool: function() {
+    return <Input
+      className="signup-input signup-input-school"
+      name="school"
+      onChange={this.onChange}
+      placeholder="Instituição de ensino"
+      type="text"
+      value={this.state.school}
+      />;
+  },
+
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
@@ -60,6 +82,8 @@ var EditUserInfo = React.createClass({
           {this.renderInputName()}
           {this.renderInputPhone()}
           {this.renderInputBirthday()}
+          {this.renderInputOccupation()}
+          {this.renderInputSchool()}
           {this.renderButton()}
         </form>
       </div>
