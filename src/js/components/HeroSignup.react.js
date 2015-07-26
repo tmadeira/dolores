@@ -1,5 +1,6 @@
 "use strict";
 
+var $ = require("jquery");
 var React = require("react");
 var cx = require("classnames");
 
@@ -19,7 +20,7 @@ var HeroSignup = React.createClass({
   render: function() {
     return (
       <div className="wrap">
-        <form onSubmit={this.submit}>
+        <form ref="form" onSubmit={this.submit}>
           {this.renderBasic()}
         </form>
         {this.renderMore()}
@@ -113,11 +114,20 @@ var HeroSignup = React.createClass({
       loading: true
     });
 
-    API.route("test").get({"hello": "world"}).done(function() {
+    var form = $(React.findDOMNode(this.refs.form));
+    var params = form.serialize();
+
+    API.route("signup").post(params).done(function() {
       this.setState({
         loading: false,
         isSent: true
       });
+    }.bind(this)).error(function(data) {
+      this.setState({
+        loading: false
+      });
+      // TODO: handle errors
+      console.log("error", data);
     }.bind(this));
 
     e.preventDefault();
