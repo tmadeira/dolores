@@ -4,6 +4,11 @@
 
   @include breakpoint($break-tablet) {
     margin: 20px 0;
+    padding: 0 10px;
+  }
+
+  @include breakpoint($break-desktop) {
+    padding: 0;
   }
 
   .grid-post {
