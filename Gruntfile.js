@@ -108,7 +108,10 @@ module.exports = function(grunt) {
 
     eslint: {
       options: {
-        envs: ['browser', 'node']
+        envs: ['browser', 'node'],
+        rules: {
+          'no-debugger': 0
+        }
       },
 
       dev: {
