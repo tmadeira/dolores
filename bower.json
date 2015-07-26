@@ -16,7 +16,6 @@
     "react": "~0.13.2",
     "jquery": "~2.1.4",
     "breakpoint-sass": "~2.5.0",
-    "singularity": "~1.6.2",
     "jquery.maskedinput": "~1.4.1",
     "classnames": "~2.1.3"
   }
