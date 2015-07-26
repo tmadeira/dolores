@@ -29,24 +29,66 @@
   }
 
   .signup-input {
-    background: white no-repeat;
-    border: 0;
-    display: block;
-    font-size: 12px;
-    padding: 10px 10px 10px 36px;
-    width: 100%;
+    position: relative;
+
+    & > input {
+      background: white no-repeat;
+      border: 0;
+      display: block;
+      font-size: 12px;
+      padding: 10px 10px 10px 36px;
+      width: 100%;
+    }
   }
 
   .signup-input-email {
-    background-image: inline-image('icon-email.svg');
-    background-position: 6px center;
-    background-size: auto 18px;
+    & > input {
+      background-image: inline-image('icon-email.svg');
+      background-position: 6px center;
+      background-size: auto 18px;
+    }
   }
 
   .signup-input-location {
-    background-image: inline-image('icon-location.svg');
-    background-position: 9px center;
-    background-size: auto 24px;
+    & > input {
+      background-image: inline-image('icon-location.svg');
+      background-position: 9px center;
+      background-size: auto 24px;
+    }
+
+    .suggestions {
+      @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+      background: $white;
+      color: $black;
+      display: none;
+      font-size: 12px;
+      position: absolute;
+      top: 37px;
+      left: 0;
+      right: 0;
+      z-index: 8;
+
+      & > li {
+        cursor: pointer;
+        padding: 5px;
+        &.selected, &:hover {
+          background: $light-gray;
+        }
+      }
+
+      @include breakpoint($break-tablet) {
+        font-size: 14px;
+        top: 39px;
+      }
+
+      @include breakpoint($break-desktop) {
+        top: 41px;
+      }
+    }
+
+    &.focused .suggestions {
+      display: block;
+    }
   }
 
   .signup-button {
@@ -70,17 +112,17 @@
     position: absolute;
     right: 0;
 
-    .hero-signup-form {
-      display: table;
+    .basic-form {
       padding: 10px 0;
-      width: 100%;
     }
 
     .signup-input, .signup-button {
-      display: table-cell;
-      font-size: 14px;
+      display: inline-block;
       margin-right: 1%;
       vertical-align: middle;
+      & > input {
+        font-size: 14px;
+      }
     }
 
     .signup-input {
@@ -92,14 +134,16 @@
       padding: 10px;
       width: 20%;
       &.is-basic-sent {
-        display: table-cell;
+        display: inline-block;
       }
     }
   }
 
   @include breakpoint($break-desktop) {
     .signup-input, .signup-button {
-      font-size: 16px;
+      & > input {
+        font-size: 16px;
+      }
     }
   }
 }

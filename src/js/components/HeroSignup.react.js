@@ -6,23 +6,20 @@ var cx = require("classnames");
 var API = require("../api");
 
 var EditUserInfo = require("./EditUserInfo.react");
+var Input = require("./Input.react");
 
 var HeroSignup = React.createClass({
   getInitialState: function() {
     return {
       loading: false,
-      isBasicSent: false,
-
-      // Fields
-      email: "",
-      location: ""
+      isBasicSent: false
     };
   },
 
   render: function() {
     return (
       <div className="wrap">
-        <form className="hero-signup-form" onSubmit={this.submit}>
+        <form onSubmit={this.submit}>
           {this.renderBasic()}
           {this.renderMore()}
         </form>
@@ -31,10 +28,11 @@ var HeroSignup = React.createClass({
   },
 
   renderInputEmail: function() {
-    return <input
+    return <Input
       className="signup-input signup-input-email"
       disabled={this.state.isBasicSent}
-      onChange={this.setEmail}
+      name="email"
+      onChange={this.onChange}
       placeholder="E-mail"
       type="text"
       value={this.state.email}
@@ -42,11 +40,13 @@ var HeroSignup = React.createClass({
   },
 
   renderInputLocation: function() {
-    return <input
+    return <Input
       className="signup-input signup-input-location"
       disabled={this.state.isBasicSent}
-      onChange={this.setLocation}
+      name="location"
+      onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
+      suggestions={true}
       type="text"
       value={this.state.location}
       />;
@@ -69,7 +69,7 @@ var HeroSignup = React.createClass({
   },
 
   renderBasic: function() {
-    return <div>
+    return <div className="basic-form">
       {this.renderInputEmail()}
       {this.renderInputLocation()}
       {this.renderButton()}
@@ -97,16 +97,10 @@ var HeroSignup = React.createClass({
     }
   },
 
-  setLocation: function(e) {
-    this.setState({
-      location: e.target.value
-    });
-  },
-
-  setEmail: function(e) {
-    this.setState({
-      email: e.target.value
-    });
+  onChange: function(name, value) {
+    var dict = {};
+    dict[name] = value;
+    this.setState(dict);
   },
 
   submit: function(e) {

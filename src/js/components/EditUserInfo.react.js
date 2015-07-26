@@ -2,17 +2,18 @@
 
 var React = require("react");
 
+var Input = require("./Input.react");
+
 var EditUserInfo = React.createClass({
   getInitialState: function() {
-    return {
-      name: ""
-    };
+    return {};
   },
 
   renderInputName: function() {
-    return <input
+    return <Input
       className="signup-input signup-input-name"
-      onChange={this.setName}
+      name="name"
+      onChange={this.onChange}
       placeholder="Nome"
       type="text"
       value={this.state.name}
@@ -34,6 +35,12 @@ var EditUserInfo = React.createClass({
         {this.renderButton()}
       </div>
     );
+  },
+
+  onChange: function(name, value) {
+    var dict = {};
+    dict[name] = value;
+    this.setState(dict);
   }
 });
 
