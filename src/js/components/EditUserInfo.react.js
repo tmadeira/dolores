@@ -55,10 +55,13 @@ var EditUserInfo = React.createClass({
   render: function() {
     return (
       <div className="lightbox-edit-user-info">
-        {this.renderInputName()}
-        {this.renderInputPhone()}
-        {this.renderInputBirthday()}
-        {this.renderButton()}
+        <h2>Conte-nos mais sobre você</h2>
+        <form>
+          {this.renderInputName()}
+          {this.renderInputPhone()}
+          {this.renderInputBirthday()}
+          {this.renderButton()}
+        </form>
       </div>
     );
   },

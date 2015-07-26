@@ -32,6 +32,12 @@ $white: #fff;
   text-transform: uppercase;
 }
 
+@mixin title-font {
+  font: 700 20px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }

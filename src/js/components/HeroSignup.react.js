@@ -21,8 +21,8 @@ var HeroSignup = React.createClass({
       <div className="wrap">
         <form onSubmit={this.submit}>
           {this.renderBasic()}
-          {this.renderMore()}
         </form>
+        {this.renderMore()}
       </div>
     );
   },
