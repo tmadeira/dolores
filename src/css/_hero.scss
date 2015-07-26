@@ -2,7 +2,7 @@
   background: $black no-repeat;
   background-position: -270px 0;
   background-size: auto 500px;
-  height: 540px;
+  padding-top: 400px;
   position: relative;
 
   @include breakpoint($break-tablet) {
@@ -20,12 +20,8 @@
 
 #react-hero-signup {
   background: $black;
-  bottom: 0;
   color: $white;
-  left: 0;
-  padding: 0 10px;
-  position: absolute;
-  right: 0;
+  padding: 0.1px 10px;
 
   .signup-input, .signup-button {
     display: block;
@@ -57,13 +53,22 @@
     background: $orange;
     border: 0;
     color: $white;
+    cursor: pointer;
     font-weight: bold;
     padding: 5px 10px;
     text-transform: uppercase;
+
+    &.is-basic-sent {
+      display: none;
+    }
   }
 
   @include breakpoint($break-tablet) {
     background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
 
     .hero-signup-form {
       display: table;
@@ -86,6 +91,9 @@
       margin-right: 0;
       padding: 10px;
       width: 20%;
+      &.is-basic-sent {
+        display: table-cell;
+      }
     }
   }
 
