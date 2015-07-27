@@ -28,7 +28,9 @@ var validators = {
     if (!isValidEmail(value)) {
       callback(name, "O e-mail digitado é inválido.");
     } else {
-      API.route("validate").get({email: value}).done(function(data) {
+      var params = {key: "email", value: value};
+      API.route("validate").get(params).done(function(data) {
+        console.log(data);
         if (!data.isValid) {
           callback(name, "Este e-mail já está cadastrado.");
         }
@@ -41,7 +43,8 @@ var validators = {
       return;
     }
 
-    API.route("validate").get({location: value}).done(function(data) {
+    var params = {key: "location", value: value};
+    API.route("validate").get(params).done(function(data) {
       if (!data.isValid) {
         callback(name, "Escolha uma localização válida.");
       }

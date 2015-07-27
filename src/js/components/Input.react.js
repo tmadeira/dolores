@@ -156,7 +156,7 @@ var Input = React.createClass({
   },
 
   renderValidation: function() {
-    if (!this.props.error || this.state.focused) {
+    if (!this.props.error) {
       return null;
     }
 
