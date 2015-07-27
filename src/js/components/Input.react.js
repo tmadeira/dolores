@@ -33,6 +33,9 @@ var Input = React.createClass({
         }).trigger("focusout");
         break;
     }
+    if (this.props.focusOnMount) {
+      input.focus();
+    }
   },
 
   render: function() {

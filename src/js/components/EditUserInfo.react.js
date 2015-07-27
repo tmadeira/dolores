@@ -31,6 +31,7 @@ var EditUserInfo = React.createClass({
     return <Input
       className="signup-input signup-input-name"
       error={this.state.errors.full_name}
+      focusOnMount={true}
       name="full_name"
       onBlur={this.onBlur}
       onChange={this.onChange}
