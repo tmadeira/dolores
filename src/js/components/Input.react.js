@@ -70,11 +70,12 @@ var Input = React.createClass({
     }.bind(this);
 
     var useSuggestion = function() {
-      if (_.isNumber(this.state.selectedSuggestion)) {
-        this.props.onChange(
-            this.props.name,
-            this.props.suggestions[this.state.selectedSuggestion]
-        );
+      if (this.props.suggestions.length === 0) {
+        return;
+      }
+      var index = this.state.selectedSuggestion;
+      if (_.isNumber(index)) {
+        this.props.onChange(this.props.name, this.props.suggestions[index]);
       }
       blur();
     }.bind(this);

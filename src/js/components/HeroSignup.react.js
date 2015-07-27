@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("lodash");
 var $ = require("jquery");
 var React = require("react");
 var cx = require("classnames");
@@ -16,6 +17,9 @@ var HeroSignup = React.createClass({
       loading: false,
       isSent: false,
       errors: {},
+      suggestions: {
+        location: []
+      },
       schema: {
         email: ["isNonEmpty", "isValidEmail"],
         location: ["isNonEmpty", "isValidLocation"]
@@ -57,7 +61,7 @@ var HeroSignup = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
-      suggestions={[]}
+      suggestions={this.state.suggestions.location}
       type="text"
       value={this.state.location}
       />;
@@ -135,10 +139,22 @@ var HeroSignup = React.createClass({
     this.setState({errors: errors});
   },
 
+  getSuggestions: _.debounce(function(name, value) {
+    var params = {key: name, value: value};
+    API.route("suggest").get(params).done(function(data) {
+      var suggestions = this.state.suggestions;
+      suggestions[name] = data.suggestions;
+      this.setState({suggestions: suggestions});
+    }.bind(this));
+  }, 150, {maxWait: 600}),
+
   onChange: function(name, value) {
     var dict = {};
     dict[name] = value;
     this.setState(dict);
+    if (name in this.state.suggestions) {
+      this.getSuggestions(name, value);
+    }
   },
 
   submit: function(e) {
@@ -157,7 +173,6 @@ var HeroSignup = React.createClass({
     }.bind(this)).fail(function(data) {
       switch (data.status) {
         case 400:
-          console.log("400", data.responseJSON);
           for (var key in data.responseJSON) {
             if (data.responseJSON.hasOwnProperty(key)) {
               this.setError(key, data.responseJSON[key]);

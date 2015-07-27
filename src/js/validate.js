@@ -30,7 +30,6 @@ var validators = {
     } else {
       var params = {key: "email", value: value};
       API.route("validate").get(params).done(function(data) {
-        console.log(data);
         if (!data.isValid) {
           callback(name, "Este e-mail já está cadastrado.");
         }
