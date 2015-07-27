@@ -59,6 +59,6 @@ class DoloresSignupAPI extends DoloresBaseAPI {
       $this->_error('Não foi possível efetuar login.');
     }
 
-    return Array();
+    return array();
   }
 };

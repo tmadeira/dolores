@@ -1,5 +1,6 @@
 "use strict";
 
+var $ = require("jquery");
 var React = require("react");
 
 var API = require("../api");
@@ -9,26 +10,32 @@ var Input = require("./Input.react");
 var EditUserInfo = React.createClass({
   getInitialState: function() {
     return {
-      isSent: false
+      loading: false,
+      isSent: false,
+      errors: {}
     };
   },
 
   renderInputName: function() {
     return <Input
       className="signup-input signup-input-name"
-      name="name"
+      error={this.state.errors.full_name}
+      name="full_name"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Nome"
       type="text"
-      value={this.state.name}
+      value={this.state.full_name}
       />;
   },
 
   renderInputPhone: function() {
     return <Input
       className="signup-input signup-input-phone"
+      error={this.state.errors.phone}
       mask="phone"
       name="phone"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Telefone (WhatsApp)"
       type="text"
@@ -36,22 +43,26 @@ var EditUserInfo = React.createClass({
       />;
   },
 
-  renderInputBirthday: function() {
+  renderInputBirthdate: function() {
     return <Input
-      className="signup-input signup-input-birthday"
+      className="signup-input signup-input-birthdate"
+      error={this.state.errors.birthdate}
       mask="date"
-      name="birthday"
+      name="birthdate"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Data de nascimento"
       type="type"
-      value={this.state.birthday}
+      value={this.state.birthdate}
       />;
   },
 
   renderInputOccupation: function() {
     return <Input
       className="signup-input signup-input-occupation"
+      error={this.state.errors.occupation}
       name="occupation"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Profissão"
       type="text"
@@ -62,7 +73,9 @@ var EditUserInfo = React.createClass({
   renderInputSchool: function() {
     return <Input
       className="signup-input signup-input-school"
+      error={this.state.errors.school}
       name="school"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Instituição de ensino"
       type="text"
@@ -73,7 +86,9 @@ var EditUserInfo = React.createClass({
   renderInputCourse: function() {
     return <Input
       className="signup-input signup-input-course"
+      error={this.state.errors.course}
       name="course"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Curso"
       type="text"
@@ -118,10 +133,10 @@ var EditUserInfo = React.createClass({
     }
 
     return (
-      <form onSubmit={this.submit}>
+      <form ref="form" onSubmit={this.submit}>
         {this.renderInputName()}
         {this.renderInputPhone()}
-        {this.renderInputBirthday()}
+        {this.renderInputBirthdate()}
         {this.renderInputOccupation()}
         {this.renderInputSchool()}
         {this.renderInputCourse()}
@@ -144,10 +159,22 @@ var EditUserInfo = React.createClass({
     );
   },
 
+  onBlur: function(name) {
+    var errors = this.state.errors;
+    errors[name] = null;
+    this.setState({errors: errors});
+  },
+
   onChange: function(name, value) {
     var dict = {};
     dict[name] = value;
     this.setState(dict);
+  },
+
+  setError: function(name, error) {
+    var errors = this.state.errors;
+    errors[name] = error;
+    this.setState({errors: errors});
   },
 
   submit: function(e) {
@@ -155,10 +182,28 @@ var EditUserInfo = React.createClass({
       loading: true
     });
 
-    API.route("test").get({"hello": "world"}).done(function() {
+    var form = $(React.findDOMNode(this.refs.form));
+    var params = form.serialize();
+
+    API.route("user_info").post(params).done(function() {
       this.setState({
         loading: false,
         isSent: true
+      });
+    }.bind(this)).fail(function(data) {
+      switch (data.status) {
+        case 400:
+          for (var key in data.responseJSON) {
+            if (data.responseJSON.hasOwnProperty(key)) {
+              this.setError(key, data.responseJSON[key]);
+            }
+          }
+          break;
+        default:
+          alert("Erro ao efetuar cadastro: " + data.responseJSON.error);
+      }
+      this.setState({
+        loading: false
       });
     }.bind(this));
 
