@@ -110,6 +110,7 @@ module.exports = function(grunt) {
       options: {
         envs: ['browser', 'node'],
         rules: {
+          'no-alert': 0,
           'no-debugger': 0
         }
       },

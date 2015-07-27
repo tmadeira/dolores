@@ -117,19 +117,19 @@ var HeroSignup = React.createClass({
     this.validate([name]);
   },
 
-  validate: function(fields) {
-    var callback = function(name, error) {
-      var errors = this.state.errors;
-      errors[name] = error;
-      this.setState({errors: errors});
-    }.bind(this);
+  setError: function(name, error) {
+    var errors = this.state.errors;
+    errors[name] = error;
+    this.setState({errors: errors});
+  },
 
+  validate: function(fields) {
     var errors = this.state.errors;
 
     for (var i = 0; i < fields.length; i++) {
       var name = fields[i];
       errors[name] = null;
-      validate(name, this.state[name], this.state.schema[name], callback);
+      validate(name, this.state[name], this.state.schema[name], this.setError);
     }
 
     this.setState({errors: errors});
@@ -154,12 +154,22 @@ var HeroSignup = React.createClass({
         loading: false,
         isSent: true
       });
-    }.bind(this)).error(function(data) {
+    }.bind(this)).fail(function(data) {
+      switch (data.status) {
+        case 400:
+          console.log("400", data.responseJSON);
+          for (var key in data.responseJSON) {
+            if (data.responseJSON.hasOwnProperty(key)) {
+              this.setError(key, data.responseJSON[key]);
+            }
+          }
+          break;
+        default:
+          alert("Erro ao efetuar cadastro: " + data.responseJSON.error);
+      }
       this.setState({
         loading: false
       });
-      // TODO: handle errors
-      console.log("error", data);
     }.bind(this));
 
     e.preventDefault();

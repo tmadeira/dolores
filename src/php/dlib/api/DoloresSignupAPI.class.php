@@ -7,8 +7,22 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     $email = $request['email'];
     $location = $request['location'];
 
-    // TODO: validate email
+    $errors = array();
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors['email'] = 'O e-mail digitado é inválido.';
+    } else {
+      $user = get_user_by('email', $value);
+      if ($user !== false) {
+        $errors['email'] = 'Este e-mail já está cadastrado.';
+      }
+    }
+
     // TODO: validate location
+
+    if (count($errors) > 0) {
+      $this->_response(400, $errors);
+    }
 
     // WordPress user_login does not accept +, but it does accept space
     $login = preg_replace('/[+]/', ' ', $email);
@@ -24,12 +38,11 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     ));
 
     if (is_wp_error($user_id)) {
-      // TODO: Return error in some sanitized format
-      $this->_error($user_id);
+      $this->_error($user_id->get_error_message());
     }
 
     if (!dolores_update_user_meta($user_id, 'location', $location)) {
-      $this->_error('Unable to update location.');
+      $this->_error('Não foi possível cadastrar sua localização.');
     }
 
     $user = get_user_by('id', $user_id);
@@ -38,7 +51,7 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     do_action('wp_login', $user->user_login);
 
     if (!is_user_logged_in()) {
-      $this->_error('Unable to log in.');
+      $this->_error('Não foi possível efetuar login.');
     }
 
     return Array();
