@@ -161,6 +161,7 @@
   }
 
   .signup-button {
+    @include transition(all 150ms ease);
     background: $orange;
     border: 0;
     color: $white;
@@ -168,6 +169,10 @@
     font-weight: bold;
     padding: 5px 10px;
     text-transform: uppercase;
+
+    &:hover {
+      background: $purple;
+    }
 
     &.is-basic-sent {
       display: none;

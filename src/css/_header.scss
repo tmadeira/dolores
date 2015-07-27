@@ -148,11 +148,22 @@ body.paged, body:not(.home) {
         }
 
         & > a {
+          @include transition(all 150ms ease);
+
           border: solid 2px #fff;
           padding: 10px 20px;
 
+          &:hover {
+            background: $orange;
+            border-color: $orange;
+          }
+
           body.paged &, body:not(.home) &, body.home.show-opaque-header & {
             border: 0;
+            &:hover {
+              background: none;
+              color: $orange;
+            }
           }
         }
       }
