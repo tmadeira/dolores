@@ -52,12 +52,16 @@ var Input = React.createClass({
       <div className={className}>
         {this.renderInput()}
         {this.renderSuggestions()}
+        {this.renderValidation()}
       </div>
     );
   },
 
   renderInput: function() {
     var onBlur = _.debounce(function() {
+      if (this.props.onBlur) {
+        this.props.onBlur(this.props.name);
+      }
       this.setState({
         focused: false,
         selectedSuggestion: null
@@ -160,6 +164,14 @@ var Input = React.createClass({
     return <li key={suggestion} onClick={onClick} className={className}>
       {suggestion}
     </li>;
+  },
+
+  renderValidation: function() {
+    if (!this.props.error || this.state.focused) {
+      return null;
+    }
+
+    return <div className="validation-error">{this.props.error}</div>;
   }
 });
 

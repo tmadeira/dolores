@@ -5,6 +5,7 @@ var React = require("react");
 var cx = require("classnames");
 
 var API = require("../api");
+var validate = require("../validate");
 
 var EditUserInfo = require("./EditUserInfo.react");
 var Input = require("./Input.react");
@@ -13,7 +14,12 @@ var HeroSignup = React.createClass({
   getInitialState: function() {
     return {
       loading: false,
-      isSent: false
+      isSent: false,
+      errors: {},
+      schema: {
+        email: ["isNonEmpty", "isValidEmail"],
+        location: ["isNonEmpty", "isValidLocation"]
+      }
     };
   },
 
@@ -32,7 +38,9 @@ var HeroSignup = React.createClass({
     return <Input
       className="signup-input signup-input-email"
       disabled={this.state.isSent}
+      error={this.state.errors.email}
       name="email"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="E-mail"
       type="text"
@@ -44,7 +52,9 @@ var HeroSignup = React.createClass({
     return <Input
       className="signup-input signup-input-location"
       disabled={this.state.isSent}
+      error={this.state.errors.location}
       name="location"
+      onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
       suggestions={true}
@@ -101,6 +111,28 @@ var HeroSignup = React.createClass({
       location: "",
       isSent: false
     });
+  },
+
+  onBlur: function(name) {
+    this.validate([name]);
+  },
+
+  validate: function(fields) {
+    var callback = function(name, error) {
+      var errors = this.state.errors;
+      errors[name] = error;
+      this.setState({errors: errors});
+    }.bind(this);
+
+    var errors = this.state.errors;
+
+    for (var i = 0; i < fields.length; i++) {
+      var name = fields[i];
+      errors[name] = null;
+      validate(name, this.state[name], this.state.schema[name], callback);
+    }
+
+    this.setState({errors: errors});
   },
 
   onChange: function(name, value) {
