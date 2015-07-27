@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/../locations.php');
+
 require_once(__DIR__ . '/DoloresBaseAPI.class.php');
 
 class DoloresValidateAPI extends DoloresBaseAPI {
@@ -7,12 +9,25 @@ class DoloresValidateAPI extends DoloresBaseAPI {
     $value = $request['value'];
     switch ($key) {
     case 'email':
-      $user = get_user_by('email', $value);
-      return array(
-        'isValid' => $user === false
-      );
+      $isValid = $this->is_valid_email($value);
+      break;
+    case 'location':
+      $isValid = $this->is_valid_location($value);
+      break;
     default:
       $this->_error('Key not found', 404);
     }
+
+    return array('isValid' => $isValid);
+  }
+
+  function is_valid_email($value) {
+    $user = get_user_by('email', $value);
+    return $user === false;
+  }
+
+  function is_valid_location($value) {
+    $locations = DoloresLocations::get_instance();
+    return $locations->is_valid_location($value);
   }
 };

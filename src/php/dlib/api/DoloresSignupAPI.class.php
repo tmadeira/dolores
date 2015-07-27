@@ -1,6 +1,8 @@
 <?php
-require_once(__DIR__ . '/DoloresBaseAPI.class.php');
+require_once(__DIR__ . '/../locations.php');
 require_once(__DIR__ . '/../wp_util/user_meta.php');
+
+require_once(__DIR__ . '/DoloresBaseAPI.class.php');
 
 class DoloresSignupAPI extends DoloresBaseAPI {
   function post($request) {
@@ -18,7 +20,10 @@ class DoloresSignupAPI extends DoloresBaseAPI {
       }
     }
 
-    // TODO: validate location
+    $locations = DoloresLocations::get_instance();
+    if (!$locations->is_valid_location($location)) {
+      $errors['location'] = 'Escolha uma localização válida.';
+    }
 
     if (count($errors) > 0) {
       $this->_response(400, $errors);
