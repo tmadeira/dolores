@@ -4,6 +4,7 @@ var $ = require("jquery");
 var React = require("react");
 
 var API = require("../api");
+var breakpoint = require("../config").breakpoint;
 
 var Input = require("./Input.react");
 
@@ -14,6 +15,16 @@ var EditUserInfo = React.createClass({
       isSent: false,
       errors: {}
     };
+  },
+
+  componentDidMount: function() {
+    if ($(window).width() < breakpoint.tablet) {
+      var form = React.findDOMNode(this.refs.form);
+      // 70px is 60px (header height) + 10px (padding)
+      $("body").animate({
+        scrollTop: form.offsetTop - 70
+      }, 300);
+    }
   },
 
   renderInputName: function() {
