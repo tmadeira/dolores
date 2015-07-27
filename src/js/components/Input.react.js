@@ -11,17 +11,6 @@ var Input = React.createClass({
   getInitialState: function() {
     return {
       focused: false,
-      suggestions: [
-        "Avesso da montanha",
-        "Labirinto",
-        "Contra-senha",
-        "Cara a tapa",
-        "Penha",
-        "Irajá",
-        "Olaria",
-        "Vigário Geral",
-        "Piedade"
-      ],
       selectedSuggestion: null
     };
   },
@@ -84,14 +73,14 @@ var Input = React.createClass({
       if (_.isNumber(this.state.selectedSuggestion)) {
         this.props.onChange(
             this.props.name,
-            this.state.suggestions[this.state.selectedSuggestion]
+            this.props.suggestions[this.state.selectedSuggestion]
         );
       }
       blur();
     }.bind(this);
 
     var setSuggestion = function(delta) {
-      var mod = this.state.suggestions.length;
+      var mod = this.props.suggestions.length;
       var newIndex;
       if (_.isNumber(this.state.selectedSuggestion)) {
         newIndex = (this.state.selectedSuggestion + mod + delta) % mod;
@@ -150,7 +139,7 @@ var Input = React.createClass({
     }
 
     return <ul className="suggestions">
-      {this.state.suggestions.map(this.renderSuggestion)}
+      {this.props.suggestions.map(this.renderSuggestion)}
     </ul>;
   },
 

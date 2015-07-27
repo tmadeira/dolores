@@ -57,7 +57,7 @@ var HeroSignup = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
-      suggestions={true}
+      suggestions={[]}
       type="text"
       value={this.state.location}
       />;
