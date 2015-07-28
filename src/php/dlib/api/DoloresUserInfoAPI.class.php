@@ -11,6 +11,8 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     $occupation = $request['occupation'];
     $school = $request['school'];
     $course = $request['course'];
+    $interests = $request['interests'];
+    $collaboration = $request['collaboration'];
 
     $errors = array();
 
@@ -57,31 +59,44 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
 
     if (strlen($phone)) {
       if (!dolores_update_user_meta($user_id, 'phone', $phone)) {
-        $this->_error('Não foi possível cadastrar seu telefone.');
+        $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
     if (strlen($birthdate)) {
       if (!dolores_update_user_meta($user_id, 'birthdate', $birthdate)) {
-        $this->_error('Não foi possível cadastrar sua data de nascimento.');
+        $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
     if (strlen($occupation)) {
       if (!dolores_update_user_meta($user_id, 'occupation', $occupation)) {
-        $this->_error('Não foi possível cadastrar sua profissão.');
+        $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
     if (strlen($school)) {
       if (!dolores_update_user_meta($user_id, 'school', $school)) {
-        $this->_error('Não foi possível cadastrar sua instituição de ensino.');
+        $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
     if (strlen($course)) {
       if (!dolores_update_user_meta($user_id, 'course', $course)) {
-        $this->_error('Não foi possível cadastrar seu curso.');
+        $this->_error('Não foi possível cadastrar algumas informações.');
+      }
+    }
+
+    if (is_array($interests) && count($interests) > 0) {
+      if (!dolores_update_user_meta($user_id, 'interests', $interests)) {
+        $this->_error('Não foi possível cadastrar algumas informações.');
+      }
+    }
+
+    if (is_array($collaboration) && count($collaboration) > 0) {
+      if (!dolores_update_user_meta(
+          $user_id, 'collaboration', $collaboration)) {
+        $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
