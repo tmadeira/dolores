@@ -16,6 +16,7 @@ var EditUserInfo = React.createClass({
       loading: false,
       errors: {},
       interests: [],
+      collaboration: [],
       isSent: false,
       options: {
         interests: [
@@ -29,6 +30,15 @@ var EditUserInfo = React.createClass({
           "Segurança Pública",
           "Transparência e Participação",
           "Transporte"
+        ],
+        collaboration: [
+          "Design",
+          "Fotografia",
+          "Ilustração",
+          "Motion Graphics",
+          "Programação",
+          "Vídeo",
+          "Web Design"
         ]
       }
     };
@@ -137,6 +147,18 @@ var EditUserInfo = React.createClass({
       />;
   },
 
+  renderInputCollaboration: function() {
+    return <MultiSelect
+      className="signup-input signup-input-collaboration"
+      error={this.state.errors.collaboration}
+      name="collaboration"
+      onToggle={this.onToggle}
+      options={this.state.options.collaboration}
+      placeholder="Quer colaborar? Quais seus talentos?"
+      selected={this.state.collaboration}
+      />;
+  },
+
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
@@ -198,6 +220,7 @@ var EditUserInfo = React.createClass({
         {this.renderInputSchool()}
         {this.renderInputCourse()}
         {this.renderInputInterests()}
+        {this.renderInputCollaboration()}
         {this.renderButton()}
       </form>
     );

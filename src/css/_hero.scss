@@ -208,6 +208,12 @@
     background-size: auto 26px;
   }
 
+  .signup-input-collaboration > .multi-select-selected {
+    background-image: url('static/images/icon-interests.svg');
+    background-position: 5px center;
+    background-size: auto 26px;
+  }
+
   .signup-button {
     @include transition(all 150ms ease);
     background: $orange;
