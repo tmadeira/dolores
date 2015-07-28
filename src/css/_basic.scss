@@ -75,3 +75,16 @@ img, video {
 button, input {
   @extend %text-font;
 }
+
+.social-media {
+  & > * {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .fb-like {
+    // Hack to fix top padding
+    line-height: 0;
+  }
+}

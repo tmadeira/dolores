@@ -25,11 +25,6 @@
     }
   }
 
-  .fb-like {
-    // Hack to fix top padding
-    line-height: 0;
-  }
-
   @include breakpoint($break-tablet) {
     font-size: 14px;
 

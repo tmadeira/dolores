@@ -116,6 +116,14 @@ var EditUserInfo = React.createClass({
     );
   },
 
+  componentDidUpdate: function(prevProps, prevState) {
+    if (!prevState.isSent && this.state.isSent) {
+      // Generate social buttons in success message
+      window.FB.XFBML.parse();
+      window.twttr.widgets.load();
+    }
+  },
+
   renderSuccess: function() {
     if (!this.state.isSent) {
       return null;
@@ -131,6 +139,14 @@ var EditUserInfo = React.createClass({
         atualizações sobre todo o processo.</p>
         <p>Forte Abraço,<br />
         Equipe Se A Cidade Fosse Nossa</p>
+
+        <div className="social-media">
+          <div className="fb-like" data-layout="button_count"
+            data-action="recommend" data-show-faces="false"
+            data-share="false"></div>
+          <a href="https://twitter.com/share" className="twitter-share-button"
+            data-lang="pt"></a>
+        </div>
 
         <button className="signup-button" onClick={this.props.close}>
           Fechar
