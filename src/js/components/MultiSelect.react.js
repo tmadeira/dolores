@@ -41,14 +41,10 @@ var MultiSelect = React.createClass({
       this.setState({focused: true});
     }.bind(this);
 
-    var placeholder = this.state.focused ?
-      "Clique nas opções para selecionar" :
-      this.props.placeholder;
-
     return <input
         className="multi-select-selected"
         onFocus={onFocus}
-        placeholder={placeholder}
+        placeholder={this.props.placeholder}
         readOnly={true}
         ref="input"
         type="text"
