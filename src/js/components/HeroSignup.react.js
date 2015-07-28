@@ -92,21 +92,21 @@ var HeroSignup = React.createClass({
   },
 
   renderMore: function() {
-    if (this.state.isSent) {
-      var overlayClick = function(e) {
-        if (e.target.className === "lightbox-overlay-tablet") {
-          this.closeLightbox();
-        }
-      }.bind(this);
-
-      return (
-        <div className="lightbox-overlay-tablet" onClick={overlayClick}>
-          <EditUserInfo close={this.closeLightbox} />
-        </div>
-      );
-    } else {
+    if (!this.state.isSent) {
       return null;
     }
+
+    var overlayClick = function(e) {
+      if (e.target.className === "lightbox-overlay-tablet") {
+        this.closeLightbox();
+      }
+    }.bind(this);
+
+    return (
+      <div className="lightbox-overlay-tablet" onClick={overlayClick}>
+        <EditUserInfo close={this.closeLightbox} />
+      </div>
+    );
   },
 
   closeLightbox: function() {

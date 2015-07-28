@@ -148,15 +148,18 @@ var Input = React.createClass({
   },
 
   renderSuggestion: function(suggestion, index) {
-    var onClick = function(e) {
-      this.props.onChange(this.props.name, e.target.innerHTML);
-    }.bind(this);
-
     var className = cx({selected: index === this.state.selectedSuggestion});
 
-    return <li key={suggestion} onClick={onClick} className={className}>
-      {suggestion}
-    </li>;
+    return (
+      <li key={suggestion} onClick={this.onSuggestionClick}
+          className={className}>
+        {suggestion}
+      </li>
+    );
+  },
+
+  onSuggestionClick: function(e) {
+    this.props.onChange(this.props.name, e.target.innerHTML);
   },
 
   renderValidation: function() {
