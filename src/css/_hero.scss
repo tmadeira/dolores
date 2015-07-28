@@ -107,6 +107,8 @@
       color: $black;
       display: none;
       font-size: 12px;
+      overflow-y: auto;
+      max-height: 240px;
       position: absolute;
       top: 37px;
       left: 0;
