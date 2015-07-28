@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("lodash");
 var $ = require("jquery");
 var React = require("react");
 
@@ -7,13 +8,29 @@ var API = require("../api");
 var breakpoint = require("../config").breakpoint;
 
 var Input = require("./Input.react");
+var MultiSelect = require("./MultiSelect.react");
 
 var EditUserInfo = React.createClass({
   getInitialState: function() {
     return {
       loading: false,
+      errors: {},
+      interests: [],
       isSent: false,
-      errors: {}
+      options: {
+        interests: [
+          "Democratização da Comunicação",
+          "Direitos Humanos",
+          "Educação",
+          "Meio Ambiente",
+          "Moradia",
+          "Planejamento Urbano",
+          "Saúde",
+          "Segurança Pública",
+          "Transparência e Participação",
+          "Transporte"
+        ]
+      }
     };
   },
 
@@ -108,6 +125,18 @@ var EditUserInfo = React.createClass({
       />;
   },
 
+  renderInputInterests: function() {
+    return <MultiSelect
+      className="signup-input signup-input-interests"
+      error={this.state.errors.interests}
+      name="interests"
+      onToggle={this.onToggle}
+      options={this.state.options.interests}
+      placeholder="Áreas de interesse"
+      selected={this.state.interests}
+      />;
+  },
+
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
@@ -168,6 +197,7 @@ var EditUserInfo = React.createClass({
         {this.renderInputOccupation()}
         {this.renderInputSchool()}
         {this.renderInputCourse()}
+        {this.renderInputInterests()}
         {this.renderButton()}
       </form>
     );
@@ -197,6 +227,21 @@ var EditUserInfo = React.createClass({
     var dict = {};
     dict[name] = value;
     this.setState(dict);
+  },
+
+  onToggle: function(name, value) {
+    var selected = this.state[name];
+
+    var idx = _.indexOf(selected, value);
+    if (idx !== -1) {
+      selected.splice(idx, 1);
+    } else {
+      selected.push(value);
+    }
+
+    var state = {};
+    state[name] = selected;
+    this.setState(state);
   },
 
   setError: function(name, error) {

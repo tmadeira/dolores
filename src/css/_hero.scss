@@ -32,16 +32,36 @@
     position: relative;
 
     & > input {
-      background: white no-repeat;
+      background-color: $white;
+      background-repeat: no-repeat;
       border: 0;
+      color: $black;
       display: block;
       font-size: 12px;
+      overflow: hidden;
       padding: 10px 10px 10px 36px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       width: 100%;
 
       &[disabled] {
         background-color: $gray;
       }
+    }
+
+    .multi-select-done {
+      background: $orange;
+      border: 0;
+      bottom: 5px;
+      color: $white;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 0 4px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 28px;
     }
 
     .validation-error {
@@ -77,7 +97,11 @@
       }
     }
 
-    .suggestions {
+    &.focused > .multi-select-selected {
+      padding-right: 38px;
+    }
+
+    .suggestions, .multi-select-options {
       @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
       background: $white;
       color: $black;
@@ -89,11 +113,29 @@
       right: 0;
       z-index: 2;
 
-      & > li {
+      &:not(.multi-select-options) > li {
         cursor: pointer;
         padding: 5px;
         &.selected, &:hover {
           background: $gray;
+        }
+      }
+
+      &.multi-select-options > li {
+        @include opacity(0.6);
+        background-image: inline-image('checkbox-empty.svg');
+        background-position: 5px center;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        padding: 5px 5px 5px 30px;
+
+        &:hover {
+          @include opacity(1);
+        }
+
+        &.selected {
+          background-image: inline-image('checkbox-checked.svg');
         }
       }
 
@@ -107,7 +149,7 @@
       }
     }
 
-    &.focused .suggestions {
+    &.focused .suggestions, &.focused .multi-select-options {
       display: block;
     }
   }
@@ -158,6 +200,12 @@
     background-image: url('static/images/icon-course.svg');
     background-position: 6px center;
     background-size: auto 24px;
+  }
+
+  .signup-input-interests > .multi-select-selected {
+    background-image: url('static/images/icon-interests.svg');
+    background-position: 5px center;
+    background-size: auto 26px;
   }
 
   .signup-button {
