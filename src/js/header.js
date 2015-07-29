@@ -4,6 +4,7 @@ var $ = require("jquery");
 var _ = require("lodash");
 
 var onScroll = _.debounce(function() {
+  var html = $("html");
   var body = $("body");
   var header = $(".site-header");
   var signup = $("#react-hero-signup");
@@ -12,9 +13,11 @@ var onScroll = _.debounce(function() {
     return;
   }
 
+  // Chrome scrolls body, Firefox scrolls html... we fix by adding them!
+  var scrollTop = html[0].scrollTop + body[0].scrollTop;
   var headerHeight = header[0].offsetTop + header[0].offsetHeight;
 
-  if (body[0].scrollTop + headerHeight > signup[0].offsetTop) {
+  if (scrollTop + headerHeight > signup[0].offsetTop) {
     body.addClass("show-opaque-header");
   } else {
     body.removeClass("show-opaque-header");
