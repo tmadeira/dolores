@@ -192,9 +192,7 @@ var EditUserInfo = React.createClass({
         Equipe Se A Cidade Fosse Nossa</p>
 
         <div className="social-media">
-          <div className="fb-like" data-layout="button_count"
-            data-action="recommend" data-show-faces="false"
-            data-share="false"></div>
+          <div className="fb-share-button" data-layout="button_count"></div>
           <a href="https://twitter.com/share" className="twitter-share-button"
             data-lang="pt"></a>
         </div>
