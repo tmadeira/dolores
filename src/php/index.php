@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/dlib/assets.php');
 require_once(__DIR__ . '/dlib/wp_util/add_paged_class.php');
+require_once(__DIR__ . '/dlib/settings/streaming.php');
 
 get_header();
 
@@ -21,7 +22,27 @@ if (!$paged || $paged == 1) {
       </p>
     </div>
   </section>
+
   <?php
+  if (DoloresStreaming::get_active()) {
+    $title = esc_html(DoloresStreaming::get_title());
+    $youtube_id = DoloresStreaming::get_youtube_id();
+    $params = "rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1";
+    $url = "//youtube.com/embed/${youtube_id}?${params}";
+    ?>
+    <section class="site-streaming">
+      <div class="wrap">
+        <h2 class="streaming-title"><?php echo $title; ?></h2>
+        <iframe
+          class="streaming-box"
+          src="<?php echo $url; ?>"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+    <?php
+  }
 }
 
 include(__DIR__ . '/grid.php');

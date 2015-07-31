@@ -19,15 +19,30 @@
   }
 }
 
+.streaming-title {
+  @extend %title-font;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  @include breakpoint($break-tablet) {
+    font-size: 24px;
+  }
+
+  @include breakpoint($break-desktop) {
+    font-size: 28px;
+  }
+}
+
 .streaming-box {
   height: 300px;
   width: 100%;
 
   @include breakpoint($break-tablet) {
-    height: 450px;
+    height: 400px;
   }
 
   @include breakpoint($break-desktop) {
-    height: 600px;
+    height: 500px;
   }
 }
