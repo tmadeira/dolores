@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/streaming.php');
+require_once(__DIR__ . '/settings/streaming.php');
 
 class DoloresSettings {
   public function __construct() {

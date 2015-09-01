@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/dlib/assets.php');
 require_once(__DIR__ . '/dlib/wp_util/add_paged_class.php');
-require_once(__DIR__ . '/dlib/settings/streaming.php');
+require_once(__DIR__ . '/dlib/wp_admin/settings/streaming.php');
 
 get_header();
 
