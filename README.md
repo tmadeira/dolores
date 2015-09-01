@@ -24,6 +24,10 @@ O Grunt vai checar modificações no diretório `src`, gerar arquivos correspond
 
 Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/) em `/var/www/dolores/` e configurá-lo para usar o tema **Dolores**.
 
+### Configuração ###
+
+- Para que os usuários cadastrados sejam sincronizados com uma lista do Mailchimp, as constantes `MAILCHIMP_API_KEY` e `MAILCHIMP_LIST_ID` devem estar definidas em `wp_config.php`.
+
 ### Produção ###
 
 Para colocar suas modificações em produção (se você tiver permissão para fazer isso), use:

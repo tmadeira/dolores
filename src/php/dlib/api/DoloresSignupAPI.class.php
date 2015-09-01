@@ -46,6 +46,16 @@ class DoloresSignupAPI extends DoloresBaseAPI {
       $this->_error($user_id->get_error_message());
     }
 
+    if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
+      require_once(__DIR__ . '/../../vendor/autoload.php');
+      $MailChimp = new \Drewm\MailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->call('lists/subscribe', Array(
+        'id' => MAILCHIMP_LIST_ID,
+        'email' => array('email' => $email),
+        'double_optin' => false
+      ));
+    }
+
     if (!dolores_update_user_meta($user_id, 'location', $location)) {
       $this->_error('Não foi possível cadastrar sua localização.');
     }
