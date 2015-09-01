@@ -49,8 +49,7 @@ module.exports = function(grunt) {
           fontsDir: 'static/fonts',
           imagesDir: 'static/images',
           importPath: [
-            'bower_components/breakpoint-sass/stylesheets',
-            'bower_components/singularity/stylesheets'
+            'bower_components/breakpoint-sass/stylesheets'
           ]
         }
       }
@@ -60,6 +59,14 @@ module.exports = function(grunt) {
       devtheme: {
         cwd: 'build/',
         dest: '/var/www/dolores/wp-content/themes/dolores/',
+        expand: true,
+        src: '**',
+        timestamp: true
+      },
+
+      composer: {
+        cwd: 'vendor/',
+        dest: 'build/vendor/',
         expand: true,
         src: '**',
         timestamp: true
@@ -102,7 +109,7 @@ module.exports = function(grunt) {
       },
 
       watch: {
-        tasks: ['watch:build', 'watch:css', 'watch:js', 'watch:php', 'watch:static']
+        tasks: ['watch:build', 'watch:css', 'watch:js', 'watch:composer', 'watch:php', 'watch:static']
       }
     },
 
@@ -163,6 +170,11 @@ module.exports = function(grunt) {
         tasks: ['copy:devtheme']
       },
 
+      composer: {
+        files: 'vendor/**/*',
+        tasks: ['copy:composer']
+      },
+
       css: {
         files: 'src/css/**/*.scss',
         tasks: ['compass']
@@ -217,6 +229,7 @@ module.exports = function(grunt) {
       'cssmin',
 
       // PHP
+      'copy:composer',
       'copy:php',
 
       // Static

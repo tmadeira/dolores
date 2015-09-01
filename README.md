@@ -2,11 +2,11 @@
 
 **ATENÇÃO:** *Este projeto _não está pronto_ para ser usado. Seu código está disponível aqui apenas para tornar mais fácil que outros programadores acompanhem seu desenvolvimento.*
 
-Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io) e [grunt](http://gruntjs.com).
+Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io), [grunt](http://gruntjs.com) e [Composer](https://getcomposer.org/).
 
 ### Dependências ###
 
-Para instalar as dependências necessárias para o desenvolvimento, depois de instalar **npm** e **bower**, use:
+Para instalar as dependências necessárias para o desenvolvimento, depois de instalar **npm**, **bower** e **composer**, use:
 
 ```sh
 $ make install-dev
