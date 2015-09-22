@@ -75,18 +75,21 @@ for file in ${files}; do
 
   hash=`md5sum ${build}/${file} | cut -c 1-16`
   extension=`echo ${file} | cut -d'.' -f2-`
-  asset=assets/${hash}.${extension}
-  cp ${build}/${file} ${dist}/${asset}
-  if [ "$?" != "0" ]; then
-    echo "Can't copy ${file}"
-    exit 1
-  fi
+  # Ignore files without extension
+  if [ "$file" != "$extension" ]; then
+    asset=assets/${hash}.${extension}
+    cp ${build}/${file} ${dist}/${asset}
+    if [ "$?" != "0" ]; then
+      echo "Can't copy ${file}"
+      exit 1
+    fi
 
-  if [ -n "`echo "$file" | grep '\.min\.'`" ]; then
-    file=`echo $file | sed 's/\.min\././'`
+    if [ -n "`echo "$file" | grep '\.min\.'`" ]; then
+      file=`echo $file | sed 's/\.min\././'`
+    fi
+    echo "    '${file}' => '${asset}'," >> ${assets_file}
+    css=$(echo $css | sed "s|${file}|${theme_url}/${asset}|g")
   fi
-  echo "    '${file}' => '${asset}'," >> ${assets_file}
-  css=$(echo $css | sed "s|${file}|${theme_url}/${asset}|g")
 done
 
 cat >> ${assets_file} <<EOF
