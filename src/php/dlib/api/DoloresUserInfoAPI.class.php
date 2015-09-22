@@ -100,6 +100,25 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
       }
     }
 
+    if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
+      require_once(__DIR__ . '/../../vendor/autoload.php');
+      $MailChimp = new \Drewm\MailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->call('lists/update-member', Array(
+        'id' => MAILCHIMP_LIST_ID,
+        'email' => array('email' => $user->user_email),
+        'merge_vars' => array(
+          'NOME' => $name,
+          'CELULAR' => $phone,
+          'TEMAS' => implode(", ", $interests),
+          'AREAS' => implode(", ", $collaboration),
+          'NASCIMENTO' => $birthdate,
+          'PROFISSAO' => $occupation,
+          'ESCOLA' => $school,
+          'CURSO' => $course
+        )
+      ));
+    }
+
     return array();
   }
 };

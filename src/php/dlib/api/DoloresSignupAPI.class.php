@@ -52,6 +52,10 @@ class DoloresSignupAPI extends DoloresBaseAPI {
       $MailChimp->call('lists/subscribe', Array(
         'id' => MAILCHIMP_LIST_ID,
         'email' => array('email' => $email),
+        'merge_vars' => array(
+          'BAIRRO' => $location,
+          'ORIGEM' => 'Site'
+        ),
         'double_optin' => false
       ));
     }
