@@ -1,5 +1,4 @@
 {
     "require": {
-        "drewm/mailchimp-api": "^1.1"
     }
 }

@@ -47,9 +47,9 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(__DIR__ . '/../../vendor/autoload.php');
-      $MailChimp = new \Drewm\MailChimp(MAILCHIMP_API_KEY);
-      $MailChimp->call('lists/subscribe', Array(
+      require_once(__DIR__ . '/../mailchimp.php');
+      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->fireAndForget('lists/subscribe', Array(
         'id' => MAILCHIMP_LIST_ID,
         'email' => array('email' => $email),
         'merge_vars' => array(

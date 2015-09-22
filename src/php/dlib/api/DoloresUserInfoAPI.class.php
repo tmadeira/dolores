@@ -12,7 +12,7 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     $school = $request['school'];
     $course = $request['course'];
     $interests = $request['interests'];
-    $collaboration = $request['collaboration'];
+    $collab = $request['collaboration'];
 
     $errors = array();
 
@@ -93,24 +93,24 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
       }
     }
 
-    if (is_array($collaboration) && count($collaboration) > 0) {
+    if (is_array($collab) && count($collab) > 0) {
       if (!dolores_update_user_meta(
-          $user_id, 'collaboration', $collaboration)) {
+          $user_id, 'collaboration', $collab)) {
         $this->_error('Não foi possível cadastrar algumas informações.');
       }
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(__DIR__ . '/../../vendor/autoload.php');
-      $MailChimp = new \Drewm\MailChimp(MAILCHIMP_API_KEY);
-      $MailChimp->call('lists/update-member', Array(
+      require_once(__DIR__ . '/../mailchimp.php');
+      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->fireAndForget('lists/update-member', array(
         'id' => MAILCHIMP_LIST_ID,
         'email' => array('email' => $user->user_email),
         'merge_vars' => array(
           'NOME' => $name,
           'CELULAR' => $phone,
-          'TEMAS' => implode(", ", $interests),
-          'AREAS' => implode(", ", $collaboration),
+          'TEMAS' => is_array($interests) ? implode(", ", $interests) : "",
+          'AREAS' => is_array($collab) ? implode(", ", $collab) : "",
           'NASCIMENTO' => $birthdate,
           'PROFISSAO' => $occupation,
           'ESCOLA' => $school,
