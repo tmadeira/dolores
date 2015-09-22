@@ -6,18 +6,16 @@ var _ = require("lodash");
 var onScroll = _.debounce(function() {
   var html = $("html");
   var body = $("body");
-  var header = $(".site-header");
-  var signup = $("#react-hero-signup");
+  var afterHeader = $(".site-presentation");
 
-  if (signup.length !== 1) {
+  if (afterHeader.length !== 1) {
     return;
   }
 
   // Chrome scrolls body, Firefox scrolls html... we fix by adding them!
   var scrollTop = html[0].scrollTop + body[0].scrollTop;
-  var headerHeight = header[0].offsetTop + header[0].offsetHeight;
 
-  if (scrollTop + headerHeight > signup[0].offsetTop) {
+  if (scrollTop + 100 > afterHeader[0].offsetTop) {
     body.addClass("show-opaque-header");
   } else {
     body.removeClass("show-opaque-header");

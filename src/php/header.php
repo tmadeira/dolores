@@ -20,7 +20,7 @@
 ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class("v" . dolores_get_version()); ?>>
 <header class="site-header">
   <div class="wrap">
     <h1 class="header-logo">

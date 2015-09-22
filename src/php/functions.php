@@ -9,3 +9,14 @@ require_once(__DIR__ . '/dlib/wp_util/setup_thumbnails.php');
 
 require_once(__DIR__ . '/dlib/wp_admin/settings.php');
 require_once(__DIR__ . '/dlib/wp_admin/users.php');
+
+function dolores_get_version() {
+  $v2_filter = array("madeira");
+  if (is_user_logged_in()) {
+    $user = wp_get_current_user()->user_login;
+    if (in_array($user, $v2_filter)) {
+      return 2;
+    }
+  }
+  return 1;
+}
