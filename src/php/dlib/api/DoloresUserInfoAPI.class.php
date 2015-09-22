@@ -101,7 +101,7 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(__DIR__ . '/../mailchimp.php');
+      require_once(__DIR__ . '/../external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
       $MailChimp->fireAndForget('lists/update-member', array(
         'id' => MAILCHIMP_LIST_ID,
