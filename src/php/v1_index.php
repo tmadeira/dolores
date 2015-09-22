@@ -5,7 +5,7 @@ require_once(__DIR__ . '/dlib/wp_admin/settings/streaming.php');
 
 get_header();
 
-$hero_src = DoloresAssets::get_image_uri('hero-image.jpg');
+$hero_src = DoloresAssets::get_image_uri('v1-hero-image.jpg');
 
 if (!$paged || $paged == 1) {
   ?>
