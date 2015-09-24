@@ -164,12 +164,25 @@ body.paged, body:not(.home) {
           background: #fff;
         }
 
-        .v1 &, body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+        .v1 & {
           border: solid 2px #fff;
           background: none;
           color: #fff;
 
           &:hover {
+            background: $orange;
+            border-color: $orange;
+            color: $white;
+          }
+        }
+
+        body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+          border: solid 2px #fff;
+          background: none;
+          color: #fff;
+
+          &:hover {
+            background: none;
             border-color: $orange;
             color: $orange;
           }
