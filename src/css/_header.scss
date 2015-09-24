@@ -100,7 +100,7 @@ body.paged, body:not(.home) {
   }
 }
 
-.header-menu {
+.header-nav {
   @include box-shadow(0 0 15px $black);
   @include transition(right 150ms ease-in-out);
 
@@ -118,56 +118,76 @@ body.paged, body:not(.home) {
     right: 0;
   }
 
-  & > ul {
-    & > li {
-      & > a {
-        border-bottom: solid 1px white;
-        display: block;
-        font-weight: 700;
-        padding: 15px;
-        text-transform: uppercase;
-      }
-    }
-  }
-
   @include breakpoint($break-desktop) {
     @include box-shadow(none);
 
     background: none;
     display: table-cell;
+    font-size: 0;
     position: static;
     width: 100%;
+  }
+}
 
-    & > ul {
-      font-size: 0;
+.header-menu, .header-search-signin {
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+  }
+}
 
-      & > li {
-        display: inline-block;
-        padding: 0 2px;
+.header-menu > ul, .header-search-signin {
+  & > li {
+    & > a {
+      border-bottom: solid 1px white;
+      display: block;
+      font-weight: 700;
+      padding: 15px;
+      text-transform: uppercase;
+    }
+  }
 
-        &:first-child {
-          display: none;
+  @include breakpoint($break-desktop) {
+    & > li {
+      display: inline-block;
+      padding: 0 2px;
+
+      & > a {
+        @include transition(all 150ms ease);
+
+        background: rgba(255, 255, 255, 0.8);
+        border: 0;
+        color: $orange;
+        font-size: 12px;
+        padding: 5px 12px;
+
+        &:hover {
+          background: #fff;
         }
 
-        & > a {
-          @include transition(all 150ms ease);
-
-          background: rgba(255, 255, 255, 0.6);
-          border: 0;
-          color: $orange;
-          font-size: 12px;
-          padding: 5px 12px;
+        .v1 &, body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+          border: solid 2px #fff;
+          background: none;
+          color: #fff;
 
           &:hover {
-            background: #fff;
-          }
-
-          body.paged &, body:not(.home) &, body.home.show-opaque-header & {
-            /* Specific for opaque header */
+            border-color: $orange;
+            color: $orange;
           }
         }
       }
+
+      &.signin > a {
+        background: $orange;
+        color: $white;
+      }
     }
+  }
+}
+
+/* Do not show first menu item (Home) in desktop */
+.header-menu > ul > li:first-child {
+  @include breakpoint($break-desktop) {
+    display: none;
   }
 }
 

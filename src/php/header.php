@@ -33,13 +33,33 @@
       </a>
     </h1>
 
-    <?php
-    wp_nav_menu(Array(
-      'theme_location' => 'header-menu',
-      'container' => 'nav',
-      'container_class' => 'header-menu'
-    ));
-    ?>
+    <nav class="header-nav">
+      <?php
+      wp_nav_menu(Array(
+        'theme_location' => 'header-menu',
+        'container' => 'div',
+        'container_class' => 'header-menu'
+      ));
+      ?>
+
+      <?php if (dolores_get_version() > 1) { ?>
+      <ul class="header-search-signin">
+        <!--
+        <li class="search">
+          <form method="get" action="/">
+            <input
+              class="search-input"
+              type="text"
+              name="s"
+              placeholder="Buscar (em construção)"
+              />
+          </form>
+        </li>
+        -->
+        <li class="signin" id="signin"><a href="#">Entrar</a></li>
+      </ul>
+      <?php } ?>
+    </nav>
 
     <div class="header-toggle-menu"></div>
   </div>
