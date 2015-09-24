@@ -5,6 +5,7 @@ var React = require("react");
 
 var analytics = require("./analytics");
 var facebook = require("./facebook");
+var google = require("./google");
 var header = require("./header");
 var menu = require("./menu");
 var twitter = require("./twitter");
@@ -25,5 +26,6 @@ $(function() {
 
   analytics.setup();
   facebook.setup();
+  google.setup();
   twitter.setup();
 });

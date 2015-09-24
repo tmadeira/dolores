@@ -9,5 +9,5 @@ module.exports = {
   apiBaseURL: "/api/",
 
   ganalyticsUA: "UA-65584348-1",
-  facebookAppID: "1143712942309791"
+  facebookAppID: "1053667657991384"
 };

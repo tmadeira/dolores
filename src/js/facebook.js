@@ -5,12 +5,26 @@ var $ = require("jquery");
 var async = require("./async");
 var facebookAppID = require("./config").facebookAppID;
 
+var onFacebookStatusChange = function(response) {
+  /* TODO */
+  console.log(response);
+};
+
+window.fbCheckLoginState = function() {
+  window.FB.getLoginStatus(function(response) {
+    onFacebookStatusChange(response);
+  });
+};
+
 window.fbAsyncInit = function() {
   window.FB.init({
     appId: facebookAppID,
+    cookies: true,
     xfbml: true,
     version: "v2.4"
   });
+
+  window.fbCheckLoginState();
 };
 
 var setup = function() {
