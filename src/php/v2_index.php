@@ -21,7 +21,9 @@ if (!$paged || $paged == 1) {
       <source src="<?php echo $video_webm; ?>" type="video/webm" />
     </video>
     <div class="hero-logo-container">
-      <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
+      <a href="<?php echo site_url(); ?>" title="Página inicial">
+        <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
+      </a>
     </div>
   </section>
 
