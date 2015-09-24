@@ -123,7 +123,7 @@ body.paged, body:not(.home) {
       & > a {
         border-bottom: solid 1px white;
         display: block;
-        font-weight: bold;
+        font-weight: 700;
         padding: 15px;
         text-transform: uppercase;
       }
@@ -152,13 +152,14 @@ body.paged, body:not(.home) {
         & > a {
           @include transition(all 150ms ease);
 
-          border: solid 2px #fff;
+          background: rgba(255, 255, 255, 0.6);
+          border: 0;
+          color: $orange;
           font-size: 12px;
-          padding: 5px 10px;
+          padding: 5px 12px;
 
           &:hover {
-            border-color: $orange;
-            color: $orange;
+            background: #fff;
           }
 
           body.paged &, body:not(.home) &, body.home.show-opaque-header & {
@@ -168,4 +169,8 @@ body.paged, body:not(.home) {
       }
     }
   }
+}
+
+.sub-menu {
+  display: none;
 }
