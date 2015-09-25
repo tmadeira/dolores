@@ -6,8 +6,19 @@ var async = require("./async");
 var facebookAppID = require("./config").facebookAppID;
 
 var onFacebookStatusChange = function(response) {
-  /* TODO */
-  console.log(response);
+  if (typeof window.DoloresAuthenticator === "undefined") {
+    console.log("Error: window.DoloresAuthenticator is not set");
+    return;
+  }
+
+  if (response.status === "connected") {
+    window.DoloresAuthenticator.setToken({
+      type: "facebook",
+      authResponse: response.authResponse
+    });
+  } else if (window.DoloresAuthenticator.hasToken("facebook")) {
+    window.DoloresAuthenticator.setToken({});
+  }
 };
 
 window.fbCheckLoginState = function() {

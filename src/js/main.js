@@ -10,12 +10,25 @@ var header = require("./header");
 var menu = require("./menu");
 var twitter = require("./twitter");
 
+var Authenticator = require("./components/Authenticator.react");
 var HeroSignup = require("./components/HeroSignup.react");
 
 $(function() {
-  var signup = $("#react-hero-signup");
-  if (signup.length === 1) {
-    React.render(<HeroSignup />, signup[0]);
+  var v = $("body").hasClass("v2") ? 2 : 1;
+
+  switch (v) {
+    case 1:
+      var signup = $("#react-hero-signup");
+      if (signup.length === 1) {
+        React.render(<HeroSignup />, signup[0]);
+      }
+      break;
+    case 2:
+      var authenticator = $("#authenticator");
+      if (authenticator.length === 1) {
+        React.render(<Authenticator />, authenticator[0]);
+      }
+      break;
   }
 
   $(window).resize(menu.onResize);

@@ -56,7 +56,7 @@
           </form>
         </li>
         -->
-        <li class="signin" id="signin"><a href="#">Entrar</a></li>
+        <li class="signin"><a href="#">Entrar</a></li>
       </ul>
       <?php } ?>
     </nav>
