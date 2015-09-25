@@ -55,7 +55,6 @@
         border: 0;
         bottom: 5px;
         color: $white;
-        cursor: pointer;
         font-size: 20px;
         font-weight: bold;
         padding: 0 4px;
@@ -222,7 +221,6 @@
       background: $orange;
       border: 0;
       color: $white;
-      cursor: pointer;
       font-weight: bold;
       padding: 5px 10px;
       text-transform: uppercase;
@@ -314,9 +312,38 @@
 
   .hero-logo-image {
     height: 320px;
+    width: 266px;
 
     @include breakpoint($break-tablet) {
       height: 420px;
+      width: 349px;
+    }
+  }
+
+  .hero-button {
+    background: none;
+    border: solid 2px #fff;
+    bottom: 35px;
+    color: #fff;
+    font-weight: 700;
+    left: 50%;
+    margin-left: -133px;
+    padding: 10px 55px 10px 15px;
+    position: absolute;
+    text-transform: uppercase;
+
+    &::after {
+      border-left: solid 2px #fff;
+      bottom: 0;
+      content: "▶";
+      padding: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    @include breakpoint($break-tablet) {
+      margin-left: -175px;
     }
   }
 }

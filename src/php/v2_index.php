@@ -25,6 +25,9 @@ if (!$paged || $paged == 1) {
         <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
       </a>
     </div>
+    <button class="hero-button">
+      Entenda
+    </button>
   </section>
 
   <section class="site-presentation">

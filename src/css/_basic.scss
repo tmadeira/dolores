@@ -76,6 +76,10 @@ button, input {
   @extend %text-font;
 }
 
+button {
+  cursor: pointer;
+}
+
 .social-media {
   & > * {
     display: inline-block;
