@@ -12,9 +12,16 @@ var onFacebookStatusChange = function(response) {
   }
 
   if (response.status === "connected") {
-    window.DoloresAuthenticator.setToken({
-      type: "facebook",
-      authResponse: response.authResponse
+    window.FB.api("/me?fields=name,email,picture.type(large)", function(me) {
+      window.DoloresAuthenticator.setToken({
+        type: "facebook",
+        authResponse: response.authResponse,
+        info: {
+          name: me.name,
+          email: me.email,
+          picture: me.picture.data.url
+        }
+      });
     });
   } else if (window.DoloresAuthenticator.hasToken("facebook")) {
     window.DoloresAuthenticator.setToken({});

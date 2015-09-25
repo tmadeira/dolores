@@ -14,6 +14,7 @@ var Authenticator = React.createClass({
   componentWillMount: function() {
     window.DoloresAuthenticator = {
       setToken: function(token) {
+        console.log("setToken", token);
         this.setState({
           token: token
         });
