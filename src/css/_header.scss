@@ -129,13 +129,13 @@ body.paged, body:not(.home) {
   }
 }
 
-.header-menu, .header-search-signin {
+.header-menu, .header-search-user {
   @include breakpoint($break-tablet) {
     display: inline-block;
   }
 }
 
-.header-menu > ul, .header-search-signin {
+.header-menu > ul, .header-search-user {
   & > li {
     & > a {
       border-bottom: solid 1px white;
@@ -189,7 +189,7 @@ body.paged, body:not(.home) {
         }
       }
 
-      &.signin > a {
+      &.user > a {
         background: $orange;
         color: $white;
       }

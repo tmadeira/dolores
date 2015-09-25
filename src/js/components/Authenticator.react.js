@@ -7,17 +7,32 @@ var Authenticator = React.createClass({
     return {
       token: {},
       clientInfo: {},
-      serverInfo: {}
+      serverInfo: {},
+      show: false,
+      waiting: false
     };
   },
 
   componentWillMount: function() {
     window.DoloresAuthenticator = {
-      setToken: function(token) {
-        console.log("setToken", token);
+      signIn: function() {
         this.setState({
-          token: token
+          show: true
         });
+      }.bind(this),
+
+      setToken: function(token) {
+        this.setState({
+          token: token,
+          waiting: true
+        });
+
+        // TODO: request server info
+        window.setTimeout(function() {
+          this.setState({
+            waiting: false
+          });
+        }.bind(this), 1000);
       }.bind(this),
 
       hasToken: function(type) {
@@ -35,6 +50,25 @@ var Authenticator = React.createClass({
       "location" in this.state.serverInfo;
   },
 
+  signinWithFacebook: function() {
+    window.fbLogin();
+  },
+
+  signinWithGoogle: function() {
+  },
+
+  hide: function() {
+    this.setState({
+      show: false
+    });
+  },
+
+  overlayClick: function(e) {
+    if (e.target.className === "lightbox-overlay") {
+      this.hide();
+    }
+  },
+
   render: function() {
     if (this.hasToken()) {
       if (this.hasServerInfo()) {
@@ -45,11 +79,47 @@ var Authenticator = React.createClass({
         /* We have a token from Google or Facebook.
          * TODO: request user information (email and location) */
       }
-    } else {
-      /* We don't have anything. */
     }
 
-    return <div></div>;
+    var lightboxContent = null;
+
+    if (this.state.waiting) {
+      lightboxContent = (
+        <div className="lightbox-wrap">
+          <p style={{textAlign: "center"}}>Carregando...</p>
+        </div>
+      );
+    } else {
+      lightboxContent = (
+        <div className="lightbox-wrap">
+          <button
+              className="signin-button signin-facebook"
+              onClick={this.signinWithFacebook}
+              >
+            Entrar com Facebook
+          </button>
+          <button
+              className="signin-button signin-google"
+              onClick={this.signinWithGoogle}
+              >
+            Entrar com Google
+          </button>
+        </div>
+      );
+    }
+
+    if (!this.state.show) {
+      return null;
+    }
+
+    return (
+      <div className="lightbox-overlay" onClick={this.overlayClick}>
+        <div className="lightbox">
+          <button className="lightbox-close" onClick={this.hide}>X</button>
+          {lightboxContent}
+        </div>
+      </div>
+    );
   }
 });
 

@@ -1,0 +1,21 @@
+.signin-button {
+  @extend %title-font;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+  letter-spacing: 0;
+  margin-bottom: 15px;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.signin-facebook {
+  background: #3b5998;
+}
+
+.signin-google {
+  background: #d34836;
+}

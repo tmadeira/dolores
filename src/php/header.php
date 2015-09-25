@@ -43,7 +43,7 @@
       ?>
 
       <?php if (dolores_get_version() > 1) { ?>
-      <ul class="header-search-signin">
+      <ul class="header-search-user">
         <!--
         <li class="search">
           <form method="get" action="/">
@@ -56,7 +56,18 @@
           </form>
         </li>
         -->
-        <li class="signin"><a href="#">Entrar</a></li>
+        <li class="user">
+        <?php
+        if (is_user_logged_in()) {
+          ?>
+          <a href="#">Logado</a>
+          <?php
+        } else {
+          ?>
+          <a href="#" onclick="DoloresAuthenticator.signIn()">Entrar</a>
+          <?php
+          }
+        ?>
       </ul>
       <?php } ?>
     </nav>

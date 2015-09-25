@@ -28,6 +28,10 @@ var onFacebookStatusChange = function(response) {
   }
 };
 
+window.fbLogin = function() {
+  window.FB.login(onFacebookStatusChange, {scope: "public_profile,email"});
+};
+
 window.fbCheckLoginState = function() {
   window.FB.getLoginStatus(function(response) {
     onFacebookStatusChange(response);
