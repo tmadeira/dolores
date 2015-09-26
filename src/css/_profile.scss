@@ -1,0 +1,83 @@
+$profile_bg: #258A8B;
+$profile_fg: #fff;
+
+main.profile {
+  background: $profile_bg;
+  color: $profile_fg;
+  padding: 20px 0;
+  text-align: center;
+
+  @include breakpoint($break-tablet) {
+    padding: 40px 0;
+    text-align: inherit;
+  }
+
+  & > .wrap {
+    display: table;
+    width: 100%;
+  }
+}
+
+.profile-picture {
+  $sz: 200px;
+  background-position: center center;
+  background-size: cover;
+  border-radius: $sz/2;
+  height: $sz;
+  margin: 0 auto;
+  width: $sz;
+
+  @include breakpoint($break-tablet) {
+    $sz: 300px;
+    border-radius: $sz/2;
+    display: table-cell;
+    height: $sz;
+    vertical-align: middle;
+    width: $sz;
+  }
+}
+
+.profile-info {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding-left: 40px;
+    vertical-align: middle;
+  }
+}
+
+.profile-name {
+  @extend %title-font;
+  background: $profile_fg;
+  color: $profile_bg;
+  display: inline-block;
+  font-size: 20px;
+  letter-spacing: 0;
+  margin-top: -15px;
+  padding: 6px 16px;
+
+  @include breakpoint($break-tablet) {
+    font-size: 26px;
+    padding: 8px 20px;
+  }
+}
+
+.profile-stats {
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+.profile-data-title {
+  @extend %title-font;
+  font-size: 16px;
+  letter-spacing: 0;
+  margin: 20px 0;
+  text-decoration: underline;
+}
+
+.profile-data {
+  strong {
+    font-weight: bold;
+    margin-right: 15px;
+    text-transform: uppercase;
+  }
+}
