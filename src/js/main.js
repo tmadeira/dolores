@@ -4,9 +4,10 @@ var $ = window.jQuery = require("jquery");
 var React = require("react");
 
 var analytics = require("./analytics");
+var explanation = require("./explanation");
 var facebook = require("./facebook");
 var google = require("./google");
-var header = require("./header");
+var hero = require("./hero");
 var menu = require("./menu");
 var twitter = require("./twitter");
 
@@ -34,11 +35,10 @@ $(function() {
   $(window).resize(menu.onResize);
   $(window).trigger("resize");
 
-  $(window).scroll(header.onScroll);
-  $(window).trigger("scroll");
-
   analytics.setup();
+  explanation.setup();
   facebook.setup();
+  hero.setup();
   google.setup();
   twitter.setup();
 });
