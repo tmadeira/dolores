@@ -1,0 +1,62 @@
+main.tema {
+  @include breakpoint($break-tablet) {
+    padding: 40px 0;
+  }
+
+  & > .wrap {
+    display: table;
+    width: 100%;
+  }
+}
+
+.tema-video {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    vertical-align: middle;
+    width: 560px;
+  }
+
+  iframe {
+    max-height: 360px;
+    max-width: 100%;
+  }
+}
+
+.tema-info {
+  padding: 10px;
+
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding: 0 0 0 40px;
+    vertical-align: middle;
+  }
+}
+
+.tema-name {
+  @extend %title-font;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  font-size: 20px;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+
+  @include breakpoint($break-tablet) {
+    font-size: 26px;
+    padding: 8px 20px;
+  }
+}
+
+.tema-button-more {
+  border: solid 2px #000;
+  background: none;
+  color: #000;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 0;
+  margin-top: 20px;
+  padding: 6px 16px;
+  text-transform: uppercase;
+}
