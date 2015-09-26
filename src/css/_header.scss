@@ -130,7 +130,7 @@ body.paged, body:not(.home) {
 }
 
 .header-menu, .header-search-user {
-  @include breakpoint($break-tablet) {
+  @include breakpoint($break-desktop) {
     display: inline-block;
   }
 }
