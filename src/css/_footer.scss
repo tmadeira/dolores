@@ -1,45 +1,113 @@
-.site-footer {
-  background: $black;
-  color: $white;
-  font-size: 0;
-  line-height: 0;
-  padding: 15px 0;
-  text-align: center;
-}
-
-.footer-list {
-  display: inline-block;
-  padding: 0 8px;
-  vertical-align: middle;
-
-  & > li {
-    display: inline-block;
-    padding: 5px 2px;
+.v2 {
+  .site-footer {
+    background: $black;
+    color: $white;
+    font-size: 0;
+    line-height: 0;
+    padding: 50px 0;
   }
 
-  @include breakpoint($break-tablet) {
-    padding: 0 20px;
+  .footer-logo {
+    @include breakpoint($break-tablet) {
+      display: inline-block;
+      padding: 0 80px 0 40px;
+      vertical-align: top;
+      width: 25%;
+    }
+  }
 
-    & > li {
-      padding: 8px 5px;
+  .footer-menu {
+    @include breakpoint($break-tablet) {
+      display: inline-block;
+      vertical-align: top;
+      width: 40%;
+    }
+
+    .menu > .menu-item {
+      font-size: 16px;
+      line-height: 2em;
+
+      @include breakpoint($break-tablet) {
+        display: inline-block;
+        padding: 0 20px;
+        vertical-align: top;
+        width: 50%;
+      }
+    }
+
+    .menu-item-has-children {
+      & > a {
+        color: $orange;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+
+    .sub-menu {
+      font-size: 15px;
+    }
+  }
+
+  .footer-note {
+    font-size: 13px;
+    line-height: 1.4em;
+    @include breakpoint($break-tablet) {
+      display: inline-block;
+      padding: 0 40px 0 20px;
+      vertical-align: top;
+      width: 35%;
+    }
+
+    p {
+      margin-bottom: 20px;
     }
   }
 }
 
-.footer-supporters {
-  border-left: solid 1px $white;
-}
-
-.footer-social-icon {
-  height: 24px;
-  @include breakpoint($break-tablet) {
-    height: 36px;
+.v1 {
+  .site-footer {
+    background: $black;
+    color: $white;
+    font-size: 0;
+    line-height: 0;
+    padding: 15px 0;
+    text-align: center;
   }
-}
 
-.footer-supporter-banner {
-  height: 30px;
-  @include breakpoint($break-tablet) {
-    height: auto;
+  .footer-list {
+    display: inline-block;
+    padding: 0 8px;
+    vertical-align: middle;
+
+    & > li {
+      display: inline-block;
+      padding: 5px 2px;
+    }
+
+    @include breakpoint($break-tablet) {
+      padding: 0 20px;
+
+      & > li {
+        padding: 8px 5px;
+      }
+    }
+  }
+
+  .footer-supporters {
+    border-left: solid 1px $white;
+  }
+
+  .footer-social-icon {
+    height: 24px;
+    @include breakpoint($break-tablet) {
+      height: 36px;
+    }
+  }
+
+  .footer-supporter-banner {
+    height: 30px;
+    @include breakpoint($break-tablet) {
+      height: auto;
+    }
   }
 }
