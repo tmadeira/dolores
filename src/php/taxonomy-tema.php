@@ -17,7 +17,7 @@ get_header();
 </main>
 
 <?php
-include(__DIR__ . '/grid.php');
+include(__DIR__ . '/grid-ideias.php');
 ?>
 
 <?php

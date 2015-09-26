@@ -1,0 +1,97 @@
+.grid-ideias-list {
+  @include breakpoint($break-tablet) {
+    font-size: 0;
+    padding-top: 30px;
+  }
+}
+
+.grid-ideia {
+  @include border-radius(10px);
+  @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fff;
+  font-size: 14px;
+  height: 290px;
+  margin: 10px;
+  padding: 15px 15px 0 15px;
+  position: relative;
+  vertical-align: middle;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin: 0 0 30px 2%;
+    width: 32%;
+
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+.grid-ideia-title {
+  @extend %title-font;
+  font-size: 16px;
+  letter-spacing: 0;
+
+  @include breakpoint($break-tablet) {
+    font-size: 20px;
+  }
+}
+
+.grid-ideia-tags {
+  margin: 10px 0;
+}
+
+.grid-ideia-tag {
+  &::before {
+    content: "#";
+    color: $orange;
+    font-weight: bold;
+  }
+}
+
+.grid-ideia-author {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.grid-ideia-author-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.grid-ideia-interact {
+  margin: 10px 0;
+}
+
+.grid-ideia-action {
+  margin-right: 5px;
+  // TODO: icons
+}
+
+.grid-ideia-button {
+  @include border-corner-radius(bottom, left, 10px);
+  @include border-corner-radius(bottom, right, 10px);
+  background: $purple;
+  border: 0;
+  bottom: 0;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  left: 0;
+  padding: 8px 15px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 100%;
+  &::after {
+    content: " »";
+  }
+}

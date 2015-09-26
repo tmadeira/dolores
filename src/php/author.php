@@ -23,7 +23,7 @@ $info = get_userdata(intval($author));
 </main>
 
 <?php
-include(__DIR__ . '/grid.php');
+include(__DIR__ . '/grid-ideias.php');
 ?>
 
 <?php
