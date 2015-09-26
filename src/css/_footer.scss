@@ -4,10 +4,15 @@
     color: $white;
     font-size: 0;
     line-height: 0;
-    padding: 50px 0;
+    padding: 20px 0 0;
+    @include breakpoint($break-tablet) {
+      padding: 50px 0;
+    }
   }
 
   .footer-logo {
+    display: none;
+
     @include breakpoint($break-tablet) {
       display: inline-block;
       padding: 0 80px 0 40px;
@@ -24,14 +29,16 @@
     }
 
     .menu > .menu-item {
-      font-size: 16px;
+      display: inline-block;
+      font-size: 13px;
       line-height: 2em;
+      padding: 0 10px 20px 10px;
+      vertical-align: top;
+      width: 50%;
 
       @include breakpoint($break-tablet) {
-        display: inline-block;
+        font-size: 16px;
         padding: 0 20px;
-        vertical-align: top;
-        width: 50%;
       }
     }
 
@@ -51,6 +58,8 @@
   .footer-note {
     font-size: 13px;
     line-height: 1.4em;
+    padding: 10px;
+
     @include breakpoint($break-tablet) {
       display: inline-block;
       padding: 0 40px 0 20px;
