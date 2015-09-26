@@ -64,7 +64,7 @@
           <?php
         } else {
           ?>
-          <a href="#" onclick="DoloresAuthenticator.signIn()">Entrar</a>
+          <a href="javascript:DoloresAuthenticator.signIn();void(0)">Entrar</a>
           <?php
           }
         ?>
