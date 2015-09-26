@@ -10,8 +10,8 @@
   }
 
   .lightbox {
+    @extend %align-middle-container;
     @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-    @include transform-style(preserve-3d);
     background: #fff;
     bottom: 10px;
     height: 95%;
@@ -47,9 +47,7 @@
   }
 
   .lightbox-wrap {
-    @include transform(translateY(-50%));
-    position: relative;
-    top: 50%;
+    @extend %align-middle-element;
 
     p {
       margin-bottom: 15px;

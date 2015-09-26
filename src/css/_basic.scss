@@ -40,6 +40,16 @@ $white: #fff;
   text-transform: uppercase;
 }
 
+%align-middle-container {
+  @include transform-style(preserve-3d);
+}
+
+%align-middle-element {
+  @include transform(translateY(-50%));
+  position: relative;
+  top: 50%;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
