@@ -2,10 +2,12 @@
 
 var React = require("react");
 
+var API = require("../api");
+
 var Authenticator = React.createClass({
   getInitialState: function() {
     return {
-      token: {},
+      auth: {},
       clientInfo: {},
       serverInfo: {},
       show: false,
@@ -21,28 +23,28 @@ var Authenticator = React.createClass({
         });
       }.bind(this),
 
-      setToken: function(token) {
+      setAuth: function(auth) {
         this.setState({
-          token: token,
+          auth: auth,
           waiting: true
         });
 
-        // TODO: request server info
-        window.setTimeout(function() {
+        API.route("signin").post(auth).done(function(data) {
+          console.log("data", data);
           this.setState({
             waiting: false
           });
-        }.bind(this), 1000);
+        }.bind(this));
       }.bind(this),
 
-      hasToken: function(type) {
-        return "type" in this.state.token && this.state.token.type === type;
+      hasAuth: function(type) {
+        return this.hasAuth() && this.state.auth.type === type;
       }.bind(this)
     };
   },
 
-  hasToken: function() {
-    return "type" in this.state.token;
+  hasAuth: function() {
+    return "type" in this.state.auth;
   },
 
   hasServerInfo: function() {
@@ -70,7 +72,7 @@ var Authenticator = React.createClass({
   },
 
   render: function() {
-    if (this.hasToken()) {
+    if (this.hasAuth()) {
       if (this.hasServerInfo()) {
         /* User is logged in. */
         window.location.reload();

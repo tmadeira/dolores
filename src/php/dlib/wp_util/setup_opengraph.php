@@ -103,13 +103,16 @@ function dolores_add_opengraph() {
 
   $author_url = DoloresConfig::ogAuthorUrl;
   $author = DoloresConfig::ogAuthorName;
-  $fbAppID = DoloresConfig::facebookAppID;
   $fbAdmins = DoloresConfig::facebookAdmins;
 
   echo "<meta property='article:author' content='$author_url' />\n";
   echo "<meta name='author' content='$author' />\n";
-  echo "<meta property='fb:app_id' content='$fbAppID' />\n";
   echo "<meta property='fb:admins' content='$fbAdmins' />\n";
+
+  if (defined('FACEBOOK_APP_ID')) {
+    $fbAppID = FACEBOOK_APP_ID;
+    echo "<meta property='fb:app_id' content='$fbAppID' />\n";
+  }
 }
 
 add_action('wp_head', 'dolores_add_opengraph');

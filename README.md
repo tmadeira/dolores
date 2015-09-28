@@ -27,6 +27,7 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 ### Configuração ###
 
 - Para que os usuários cadastrados sejam sincronizados com uma lista do Mailchimp, as constantes `MAILCHIMP_API_KEY` e `MAILCHIMP_LIST_ID` devem estar definidas em `wp_config.php`.
+- Para habilitar login via Facebook, as constantes `FACEBOOK_APP_ID` e `FACEBOOK_APP_SECRET` devem estar definidas em `wp_config.php`.
 
 ### Produção ###
 
