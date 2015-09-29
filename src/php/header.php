@@ -9,10 +9,12 @@
 <meta name="theme-color" content="#000000" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="google-signin-client_id" content="<?php
-  require_once(__DIR__ . "/dlib/config.php");
-  echo DoloresConfig::googleAppId;
-?>" />
+<?php
+if (defined('GOOGLE_CLIENT_ID')) {
+  echo '<meta name="google-signin-client_id"' .
+       ' content="' . GOOGLE_CLIENT_ID . '" />';
+}
+?>
 <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php

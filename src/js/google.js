@@ -10,18 +10,25 @@ var setup = function() {
   );
 };
 
-window.onGoogleSignIn = function(googleUser) {
+var onGoogleSignIn = function(authResult) {
   window.DoloresAuthenticator.setAuth({
     type: "google",
-    token: googleUser.getAuthResponse().id_token
+    code: authResult.code
   });
+};
+
+window.googleLogin = function() {
+  window.googleAuth2.grantOfflineAccess({
+    redirect_uri: "postmessage" //eslint-disable-line
+  }).then(onGoogleSignIn);
 };
 
 window.googleAsyncInit = function() {
   window.gapi.load("auth2", function() {
     window.googleAuth2 = window.gapi.auth2.init({
       client_id: googleAppId, //eslint-disable-line
-      cookiepolicy: "single_host_origin"
+      cookiepolicy: "single_host_origin",
+      scope: "https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
     });
   });
 };

@@ -59,7 +59,33 @@ class DoloresSigninAPI extends DoloresBaseAPI {
   }
 
   function signinViaGoogle($request) {
-    // TODO
-    $this->_error('A autenticação via Google ainda não está implementada.');
+    $client = new Google_Client();
+    $client->setClientId(GOOGLE_CLIENT_ID);
+    $client->setClientSecret(GOOGLE_CLIENT_SECRET);
+    $client->setRedirectUri('http://dev.seacidadefossenossa.com.br');
+
+    $client->authenticate($request['code']);
+
+    $ticket = $client->verifyIdToken();
+    if (!$ticket) {
+      $this->_error('Erro na autenticação com Google.');
+    }
+
+    $data = $ticket->getAttributes();
+    $googleId = $data['payload']['sub'];
+
+    $plus = new Google_Service_Plus($client);
+    $me = $plus->people->get(
+      'me',
+      array('fields' => 'displayName,emails/value,image/url')
+    );
+
+    $this->signupData = array(
+      'name' => $me['displayName'],
+      'email' => $me['emails'][0]['value'],
+      'picture' => str_replace('sz=50', 'sz=300', $me['image']['url']),
+    );
+
+    return DoloresUsers::getUserByGoogleID($googleId);
   }
 };

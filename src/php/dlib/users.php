@@ -1,9 +1,9 @@
 <?php
 class DoloresUsers {
-  public static function getUserByFacebookID($fbId) {
+  public static function getUserByUniqueField($field, $value) {
     $users = get_users(array(
-      'meta_key' => 'facebook_id',
-      'meta_value' => $fbId,
+      'meta_key' => $field,
+      'meta_value' => $value,
       'fields' => array('ID', 'user_login')
     ));
 
@@ -12,5 +12,13 @@ class DoloresUsers {
     }
 
     return null;
+  }
+
+  public static function getUserByFacebookID($fbId) {
+    return DoloresUsers::getUserByUniqueField('facebook_id', $fbId);
+  }
+
+  public static function getUserByGoogleID($googleId) {
+    return DoloresUsers::getUserByUniqueField('google_id', $fbId);
   }
 };
