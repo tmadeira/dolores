@@ -43,6 +43,18 @@ var Authenticator = React.createClass({
     };
   },
 
+  componentDidUpdate: function(prevProps, prevState) {
+    if (this.state.show && !this.state.waiting &&
+        !(prevState.show && !prevState.waiting)) {
+      if (typeof window.googleAuth2 === "undefined") {
+        console.log("Error: window.googleAuth2 is not set");
+        return;
+      }
+      var el = React.findDOMNode(this.refs.signinGoogle);
+      window.googleAuth2.attachClickHandler(el, {}, window.onGoogleSignIn);
+    }
+  },
+
   hasAuth: function() {
     return "type" in this.state.auth;
   },
@@ -54,9 +66,6 @@ var Authenticator = React.createClass({
 
   signinWithFacebook: function() {
     window.fbLogin();
-  },
-
-  signinWithGoogle: function() {
   },
 
   hide: function() {
@@ -105,7 +114,7 @@ var Authenticator = React.createClass({
           </button>
           <button
               className="signin-button signin-google"
-              onClick={this.signinWithGoogle}
+              ref="signinGoogle"
               >
             Entrar com Google
           </button>

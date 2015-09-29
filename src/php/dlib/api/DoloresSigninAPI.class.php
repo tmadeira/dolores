@@ -9,8 +9,10 @@ class DoloresSigninAPI extends DoloresBaseAPI {
   function post($request) {
     if ($request['type'] == 'facebook') {
       $user = $this->signinViaFacebook($request);
+    } else if ($request['type'] == 'google') {
+      $user = $this->signinViaGoogle($request);
     } else {
-      $this->_error('Só aceitamos autenticação via Facebook no momento.');
+      $this->_error('Tipo de autenticação não suportado.');
     }
 
     if ($user !== null) {
@@ -54,5 +56,10 @@ class DoloresSigninAPI extends DoloresBaseAPI {
     );
 
     return DoloresUsers::getUserByFacebookID($fbUser['id']);
+  }
+
+  function signinViaGoogle($request) {
+    // TODO
+    $this->_error('A autenticação via Google ainda não está implementada.');
   }
 };
