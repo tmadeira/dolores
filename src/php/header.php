@@ -57,18 +57,17 @@ if (defined('GOOGLE_CLIENT_ID')) {
 
       <?php if (dolores_get_version() > 1) { ?>
       <ul class="header-search-user">
-        <!--
-        <li class="search">
-          <form method="get" action="/">
+        <li class="header-search">
+          <form class="header-search-form" method="get" action="/">
+            <i class="fa fa-search"></i>
             <input
-              class="search-input"
+              class="header-search-input"
               type="text"
               name="s"
-              placeholder="Buscar (em construção)"
+              placeholder="Buscar"
               />
           </form>
         </li>
-        -->
         <li class="user">
         <?php
         if (is_user_logged_in()) {

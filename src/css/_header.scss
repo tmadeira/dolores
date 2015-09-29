@@ -9,6 +9,8 @@
  *
  * 3. not homepage
  *    Add padding, show opaque header
+ *
+ * TODO: refactor!
  */
 
 body.paged, body:not(.home) {
@@ -137,12 +139,20 @@ body.paged, body:not(.home) {
 
 .header-menu > ul, .header-search-user {
   & > li {
-    & > a {
+    & > a, & > form {
       border-bottom: solid 1px white;
       display: block;
       font-weight: 700;
       padding: 15px;
       text-transform: uppercase;
+
+      &.header-search-form {
+        position: relative;
+
+        .fa {
+          font-size: 14px;
+        }
+      }
     }
   }
 
@@ -150,8 +160,9 @@ body.paged, body:not(.home) {
     & > li {
       display: inline-block;
       padding: 0 2px;
+      vertical-align: middle;
 
-      & > a {
+      & > a, & > form {
         @include transition(all 150ms ease);
 
         background: rgba(255, 255, 255, 0.8);
@@ -160,7 +171,13 @@ body.paged, body:not(.home) {
         font-size: 12px;
         padding: 5px 12px;
 
-        &:hover {
+        &.header-search-form {
+          padding: 5px 10px;
+          text-align: left;
+          width: 180px;
+        }
+
+        &:link:hover {
           background: #fff;
         }
 
@@ -181,7 +198,7 @@ body.paged, body:not(.home) {
           background: none;
           color: #fff;
 
-          &:hover {
+          &:link:hover {
             background: none;
             border-color: $orange;
             color: $orange;
@@ -192,6 +209,9 @@ body.paged, body:not(.home) {
       &.user > a {
         background: $orange;
         color: $white;
+        &:hover {
+          background: $orange;
+        }
       }
     }
   }
@@ -206,4 +226,32 @@ body.paged, body:not(.home) {
 
 .header-menu .sub-menu {
   display: none;
+}
+
+.header-search-input {
+  background: transparent;
+  border: 0;
+  bottom: 0;
+  color: inherit;
+  height: 100%;
+  left: 0;
+  padding-left: 10px;
+  padding-right: 40px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  width: 100%;
+
+  @include input-placeholder {
+    @include opacity(0.7);
+    color: inherit;
+  }
+
+  @include breakpoint($break-desktop) {
+    font-size: 13px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 5px;
+  }
 }
