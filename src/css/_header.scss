@@ -10,7 +10,9 @@
  * 3. not homepage
  *    Add padding, show opaque header
  *
- * TODO: refactor!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * !!! TODO: REFACTOR, PLEASE !!!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
 body.paged, body:not(.home) {
@@ -211,6 +213,16 @@ body.paged, body:not(.home) {
         color: $white;
         &:hover {
           background: $orange;
+        }
+
+        body.paged &, body:not(.home) &, body.home.show-opaque-header & {
+          background: $white;
+          color: $purple;
+          &:hover {
+            background: $white;
+            border-color: $white;
+            color: $purple;
+          }
         }
       }
 
