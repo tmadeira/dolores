@@ -1,43 +1,58 @@
 <?php
+require_once(__DIR__ . '/../../vendor/autoload.php');
+
+require_once(__DIR__ . '/../users.php');
+
 require_once(__DIR__ . '/DoloresBaseAPI.class.php');
 
 class DoloresSigninAPI extends DoloresBaseAPI {
   function post($request) {
     if ($request['type'] == 'facebook') {
-      return $this->signinViaFacebook($request);
+      $user = $this->signinViaFacebook($request);
+    } else {
+      $this->_error('Só aceitamos autenticação via Facebook no momento.');
     }
-    return array('request' => $request);
+
+    if ($user !== null) {
+      wp_set_current_user($user->ID, $user->user_login);
+      wp_set_auth_cookie($user->ID);
+      do_action('wp_login', $user->user_login);
+      return array('action' => 'refresh');
+    }
+
+    return array('action' => 'signup', 'data' => $this->signupData);
   }
 
   function signinViaFacebook($request) {
-    $accessToken = $request['token'];
+    $fb = new Facebook\Facebook(array(
+      'app_id' => FACEBOOK_APP_ID,
+      'app_secret' => FACEBOOK_APP_SECRET,
+      'default_graph_version' => 'v2.4'
+    ));
 
-    $url = 'https://graph.facebook.com/oauth/access_token?client_id=<app_id>' .
-        '&client_secret=<app_secret>&fb_exchange_token=<token>' .
-        '&grant_type=fb_exchange_token';
+    $oAuth2Client = $fb->getOAuth2Client();
+    $accessToken = new Facebook\Authentication\AccessToken($request['token']);
 
-    $url = str_replace('<app_id>', FACEBOOK_APP_ID, $url);
-    $url = str_replace('<app_secret>', FACEBOOK_APP_SECRET, $url);
-    $url = str_replace('<token>', $accessToken, $url);
-
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($curl);
-    curl_close($curl);
-
-    if (strpos($result, 'error') !== false ||
-        strpos($result, 'access_token') !== 0) {
+    try {
+      $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+    } catch (Facebook\Exceptions\Exception $e) {
       $this->_error('Erro na autenticação com Facebook.');
     }
 
-    // TODO: Get/store token
-    // https://developers.facebook.com/docs/php/howto/example_facebook_login/4.0.0
-    // TODO: Get ID and basic user info
-    // "/me?fields=id,name,email,picture.type(large)"
-    // TODO: If ID in DB, sign in user and tell client to "refresh"
-    // TODO: Else, send info to client
+    $fields = 'id,name,email,picture.type(large)';
+    try {
+      $response = $fb->get('/me?fields=' . $fields, $accessToken);
+      $fbUser = $response->getGraphUser();
+    } catch (Facebook\Exceptions\Exception $e) {
+      $this->_error('Erro ao solicitar informações para o Facebook.');
+    }
 
-    return array('curl_response' => $result);
+    $this->signupData = array(
+      'name' => $fbUser['name'],
+      'email' => $fbUser['email'],
+      'picture' => $fbUser['picture']['url']
+    );
+
+    return DoloresUsers::getUserByFacebookID($fbUser['id']);
   }
 };
