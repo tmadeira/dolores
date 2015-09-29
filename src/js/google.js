@@ -7,9 +7,10 @@ var setup = function() {
 };
 
 window.onGoogleSignIn = function(googleUser) {
-  console.log("signed in");
-  var profile = googleUser.getBasicProfile();
-  console.log(profile);
+  window.DoloresAuthenticator.setAuth({
+    type: "google",
+    token: googleUser.getAuthResponse().id_token
+  });
 };
 
 module.exports = {
