@@ -1,0 +1,61 @@
+.grid-temas {
+  @include breakpoint($break-tablet) {
+    padding: 20px 0;
+  }
+}
+
+.grid-temas-list {
+  font-size: 0;
+}
+
+.grid-tema {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 49%;
+    &:nth-child(2n) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.grid-tema-link {
+  @extend %align-middle-container;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: block;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+    .grid-tema-action {
+      background: #fff;
+      color: #000;
+    }
+  }
+}
+
+.grid-tema-wrap {
+  @extend %align-middle-element;
+}
+
+.grid-tema-name {
+  @extend %title-font;
+  font-size: 24px;
+  letter-spacing: 0;
+  margin-bottom: 15px;
+}
+
+.grid-tema-action {
+  background: none;
+  color: #fff;
+  border: solid 2px #fff;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
