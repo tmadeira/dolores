@@ -8,9 +8,9 @@ var Authenticator = React.createClass({
   getInitialState: function() {
     return {
       auth: {},
-      clientInfo: {},
-      serverInfo: {},
+      data: {},
       show: false,
+      signup: false,
       waiting: false
     };
   },
@@ -29,13 +29,18 @@ var Authenticator = React.createClass({
           waiting: true
         });
 
-        API.route("signin").post(auth).done(function(data) {
-          console.log("data", data);
-          this.setState({
-            waiting: false
-          });
-        }.bind(this)).fail(function(data) {
-          console.log(data);
+        API.route("signin").post(auth).done(function(response) {
+          if (response.action === "refresh") {
+            location.reload();
+          } else if (response.action === "signup") {
+            this.setState({
+              signup: true,
+              data: response.data,
+              waiting: false
+            });
+          }
+        }.bind(this)).fail(function(response) {
+          console.log(response);
         });
       }.bind(this),
 
@@ -47,11 +52,6 @@ var Authenticator = React.createClass({
 
   hasAuth: function() {
     return "type" in this.state.auth;
-  },
-
-  hasServerInfo: function() {
-    return "email" in this.state.serverInfo &&
-      "location" in this.state.serverInfo;
   },
 
   signinWithFacebook: function() {
@@ -75,15 +75,8 @@ var Authenticator = React.createClass({
   },
 
   render: function() {
-    if (this.hasAuth()) {
-      if (this.hasServerInfo()) {
-        /* User is logged in. */
-        window.location.reload();
-        return null;
-      } else {
-        /* We have a token from Google or Facebook.
-         * TODO: request user information (email and location) */
-      }
+    if (!this.state.show) {
+      return null;
     }
 
     var lightboxContent = null;
@@ -92,6 +85,14 @@ var Authenticator = React.createClass({
       lightboxContent = (
         <div className="lightbox-wrap">
           <p style={{textAlign: "center"}}>Carregando...</p>
+        </div>
+      );
+    } else if (this.state.signup) {
+      lightboxContent = (
+        <div className="lightbox-wrap">
+          <p>Nome: {this.state.data.name}</p>
+          <p>E-mail: {this.state.data.email}</p>
+          <p><img src={this.state.data.picture} /></p>
         </div>
       );
     } else {
@@ -114,10 +115,6 @@ var Authenticator = React.createClass({
           </button>
         </div>
       );
-    }
-
-    if (!this.state.show) {
-      return null;
     }
 
     return (

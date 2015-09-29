@@ -25,12 +25,6 @@ window.fbLogin = function() {
   window.FB.login(onFacebookStatusChange, {scope: "public_profile,email"});
 };
 
-window.fbCheckLoginState = function() {
-  window.FB.getLoginStatus(function(response) {
-    onFacebookStatusChange(response);
-  });
-};
-
 window.fbAsyncInit = function() {
   window.FB.init({
     appId: facebookAppID,
@@ -38,8 +32,6 @@ window.fbAsyncInit = function() {
     xfbml: true,
     version: "v2.4"
   });
-
-  window.fbCheckLoginState();
 };
 
 var setup = function() {
