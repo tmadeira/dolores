@@ -71,8 +71,10 @@
 }
 
 .grid-ideia-action {
-  margin-right: 5px;
-  // TODO: icons
+  margin-right: 8px;
+  .fa {
+    color: $purple;
+  }
 }
 
 .grid-ideia-button {
@@ -91,7 +93,4 @@
   right: 0;
   text-align: right;
   width: 100%;
-  &::after {
-    content: " »";
-  }
 }

@@ -24,12 +24,24 @@
             </a>
           </p>
           <p class="grid-ideia-interact">
-            <a class="grid-ideia-action grid-ideia-upvote" href="#">403</a>
-            <a class="grid-ideia-action grid-ideia-downvote" href="#">2</a>
-            <a class="grid-ideia-action grid-ideia-discussion" href="#">51</a>
+            <a class="grid-ideia-action grid-ideia-upvote" href="#">
+              <i class="fa fa-fw fa-thumbs-up"></i>
+              403
+            </a>
+            <a class="grid-ideia-action grid-ideia-downvote" href="#">
+              <i class="fa fa-fw fa-thumbs-down"></i>
+              2
+            </a>
+            <a class="grid-ideia-action grid-ideia-discussion" href="#">
+              <i class="fa fa-fw fa-comments"></i>
+              51
+            </a>
           </p>
           <!-- TODO: share -->
-          <a class="grid-ideia-button" href="#">Opine</a>
+          <a class="grid-ideia-button" href="#">
+            Opine &nbsp;
+            <i class="fa fa-angle-right"></i>
+          </a>
         </li>
         <?php
       }
