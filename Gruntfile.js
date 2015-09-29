@@ -49,7 +49,8 @@ module.exports = function(grunt) {
           fontsDir: 'static/fonts',
           imagesDir: 'static/images',
           importPath: [
-            'bower_components/breakpoint-sass/stylesheets'
+            'bower_components/breakpoint-sass/stylesheets',
+            'bower_components/fontawesome/scss'
           ]
         }
       }

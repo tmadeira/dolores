@@ -1,5 +1,8 @@
+$fa-font-path: "static/fonts";
+
 @import "breakpoint";
 @import "compass";
+@import "font-awesome";
 
 @import "compass/reset";
 @import "wp-common";
