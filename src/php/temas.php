@@ -9,7 +9,10 @@ get_header();
     <ul class="grid-temas-list">
       <?php
       $taxonomy = 'tema';
-      $terms = get_terms($taxonomy);
+      $terms = get_terms($taxonomy, array(
+        'hide_empty' => false,
+        'parent' => 0
+      ));
       foreach ($terms as $term) {
         $link = get_term_link($term, $taxonomy);
         ?>
