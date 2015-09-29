@@ -66,7 +66,9 @@ if (defined('GOOGLE_CLIENT_ID')) {
           <?php
         } else {
           ?>
-          <a href="javascript:DoloresAuthenticator.signIn();void(0)">Entrar</a>
+          <a href="javascript:DoloresAuthenticator.signIn();void(0)">
+            <i class="fa fa-user"></i> Entrar
+          </a>
           <?php
           }
         ?>
