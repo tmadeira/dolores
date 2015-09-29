@@ -37,11 +37,22 @@ if (defined('GOOGLE_CLIENT_ID')) {
 
     <nav class="header-nav">
       <?php
-      wp_nav_menu(Array(
-        'theme_location' => 'header-menu',
-        'container' => 'div',
-        'container_class' => 'header-menu'
-      ));
+      if (dolores_get_version() > 1) {
+        wp_nav_menu(Array(
+          'theme_location' => 'header-menu',
+          'container' => 'div',
+          'container_class' => 'header-menu'
+        ));
+      } else {
+        ?>
+        <div class="header-menu"><ul id="menu-cabecalho" class="menu"><li id="menu-item-33" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-33"><a href="/">Página inicial</a></li>
+<li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="http://seacidadefossenossa.com.br/sobre/">Sobre</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="http://seacidadefossenossa.com.br/calendario/">Calendário</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-34"><a href="http://seacidadefossenossa.com.br/secoes/propostas/">Propostas</a></li>
+<li id="menu-item-82" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-82"><a href="http://seacidadefossenossa.com.br/secoes/apoio/">Apoios</a></li>
+</ul></div>
+        <?php
+      }
       ?>
 
       <?php if (dolores_get_version() > 1) { ?>
