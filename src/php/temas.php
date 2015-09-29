@@ -15,8 +15,14 @@ get_header();
       ));
       foreach ($terms as $term) {
         $link = get_term_link($term, $taxonomy);
+        $image = get_term_meta($term->term_id, 'image', true);
+        if ($image) {
+          $style = ' style="background-image: url(\'' . $image . '\');"';
+        } else {
+          $style = '';
+        }
         ?>
-        <li class="grid-tema" style="background-image:url('http://www.jb.com.br/media/fotos/2010/10/04/900x510both/04india1.JPG');">
+        <li class="grid-tema"<?php echo $style; ?>>
           <a href="<?php echo $link; ?>" class="grid-tema-link">
             <div class="grid-tema-wrap">
               <h3 class="grid-tema-name"><?php echo $term->name; ?></h3>

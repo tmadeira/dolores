@@ -1,17 +1,37 @@
 <?php
+// TODO: use get_term_meta($id, 'image') as OpenGraph image
 get_header();
+$id = get_queried_object_id();
+
+$video = get_term_meta($id, 'video', true);
+$more = get_term_meta($id, 'more', true);
+
+$vparams = "rel=0&amp;controls=0&amp;showinfo=0";
 ?>
 
 <main class="page tema">
   <div class="wrap">
+    <?php if ($video) { ?>
     <div class="tema-video">
-      <iframe width="640" height="480" src="https://www.youtube.com/embed/0olRnkEj81Q?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      <iframe
+        allowfullscreen
+        frameborder="0"
+        height="480"
+        src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
+        width="640"
+        >
+      </iframe>
     </div>
+    <?php } ?>
 
     <div class="tema-info">
       <h2 class="tema-name"><?php single_cat_title(); ?></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <a class="tema-link-more" href="#">Ver diagnóstico</a>
+      <p><?php echo category_description(); ?></p>
+      <?php if ($more) { ?>
+        <a class="tema-link-more" href="<?php echo $more; ?>">
+          Ver diagnóstico
+        </a>
+      <?php } ?>
     </div>
   </div>
 </main>

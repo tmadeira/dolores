@@ -31,7 +31,6 @@ class DoloresSettings {
     </div>
     <?php
   }
-
 }
 
 if (is_admin()) {

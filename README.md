@@ -30,6 +30,12 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 - Para habilitar login via Facebook, as constantes `FACEBOOK_APP_ID` e `FACEBOOK_APP_SECRET` devem estar definidas em `wp-config.php`.
 - Para habilitar login via Google, as constantes `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` devem estar definidas em `wp-config.php`.
 
+### Versão do WordPress ###
+
+A partir da versão 4.4.0, o WordPress suporta [metadados para taxonomias](https://core.trac.wordpress.org/ticket/10142). Se você usa uma versão >= 4.4.0, não é preciso instalar nenhum plugin para fazer o tema funcionar.
+
+Se você usa versões mais antigas, este tema requer o plugin [Taxonomy Metadata](https://wordpress.org/plugins/taxonomy-metadata/).
+
 ### Produção ###
 
 Para colocar suas modificações em produção (se você tiver permissão para fazer isso), use:
