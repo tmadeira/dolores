@@ -165,7 +165,7 @@ var HeroSignup = React.createClass({
     var form = $(React.findDOMNode(this.refs.form));
     var params = form.serialize();
 
-    API.route("signup").post(params).done(function() {
+    API.route("v1-signup").post(params).done(function() {
       this.setState({
         loading: false,
         isSent: true

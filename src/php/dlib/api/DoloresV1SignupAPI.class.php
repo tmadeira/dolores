@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../wp_util/user_meta.php');
 
 require_once(__DIR__ . '/DoloresBaseAPI.class.php');
 
-class DoloresSignupAPI extends DoloresBaseAPI {
+class DoloresV1SignupAPI extends DoloresBaseAPI {
   function post($request) {
     $email = $request['email'];
     $location = $request['location'];
