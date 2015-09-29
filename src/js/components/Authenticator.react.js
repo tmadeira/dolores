@@ -94,6 +94,9 @@ var Authenticator = React.createClass({
     } else {
       lightboxContent = (
         <div className="lightbox-wrap">
+          <p className="signin-text">
+            Conecte-se para participar das discussões na plataforma:
+          </p>
           <button
               className="signin-button signin-facebook"
               onClick={this.signinWithFacebook}
