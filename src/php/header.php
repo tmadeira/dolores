@@ -68,17 +68,22 @@ if (defined('GOOGLE_CLIENT_ID')) {
               />
           </form>
         </li>
-        <li class="user">
         <?php
         if (is_user_logged_in()) {
           ?>
-          <a href="#">Logado</a>
+          <li class="user-logged">
+            <a href="#">
+              <span class="user-logged-picture" style="background-image: url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/1901483_720556658028384_5264385726517126128_n.jpg?oh=985c32534d9ed1019ad6fee2caf0d6f3&oe=568D58A8');"></span>
+            </a>
+          </li>
           <?php
         } else {
           ?>
-          <a href="javascript:DoloresAuthenticator.signIn();void(0)">
-            <i class="fa fa-user"></i> Entrar
-          </a>
+          <li class="user-signin">
+            <a href="javascript:DoloresAuthenticator.signIn();void(0)">
+              <i class="fa fa-user"></i> Entrar
+            </a>
+          </li>
           <?php
           }
         ?>

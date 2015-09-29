@@ -206,12 +206,18 @@ body.paged, body:not(.home) {
         }
       }
 
-      &.user > a {
+      &.user-signin > a {
         background: $orange;
         color: $white;
         &:hover {
           background: $orange;
         }
+      }
+
+      &.user-logged > a {
+        background: none !important;
+        border: 0 !important;
+        padding: 0;
       }
     }
   }
@@ -254,4 +260,15 @@ body.paged, body:not(.home) {
     padding-left: 30px;
     padding-right: 5px;
   }
+}
+
+.user-logged-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  vertical-align: middle;
+  width: 32px;
 }
