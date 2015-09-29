@@ -105,12 +105,14 @@ var Authenticator = React.createClass({
               className="signin-button signin-facebook"
               onClick={this.signinWithFacebook}
               >
+            <i className="fa fa-2x fa-fw fa-facebook"></i>
             Entrar com Facebook
           </button>
           <button
               className="signin-button signin-google"
               onClick={this.signinWithGoogle}
               >
+            <i className="fa fa-2x fa-fw fa-google"></i>
             Entrar com Google
           </button>
         </div>

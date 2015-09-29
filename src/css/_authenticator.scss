@@ -10,9 +10,16 @@
   display: block;
   letter-spacing: 0;
   margin-bottom: 15px;
-  padding: 15px;
+  padding: 15px 15px 15px 50px;
+  position: relative;
   text-align: center;
   width: 100%;
+
+  .fa {
+    left: 6px;
+    top: 12px;
+    position: absolute;
+  }
 }
 
 .signin-facebook {
