@@ -68,7 +68,7 @@
     }
 
     & > .success {
-      color: $white;
+      color: #fff;
       font-size: 14px;
       line-height: 1.5em;
 
@@ -119,7 +119,7 @@
           @include title-font;
 
           background: $orange;
-          color: $white;
+          color: #fff;
           display: block;
           text-align: center;
           padding: 15px 0;
@@ -144,7 +144,7 @@
         }
 
         .success {
-          color: $black;
+          color: #000;
           font-size: 16px;
 
           p {

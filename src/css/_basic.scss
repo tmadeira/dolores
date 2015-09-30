@@ -16,13 +16,12 @@ $break-big-desktop: 1400px;
 $header-height: 60px;
 
 // Colors
-$black: #000;
 $gray: #ccc;
 $light-gray: #eee;
 $orange: #d58316;
 $purple: #39376f;
 $red: #c22;
-$white: #fff;
+$teal: #258A8B;
 
 // Fonts
 @import "fonts/bitter";
@@ -65,7 +64,7 @@ a {
 html {
   @extend %text-font;
   background: $light-gray;
-  color: $black;
+  color: #000;
   font-feature-settings: "liga";
   text-rendering: optimizelegibility;
 

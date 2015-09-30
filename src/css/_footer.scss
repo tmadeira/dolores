@@ -1,7 +1,7 @@
 .v2 {
   .site-footer {
-    background: $black;
-    color: $white;
+    background: #000;
+    color: #fff;
     font-size: 0;
     line-height: 0;
     padding: 20px 0 0;
@@ -75,8 +75,8 @@
 
 .v1 {
   .site-footer {
-    background: $black;
-    color: $white;
+    background: #000;
+    color: #fff;
     font-size: 0;
     line-height: 0;
     padding: 15px 0;
@@ -103,7 +103,7 @@
   }
 
   .footer-supporters {
-    border-left: solid 1px $white;
+    border-left: solid 1px #fff;
   }
 
   .footer-social-icon {

@@ -20,7 +20,7 @@ body.paged, body:not(.home) {
 }
 
 .site-header {
-  color: $white;
+  color: #fff;
   height: $header-height;
   left: 0;
   position: fixed;
@@ -33,7 +33,7 @@ body.paged, body:not(.home) {
   }
 
   body.paged &, body:not(.home) &, body.home.show-opaque-header & {
-    @include box-shadow(0 0 15px $black);
+    @include box-shadow(0 0 15px #000);
     background: $purple url('static/images/bg-purple-pattern.jpg') repeat;
     top: 0;
 
@@ -99,13 +99,13 @@ body.paged, body:not(.home) {
     left: 0;
     width: 1em;
     height: 0.125em;
-    border-top: 0.375em double $white;
-    border-bottom: 0.125em solid $white;
+    border-top: 0.375em double #fff;
+    border-bottom: 0.125em solid #fff;
   }
 }
 
 .header-nav {
-  @include box-shadow(0 0 15px $black);
+  @include box-shadow(0 0 15px #000);
   @include transition(right 150ms ease-in-out);
 
   background: $orange;
@@ -142,7 +142,7 @@ body.paged, body:not(.home) {
 .header-menu > ul, .header-search-user {
   & > li {
     & > a, & > form {
-      border-bottom: solid 1px white;
+      border-bottom: solid 1px #fff;
       display: block;
       font-weight: 700;
       padding: 15px;
@@ -191,7 +191,7 @@ body.paged, body:not(.home) {
           &:hover {
             background: $orange;
             border-color: $orange;
-            color: $white;
+            color: #fff;
           }
         }
 
@@ -210,17 +210,17 @@ body.paged, body:not(.home) {
 
       &.user-signin > a {
         background: $orange;
-        color: $white;
+        color: #fff;
         &:hover {
           background: $orange;
         }
 
         body.paged &, body:not(.home) &, body.home.show-opaque-header & {
-          background: $white;
+          background: #fff;
           color: $purple;
           &:hover {
-            background: $white;
-            border-color: $white;
+            background: #fff;
+            border-color: #fff;
             color: $purple;
           }
         }

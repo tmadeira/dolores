@@ -3,11 +3,11 @@
 
 html {
   @extend .single-content !optional;
-  background: white;
+  background: #fff;
   padding: 20px;
 }
 
 body {
-  color: $black;
+  color: #000;
   @extend .entry;
 }
