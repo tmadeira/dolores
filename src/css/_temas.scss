@@ -6,6 +6,9 @@
 
 .grid-temas-list {
   font-size: 0;
+  @include breakpoint($break-tablet) {
+    padding-top: 20px;
+  }
 }
 
 .grid-tema {
@@ -16,7 +19,7 @@
 
   @include breakpoint($break-tablet) {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     width: 49%;
     &:nth-child(2n) {
       margin-left: 2%;
