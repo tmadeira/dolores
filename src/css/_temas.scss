@@ -1,13 +1,91 @@
-.grid-temas {
+.temas-flow-list {
+  font-size: 0;
   @include breakpoint($break-tablet) {
-    padding: 20px 0;
+    margin-top: 30px;
+  }
+}
+
+.temas-flow-item {
+  color: #fff;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    width: 25%;
+  }
+}
+
+.temas-flow-item-1 {
+  background: $orange;
+}
+
+.temas-flow-item-2 {
+  background: $teal;
+}
+
+.temas-flow-item-3 {
+  background: $purple;
+}
+
+.temas-flow-item-4 {
+  background: #000;
+}
+
+.temas-flow-image {
+  margin-top: 30px;
+}
+
+.temas-flow-item-description-container {
+  @extend %align-middle-container;
+  height: 150px;
+  padding: 0 10px 20px;
+}
+
+.temas-flow-item-description {
+  @extend %align-middle-element;
+}
+
+.temas-flow-item-title-container {
+  @extend %align-middle-container;
+  border-top: solid 2px #fff;
+  height: 160px;
+  padding: 0 10px;
+  position: relative;
+  &::after {
+    @include border-radius(20px);
+    border: solid 2px #fff;
+    content: "•";
+    display: block;
+    font-size: 72px;
+    height: 40px;
+    left: 50%;
+    line-height: 33px;
+    margin-left: -20px;
+    position: absolute;
+    top: -22px;
+    width: 40px;
+  }
+}
+
+.temas-flow-item-title {
+  @extend %align-middle-element;
+  @extend %title-font;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 1.2em;
+  strong {
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.5em;
   }
 }
 
 .grid-temas-list {
   font-size: 0;
   @include breakpoint($break-tablet) {
-    padding-top: 20px;
+    padding-top: 30px;
   }
 }
 
@@ -19,7 +97,7 @@
 
   @include breakpoint($break-tablet) {
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     width: 49%;
     &:nth-child(2n) {
       margin-left: 2%;
