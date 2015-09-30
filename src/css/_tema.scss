@@ -12,8 +12,9 @@ main.tema {
 .tema-video {
   @include breakpoint($break-tablet) {
     display: table-cell;
+    padding-right: 40px;
     vertical-align: middle;
-    width: 560px;
+    width: 600px;
   }
 
   iframe {
@@ -27,7 +28,7 @@ main.tema {
 
   @include breakpoint($break-tablet) {
     display: table-cell;
-    padding: 0 0 0 40px;
+    padding: 0;
     vertical-align: middle;
   }
 }
