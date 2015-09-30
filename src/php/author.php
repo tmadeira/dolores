@@ -1,6 +1,7 @@
 <?php
 get_header();
-$info = get_userdata(intval($author));
+$info = isset($_GET['author_name']) ? get_user_by('slug', $author_name) :
+    get_userdata(intval($author));
 ?>
 
 <main class="page profile">
@@ -9,8 +10,12 @@ $info = get_userdata(intval($author));
     </div>
 
     <div class="profile-info">
-      <h2 class="profile-name">Felipe Aveiro</h2>
-      <p class="profile-stats">15 ideias &bullet; 200 comentários</p>
+      <h2 class="profile-name"><?php echo $info->display_name; ?></h2>
+      <p class="profile-stats">
+        <?php echo $wp_query->found_posts; ?> ideias
+        &bullet;
+        200 comentários
+      </p>
 
       <h3 class="profile-data-title">Informações básicas</h3>
       <ul class="profile-data">
@@ -21,6 +26,8 @@ $info = get_userdata(intval($author));
     </div>
   </div>
 </main>
+
+<h2 class="author-grid-title">Ideias de <?php echo $info->display_name; ?></h3>
 
 <?php
 include(__DIR__ . '/grid-ideias.php');

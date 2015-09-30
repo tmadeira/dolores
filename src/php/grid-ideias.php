@@ -46,6 +46,8 @@
         <?php
       }
       echo '</ul>';
+    } else {
+      echo "<p>Nenhuma ideia cadastrada.</p>";
     }
 
     if (!$paged) {
