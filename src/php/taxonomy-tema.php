@@ -9,7 +9,7 @@ $more = get_term_meta($id, 'more', true);
 $vparams = "rel=0&amp;controls=0&amp;showinfo=0";
 ?>
 
-<main class="page tema">
+<main class="tema">
   <div class="wrap">
     <?php if ($video) { ?>
     <div class="tema-video">

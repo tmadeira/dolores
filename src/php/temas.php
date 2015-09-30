@@ -4,7 +4,7 @@
 get_header();
 ?>
 
-<main class="page grid-temas">
+<main class="grid-temas">
   <div class="wrap">
     <ul class="grid-temas-list">
       <?php

@@ -4,7 +4,7 @@ $info = isset($_GET['author_name']) ? get_user_by('slug', $author_name) :
     get_userdata(intval($author));
 ?>
 
-<main class="page profile">
+<main class="profile">
   <div class="wrap">
     <div class="profile-picture" style="background-image: url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10906253_775306259215602_5837899258610604724_n.jpg?oh=198c4ed2ff891f0b03ee43d8984b46c1&oe=56A85D84');">
     </div>
