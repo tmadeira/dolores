@@ -22,9 +22,15 @@ if [ "$?" != "0" ]; then
   exit 1
 fi
 
+# Copy vendor/
+mkdir -p ${dist}
+cp -r ${build}/vendor ${dist}/vendor
+
 # Copy PHP files
-files=`find ${build} -type f -name '*.php' | sed "s|${build}/||"`
+files=$(find ${build} -type f -name '*.php' -not -path "${build}/vendor/*" \
+  | sed "s|${build}/||")
 for file in ${files}; do
+  echo $file
   mkdir -p ${dist}/`dirname ${file}`
   cp ${build}/${file} ${dist}/${file}
   if [ "$?" != "0" ]; then
@@ -62,8 +68,8 @@ if [ "$?" != "0" ]; then
   exit 1
 fi
 
-files=`find ${build} -type f -not -name '*.php' | \
-  sed "s|${build}/||"`
+files=$(find ${build} -type f -not -name '*.php' \
+  -not -path "${build}/vendor/*" | sed "s|${build}/||")
 
 css=`cat ${build}/style.min.css`
 
