@@ -50,3 +50,131 @@
     height: 500px;
   }
 }
+
+.home-default-section {
+  background: $light-gray;
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+  }
+}
+
+.home-main-grid {
+  font-size: 0;
+}
+
+.home-main-item {
+  @extend %align-middle-container;
+  font-size: 16px;
+  height: 450px;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    width: 49%;
+    &:nth-child(2n) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.home-main-item-link {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  color: #fff;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.home-main-item-link-no-alpha {
+  background: none;
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.home-main-item-border {
+  @include breakpoint($break-tablet) {
+    border: solid 2px #fff;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.home-main-item-wrap {
+  @extend %align-middle-element;
+  @include text-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  padding: 0 10px;
+}
+
+.home-bg-map {
+  background: url('static/images/home-map.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.home-main-item-title {
+  @extend %title-font;
+  font-size: 32px;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+
+.home-main-item-explanation {
+  border-top: solid 1px #fff;
+  font-size: 17px;
+  font-style: italic;
+  margin: 10px 0;
+  padding-top: 10px;
+  text-transform: lowercase;
+}
+
+.home-main-item-action {
+  @extend %title-font;
+  @include text-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: none;
+  color: #fff;
+  border: solid 2px #fff;
+  letter-spacing: 0;
+  margin-top: 10px;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.home-ideas {
+  background: #fff;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+  }
+}
+
+.home-title {
+  @extend %title-font;
+  color: $orange;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.home-button-container {
+  line-height: 42px;
+  margin-top: 30px;
+}
+
+.home-button {
+  background: none;
+  border: solid 2px $orange;
+  color: $orange;
+  font-size: 18px;
+  padding: 8px 14px;
+  text-transform: uppercase;
+}
