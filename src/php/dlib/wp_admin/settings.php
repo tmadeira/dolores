@@ -1,9 +1,11 @@
 <?php
+require_once(__DIR__ . '/settings/home.php');
 require_once(__DIR__ . '/settings/streaming.php');
 
 class DoloresSettings {
   public function __construct() {
     add_action('admin_menu', array($this, 'add_page'));
+    add_action('admin_init', array('DoloresHome', 'admin_init'));
     add_action('admin_init', array('DoloresStreaming', 'admin_init'));
   }
 
