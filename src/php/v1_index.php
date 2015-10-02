@@ -31,7 +31,7 @@ if (!$paged || $paged == 1) {
     $url = "//youtube.com/embed/${youtube_id}?${params}";
     ?>
     <section class="site-streaming">
-      <div class="wrap">
+      <div class="page wrap">
         <h2 class="streaming-title"><?php echo $title; ?></h2>
         <iframe
           class="streaming-box"
