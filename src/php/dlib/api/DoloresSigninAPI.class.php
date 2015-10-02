@@ -62,7 +62,7 @@ class DoloresSigninAPI extends DoloresBaseAPI {
     $client = new Google_Client();
     $client->setClientId(GOOGLE_CLIENT_ID);
     $client->setClientSecret(GOOGLE_CLIENT_SECRET);
-    $client->setRedirectUri('http://dev.seacidadefossenossa.com.br');
+    $client->setRedirectUri('http://seacidadefossenossa.com.br');
 
     $client->authenticate($request['code']);
 
