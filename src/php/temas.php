@@ -10,11 +10,11 @@ $flow3 = DoloresAssets::get_image_uri('temas-flow-3.png');
 $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
 ?>
 
-<main class="temas-flow">
+<main class="flow">
   <div class="wrap">
-    <ol class="temas-flow-list">
-      <li class="temas-flow-item temas-flow-item-1">
-        <img class="temas-flow-image" src="<?php echo $flow1; ?>" />
+    <ol class="flow-list">
+      <li class="temas-flow-item bg-pattern-orange">
+        <img class="flow-image" src="<?php echo $flow1; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -22,13 +22,13 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
           </p>
         </div>
         <div class="temas-flow-item-title-container">
-          <h3 class="temas-flow-item-title">
+          <h3 class="flow-item-title">
             <strong>#1</strong> Encontro presencial
           </h3>
         </div>
       </li>
-      <li class="temas-flow-item temas-flow-item-2">
-        <img class="temas-flow-image" src="<?php echo $flow2; ?>" />
+      <li class="temas-flow-item bg-pattern-teal">
+        <img class="flow-image" src="<?php echo $flow2; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
             Sit amet, adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -36,13 +36,13 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
           </p>
         </div>
         <div class="temas-flow-item-title-container">
-          <h3 class="temas-flow-item-title">
+          <h3 class="flow-item-title">
             <strong>#2</strong> Discussão online
           </h3>
         </div>
       </li>
-      <li class="temas-flow-item temas-flow-item-3">
-        <img class="temas-flow-image" src="<?php echo $flow3; ?>" />
+      <li class="temas-flow-item bg-pattern-light-purple">
+        <img class="flow-image" src="<?php echo $flow3; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -50,13 +50,13 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
           </p>
         </div>
         <div class="temas-flow-item-title-container">
-          <h3 class="temas-flow-item-title">
+          <h3 class="flow-item-title">
             <strong>#3</strong> Sistematização
           </h3>
         </div>
       </li>
-      <li class="temas-flow-item temas-flow-item-4">
-        <img class="temas-flow-image" src="<?php echo $flow4; ?>" />
+      <li class="temas-flow-item bg-pattern-dark-purple">
+        <img class="flow-image" src="<?php echo $flow4; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
             Color sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -64,7 +64,7 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
           </p>
         </div>
         <div class="temas-flow-item-title-container">
-          <h3 class="temas-flow-item-title">
+          <h3 class="flow-item-title">
             <strong>#4</strong> Lançamento das propostas
           </h3>
         </div>

@@ -117,6 +117,49 @@ if (!$paged || $paged == 1) {
   </section>
 
   <?php
+  $flow1 = DoloresAssets::get_image_uri('home-flow-1.png');
+  $flow2 = DoloresAssets::get_image_uri('home-flow-2.png');
+  $flow3 = DoloresAssets::get_image_uri('home-flow-3.png');
+  ?>
+
+  <section class="home-flow">
+    <div class="wrap">
+      <ol class="flow-list">
+        <li class="home-flow-item bg-pattern-light-purple">
+          <a href="#" class="flow-link">
+            <img class="flow-image" src="<?php echo $flow1; ?>" />
+            <div class="flow-item-title-container">
+              <h3 class="flow-item-title">
+                Faça você mesmo
+              </h3>
+            </div>
+          </a>
+        </li>
+        <li class="home-flow-item bg-pattern-orange">
+          <a href="#" class="flow-link">
+            <img class="flow-image" src="<?php echo $flow2; ?>" />
+            <div class="flow-item-title-container">
+              <h3 class="flow-item-title">
+                Chegue junto<br />das atividades
+              </h3>
+            </div>
+          </a>
+        </li>
+        <li class="home-flow-item bg-pattern-teal">
+          <a href="#" class="flow-link">
+            <img class="flow-image" src="<?php echo $flow3; ?>" />
+            <div class="flow-item-title-container">
+              <h3 class="flow-item-title">
+                Participe:<br />seja voluntário
+              </h3>
+            </div>
+          </a>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <?php
 }
 
 include(__DIR__ . '/grid.php');

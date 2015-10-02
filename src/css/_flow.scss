@@ -1,0 +1,59 @@
+.bg-pattern-orange {
+  background: $orange url('static/images/bg-pattern-orange.jpg');
+}
+
+.bg-pattern-teal {
+  background: $teal url('static/images/bg-pattern-teal.jpg');
+}
+
+.bg-pattern-light-purple {
+  background: $purple url('static/images/bg-pattern-light-purple.jpg');
+}
+
+.bg-pattern-dark-purple {
+  background: $dark-purple url('static/images/bg-pattern-dark-purple.jpg');
+}
+
+.flow-list {
+  font-size: 0;
+  @include breakpoint($break-tablet) {
+    margin-top: 30px;
+  }
+}
+
+.flow-item {
+  color: #fff;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+  }
+}
+
+.flow-link {
+  display: block;
+}
+
+.flow-image {
+  margin-top: 30px;
+}
+
+.flow-item-title-container {
+  @extend %align-middle-container;
+  height: 160px;
+}
+
+.flow-item-title {
+  @extend %align-middle-element;
+  @extend %title-font;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 1.2em;
+  strong {
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}

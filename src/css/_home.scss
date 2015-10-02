@@ -178,3 +178,10 @@
   padding: 8px 14px;
   text-transform: uppercase;
 }
+
+.home-flow-item {
+  @extend .flow-item;
+  @include breakpoint($break-tablet) {
+    width: 33.33%;
+  }
+}

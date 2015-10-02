@@ -1,40 +1,8 @@
-.temas-flow-list {
-  font-size: 0;
-  @include breakpoint($break-tablet) {
-    margin-top: 30px;
-  }
-}
-
 .temas-flow-item {
-  color: #fff;
-  display: block;
-  font-size: 14px;
-  text-align: center;
-  vertical-align: middle;
+  @extend .flow-item;
   @include breakpoint($break-tablet) {
-    display: inline-block;
     width: 25%;
   }
-}
-
-.temas-flow-item-1 {
-  background: $orange url('static/images/bg-pattern-orange.jpg');
-}
-
-.temas-flow-item-2 {
-  background: $teal url('static/images/bg-pattern-teal.jpg');
-}
-
-.temas-flow-item-3 {
-  background: $purple url('static/images/bg-pattern-light-purple.jpg');
-}
-
-.temas-flow-item-4 {
-  background: $dark-purple url('static/images/bg-pattern-dark-purple.jpg');
-}
-
-.temas-flow-image {
-  margin-top: 30px;
 }
 
 .temas-flow-item-description-container {
@@ -48,9 +16,8 @@
 }
 
 .temas-flow-item-title-container {
-  @extend %align-middle-container;
+  @extend .flow-item-title-container;
   border-top: solid 2px #fff;
-  height: 160px;
   padding: 0 10px;
   position: relative;
   &::after {
@@ -66,19 +33,6 @@
     position: absolute;
     top: -22px;
     width: 40px;
-  }
-}
-
-.temas-flow-item-title {
-  @extend %align-middle-element;
-  @extend %title-font;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: 1.2em;
-  strong {
-    display: block;
-    font-size: 1.5em;
-    line-height: 1.5em;
   }
 }
 
