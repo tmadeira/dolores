@@ -175,6 +175,10 @@
   font-size: 18px;
   padding: 8px 14px;
   text-transform: uppercase;
+  &:hover {
+    background: $orange;
+    color: #fff;
+  }
 }
 
 .home-flow-item {
