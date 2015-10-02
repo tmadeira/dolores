@@ -4,11 +4,11 @@ get_header();
 
 <main class="page wrap">
   <article class="single-content">
-    <h2 class="single-title title-404">404</h2>
+    <h2 class="single-title title-404">Em breve</h2>
 
     <div class="entry">
       <p>
-        A página solicitada não foi encontrada.
+        A busca está em construção.
       </p>
 
       <p>
