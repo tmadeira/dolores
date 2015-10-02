@@ -106,7 +106,7 @@
         $width: 450px;
 
         @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-        background: $light-gray url('static/images/bg-gray-pattern.jpg') repeat;
+        background: $light-gray url('static/images/bg-pattern-gray.jpg') repeat;
         height: $height;
         left: 50%;
         margin-left: -$width/2;
