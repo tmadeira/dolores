@@ -152,10 +152,8 @@
 
 .home-ideas {
   background: #fff;
+  padding: 30px 0;
   text-align: center;
-  @include breakpoint($break-tablet) {
-    padding: 30px 0;
-  }
 }
 
 .home-title {
