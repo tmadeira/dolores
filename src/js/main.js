@@ -40,5 +40,6 @@ $(function() {
   facebook.setup();
   hero.setup();
   google.setup();
+  menu.setup();
   twitter.setup();
 });

@@ -29,6 +29,37 @@ var onResize = function() {
   }
 };
 
+var hideActiveSubmenus = function() {
+  $(".menu-item-has-children.active").each(function() {
+    $(this).find(".sub-menu").slideUp(150);
+    $(this).removeClass("active");
+  });
+};
+
+var setup = function() {
+  $(".header-menu .sub-menu").hide();
+
+  $(".header-menu .menu-item-has-children > a").click(function(e) {
+    var li = $(this).parent();
+    var isActive = li.hasClass("active");
+
+    hideActiveSubmenus();
+
+    if (!isActive) {
+      li.find(".sub-menu").slideDown(150);
+      li.addClass("active");
+    }
+
+    e.stopPropagation();
+    return false;
+  });
+
+  $(document).click(function() {
+    hideActiveSubmenus();
+  });
+};
+
 module.exports = {
-  onResize: onResize
+  onResize: onResize,
+  setup: setup
 };
