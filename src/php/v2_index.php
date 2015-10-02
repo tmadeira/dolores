@@ -15,8 +15,14 @@ if (!$paged || $paged == 1) {
   ?>
   <section class="site-presentation explanation">
     <div class="wrap explanation-wrap">
-      <p>E se a cidade fosse nossa? Essa é a pergunta que nos une em movimento. Sonhamos com um Rio de Janeiro mais livre, solidário e feliz. Uma cidade que ouça as vozes das ruas para construir um novo modelo de governo com e para as pessoas.</p>
-      <p>Queremos um Rio de Janeiro de direitos, onde as pessoas possam fazer parte das decisões que transformam as suas vidas.</p>
+      <iframe
+        width="853"
+        height="480"
+        src="https://www.youtube.com/embed/5Zbs3grhys0?rel=0&amp;controls=0&amp;showinfo=0"
+        frameborder="0"
+        allowfullscreen
+        >
+      </iframe>
     </div>
   </section>
 
