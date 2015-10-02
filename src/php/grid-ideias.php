@@ -12,18 +12,25 @@
               <?php the_title(); ?>
             </a>
           </h3>
-          <p class="grid-ideia-tags">
+          <p class="grid-ideia-tags"> <!-- TODO -->
             <a class="grid-ideia-tag" href="#">Direito à cidade</a>
             <a class="grid-ideia-tag" href="#">Educação</a>
             <a class="grid-ideia-tag" href="#">Tecnologia</a>
           </p>
           <p class="grid-ideia-author">
-            <a href="#">
-              <span class="grid-ideia-author-picture" style="background-image:url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/1901483_720556658028384_5264385726517126128_n.jpg?oh=985c32534d9ed1019ad6fee2caf0d6f3&oe=568D58A8');"></span>
-              Honório Oliveira
+            <?php
+            $hash = md5(strtolower(trim(get_the_author_meta('user_email'))));
+            $gravatar = "http://gravatar.com/avatar/$hash?d=mm&s=300";
+            $style = ' style="background-image: url(\'' . $gravatar . '\');"';
+            $url = get_author_posts_url(get_the_author_meta('ID'));
+            ?>
+            <a href="<?php echo $url; ?>">
+              <span class="grid-ideia-author-picture" <?php echo $style; ?>>
+              </span>
+              <?php the_author(); ?>
             </a>
           </p>
-          <p class="grid-ideia-interact">
+          <p class="grid-ideia-interact"> <!-- TODO -->
             <a class="grid-ideia-action grid-ideia-upvote" href="#">
               <i class="fa fa-fw fa-thumbs-up"></i>
               403
@@ -38,7 +45,7 @@
             </a>
           </p>
           <!-- TODO: share -->
-          <a class="grid-ideia-button" href="#">
+          <a class="grid-ideia-button" href="<?php the_permalink(); ?>">
             Opine &nbsp;
             <i class="fa fa-angle-right"></i>
           </a>
@@ -47,7 +54,9 @@
       }
       echo '</ul>';
     } else {
-      echo "<p>Nenhuma ideia cadastrada.</p>";
+      echo '<p style="margin: 20px 0; text-align: center;">';
+      echo 'Nenhuma ideia cadastrada.';
+      echo '</p>';
     }
 
     if (!$paged) {

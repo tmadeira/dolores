@@ -70,10 +70,14 @@ if (defined('GOOGLE_CLIENT_ID')) {
         </li>
         <?php
         if (is_user_logged_in()) {
+          $user = wp_get_current_user();
+          $hash = md5(strtolower(trim($user->user_email)));
+          $gravatar = "http://gravatar.com/avatar/$hash";
+          $style = ' style="background-image: url(\'' . $gravatar . '\');"';
           ?>
           <li class="user-logged">
-            <a href="#">
-              <span class="user-logged-picture" style="background-image: url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/1901483_720556658028384_5264385726517126128_n.jpg?oh=985c32534d9ed1019ad6fee2caf0d6f3&oe=568D58A8');"></span>
+            <a href="#" title="<?php echo esc_attr($user->display_name); ?>">
+              <span class="user-logged-picture"<?php echo $style; ?>></span>
             </a>
           </li>
           <?php
