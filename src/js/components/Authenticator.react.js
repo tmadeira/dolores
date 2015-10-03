@@ -35,9 +35,11 @@ var Authenticator = React.createClass({
           if (response.action === "refresh") {
             location.reload();
           } else if (response.action === "signup") {
+            var data = response.data;
+            data.auth = auth;
             this.setState({
               signup: true,
-              data: response.data,
+              data: data,
               waiting: false
             });
           }

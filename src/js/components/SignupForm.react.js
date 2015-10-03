@@ -1,6 +1,7 @@
 "use strict";
 
 var _ = require("lodash");
+var $ = require("jquery");
 var React = require("react");
 
 var API = require("../api");
@@ -73,10 +74,19 @@ var SignupForm = React.createClass({
     }.bind(this));
   }, 150, {maxWait: 600}),
 
+  submit: function(e) {
+    var form = $(React.findDOMNode(this.refs.form));
+    var params = form.serialize();
+    console.log(params);
+    alert("Em construção.");
+    e.preventDefault();
+  },
+
   render: function() {
     return (
-      <form>
+      <form ref="form" onSubmit={this.submit}>
         <div className="signup-form">
+          {this.renderLogo()}
           {this.renderInputName()}
           {this.renderInputEmail()}
           {this.renderInputPhone()}
@@ -87,10 +97,21 @@ var SignupForm = React.createClass({
     );
   },
 
+  renderLogo: function() {
+    return <div className="signup-logo"></div>;
+  },
+
   renderInputName: function() {
+    var authIcon = "user";
+    if (this.props.data.auth.type === "facebook") {
+      authIcon = "facebook-square";
+    } else if (this.props.data.auth.type === "google") {
+      authIcon = "google-plus-square";
+    }
     return <Input
       className="signup-input signup-input-name"
       disabled={true}
+      icon={authIcon}
       name="name"
       onBlur={this.onBlur}
       onChange={this.onChange}
@@ -104,6 +125,7 @@ var SignupForm = React.createClass({
     return <Input
       className="signup-input signup-input-phone"
       error={this.state.errors.phone}
+      icon="phone"
       mask="phone"
       name="phone"
       onBlur={this.onBlur}
@@ -118,6 +140,7 @@ var SignupForm = React.createClass({
     return <Input
       className="signup-input signup-input-email"
       error={this.state.errors.email}
+      icon="envelope"
       name="email"
       onBlur={this.onBlur}
       onChange={this.onChange}
@@ -131,6 +154,7 @@ var SignupForm = React.createClass({
     return <Input
       className="signup-input signup-input-location"
       error={this.state.errors.location}
+      icon="map-marker"
       name="location"
       onBlur={this.onBlur}
       onChange={this.onChange}
@@ -147,7 +171,7 @@ var SignupForm = React.createClass({
           className="signup-button"
           type="submit"
           >
-        Participar
+        Cadastrar
       </button>
     );
   }

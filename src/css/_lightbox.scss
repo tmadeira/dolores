@@ -23,8 +23,8 @@
     top: 10px;
 
     @include breakpoint($break-tablet) {
-      $height: 400px;
-      $width: 400px;
+      $height: 480px;
+      $width: 440px;
       height: $height;
       left: 50%;
       margin-left: -$width/2;

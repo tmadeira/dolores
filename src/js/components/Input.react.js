@@ -39,9 +39,13 @@ var Input = React.createClass({
   },
 
   render: function() {
-    var className = cx(this.props.className, {focused: this.state.focused});
+    var className = cx(this.props.className, {
+      focused: this.state.focused,
+      empty: !this.props.value
+    });
     return (
       <div className={className}>
+        {this.renderIcon()}
         {this.renderInput()}
         {this.renderSuggestions()}
         {this.renderValidation()}
@@ -49,8 +53,20 @@ var Input = React.createClass({
     );
   },
 
+  renderIcon: function() {
+    var className = {
+      "fa": true,
+      "fa-fw": true,
+      "fa-lg": true
+    };
+    className["fa-" + this.props.icon] = true;
+    return <i className={cx(className)}></i>;
+  },
+
   renderInput: function() {
     var onBlur = _.debounce(function() {
+      var value = React.findDOMNode(this.refs.input).value;
+      this.props.onChange(this.props.name, value);
       if (this.props.onBlur) {
         this.props.onBlur(this.props.name);
       }
