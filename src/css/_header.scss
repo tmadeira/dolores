@@ -256,10 +256,30 @@ body.paged, body:not(.home) {
       text-align: left;
     }
 
-    & > li > a {
-      border-color: $orange;
-      color: $orange;
-      white-space: nowrap;
+    & > li {
+      display: block;
+
+      /**
+       * XXX The "!important"s are required to fix things in desktop opaque
+       * menu state. This must be fixed by refactoring!
+       */
+
+      & > a {
+        border-color: $orange;
+        color: $orange !important;
+        white-space: nowrap;
+      }
+
+      @include breakpoint($break-desktop) {
+        padding: 0;
+        & > a {
+          border: 0 !important;
+          &:hover {
+            background: $orange !important;
+            color: #fff !important;
+          }
+        }
+      }
     }
   }
 }
