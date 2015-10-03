@@ -89,6 +89,11 @@
   width: 100%;
   &:hover {
     background: rgba(0, 0, 0, 0.7);
+    .home-main-item-action {
+      @include text-shadow(none);
+      background: #fff;
+      color: #000;
+    }
   }
 }
 

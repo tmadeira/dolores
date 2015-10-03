@@ -342,6 +342,11 @@
       top: 0;
     }
 
+    &:hover {
+      background: #fff;
+      color: #000;
+    }
+
     @include breakpoint($break-tablet) {
       margin-left: -175px;
     }
