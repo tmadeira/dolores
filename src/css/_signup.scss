@@ -1,0 +1,228 @@
+.v2 {
+  .signup-input, .signup-button {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .signup-input {
+    position: relative;
+
+    & > input {
+      background-color: #fff;
+      background-repeat: no-repeat;
+      border: solid 1px $orange;
+      color: #000;
+      display: block;
+      font-size: 12px;
+      overflow: hidden;
+      padding: 10px 10px 10px 36px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+
+      &[disabled] {
+        background-color: $light-gray;
+        border-color: $gray;
+      }
+    }
+
+    .multi-select-done {
+      background: $orange;
+      border: 0;
+      bottom: 5px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 0 4px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 28px;
+    }
+
+    .validation-error {
+      @include border-radius(5px);
+      @include box-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+      background: $red;
+      bottom: 35px;
+      color: #fff;
+      font-size: 12px;
+      left: 3px;
+      padding: 5px 10px;
+      position: absolute;
+      z-index: 2;
+
+      @include breakpoint($break-tablet) {
+        bottom: 37px;
+      }
+
+      @include breakpoint($break-desktop) {
+        bottom: 39px;
+      }
+
+      &::after {
+        border-top: 5px solid $red;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        bottom: -5px;
+        content: "";
+        height: 0;
+        left: 10px;
+        position: absolute;
+        width: 0;
+      }
+    }
+
+    &.focused > .multi-select-selected {
+      padding-right: 38px;
+    }
+
+    .suggestions, .multi-select-options {
+      @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+      background: #fff;
+      color: #000;
+      display: none;
+      font-size: 12px;
+      overflow-y: auto;
+      max-height: 240px;
+      position: absolute;
+      top: 37px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+
+      &:not(.multi-select-options) > li {
+        cursor: pointer;
+        padding: 5px;
+        &.selected, &:hover {
+          background: $gray;
+        }
+      }
+
+      &.multi-select-options > li {
+        @include opacity(0.6);
+        background-image: inline-image('checkbox-empty.svg');
+        background-position: 5px center;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        padding: 5px 5px 5px 30px;
+
+        &:hover {
+          @include opacity(1);
+        }
+
+        &.selected {
+          background-image: inline-image('checkbox-checked.svg');
+        }
+      }
+
+      @include breakpoint($break-tablet) {
+        font-size: 14px;
+        top: 39px;
+      }
+
+      @include breakpoint($break-desktop) {
+        top: 41px;
+      }
+    }
+
+    &.focused .suggestions, &.focused .multi-select-options {
+      display: block;
+    }
+  }
+
+  .signup-input-email > input {
+    background-image: inline-image('icon-email.svg');
+    background-position: 6px center;
+    background-size: auto 18px;
+  }
+
+  .signup-input-location > input {
+    background-image: inline-image('icon-location.svg');
+    background-position: 9px center;
+    background-size: auto 24px;
+  }
+
+  .signup-input-name > input {
+    background-image: url('static/images/icon-name.svg');
+    background-position: 6px center;
+    background-size: auto 24px;
+  }
+
+  .signup-input-phone > input {
+    background-image: url('static/images/icon-phone.svg');
+    background-position: 6px center;
+    background-size: auto 22px;
+  }
+
+  .signup-input-birthdate > input {
+    background-image: url('static/images/icon-birthdate.svg');
+    background-position: 6px center;
+    background-size: auto 20px;
+  }
+
+  .signup-input-occupation > input {
+    background-image: url('static/images/icon-occupation.svg');
+    background-position: 8px center;
+    background-size: auto 20px;
+  }
+
+  .signup-input-school > input {
+    background-image: url('static/images/icon-school.svg');
+    background-position: 6px center;
+    background-size: auto 24px;
+  }
+
+  .signup-input-course > input {
+    background-image: url('static/images/icon-course.svg');
+    background-position: 6px center;
+    background-size: auto 24px;
+  }
+
+  .signup-input-interests > .multi-select-selected {
+    background-image: url('static/images/icon-interests.svg');
+    background-position: 5px center;
+    background-size: auto 26px;
+  }
+
+  .signup-input-collaboration > .multi-select-selected {
+    background-image: url('static/images/icon-interests.svg');
+    background-position: 5px center;
+    background-size: auto 26px;
+  }
+
+  .signup-button {
+    @include transition(all 150ms ease);
+    background: $orange;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+
+    &:hover {
+      background: $purple;
+    }
+
+    &.is-basic-sent {
+      display: none;
+    }
+  }
+
+  @include breakpoint($break-tablet) {
+    .signup-input, .signup-button {
+      & > input {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @include breakpoint($break-desktop) {
+    .signup-input, .signup-button {
+      & > input {
+        font-size: 16px;
+      }
+    }
+  }
+}

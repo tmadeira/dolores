@@ -4,6 +4,8 @@ var React = require("react");
 
 var API = require("../api");
 
+var SignupForm = require("./SignupForm.react");
+
 var Authenticator = React.createClass({
   getInitialState: function() {
     return {
@@ -90,9 +92,7 @@ var Authenticator = React.createClass({
     } else if (this.state.signup) {
       lightboxContent = (
         <div className="lightbox-wrap">
-          <p>Nome: {this.state.data.name}</p>
-          <p>E-mail: {this.state.data.email}</p>
-          <p><img src={this.state.data.picture} /></p>
+          <SignupForm data={this.state.data}></SignupForm>
         </div>
       );
     } else {
