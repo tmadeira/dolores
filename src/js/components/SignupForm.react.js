@@ -1,7 +1,6 @@
 "use strict";
 
 var _ = require("lodash");
-var $ = require("jquery");
 var React = require("react");
 
 var API = require("../api");
@@ -75,10 +74,18 @@ var SignupForm = React.createClass({
   }, 150, {maxWait: 600}),
 
   submit: function(e) {
-    var form = $(React.findDOMNode(this.refs.form));
-    var params = form.serialize();
-    console.log(params);
-    alert("Em construção.");
+    var params = {
+      auth: this.props.data.auth,
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      location: this.state.location
+    };
+    API.route("signup").post({data: params}).done(function(data) {
+      console.log("signup returned", data);
+    }).fail(function(response) {
+      console.log(response);
+    });
     e.preventDefault();
   },
 
