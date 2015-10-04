@@ -71,9 +71,9 @@ if (defined('GOOGLE_CLIENT_ID')) {
         <?php
         if (is_user_logged_in()) {
           $user = wp_get_current_user();
-          $hash = md5(strtolower(trim($user->user_email)));
-          $gravatar = "http://gravatar.com/avatar/$hash";
-          $style = ' style="background-image: url(\'' . $gravatar . '\');"';
+          require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
+          $picture = dolores_get_profile_picture($user);
+          $style = ' style="background-image: url(\'' . $picture. '\');"';
           ?>
           <li class="user-logged">
             <a href="#" title="<?php echo esc_attr($user->display_name); ?>">

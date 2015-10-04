@@ -3,9 +3,9 @@ get_header();
 $info = isset($_GET['author_name']) ? get_user_by('slug', $author_name) :
     get_userdata(intval($author));
 
-$hash = md5(strtolower(trim($info->user_email)));
-$gravatar = "http://gravatar.com/avatar/$hash?d=mm&s=300";
-$pic_style = ' style="background-image: url(\'' . $gravatar . '\');"';
+require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
+$picture = dolores_get_profile_picture($info);
+$pic_style = ' style="background-image: url(\'' . $picture. '\');"';
 ?>
 
 <main class="profile">

@@ -19,9 +19,11 @@
           </p>
           <p class="grid-ideia-author">
             <?php
+            $id = get_the_author_meta('ID');
+            require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
+            $picture = dolores_get_profile_picture(get_user_by('id', $id));
             $hash = md5(strtolower(trim(get_the_author_meta('user_email'))));
-            $gravatar = "http://gravatar.com/avatar/$hash?d=mm&s=300";
-            $style = ' style="background-image: url(\'' . $gravatar . '\');"';
+            $style = ' style="background-image: url(\'' . $picture. '\');"';
             $url = get_author_posts_url(get_the_author_meta('ID'));
             ?>
             <a href="<?php echo $url; ?>">
