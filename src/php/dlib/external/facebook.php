@@ -29,6 +29,7 @@ class DoloresFacebook {
     }
 
     return array(
+      'type' => 'facebook',
       'id' => $fbUser['id'],
       'name' => $fbUser['name'],
       'email' => $fbUser['email'],

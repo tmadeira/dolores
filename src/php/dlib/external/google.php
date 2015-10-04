@@ -27,6 +27,7 @@ class DoloresGoogle {
     );
 
     return array(
+      'type' => 'google',
       'id' => $googleId,
       'name' => $me['displayName'],
       'email' => $me['emails'][0]['value'],
