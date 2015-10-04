@@ -4,8 +4,13 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    display: none; /* Do not display on mobile because of the keyboard */
     height: 170px;
     margin-bottom: 20px;
+
+    @include breakpoint($break-desktop) {
+      display: block;
+    }
   }
 
   .signup-input, .signup-button {
