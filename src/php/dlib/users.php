@@ -75,15 +75,25 @@ class DoloresUsers {
       ));
     }
 
+    $auth_key = 'auth_' . $data['auth']['type'];
+    $auth_val = $data['auth']['id'];
+    if (!dolores_update_user_meta($user_id, $auth_key, $auth_val)) {
+      wp_delete_user($user_id);
+      return array('error' => 'Não foi possível realizar o cadastro.');
+    }
+
     if (!dolores_update_user_meta($user_id, 'picture', $picture)) {
+      wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar sua imagem.');
     }
 
     if (!dolores_update_user_meta($user_id, 'location', $location)) {
+      wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar sua localização.');
     }
 
     if (!dolores_update_user_meta($user_id, 'phone', $phone)) {
+      wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar seu telefone.');
     }
 
