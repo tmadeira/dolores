@@ -14,7 +14,7 @@ var onFacebookStatusChange = function(response) {
   if (response.status === "connected") {
     window.DoloresAuthenticator.setAuth({
       type: "facebook",
-      token: response.authResponse.accessToken
+      code: response.authResponse.accessToken
     });
   } else if (window.DoloresAuthenticator.hasAuth("facebook")) {
     window.DoloresAuthenticator.setAuth({});

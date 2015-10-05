@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/auth_cache.php');
 require_once(__DIR__ . '/external/facebook.php');
 require_once(__DIR__ . '/external/google.php');
 
@@ -18,15 +19,25 @@ class DoloresUsers {
   }
 
   public static function authenticate($auth) {
-    if ($auth['type'] == 'facebook') {
-      $fb = new DoloresFacebook();
-      return $fb->authenticate($auth['token']);
-    } else if ($auth['type'] == 'google') {
-      $google = new DoloresGoogle();
-      return $google->authenticate($auth['code']);
+    $auth_cache = new DoloresAuthCache();
+    $data = $auth_cache->get($auth);
+    if ($data) {
+      return $data;
     }
 
-    return array('error' => 'Tipo de autenticação não suportado.');
+    if ($auth['type'] == 'facebook') {
+      $service = new DoloresFacebook();
+    } else if ($auth['type'] == 'google') {
+      $service = new DoloresGoogle();
+    } else {
+      return array('error' => 'Tipo de autenticação não suportado.');
+    }
+
+    $data = $service->authenticate($auth['code']);
+    if (!array_key_exists('error', $data)) {
+      $auth_cache->store($auth, $data);
+    }
+    return $data;
   }
 
   public static function signin($user) {
