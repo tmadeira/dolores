@@ -9,10 +9,19 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     $email = $request['data']['email'];
     $location = $request['data']['location'];
 
-    $user = DoloresUsers::authenticate($request['data']['auth']);
+    $auth = $request['data']['auth'];
+    $user = DoloresUsers::authenticate($auth, true);
 
     if (array_key_exists('error', $user)) {
       $this->_error($user['error']);
+    }
+
+    $auth_field = "auth_${auth['type']}";
+    $user = DoloresUsers::getUserByUniqueField($auth_field, $me['id']);
+
+    if ($user !== null) {
+      DoloresUsers::signin($user);
+      return array('action' => 'refresh');
     }
 
     $form_errors = array();

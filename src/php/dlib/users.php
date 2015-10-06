@@ -18,11 +18,13 @@ class DoloresUsers {
     return null;
   }
 
-  public static function authenticate($auth) {
+  public static function authenticate($auth, $use_cache = false) {
     $auth_cache = new DoloresAuthCache();
-    $data = $auth_cache->get($auth);
-    if ($data) {
-      return $data;
+
+    if ($use_cache) {
+      if ($data = $auth_cache->get($auth)) {
+        return $data;
+      }
     }
 
     if ($auth['type'] == 'facebook') {

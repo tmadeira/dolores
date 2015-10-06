@@ -6,7 +6,7 @@ class DoloresGoogle {
     $this->client = new Google_Client();
     $this->client->setClientId(GOOGLE_CLIENT_ID);
     $this->client->setClientSecret(GOOGLE_CLIENT_SECRET);
-    $this->client->setRedirectUri($_SERVER['HTTP_HOST']);
+    $this->client->setRedirectUri('http://' . $_SERVER['HTTP_HOST']);
   }
 
   public function authenticate($code) {
