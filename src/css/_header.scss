@@ -360,22 +360,28 @@ body.paged, body:not(.home) {
 }
 
 .user-logged-menu-picture {
-  $sz: 120px;
-  @include border-radius($sz/2);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: inline-block;
-  height: $sz;
-  vertical-align: middle;
-  width: $sz;
+  display: none;
+
+  @include breakpoint($break-desktop) {
+    $sz: 120px;
+    @include border-radius($sz/2);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: $sz;
+    vertical-align: middle;
+    width: $sz;
+  }
 }
 
 .user-logged-menu-info {
-  display: inline-block;
-  margin-left: 15px;
-  max-width: 165px;
-  vertical-align: middle;
+  @include breakpoint($break-desktop) {
+    display: inline-block;
+    margin-left: 15px;
+    max-width: 165px;
+    vertical-align: middle;
+  }
 }
 
 .user-logged-menu-name {
