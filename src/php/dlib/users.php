@@ -50,10 +50,13 @@ class DoloresUsers {
 
   public static function signup($data) {
     $login = DoloresUsers::generate_login($data['name']);
-    $picture = DoloresUsers::upload_profile_picture($data['picture']);
 
-    if (is_array($picture) && array_key_exists('error', $picture)) {
-      return $picture;
+    if ($data['picture']) {
+      $picture = DoloresUsers::upload_profile_picture($data['picture']);
+
+      if (is_array($picture) && array_key_exists('error', $picture)) {
+        return $picture;
+      }
     }
 
     $password = wp_generate_password();
@@ -95,7 +98,7 @@ class DoloresUsers {
       return array('error' => 'Não foi possível realizar o cadastro.');
     }
 
-    if (!dolores_update_user_meta($user_id, 'picture', $picture)) {
+    if ($picture && !dolores_update_user_meta($user_id, 'picture', $picture)) {
       wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar sua imagem.');
     }
