@@ -17,10 +17,10 @@ class DoloresSignupAPI extends DoloresBaseAPI {
     }
 
     $auth_field = "auth_${auth['type']}";
-    $user = DoloresUsers::getUserByUniqueField($auth_field, $me['id']);
+    $dolores_user = DoloresUsers::getUserByUniqueField($auth_field, $me['id']);
 
-    if ($user !== null) {
-      DoloresUsers::signin($user);
+    if ($dolores_user !== null) {
+      DoloresUsers::signin($dolores_user);
       return array('action' => 'refresh');
     }
 
