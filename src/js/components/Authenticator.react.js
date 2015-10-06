@@ -43,8 +43,12 @@ var Authenticator = React.createClass({
               waiting: false
             });
           }
-        }.bind(this)).fail(function(response) {
-          console.log(response);
+        }.bind(this)).fail(function(data) {
+          alert("Erro na autenticação: " + data.responseJSON.error);
+          location.reload();
+          this.setState({
+            waiting: false
+          });
         });
       }.bind(this),
 
