@@ -1,5 +1,7 @@
 "use strict";
 
+/* TODO: delete this file (not needed in v2) */
+
 var _ = require("lodash");
 var $ = require("jquery");
 var React = require("react");

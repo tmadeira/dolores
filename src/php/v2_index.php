@@ -24,6 +24,13 @@ if (!$paged || $paged == 1) {
         allowfullscreen
         >
       </iframe>
+
+      <button
+          class="site-presentation-button"
+          onclick="DoloresAuthenticator.signIn()"
+          >
+        Gostou? Clique aqui para participar!
+      </button>
     </div>
   </section>
 
