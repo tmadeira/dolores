@@ -90,8 +90,10 @@ var Authenticator = React.createClass({
     var lightboxContent = null;
 
     if (this.state.waiting) {
+      var spinner = "fa fa-refresh fa-spin fa-4x";
       lightboxContent = (
         <div className="lightbox-wrap">
+          <p style={{textAlign: "center"}}><i className={spinner}></i></p>
           <p style={{textAlign: "center"}}>Carregando...</p>
         </div>
       );
