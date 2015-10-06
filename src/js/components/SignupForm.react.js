@@ -15,6 +15,7 @@ var SignupForm = React.createClass({
       email: this.props.data.email,
       phone: this.props.data.phone,
       errors: {},
+      loading: false,
       suggestions: {
         location: []
       },
@@ -74,6 +75,9 @@ var SignupForm = React.createClass({
   }, 150, {maxWait: 600}),
 
   submit: function(e) {
+    this.setState({
+      loading: true
+    });
     var params = {
       auth: this.props.data.auth,
       name: this.state.name,
@@ -82,10 +86,30 @@ var SignupForm = React.createClass({
       location: this.state.location
     };
     API.route("signup").post({data: params}).done(function(data) {
-      console.log("signup returned", data);
-    }).fail(function(response) {
-      console.log(response);
-    });
+      if (data.action === "refresh") {
+        location.reload();
+      }
+      this.setState({
+        loading: false
+      });
+    }.bind(this)).fail(function(data) {
+      switch (data.status) {
+        case 400:
+          if ("formErrors" in data.responseJSON) {
+            for (var key in data.responseJSON.formErrors) {
+              if (data.responseJSON.formErrors.hasOwnProperty(key)) {
+                this.setError(key, data.responseJSON.formErrors[key]);
+              }
+            }
+          }
+          break;
+        default:
+          alert("Erro ao efetuar cadastro: " + data.responseJSON.error);
+      }
+      this.setState({
+        loading: false
+      });
+    }.bind(this));
     e.preventDefault();
   },
 
