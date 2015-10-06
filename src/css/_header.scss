@@ -374,6 +374,7 @@ body.paged, body:not(.home) {
 .user-logged-menu-info {
   display: inline-block;
   margin-left: 15px;
+  max-width: 165px;
   vertical-align: middle;
 }
 
@@ -383,10 +384,14 @@ body.paged, body:not(.home) {
   @include breakpoint($break-desktop) {
     background: $orange;
     color: #fff;
-    display: inline-block;
+    display: block;
     font-size: 13px;
     letter-spacing: 0;
     margin-bottom: 10px;
+    max-width: 100%;
+    overflow: hidden;
     padding: 4px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
