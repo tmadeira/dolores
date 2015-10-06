@@ -19,10 +19,11 @@ function dolores_get_version() {
     return $_GET['v'];
   }
 
-  $v2_filter = array("madeira");
   if (is_user_logged_in()) {
-    $user = wp_get_current_user()->user_login;
-    if (in_array($user, $v2_filter)) {
+    $user = wp_get_current_user();
+    $google = get_user_meta($user->ID, 'auth_google', true);
+    $facebook = get_user_meta($user->ID, 'auth_facebook', true);
+    if ($google || $facebook) {
       return 2;
     }
   }
