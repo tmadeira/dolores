@@ -40,7 +40,10 @@ function dolores_register_post_types() {
       'view_item' => 'Visualizar tema'
     ),
     'hierarchical' => true,
-    'public' => true
+    'public' => true,
+    'rewrite' => array(
+      'hierarchical' => true
+    )
   );
 
   register_post_type('ideia', $post_args);
