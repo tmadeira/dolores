@@ -80,11 +80,11 @@ class DoloresUsers {
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
       $MailChimp->fireAndForget('lists/subscribe', Array(
         'id' => MAILCHIMP_LIST_ID,
-        'email' => array('email' => $email),
+        'email' => array('email' => $data['email']),
         'merge_vars' => array(
-          'NOME' => $name,
-          'CELULAR' => $phone,
-          'BAIRRO' => $location,
+          'NOME' => $data['name'],
+          'CELULAR' => $data['phone'],
+          'BAIRRO' => $data['location'],
           'ORIGEM' => 'Site'
         ),
         'double_optin' => false
@@ -103,12 +103,12 @@ class DoloresUsers {
       return array('error' => 'Não foi possível cadastrar sua imagem.');
     }
 
-    if (!dolores_update_user_meta($user_id, 'location', $location)) {
+    if (!dolores_update_user_meta($user_id, 'location', $data['location'])) {
       wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar sua localização.');
     }
 
-    if (!dolores_update_user_meta($user_id, 'phone', $phone)) {
+    if (!dolores_update_user_meta($user_id, 'phone', $data['phone'])) {
       wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar seu telefone.');
     }
