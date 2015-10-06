@@ -15,7 +15,7 @@ var SignupForm = React.createClass({
       email: this.props.data.email,
       phone: this.props.data.phone,
       errors: {},
-      loading: false,
+      waiting: false,
       suggestions: {
         location: []
       },
@@ -76,7 +76,7 @@ var SignupForm = React.createClass({
 
   submit: function(e) {
     this.setState({
-      loading: true
+      waiting: true
     });
     var params = {
       auth: this.props.data.auth,
@@ -88,11 +88,16 @@ var SignupForm = React.createClass({
     API.route("signup").post({data: params}).done(function(data) {
       if (data.action === "refresh") {
         location.reload();
+      } else {
+        console.log("Unexpected return", data);
+        this.setState({
+          waiting: false
+        });
       }
-      this.setState({
-        loading: false
-      });
     }.bind(this)).fail(function(data) {
+      this.setState({
+        waiting: false
+      });
       switch (data.status) {
         case 400:
           if ("formErrors" in data.responseJSON) {
@@ -106,14 +111,20 @@ var SignupForm = React.createClass({
         default:
           alert("Erro ao efetuar cadastro: " + data.responseJSON.error);
       }
-      this.setState({
-        loading: false
-      });
     }.bind(this));
     e.preventDefault();
   },
 
   render: function() {
+    if (this.state.waiting) {
+      var spinner = "fa fa-refresh fa-spin fa-4x";
+      return (
+        <div>
+          <p style={{textAlign: "center"}}><i className={spinner}></i></p>
+          <p style={{textAlign: "center"}}>Carregando...</p>
+        </div>
+      );
+    }
     return (
       <form ref="form" onSubmit={this.submit}>
         <div className="signup-form">
