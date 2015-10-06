@@ -31,22 +31,30 @@ var onResize = function() {
 
 var hideActiveSubmenus = function() {
   $(".menu-item-has-children.active").each(function() {
-    $(this).find(".sub-menu").slideUp(150);
+    if ($(this).hasClass("user-logged")) {
+      $(this).find(".sub-menu").hide();
+    } else {
+      $(this).find(".sub-menu").slideUp(150);
+    }
     $(this).removeClass("active");
   });
 };
 
 var setup = function() {
-  $(".header-menu .sub-menu").hide();
+  $(".site-header .sub-menu").hide();
 
-  $(".header-menu .menu-item-has-children > a").click(function(e) {
+  $(".site-header .menu-item-has-children > a").click(function(e) {
     var li = $(this).parent();
     var isActive = li.hasClass("active");
 
     hideActiveSubmenus();
 
     if (!isActive) {
-      li.find(".sub-menu").slideDown(150);
+      if (li.hasClass("user-logged")) {
+        li.find(".sub-menu").show();
+      } else {
+        li.find(".sub-menu").slideDown(150);
+      }
       li.addClass("active");
     }
 

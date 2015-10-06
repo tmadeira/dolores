@@ -76,15 +76,30 @@ if (defined('GOOGLE_CLIENT_ID')) {
           $style = ' style="background-image: url(\'' . $picture. '\');"';
 
           $cur_url = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-          $logout_link = wp_logout_url($cur_url);
+          $logout = wp_logout_url($cur_url);
+          $profile = get_author_posts_url($user->ID);
+          $edit = "javascript:alert('Em construção.');void(0);"; // TODO
           ?>
-          <li class="user-logged">
-            <a
-                href="<?php echo $logout_link; ?>"
-                title="<?php echo esc_attr($user->display_name); ?>"
-                >
+          <li class="user-logged menu-item-has-children">
+            <a href="#" title="<?php echo esc_attr($user->display_name); ?>">
               <span class="user-logged-picture"<?php echo $style; ?>></span>
+              <span class="user-logged-name">
+                <?php echo $user->display_name; ?>
+              </span>
             </a>
+            <div class="sub-menu user-logged-menu">
+              <div class="user-logged-menu-picture"<?php echo $style; ?>></div>
+              <div class="user-logged-menu-info">
+                <h3 class="user-logged-menu-name">
+                  <?php echo $user->display_name; ?>
+                </h3>
+                <ul class="user-logged-menu-ul">
+                  <li><a href="<?php echo $profile; ?>">Ver perfil</a></li>
+                  <li><a href="<?php echo $edit; ?>">Editar perfil</a></li>
+                  <li><a href="<?php echo $logout; ?>">Sair</a></li>
+                </ul>
+              </div>
+            </div>
           </li>
           <?php
         } else {
