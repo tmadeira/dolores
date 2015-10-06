@@ -74,9 +74,15 @@ if (defined('GOOGLE_CLIENT_ID')) {
           require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
           $picture = dolores_get_profile_picture($user);
           $style = ' style="background-image: url(\'' . $picture. '\');"';
+
+          $cur_url = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+          $logout_link = wp_logout_url($cur_url);
           ?>
           <li class="user-logged">
-            <a href="#" title="<?php echo esc_attr($user->display_name); ?>">
+            <a
+                href="<?php echo $logout_link; ?>"
+                title="<?php echo esc_attr($user->display_name); ?>"
+                >
               <span class="user-logged-picture"<?php echo $style; ?>></span>
             </a>
           </li>
