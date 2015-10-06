@@ -12,11 +12,33 @@
               <?php the_title(); ?>
             </a>
           </h3>
-          <p class="grid-ideia-tags"> <!-- TODO -->
-            <a class="grid-ideia-tag" href="#">Direito à cidade</a>
-            <a class="grid-ideia-tag" href="#">Educação</a>
-            <a class="grid-ideia-tag" href="#">Tecnologia</a>
-          </p>
+          <?php
+          $taxonomy = 'tema';
+          $terms = get_the_terms($post->ID, $taxonomy);
+          $tags = array();
+          foreach ($terms as $term) {
+            if ($term->parent != 0) {
+              $tags[] = array(
+                'name' => $term->name,
+                'link' => get_term_link($term, $taxonomy)
+              );
+            }
+          }
+          if (count($tags)) {
+            ?>
+            <p class="grid-ideia-tags">
+              <?php
+              foreach ($tags as $tag) {
+                ?>
+                <a class="grid-ideia-tag" href="<?php echo $tag['link']; ?>"
+                    ><?php echo $tag['name']; ?></a>
+                <?php
+              }
+              ?>
+            </p>
+            <?php
+          }
+          ?>
           <p class="grid-ideia-author">
             <?php
             $id = get_the_author_meta('ID');
