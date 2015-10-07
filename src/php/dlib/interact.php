@@ -1,7 +1,16 @@
 <?php
 class DoloresInteract {
+  private static $instance;
   private $field_up = 'dolores_votes_up';
   private $field_down = 'dolores_votes_down';
+
+  public static function get_instance() {
+    if (null === static::$instance) {
+      static::$instance = new static();
+    }
+
+    return static::$instance;
+  }
 
   public function __construct() {
     global $wpdb;

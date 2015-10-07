@@ -1,5 +1,9 @@
 <?php
+require_once(__DIR__ . '/dlib/interact.php');
+
 function dolores_ideia_comment($comment, $args, $depth) {
+  $interact = DoloresInteract::get_instance();
+  list($up, $down) = $interact->get_comment_votes($comment->comment_ID);
   ?>
   <li class="ideia-comment" id="comment-<?php echo $comment->comment_ID; ?>">
     <div class="ideia-comment-table">
@@ -29,22 +33,22 @@ function dolores_ideia_comment($comment, $args, $depth) {
         <div class="ideia-comment-meta">
           <a class="ideia-comment-action ideia-upvote" href="#">
             <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-            403
+            <?php echo $up; ?>
           </a>
           <a class="ideia-comment-action ideia-downvote" href="#">
             <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-            2
+            <?php echo $down; ?>
           </a>
           <span class="ideia-comment-action">
             <?php
-            $reply_text = '<i class="fa fa-fw fa-lg fa-comments"></i> 2';
+            $reply = '<i class="fa fa-fw fa-lg fa-comments"></i> Responder';
             comment_reply_link(
               array_merge(
                 $args,
                 array(
                   'depth' => $depth,
                   'max_depth' => $args['max_depth'],
-                  'reply_text' => $reply_text
+                  'reply_text' => $reply
                 )
               )
             );
@@ -64,13 +68,17 @@ function dolores_ideia_comment($comment, $args, $depth) {
 
 <div id="comments">
   <div class="ideia-comments-header">
+    <?php
+    $interact = DoloresInteract::get_instance();
+    list($up, $down) = $interact->get_post_votes($post->ID);
+    ?>
     <a class="ideia-action ideia-upvote" href="#">
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-      403
+      <?php echo $up; ?>
     </a>
     <a class="ideia-action ideia-downvote" href="#">
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-      2
+      <?php echo $down; ?>
     </a>
   </div>
 

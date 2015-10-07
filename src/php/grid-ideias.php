@@ -53,18 +53,23 @@
               <?php the_author(); ?>
             </a>
           </p>
-          <p class="grid-ideia-interact"> <!-- TODO -->
+          <p class="grid-ideia-interact">
+            <?php
+            require_once(__DIR__ . '/dlib/interact.php');
+            $interact = new DoloresInteract();
+            list($up, $down) = $interact->get_post_votes($post->ID);
+            ?>
             <a class="grid-ideia-action grid-ideia-upvote" href="#">
               <i class="fa fa-fw fa-thumbs-up"></i>
-              403
+              <?php echo $up; ?>
             </a>
             <a class="grid-ideia-action grid-ideia-downvote" href="#">
               <i class="fa fa-fw fa-thumbs-down"></i>
-              2
+              <?php echo $down; ?>
             </a>
             <a class="grid-ideia-action grid-ideia-discussion" href="#">
               <i class="fa fa-fw fa-comments"></i>
-              51
+              <?php echo get_comments_number(); ?>
             </a>
           </p>
           <!-- TODO: share -->
