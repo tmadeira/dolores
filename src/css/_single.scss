@@ -28,6 +28,12 @@
   font-weight: 700;
   margin: 15px 0;
 
+  .single-ideia & {
+    @include breakpoint($break-tablet) {
+      line-height: 32px;
+    }
+  }
+
   & > * {
     display: inline-block;
     margin-right: 5px;
@@ -44,6 +50,14 @@
     & > .single-date {
       display: inline-block;
     }
+  }
+}
+
+.single-meta-sep {
+  display: none;
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 

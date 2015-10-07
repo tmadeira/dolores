@@ -46,7 +46,7 @@ foreach ($terms as $term) {
     }
     ?>
 
-    <div class="single-meta social-media" style="line-height: 32px;">
+    <div class="single-meta social-media">
       <span class="single-author">
         <?php
         $id = get_the_author_meta('ID');
@@ -62,11 +62,11 @@ foreach ($terms as $term) {
           <?php the_author(); ?>
         </a>
       </span>
-      <span style="display: inline-block; vertical-align: middle;">·</span>
+      <span class="single-meta-sep">·</span>
       <span class="single-date">
         <?php the_time('d \d\e F \d\e Y'); ?>
       </span>
-      <span style="display: inline-block; vertical-align: middle;">·</span>
+      <span class="single-meta-sep">·</span>
       <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
       <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
     </div>
