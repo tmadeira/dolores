@@ -47,7 +47,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 300px;
+  height: 350px;
 
   @include breakpoint($break-tablet) {
     display: inline-block;
