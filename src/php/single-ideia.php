@@ -52,7 +52,6 @@ foreach ($terms as $term) {
         $id = get_the_author_meta('ID');
         require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
         $picture = dolores_get_profile_picture(get_user_by('id', $id));
-        $hash = md5(strtolower(trim(get_the_author_meta('user_email'))));
         $style = ' style="background-image: url(\'' . $picture. '\');"';
         $url = get_author_posts_url(get_the_author_meta('ID'));
         ?>
@@ -74,6 +73,10 @@ foreach ($terms as $term) {
     <div class="entry">
       <?php the_content(); ?>
     </div>
+
+    <?php
+    comments_template('/comments-ideia.php');
+    ?>
   </article>
 </main>
 <?php
