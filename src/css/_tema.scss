@@ -1,6 +1,6 @@
 main.tema {
   @include breakpoint($break-tablet) {
-    padding: 40px 0 0;
+    padding: 40px 0 30px;
   }
 
   & > .wrap {
@@ -64,4 +64,99 @@ main.tema {
     background: #000;
     color: #fff;
   }
+}
+
+.tema-form {
+  color: #fff;
+  padding: 5px;
+
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+
+    & > .wrap {
+      display: table;
+      width: 100%;
+    }
+  }
+}
+
+.tema-form-explanation {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding-right: 150px;
+    vertical-align: middle;
+    width: 600px;
+  }
+}
+
+.tema-form-form {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.tema-form-title {
+  @extend %title-font;
+  display: none;
+  font-size: 72px;
+  letter-spacing: 0;
+  line-height: 1em;
+  margin-bottom: 20px;
+  @include breakpoint($break-tablet) {
+    display: block;
+  }
+}
+
+.tema-form-description {
+  font-size: 14px;
+  line-height: 1.3em;
+  margin-top: 10px;
+  & > strong {
+    font-weight: 700;
+  }
+  @include breakpoint($break-tablet) {
+    font-size: 18px;
+    margin-top: 0;
+  }
+}
+
+.tema-form-item {
+  line-height: 0;
+  padding: 5px 0;
+}
+
+.tema-form-label {
+  @extend %title-font;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.tema-form-input, .tema-form-textarea, .tema-form-button {
+  font-size: 13px;
+  @include breakpoint($break-tablet) {
+    font-size: 16px;
+  }
+}
+
+.tema-form-input, .tema-form-textarea {
+  @extend %text-font;
+  background: #fff;
+  border: 0;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.tema-form-textarea {
+  height: 140px;
+}
+
+.tema-form-button {
+  @extend %title-font;
+  background: #000;
+  border: 0;
+  color: #fff;
+  letter-spacing: 0;
+  padding: 5px 10px;
 }

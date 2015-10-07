@@ -106,6 +106,49 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
   </div>
 </main>
 
+<section class="temas-form bg-pattern-teal">
+  <div class="wrap">
+    <h2 class="temas-form-title">
+      Quer discutir outro tema?
+    </h2>
+
+    <p class="temas-form-description">
+      Duis eu tincidunt metus. Proin tempor ante eget.
+    </p>
+
+    <form class="temas-form-form">
+      <p class="tema-form-item">
+        <label class="tema-form-label" for="tema-form-title">
+          Título
+        </label>
+        <input
+            type="text"
+            class="tema-form-input"
+            id="tema-form-title"
+            maxlength="100"
+            placeholder="Título (max. 100 caracteres)"
+            />
+      </p>
+      <p class="tema-form-item">
+        <label class="tema-form-label" for="tema-form-content">
+          Escreva sua ideia
+        </label>
+        <textarea
+            class="tema-form-textarea"
+            id="tema-form-content"
+            maxlength="600"
+            placeholder="Ideia (max. 600 caracteres)"
+            ></textarea>
+      </p>
+      <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
+        <button class="tema-form-button" onclick="alert('Em construção.')">
+          Enviar
+        </button>
+      </p>
+    </form>
+  </div>
+</section>
+
 <?php
 get_footer();
 ?>
