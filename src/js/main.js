@@ -6,6 +6,7 @@ var React = require("react");
 var analytics = require("./analytics");
 var explanation = require("./explanation");
 var facebook = require("./facebook");
+var forms = require("./forms");
 var google = require("./google");
 var hero = require("./hero");
 var menu = require("./menu");
@@ -38,6 +39,7 @@ $(function() {
   analytics.setup();
   explanation.setup();
   facebook.setup();
+  forms.setup();
   hero.setup();
   google.setup();
   menu.setup();

@@ -1,10 +1,17 @@
 "use strict";
 
+var $ = require("jquery");
 var React = require("react");
 
 var API = require("../api");
 
 var SignupForm = require("./SignupForm.react");
+
+var defaultMessage = "Conecte-se para participar das discussões na plataforma:";
+
+var defaultRefreshCallback = function() {
+  location.reload();
+};
 
 var Authenticator = React.createClass({
   getInitialState: function() {
@@ -19,10 +26,28 @@ var Authenticator = React.createClass({
 
   componentWillMount: function() {
     window.DoloresAuthenticator = {
-      signIn: function() {
-        this.setState({
+      signIn: function(message, refreshCallback) {
+        var newState = {
           show: true
-        });
+        };
+
+        if (message != null) {
+          newState.message = message;
+        } else {
+          newState.message = defaultMessage;
+        }
+
+        if (refreshCallback != null) {
+          newState.refreshCallback = refreshCallback;
+        } else {
+          newState.refreshCallback = defaultRefreshCallback;
+        }
+
+        if ($("body").hasClass("logged-in")) {
+          newState.refreshCallback();
+        } else {
+          this.setState(newState);
+        }
       }.bind(this),
 
       setAuth: function(auth) {
@@ -33,7 +58,7 @@ var Authenticator = React.createClass({
 
         API.route("signin").post(auth).done(function(response) {
           if (response.action === "refresh") {
-            location.reload();
+            this.refresh();
           } else if (response.action === "signup") {
             var data = response.data;
             data.auth = auth;
@@ -56,6 +81,14 @@ var Authenticator = React.createClass({
         return this.hasAuth() && this.state.auth.type === type;
       }.bind(this)
     };
+  },
+
+  refresh: function() {
+    this.setState({
+      show: false,
+      waiting: false
+    });
+    this.state.refreshCallback();
   },
 
   hasAuth: function() {
@@ -100,15 +133,17 @@ var Authenticator = React.createClass({
     } else if (this.state.signup) {
       lightboxContent = (
         <div className="lightbox-wrap">
-          <SignupForm data={this.state.data}></SignupForm>
+          <SignupForm
+              data={this.state.data}
+              refreshCallback={this.refresh}
+              >
+          </SignupForm>
         </div>
       );
     } else {
       lightboxContent = (
         <div className="lightbox-wrap">
-          <p className="signin-text">
-            Conecte-se para participar das discussões na plataforma:
-          </p>
+          <p className="signin-text">{this.state.message}</p>
           <button
               className="signin-button signin-facebook"
               onClick={this.signinWithFacebook}

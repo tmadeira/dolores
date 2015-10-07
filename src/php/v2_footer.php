@@ -50,11 +50,9 @@ $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
     </div>
   </div>
 </footer>
-<?php
-if (!is_user_logged_in()) {
-  echo '<div id="authenticator"></div>';
-}
-?>
+
+<div id="authenticator"></div>
+
 <?php wp_footer(); ?>
 </body>
 </html>

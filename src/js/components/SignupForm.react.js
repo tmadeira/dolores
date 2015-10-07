@@ -87,7 +87,7 @@ var SignupForm = React.createClass({
     };
     API.route("signup").post({data: params}).done(function(data) {
       if (data.action === "refresh") {
-        location.reload();
+        this.props.refreshCallback();
       } else {
         console.log("Unexpected return", data);
         this.setState({

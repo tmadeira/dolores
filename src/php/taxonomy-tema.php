@@ -61,7 +61,7 @@ if ($term->parent == 0) {
         </p>
       </div>
 
-      <form class="tema-form-form">
+      <form class="tema-form-form" id="form-tema">
         <p class="tema-form-item">
           <label class="tema-form-label" for="tema-form-title">
             Título
@@ -97,7 +97,7 @@ if ($term->parent == 0) {
               />
         </p>
         <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
-          <button class="tema-form-button" onclick="alert('Em construção.')">
+          <button class="tema-form-button" type="submit">
             Enviar
           </button>
         </p>
