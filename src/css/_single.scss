@@ -6,14 +6,27 @@
   }
 }
 
+.single-taxonomy {
+  @extend %title-font;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  font-size: 24px;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+  padding: 8px 15px;
+}
+
 .single-title {
   @extend %title-font;
-  font-size: 28px;
+  font-size: 26px;
+  letter-spacing: 1px;
 }
 
 .single-meta {
   font-size: 12px;
   font-weight: 700;
+  margin: 15px 0;
 
   & > * {
     display: inline-block;
@@ -35,7 +48,8 @@
 }
 
 .entry {
-  line-height: 140%;
+  font-size: 17px;
+  line-height: 170%;
 
   blockquote, code, div, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
     margin: 15px 0;
