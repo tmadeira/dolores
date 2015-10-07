@@ -84,10 +84,7 @@ var Authenticator = React.createClass({
   },
 
   refresh: function() {
-    this.setState({
-      show: false,
-      waiting: false
-    });
+    this.setState(this.getInitialState());
     this.state.refreshCallback();
   },
 
@@ -104,9 +101,7 @@ var Authenticator = React.createClass({
   },
 
   hide: function() {
-    this.setState({
-      show: false
-    });
+    this.setState(this.getInitialState());
   },
 
   overlayClick: function(e) {
