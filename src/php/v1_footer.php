@@ -51,6 +51,13 @@ $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
     </ul>
   </div>
 </footer>
+<script type="text/javascript">
+var DoloresAuthenticator = {
+  signIn: function() {
+    alert("A versão 1.0 da plataforma não suporta autenticação.");
+  }
+};
+</script>
 <?php wp_footer(); ?>
 </body>
 </html>
