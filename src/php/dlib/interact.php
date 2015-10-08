@@ -43,24 +43,17 @@ SQL;
     return $wpdb->get_var($sql) === $this->table_name;
   }
 
-  private function update_count($object) {
-    $post_id = array_key_exists('post_id', $object) ? $object['post_id'] : 0;
-    $comment_id =
-      array_key_exists('comment_id', $object) ? $object['comment_id'] : 0;
-
-    $post = get_post(intval($post_id));
-    $comment = get_comment(intval($comment_id));
-
-    if ($post) {
-      list($up, $down) = $this->get_post_votes($post->ID, true);
-      update_post_meta($post->ID, $this->field_up, $up);
-      update_post_meta($post->ID, $this->field_down, $down);
+  private function update_count($post_id, $comment_id) {
+    if ($post_id) {
+      list($up, $down) = $this->get_post_votes($post_id, true);
+      update_post_meta($post_id, $this->field_up, $up);
+      update_post_meta($post_id, $this->field_down, $down);
     }
 
-    if ($comment) {
-      list($up, $down) = $this->get_comment_votes($comment->ID, true);
-      update_comment_meta($comment->ID, $this->field_up, $up);
-      update_comment_meta($comment->ID, $this->field_down, $down);
+    if ($comment_id) {
+      list($up, $down) = $this->get_comment_votes($comment_id, true);
+      update_comment_meta($comment_id, $this->field_up, $up);
+      update_comment_meta($comment_id, $this->field_down, $down);
     }
   }
 
@@ -110,41 +103,36 @@ SQL;
     return array($votes['up'], $votes['down']);
   }
 
-  public function vote($object) {
+  public function vote($post_id, $comment_id, $action) {
     global $wpdb;
 
     if (!is_user_logged_in()) {
       return array('error' => 'Você precisa estar loggado para fazer isto.');
     }
 
-    $post_id = array_key_exists('post_id', $object) ? $object['post_id'] : 0;
-    $comment_id =
-      array_key_exists('comment_id', $object) ? $object['comment_id'] : 0;
-    $action = $object['action'];
-
     if ($action !== 'up' && $action !== 'down') {
       return array('error' => 'Ação não encontrada.');
     }
 
-    $post = get_post(intval($post_id));
-    $comment = get_comment(intval($comment_id));
-
-    if ((!$post && !$comment) || ($post && $comment)) {
-      return array('error' => 'Comentário não encontrado.');
-    }
+    $post_id = intval($post_id);
+    $comment_id = intval($comment_id);
 
     $fields = array(
       'user_id' => wp_get_current_user()->ID,
-      'post_id' => $post ? $post->ID : 0,
-      'comment_id' => $comment ? $comment->ID : 0,
+      'post_id' => $post_id,
+      'comment_id' => $comment_id,
       'action' => $action
     );
 
+    if ($this->voted($post_id, $comment_id)) {
+      $this->unvote($post_id, $comment_id);
+    }
+
     $wpdb->insert($this->table_name, $fields);
-    $this->update_count($fields);
+    $this->update_count($post_id, $comment_id);
   }
 
-  public function voted($object) {
+  public function voted($post_id, $comment_id) {
     global $wpdb;
 
     if (!is_user_logged_in()) {
@@ -152,19 +140,8 @@ SQL;
     }
 
     $user_id = wp_get_current_user()->ID;
-    $post_id = array_key_exists('post_id', $object) ? $object['post_id'] : 0;
-    $comment_id =
-      array_key_exists('comment_id', $object) ? $object['comment_id'] : 0;
-
     $post_id = intval($post_id);
     $comment_id = intval($comment_id);
-
-    $post = get_post($post_id);
-    $comment = get_comment($comment_id);
-
-    if ((!$post && !$comment) || ($post && $comment)) {
-      return array('error' => 'Comentário não encontrado.');
-    }
 
     $sql = <<<SQL
 SELECT COUNT(*) FROM {$this->table_name} WHERE
@@ -173,20 +150,23 @@ SELECT COUNT(*) FROM {$this->table_name} WHERE
   comment_id = '$comment_id'
 SQL;
 
-    return $wpdb->get_var($sql) === 1;
+    return $wpdb->get_var($sql) === "1";
   }
 
-  public function unvote($object) {
+  private function unvote($post_id, $comment_id) {
     global $wpdb;
-    $voted = $this->voted($object);
-    if (is_array($voted) && array_key_exists('error', $voted)) {
-      return $voted;
+
+    if (!is_user_logged_in()) {
+      return array('error' => 'Você precisa estar loggado para fazer isto.');
     }
 
-    if ($voted) {
-      $object['user_id'] = wp_get_current_user()->ID;
-      $wpdb->delete($this->table_name, $object);
-      $this->update_count($object);
-    }
+    $fields = array(
+      'user_id' => wp_get_current_user()->ID,
+      'post_id' => $post_id,
+      'comment_id' => $comment_id
+    );
+
+    $wpdb->delete($this->table_name, $fields);
+    $this->update_count($post_id, $comment_id);
   }
 };

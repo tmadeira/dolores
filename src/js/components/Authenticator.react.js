@@ -84,6 +84,8 @@ var Authenticator = React.createClass({
   },
 
   refresh: function() {
+    $("body").addClass("logged-in");
+    // TODO: async fetch/set header
     this.setState(this.getInitialState());
     this.state.refreshCallback();
   },

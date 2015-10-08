@@ -13,11 +13,7 @@ class DoloresVoteAPI extends DoloresBaseAPI {
     $comment_id = intval($comment_id);
 
     $interact = new DoloresInteract();
-    $vote = $interact->vote(array(
-      'post_id' => $post_id,
-      'comment_id' => $comment_id,
-      'action' => $request['action']
-    ));
+    $vote = $interact->vote($post_id, $comment_id, $request['action']);
 
     if (is_array($vote) && array_key_exists('error', $vote)) {
       $this->_error($vote['error']);
@@ -38,7 +34,7 @@ class DoloresVoteAPI extends DoloresBaseAPI {
     if ($post_id) {
       $votes = $interact->get_post_votes($post_id);
     } else {
-      $votes = $interact->get_post_votes($comment_id);
+      $votes = $interact->get_comment_votes($comment_id);
     }
 
     return array(

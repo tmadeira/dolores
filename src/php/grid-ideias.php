@@ -58,16 +58,18 @@
             require_once(__DIR__ . '/dlib/interact.php');
             $interact = new DoloresInteract();
             list($up, $down) = $interact->get_post_votes($post->ID);
+            $data = "href=\"#\" data-vote=\"post_id|{$post->ID}\"";
             ?>
-            <a class="grid-ideia-action grid-ideia-upvote" href="#">
+            <a class="grid-ideia-action ideia-upvote" <?php echo $data; ?>>
               <i class="fa fa-fw fa-thumbs-up"></i>
-              <?php echo $up; ?>
+              <span class="number"><?php echo $up; ?></span>
             </a>
-            <a class="grid-ideia-action grid-ideia-downvote" href="#">
+            <a class="grid-ideia-action ideia-downvote" <?php echo $data; ?>>
               <i class="fa fa-fw fa-thumbs-down"></i>
-              <?php echo $down; ?>
+              <span class="number"><?php echo $down; ?></span>
             </a>
-            <a class="grid-ideia-action grid-ideia-discussion" href="#">
+            <a class="grid-ideia-action grid-ideia-discussion"
+                href="<?php the_permalink(); ?>#comments">
               <i class="fa fa-fw fa-comments"></i>
               <?php echo get_comments_number(); ?>
             </a>

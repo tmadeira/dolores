@@ -4,6 +4,7 @@ require_once(__DIR__ . '/dlib/interact.php');
 function dolores_ideia_comment($comment, $args, $depth) {
   $interact = DoloresInteract::get_instance();
   list($up, $down) = $interact->get_comment_votes($comment->comment_ID);
+  $data = "href=\"#\" data-vote=\"comment_id|{$comment->comment_ID}\"";
   ?>
   <li class="ideia-comment" id="comment-<?php echo $comment->comment_ID; ?>">
     <div class="ideia-comment-table">
@@ -31,13 +32,13 @@ function dolores_ideia_comment($comment, $args, $depth) {
           </span>
         </div>
         <div class="ideia-comment-meta">
-          <a class="ideia-comment-action ideia-upvote" href="#">
+          <a class="ideia-comment-action ideia-upvote" <?php echo $data; ?>>
             <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-            <?php echo $up; ?>
+            <span class="number"><?php echo $up; ?></span>
           </a>
-          <a class="ideia-comment-action ideia-downvote" href="#">
+          <a class="ideia-comment-action ideia-downvote" <?php echo $data; ?>>
             <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-            <?php echo $down; ?>
+            <span class="number"><?php echo $down; ?></span>
           </a>
           <span class="ideia-comment-action">
             <?php
@@ -71,14 +72,15 @@ function dolores_ideia_comment($comment, $args, $depth) {
     <?php
     $interact = DoloresInteract::get_instance();
     list($up, $down) = $interact->get_post_votes($post->ID);
+    $data = "href=\"#\" data-vote=\"post_id|{$post->ID}\"";
     ?>
-    <a class="ideia-action ideia-upvote" href="#">
+    <a class="ideia-action ideia-upvote" <?php echo $data; ?>>
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-      <?php echo $up; ?>
+      <span class="number"><?php echo $up; ?></span>
     </a>
-    <a class="ideia-action ideia-downvote" href="#">
+    <a class="ideia-action ideia-downvote" <?php echo $data; ?>>
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-      <?php echo $down; ?>
+      <span class="number"><?php echo $down; ?></span>
     </a>
   </div>
 

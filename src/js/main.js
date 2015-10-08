@@ -9,6 +9,7 @@ var facebook = require("./facebook");
 var forms = require("./forms");
 var google = require("./google");
 var hero = require("./hero");
+var interact = require("./interact");
 var menu = require("./menu");
 var twitter = require("./twitter");
 
@@ -40,8 +41,9 @@ $(function() {
   explanation.setup();
   facebook.setup();
   forms.setup();
-  hero.setup();
   google.setup();
+  hero.setup();
+  interact.setup();
   menu.setup();
   twitter.setup();
 });
