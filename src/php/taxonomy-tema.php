@@ -4,6 +4,7 @@ get_header();
 $term = get_queried_object();
 
 $video = get_term_meta($term->term_id, 'video', true);
+$image = get_term_meta($term->term_id, 'image', true);
 $more = get_term_meta($term->term_id, 'more', true);
 
 $vparams = "rel=0&amp;controls=0&amp;showinfo=0";
@@ -12,16 +13,22 @@ $vparams = "rel=0&amp;controls=0&amp;showinfo=0";
 <main class="tema">
   <div class="wrap">
     <?php if ($video) { ?>
-    <div class="tema-video">
-      <iframe
-        allowfullscreen
-        frameborder="0"
-        height="480"
-        src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
-        width="640"
-        >
-      </iframe>
-    </div>
+      <div class="tema-video">
+        <iframe
+          allowfullscreen
+          frameborder="0"
+          height="480"
+          src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
+          width="640"
+          >
+        </iframe>
+      </div>
+    <?php } else if ($image) {
+      $style = ' style="background-image: url(\'' . $image . '\');"';
+      ?>
+      <div class="tema-video">
+        <div class="tema-video-image"<?php echo $style;?>> </div>
+      </div>
     <?php } ?>
 
     <div class="tema-info">
