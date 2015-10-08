@@ -40,21 +40,9 @@ function dolores_ideia_comment($comment, $args, $depth) {
             <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
             <span class="number"><?php echo $down; ?></span>
           </a>
-          <span class="ideia-comment-action">
-            <?php
-            $reply = '<i class="fa fa-fw fa-lg fa-comments"></i> Responder';
-            comment_reply_link(
-              array_merge(
-                $args,
-                array(
-                  'depth' => $depth,
-                  'max_depth' => $args['max_depth'],
-                  'reply_text' => $reply
-                )
-              )
-            );
-            ?>
-          </span>
+          <a class="ideia-comment-action ideia-comment-reply" href="#">
+            <i class="fa fa-fw fa-lg fa-comments"></i> Responder
+          </a>
           <span class="ideia-comment-date">
             <?php echo get_comment_date(); ?>
             às
@@ -97,11 +85,17 @@ function dolores_ideia_comment($comment, $args, $depth) {
     $user = wp_get_current_user();
     require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
     $picture = dolores_get_profile_picture($user);
-    $style = ' style="background-image: url(\'' . $picture. '\');"';
-    $comment_field = <<<HTML
+  } else {
+    $hash = md5("nobody");
+    $picture = "http://gravatar.com/avatar/$hash?d=mm&s=300";
+  }
+  $style = ' style="background-image: url(\'' . $picture. '\');"';
+  ?>
+
+  <div class="ideia-comment-form-container" id="respond">
     <div class="ideia-comment-form">
       <div class="ideia-comment-picture-container">
-        <span class="user-logged-picture"${style}></span>
+        <span class="user-logged-picture"<?php echo $style; ?>></span>
       </div>
       <textarea
         aria-required="true"
@@ -110,17 +104,5 @@ function dolores_ideia_comment($comment, $args, $depth) {
         placeholder="Escreva uma resposta"
         ></textarea>
     </div>
-HTML;
-
-    comment_form(array(
-      'comment_field' => $comment_field
-    ));
-  } else {
-    ?>
-    <p style="padding: 20px;">
-      TODO: Usuário não está loggado.
-    </p>
-    <?php
-  }
-  ?>
+  </div>
 </div>
