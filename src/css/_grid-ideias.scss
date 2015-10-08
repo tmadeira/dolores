@@ -94,3 +94,23 @@
   text-align: right;
   width: 100%;
 }
+
+.grid-ideias-pagination {
+  margin: 10px 0 40px;
+  text-align: center;
+}
+
+.grid-ideias-button {
+  @extend %title-font;
+  background: none;
+  border: solid 2px $purple;
+  color: $purple;
+  font-size: 18px;
+  letter-spacing: 0;
+  padding: 5px 10px;
+  margin: 0 10px;
+  &:hover {
+    background: $purple;
+    color: #fff;
+  }
+}

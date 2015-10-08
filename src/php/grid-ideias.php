@@ -97,23 +97,23 @@
     $next_page = intval($paged) + 1;
 
     ?>
-    <div class="grid-pagination">
+    <div class="grid-ideias-pagination">
       <?php
-
-      if ($prev_page > 0) {
-        $prev_link = get_previous_posts_page_link();
-        ?>
-        <a class="btn-prev-page" href="<?php echo $prev_link; ?>"></a>
-        <?php
-      }
-
       if ($next_page <= $wp_query->max_num_pages) {
         $next_link = get_next_posts_page_link();
         ?>
-        <a class="btn-next-page" href="<?php echo $next_link; ?>"></a>
+        <a class="grid-ideias-button" href="<?php echo $next_link; ?>">
+          Ver mais ideias
+        </a>
         <?php
       }
       ?>
+
+      <?php if (is_tax()) { ?>
+      <a class="grid-ideias-button" href="/temas">
+        Ver todos os temas
+      </a>
+      <?php } ?>
     </div>
   </div>
 </section>
