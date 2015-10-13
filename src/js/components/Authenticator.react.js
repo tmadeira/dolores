@@ -2,6 +2,7 @@
 
 var $ = require("jquery");
 var React = require("react");
+var cx = require("classnames");
 
 var API = require("../api");
 
@@ -117,10 +118,14 @@ var Authenticator = React.createClass({
       return null;
     }
 
+    var className = {
+      lightbox: true
+    };
     var lightboxContent = null;
 
     if (this.state.waiting) {
       var spinner = "fa fa-refresh fa-spin fa-4x";
+      className.small = true;
       lightboxContent = (
         <div className="lightbox-wrap">
           <p style={{textAlign: "center"}}><i className={spinner}></i></p>
@@ -138,6 +143,7 @@ var Authenticator = React.createClass({
         </div>
       );
     } else {
+      className.small = true;
       lightboxContent = (
         <div className="lightbox-wrap">
           <p className="signin-text">{this.state.message}</p>
@@ -161,7 +167,7 @@ var Authenticator = React.createClass({
 
     return (
       <div className="lightbox-overlay" onClick={this.overlayClick}>
-        <div className="lightbox">
+        <div className={cx(className)}>
           <button className="lightbox-close" onClick={this.hide}>X</button>
           {lightboxContent}
         </div>

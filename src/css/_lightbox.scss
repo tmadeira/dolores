@@ -31,6 +31,12 @@
       margin-top: -$height/2;
       top: 50%;
       width: $width;
+
+      &.small {
+        $height: 240px;
+        height: $height;
+        margin-top: -$height/2;
+      }
     }
   }
 

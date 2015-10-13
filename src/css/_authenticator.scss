@@ -6,7 +6,7 @@
   @extend %title-font;
   border: none;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   display: block;
   letter-spacing: 0;
   margin-bottom: 15px;
@@ -19,6 +19,10 @@
     left: 6px;
     top: 12px;
     position: absolute;
+  }
+
+  @include breakpoint($break-tablet) {
+    font-size: 15px;
   }
 }
 
