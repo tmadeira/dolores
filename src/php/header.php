@@ -81,7 +81,10 @@ if (defined('GOOGLE_CLIENT_ID')) {
           $edit = "javascript:alert('Em construção.');void(0);"; // TODO
           ?>
           <li class="user-logged menu-item-has-children">
-            <a href="#" title="<?php echo esc_attr($user->display_name); ?>">
+            <a
+                href="<?php echo $profile; ?>"
+                title="<?php echo esc_attr($user->display_name); ?>"
+                >
               <span class="user-logged-picture"<?php echo $style; ?>></span>
               <span class="user-logged-name">
                 <?php echo $user->display_name; ?>

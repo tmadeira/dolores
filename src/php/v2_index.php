@@ -77,7 +77,7 @@ if (!$paged || $paged == 1) {
     <div class="wrap">
       <ul class="home-main-grid">
         <li class="home-main-item home-bg-map">
-          <a href="#" class="home-main-item-link home-main-item-link-no-alpha">
+          <a href="/bairros" class="home-main-item-link home-main-item-link-no-alpha">
             <div class="home-main-item-border"></div>
             <div class="home-main-item-wrap">
               <h3 class="home-main-item-title">
@@ -147,7 +147,7 @@ if (!$paged || $paged == 1) {
     <div class="wrap">
       <ol class="flow-list">
         <li class="home-flow-item bg-pattern-light-purple">
-          <a href="#" class="flow-link">
+          <a href="/faca-voce-mesmo" class="flow-link">
             <img class="flow-image" src="<?php echo $flow1; ?>" />
             <div class="flow-item-title-container">
               <h3 class="flow-item-title">
@@ -157,7 +157,7 @@ if (!$paged || $paged == 1) {
           </a>
         </li>
         <li class="home-flow-item bg-pattern-orange">
-          <a href="#" class="flow-link">
+          <a href="/calendario" class="flow-link">
             <img class="flow-image" src="<?php echo $flow2; ?>" />
             <div class="flow-item-title-container">
               <h3 class="flow-item-title">
@@ -167,7 +167,7 @@ if (!$paged || $paged == 1) {
           </a>
         </li>
         <li class="home-flow-item bg-pattern-teal">
-          <a href="#" class="flow-link">
+          <a href="/participe" class="flow-link">
             <img class="flow-image" src="<?php echo $flow3; ?>" />
             <div class="flow-item-title-container">
               <h3 class="flow-item-title">

@@ -92,7 +92,7 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
               require_once(__DIR__ . '/dlib/interact.php');
               $interact = new DoloresInteract();
               list($up, $down) = $interact->get_post_votes($post->ID);
-              $data = "href=\"#\" data-vote=\"post_id|{$post->ID}\"";
+              $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
               ?>
               <a class="grid-ideia-action ideia-upvote" <?php echo $data; ?>>
                 <i class="fa fa-fw fa-thumbs-up"></i>
