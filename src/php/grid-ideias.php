@@ -108,7 +108,6 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
                 <?php echo get_comments_number(); ?>
               </a>
             </p>
-            <!-- TODO: share -->
             <a class="grid-ideia-button" href="<?php the_permalink(); ?>">
               Opine &nbsp;
               <i class="fa fa-angle-right"></i>

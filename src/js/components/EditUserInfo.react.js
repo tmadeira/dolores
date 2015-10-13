@@ -1,6 +1,6 @@
 "use strict";
 
-/* TODO: delete this file (not needed in v2) */
+/* XXX: delete this file (not needed in v2) */
 
 var _ = require("lodash");
 var $ = require("jquery");

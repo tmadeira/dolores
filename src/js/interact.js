@@ -49,9 +49,7 @@ var setup = function() {
     var split = comment.attr("id").split("-");
     var commentId = split[split.length - 1];
 
-    if (comment.find("> .children").length) {
-      console.log("has children");
-    } else {
+    if (!comment.find("> .children").length) {
       comment.append("<ul class=\"children\"></ul>");
     }
 
@@ -70,7 +68,6 @@ var setup = function() {
     };
 
     var post = function() {
-      console.log(request);
       API.route("comment").post(request).done(function(response) {
         if ("error" in response) {
           alert("Erro ao publicar ideia: " + response.error);
