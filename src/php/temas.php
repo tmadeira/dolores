@@ -151,6 +151,22 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
   </div>
 </section>
 
+<section class="temas-posts">
+  <div class="wrap">
+    <h2 class="temas-posts-title">
+      <span>Encontros que já rolaram</span>
+    </h2>
+
+    <?php
+    require_once(__DIR__ . '/grid.php');
+    $query = new WP_Query(array(
+      'category_name' => 'encontros'
+    ));
+    dolores_grid($query);
+    ?>
+  </div>
+</section>
+
 <?php
 get_footer();
 ?>

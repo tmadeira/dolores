@@ -7,7 +7,8 @@ get_header();
 </main>
 
 <?php
-include(__DIR__ . '/grid.php');
+require_once(__DIR__ . '/grid.php');
+dolores_grid();
 ?>
 
 <?php
