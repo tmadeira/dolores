@@ -27,7 +27,7 @@ if (!$paged || $paged == 1) {
 
       <button
           class="site-presentation-button"
-          onclick="DoloresAuthenticator.signIn()"
+          onclick="DoloresAuthenticator.signIn(null, function() { location.href = '/temas'; })"
           >
         Gostou? Clique aqui para participar!
       </button>
@@ -118,7 +118,7 @@ if (!$paged || $paged == 1) {
 
   <section class="home-ideas">
     <div class="wrap">
-      <h2 class="home-title">Ideias mais comentadas</h2>
+      <h2 class="home-title">Ideias em destaque</h2>
 
       <!-- TODO: grid -->
 

@@ -7,7 +7,7 @@ var API = require("../api");
 
 var SignupForm = require("./SignupForm.react");
 
-var defaultMessage = "Conecte-se para participar das discussões na plataforma:";
+var defaultMessage = "Conecte-se e dê suas ideias para a cidade:";
 
 var defaultRefreshCallback = function() {
   location.reload();
@@ -146,14 +146,14 @@ var Authenticator = React.createClass({
               onClick={this.signinWithFacebook}
               >
             <i className="fa fa-2x fa-fw fa-facebook"></i>
-            Entrar com Facebook
+            Conectar com Facebook
           </button>
           <button
               className="signin-button signin-google"
               onClick={this.signinWithGoogle}
               >
             <i className="fa fa-2x fa-fw fa-google"></i>
-            Entrar com Google
+            Conectar com Google
           </button>
         </div>
       );

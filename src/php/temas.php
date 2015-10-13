@@ -17,8 +17,9 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow1; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Antes de tudo, fazemos um encontro aberto para discutir
+            coletivamente os problemas e ideias que temos para melhorar a
+            cidade.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -31,8 +32,9 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow2; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Sit amet, adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore.
+            Você pode discutir aqui na plataforma todas as propostas que
+            surgiram no encontro presencial. Além disso, pode sugerir novas
+            ideias.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -45,8 +47,8 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow3; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
+            A equipe de sistematização organizará todas as propostas que
+            surgiram nos encontros e receberam apoios na plataforma.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -59,8 +61,8 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow4; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Color sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna.
+            As propostas integrarão um projeto formulado pelas pessoas para um
+            outro Rio de Janeiro, uma cidade verdadeiramente nossa.
           </p>
         </div>
         <div class="temas-flow-item-title-container">

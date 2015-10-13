@@ -21,7 +21,7 @@ $pic_style = ' style="background-image: url(\'' . $picture. '\');"';
         200 comentários <!-- TODO -->
       </p>
 
-      <h3 class="profile-data-title">Informações básicas</h3>
+      <h3 class="profile-data-title">Informações pessoais</h3>
       <!-- TODO -->
       <ul class="profile-data">
         <li><strong>Aniversário</strong> 8 de janeiro</li>
