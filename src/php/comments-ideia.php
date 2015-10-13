@@ -102,6 +102,7 @@ function dolores_ideia_comment($comment, $args, $depth) {
         id="comment"
         name="comment"
         placeholder="Escreva uma resposta"
+        rows="1"
         ></textarea>
     </div>
   </div>

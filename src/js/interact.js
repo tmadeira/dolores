@@ -1,6 +1,7 @@
 "use strict";
 
 var $ = require("jquery");
+var autosize = require("autosize");
 
 var API = require("./api");
 
@@ -41,6 +42,15 @@ var setup = function() {
       vote($(this).attr("data-vote"), "down");
     }.bind(this));
     return false;
+  });
+
+  autosize($("#comment"));
+  $("#comment").keypress(function(e) {
+    if (e.keyCode === 13 && !e.ctrlKey && !e.shiftKey) {
+      alert("Em construção.");
+      return false;
+    }
+    return true;
   });
 };
 
