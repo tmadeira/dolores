@@ -70,6 +70,12 @@ function dolores_ideia_comment($comment, $args, $depth) {
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
       <span class="number"><?php echo $down; ?></span>
     </a>
+
+    <span class="social-media">
+      <span class="ideia-share">Compartilhe:</span>
+      <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
+    </span>
   </div>
 
   <ul class="ideia-comments-list">

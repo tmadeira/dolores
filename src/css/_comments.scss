@@ -6,6 +6,19 @@
   padding: 10px;
 }
 
+.ideia-comments-header .social-media {
+  display: block;
+  font-size: 12px;
+  padding-top: 10px;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    float: right;
+    font-size: inherit;
+    padding: 0;
+  }
+}
+
 .ideia-action {
   margin-right: 15px;
 }
