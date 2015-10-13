@@ -120,12 +120,14 @@ if (!$paged || $paged == 1) {
       <h2 class="home-title">Ideias em destaque</h2>
 
       <?php
-      require_once("grid-ideias.php");
+      $list = DoloresHome::get_ideias();
       $query = new WP_Query(array(
-        'orderby' => 'rand',
+        'orderby' => 'post__in',
+        'post__in' => $list,
         'post_type' => 'ideia',
         'posts_per_page' => 3
       ));
+      require_once("grid-ideias.php");
       dolores_grid_ideias($query, true);
       ?>
 

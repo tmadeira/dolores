@@ -18,7 +18,7 @@
   vertical-align: middle;
 
   &.with-tax {
-    height: 590px;
+    height: 560px;
   }
 
   @include breakpoint($break-tablet) {
@@ -37,15 +37,15 @@
   @include border-corner-radius(top, right, 10px);
   background-size: cover;
   height: 240px;
-  margin: -15px -15px 45px -15px;
+  margin: -15px -15px 30px -15px;
   position: relative;
 }
 
 .grid-ideia-tax-title {
   @extend %title-font;
-  bottom: -30px;
+  bottom: -20px;
   color: #fff;
-  font-size: 26px;
+  font-size: 22px;
   left: 0;
   letter-spacing: 0;
   position: absolute;
@@ -53,7 +53,7 @@
     background: $orange;
     display: inline-block;
     //margin-left: 15px;
-    padding: 5px 15px;
+    padding: 5px 10px 5px 15px;
   }
 }
 
