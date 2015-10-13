@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/DoloresCommentAPI.class.php');
+require_once(__DIR__ . '/DoloresPostAPI.class.php');
 require_once(__DIR__ . '/DoloresSigninAPI.class.php');
 require_once(__DIR__ . '/DoloresSignupAPI.class.php');
 require_once(__DIR__ . '/DoloresV1SignupAPI.class.php');
@@ -8,6 +10,8 @@ require_once(__DIR__ . '/DoloresValidateAPI.class.php');
 require_once(__DIR__ . '/DoloresVoteAPI.class.php');
 
 $DOLORES_ROUTES = Array(
+  'comment' => 'DoloresCommentAPI',
+  'post' => 'DoloresPostAPI',
   'signin' => 'DoloresSigninAPI',
   'signup' => 'DoloresSignupAPI',
   'suggest' => 'DoloresSuggestAPI',

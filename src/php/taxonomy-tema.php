@@ -75,6 +75,7 @@ if ($term->parent == 0) {
           </label>
           <input
               type="text"
+              name="title"
               class="tema-form-input"
               id="tema-form-title"
               maxlength="100"
@@ -87,6 +88,7 @@ if ($term->parent == 0) {
           </label>
           <textarea
               class="tema-form-textarea"
+              name="text"
               id="tema-form-content"
               maxlength="600"
               placeholder="Ideia (max. 600 caracteres)"
@@ -99,11 +101,13 @@ if ($term->parent == 0) {
           <input
               type="text"
               class="tema-form-input"
+              name="tags"
               id="tema-form-tags"
               placeholder="Escolha algumas palavras-chave"
               />
         </p>
         <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
+          <input type="hidden" name="cat" value="<?php echo $term->slug; ?>" />
           <button class="tema-form-button" type="submit">
             Enviar
           </button>
