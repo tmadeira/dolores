@@ -18,7 +18,7 @@ $pic_style = ' style="background-image: url(\'' . $picture. '\');"';
       <p class="profile-stats">
         <?php echo $wp_query->found_posts; ?> ideias
         &bullet;
-        200 comentários <!-- TODO -->
+        <?php echo dolores_get_comment_count_for_user($info); ?> respostas
       </p>
 
       <h3 class="profile-data-title">Informações pessoais</h3>
