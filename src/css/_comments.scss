@@ -83,15 +83,8 @@
   display: none;
 }
 
-.ideia-comment-form-container {
-  padding: 0 10px 10px;
-}
-
 .ideia-comment-form {
-  border-top: solid 1px $orange;
   display: table;
-  margin-top: -1px;
-  padding-top: 11px;
   width: 100%;
 }
 
@@ -101,7 +94,7 @@
   width: 37px;
 }
 
-#comment {
+.comment-textarea {
   @extend %text-font;
   background: #f9f6f1;
   border: 0;

@@ -84,32 +84,32 @@ function dolores_ideia_comment($comment, $args, $depth) {
       'callback' => 'dolores_ideia_comment'
     ));
     ?>
+    <li class="ideia-comment ideia-comment-form-container" id="respond">
+      <?php
+      if (is_user_logged_in()) {
+        $user = wp_get_current_user();
+        require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
+        $picture = dolores_get_profile_picture($user);
+      } else {
+        $hash = md5("nobody");
+        $picture = "http://gravatar.com/avatar/$hash?d=mm&s=300";
+      }
+      $style = ' style="background-image: url(\'' . $picture. '\');"';
+      ?>
+      <form class="ideia-comment-form">
+        <div class="ideia-comment-picture-container">
+          <span class="user-logged-picture"<?php echo $style; ?>></span>
+        </div>
+        <input type="hidden" name="post_id" value="<?php echo $post->ID; ?>" />
+        <input type="hidden" name="parent" value="0" />
+        <textarea
+          aria-required="true"
+          class="comment-textarea"
+          name="text"
+          placeholder="Escreva uma resposta"
+          rows="1"
+          ></textarea>
+      </form>
+    </li>
   </ul>
-
-  <?php
-  if (is_user_logged_in()) {
-    $user = wp_get_current_user();
-    require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
-    $picture = dolores_get_profile_picture($user);
-  } else {
-    $hash = md5("nobody");
-    $picture = "http://gravatar.com/avatar/$hash?d=mm&s=300";
-  }
-  $style = ' style="background-image: url(\'' . $picture. '\');"';
-  ?>
-
-  <div class="ideia-comment-form-container" id="respond">
-    <div class="ideia-comment-form">
-      <div class="ideia-comment-picture-container">
-        <span class="user-logged-picture"<?php echo $style; ?>></span>
-      </div>
-      <textarea
-        aria-required="true"
-        id="comment"
-        name="comment"
-        placeholder="Escreva uma resposta"
-        rows="1"
-        ></textarea>
-    </div>
-  </div>
 </div>

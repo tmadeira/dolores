@@ -6,34 +6,29 @@ var API = require("./api");
 
 var setup = function() {
   $("#form-tema").submit(function() {
-    var title = $(this).find("input[name='title']").val();
-    var text = $(this).find("textarea[name='text']").val();
-    var cat = $(this).find("input[name='cat']").val();
-
-    // TODO: tags
+    var request = {
+      title: $(this).find("input[name='title']").val(),
+      text: $(this).find("textarea[name='text']").val(),
+      cat: $(this).find("input[name='cat']").val(),
+      tags: [] // TODO
+    };
 
     var post = function() {
-      var request = {
-        title: title,
-        text: text,
-        cat: cat,
-        tags: []
-      };
       API.route("post").post(request).done(function(response) {
         if ("error" in response) {
-          alert("Erro ao cadastrar ideia: " + response.error);
+          alert("Erro ao publicar ideia: " + response.error);
         } else if ("url" in response) {
           location.href = response.url;
         }
       }).fail(function(response) {
         console.log(response);
         if ("error" in response.responseJSON) {
-          alert("Erro ao cadastrar ideia: " + response.responseJSON.error);
+          alert("Erro ao publicar ideia: " + response.responseJSON.error);
         }
       });
     };
 
-    var message = "Você precisa ser cadastrado para enviar uma ideia.";
+    var message = "Você precisa ser cadastrado para publicar uma ideia.";
     window.DoloresAuthenticator.signIn(message, post);
 
     return false;

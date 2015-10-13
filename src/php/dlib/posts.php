@@ -63,6 +63,8 @@ class DoloresPosts {
     if (strlen($text) > 600) {
       return array('error' => 'O texto deve ter no máximo 600 caracteres.');
     }
+    $text = str_replace('<', '&lt;', $text);
+    $text = str_replace('>', '&gt;', $text);
 
     $comment = array(
       'user_id' => $user->ID,

@@ -27,27 +27,74 @@ var vote = function(data, action) {
   });
 };
 
-var setup = function() {
-  var message = "Você precisa ser cadastrado para votar.";
+var signInAndVote = function(data, action) {
+  var message = "Você precisa ser cadastrado para curtir/descurtir.";
+  window.DoloresAuthenticator.signIn(message, function() {
+    vote(data, action);
+  });
+  return false;
+};
 
+var setup = function() {
   $(document).on("click", ".ideia-upvote", function() {
-    window.DoloresAuthenticator.signIn(message, function() {
-      vote($(this).attr("data-vote"), "up");
-    }.bind(this));
-    return false;
+    return signInAndVote($(this).attr("data-vote"), "up");
   });
 
   $(document).on("click", ".ideia-downvote", function() {
-    window.DoloresAuthenticator.signIn(message, function() {
-      vote($(this).attr("data-vote"), "down");
-    }.bind(this));
+    return signInAndVote($(this).attr("data-vote"), "down");
+  });
+
+  $(document).on("click", ".ideia-comment-reply", function() {
+    var comment = $(this).closest(".ideia-comment");
+    var split = comment.attr("id").split("-");
+    var commentId = split[split.length - 1];
+
+    if (comment.find("> .children").length) {
+      console.log("has children");
+    } else {
+      comment.append("<ul class=\"children\"></ul>");
+    }
+
+    $("#respond").detach().prependTo(comment.find("> .children"));
+    $("#respond").find("input[name='parent']").val(commentId);
+    $("#respond").find("textarea[name='text']").focus();
+
     return false;
   });
 
-  autosize($("#comment"));
-  $("#comment").keypress(function(e) {
+  $(".ideia-comment-form").submit(function() {
+    var request = {
+      postId: $(this).find("input[name='post_id']").val(),
+      parent: $(this).find("input[name='parent']").val(),
+      text: $(this).find("textarea[name='text']").val()
+    };
+
+    var post = function() {
+      console.log(request);
+      API.route("comment").post(request).done(function(response) {
+        if ("error" in response) {
+          alert("Erro ao publicar ideia: " + response.error);
+        } else {
+          console.log("do something", response); // TODO
+        }
+      }).fail(function(response) {
+        console.log(response);
+        if ("error" in response.responseJSON) {
+          alert("Erro ao publicar resposta: " + response.responseJSON.error);
+        }
+      });
+    };
+
+    var message = "Você precisa ser cadastrado para publicar uma resposta.";
+    window.DoloresAuthenticator.signIn(message, post);
+
+    return false;
+  });
+
+  autosize($(".comment-textarea"));
+  $(".comment-textarea").keypress(function(e) {
     if (e.keyCode === 13 && !e.ctrlKey && !e.shiftKey) {
-      alert("Em construção.");
+      $(this.form).submit();
       return false;
     }
     return true;
