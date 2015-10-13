@@ -71,7 +71,6 @@ if (!$paged || $paged == 1) {
     </section>
     <?php
   }
-
   ?>
 
   <section class="home-default-section">
@@ -120,7 +119,15 @@ if (!$paged || $paged == 1) {
     <div class="wrap">
       <h2 class="home-title">Ideias em destaque</h2>
 
-      <!-- TODO: grid -->
+      <?php
+      require_once("grid-ideias.php");
+      $query = new WP_Query(array(
+        'orderby' => 'rand',
+        'post_type' => 'ideia',
+        'posts_per_page' => 3
+      ));
+      dolores_grid_ideias($query, true);
+      ?>
 
       <div class="home-button-container">
         <a class="home-button" href="/temas">Veja todos os temas</a>

@@ -14,7 +14,12 @@
   margin: 10px;
   padding: 15px 15px 0 15px;
   position: relative;
+  text-align: left;
   vertical-align: middle;
+
+  &.with-tax {
+    height: 590px;
+  }
 
   @include breakpoint($break-tablet) {
     display: inline-block;
@@ -24,6 +29,31 @@
     &:nth-child(3n+1) {
       margin-left: 0;
     }
+  }
+}
+
+.grid-ideia-tax {
+  @include border-corner-radius(top, left, 10px);
+  @include border-corner-radius(top, right, 10px);
+  background-size: cover;
+  height: 240px;
+  margin: -15px -15px 45px -15px;
+  position: relative;
+}
+
+.grid-ideia-tax-title {
+  @extend %title-font;
+  bottom: -30px;
+  color: #fff;
+  font-size: 26px;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  & > a {
+    background: $orange;
+    display: inline-block;
+    //margin-left: 15px;
+    padding: 5px 15px;
   }
 }
 
@@ -46,6 +76,9 @@
     content: "#";
     color: $purple;
     font-weight: bold;
+    .home & {
+      color: $orange;
+    }
   }
 }
 
@@ -74,6 +107,9 @@
   margin-right: 8px;
   .fa {
     color: $purple;
+    .home & {
+      color: $orange;
+    }
   }
 }
 
@@ -93,6 +129,9 @@
   right: 0;
   text-align: right;
   width: 100%;
+  .home & {
+    background: $orange;
+  }
 }
 
 .grid-ideias-pagination {

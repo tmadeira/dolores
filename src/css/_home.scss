@@ -85,6 +85,7 @@
 
 .home-main-item {
   @extend %align-middle-container;
+  background-size: cover;
   font-size: 16px;
   height: 450px;
   text-align: center;
@@ -186,12 +187,10 @@
   @extend %title-font;
   color: $orange;
   font-size: 30px;
-  margin-bottom: 30px;
 }
 
 .home-button-container {
   line-height: 42px;
-  margin-top: 30px;
 }
 
 .home-button {

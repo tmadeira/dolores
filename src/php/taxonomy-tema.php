@@ -116,7 +116,8 @@ if ($term->parent == 0) {
 ?>
 
 <?php
-include(__DIR__ . '/grid-ideias.php');
+require_once(__DIR__ . '/grid-ideias.php');
+dolores_grid_ideias();
 ?>
 
 <?php

@@ -35,7 +35,8 @@ $pic_style = ' style="background-image: url(\'' . $picture. '\');"';
 <h2 class="author-grid-title">Ideias de <?php echo $info->display_name; ?></h3>
 
 <?php
-include(__DIR__ . '/grid-ideias.php');
+require_once(__DIR__ . '/grid-ideias.php');
+dolores_grid_ideias();
 ?>
 
 <?php
