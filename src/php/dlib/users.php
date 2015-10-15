@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/auth_cache.php');
 require_once(__DIR__ . '/external/facebook.php');
 require_once(__DIR__ . '/external/google.php');
+require_once(__DIR__ . '/wp_util/user_meta.php');
 
 class DoloresUsers {
   public static function getUserByUniqueField($field, $value) {

@@ -23,12 +23,27 @@ if (!$paged || $paged == 1) {
         </p>
 
         <h3 class="profile-data-title">Informações pessoais</h3>
-        <!-- TODO -->
+        <?php
+        $fields = array(
+          'location' => 'Local',
+          'birthdate' => 'Aniversário',
+          'occupation' => 'Profissão',
+          'school' => 'Instituição de ensino'
+        );
+        ?>
         <ul class="profile-data">
-          <li><strong>Aniversário</strong> 8 de janeiro</li>
-          <li><strong>Instituição de ensino</strong> UFF</li>
-          <li><strong>Curso</strong> História</li>
-        </dl>
+          <?php
+          foreach ($fields as $field => $label) {
+            $data = get_user_meta($info->ID, $field, true);
+            if ($data) {
+              if ($field === 'birthdate') {
+                $data = date_i18n('j \d\e F', strtotime($data));
+              }
+              echo '<li><strong>' . $label . '</strong> ' . $data . '</li>';
+            }
+          }
+          ?>
+        </ul>
       </div>
     </div>
   </main>
