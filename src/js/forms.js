@@ -13,14 +13,19 @@ var setup = function() {
       tags: [] // TODO
     };
 
+    var button = $(this).find(".tema-form-button");
+
     var post = function() {
+      button.prop("disabled", true);
       API.route("post").post(request).done(function(response) {
         if ("error" in response) {
+          button.prop("disabled", false);
           alert("Erro ao publicar ideia: " + response.error);
         } else if ("url" in response) {
           location.href = response.url;
         }
       }).fail(function(response) {
+        button.prop("disabled", false);
         console.log(response);
         if ("error" in response.responseJSON) {
           alert("Erro ao publicar ideia: " + response.responseJSON.error);

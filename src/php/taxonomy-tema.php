@@ -111,7 +111,8 @@ if (!$paged || $paged == 1) {
           <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
             <input type="hidden" name="cat" value="<?php echo $term->slug; ?>" />
             <button class="tema-form-button" type="submit">
-              Enviar
+              <span class="if-not-sent">Enviar</span>
+              <i class="if-sending fa fa-fw fa-refresh fa-spin"></i>
             </button>
           </p>
         </form>
