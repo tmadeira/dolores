@@ -79,13 +79,20 @@ var setup = function() {
         textarea.prop("disabled", false);
         if ("error" in response) {
           alert("Erro ao publicar ideia: " + response.error);
+          textarea.focus();
         } else if ("html" in response) {
           textarea.val("");
+
+          var evt = document.createEvent("Event");
+          evt.initEvent("autosize:update", true, false);
+          textarea[0].dispatchEvent(evt);
+
           form.parent().after(response.html);
         }
       }).fail(function(response) {
         form.removeClass("posting");
         textarea.prop("disabled", false);
+        textarea.focus();
         console.log(response);
         if ("error" in response.responseJSON) {
           alert("Erro ao publicar resposta: " + response.responseJSON.error);

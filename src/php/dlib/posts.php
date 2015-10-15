@@ -62,6 +62,13 @@ class DoloresPosts {
       return array('error' => 'Esta ideia não aceita comentários.');
     }
 
+    if ($parent) {
+      $parent_comment = get_comment($parent);
+      if ($parent_comment->comment_parent) {
+        return array('error' => 'Suportamos apenas 2 níveis de respostas.');
+      }
+    }
+
     $text = trim($text);
     if (strlen($text) > 600) {
       return array('error' => 'O texto deve ter no máximo 600 caracteres.');
@@ -99,6 +106,15 @@ class DoloresPosts {
     $url = get_author_posts_url($comment->user_id);
     $format = get_option('date_format') . ' à\s ' . get_option('time_format');
     $datetime = get_comment_date($format, $comment->comment_ID);
+    if (!$comment->comment_parent) {
+      $reply = <<<HTML
+<a class="ideia-comment-action ideia-comment-reply" href="#reply">
+  <i class="fa fa-fw fa-lg fa-comments"></i> Responder
+</a>
+HTML;
+    } else {
+      $reply = "";
+    }
     $content = <<<HTML
 <li class="ideia-comment" id="comment-{$comment->comment_ID}">
   <div class="ideia-comment-table">
@@ -126,9 +142,7 @@ class DoloresPosts {
           <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
           <span class="number">{$down}</span>
         </a>
-        <a class="ideia-comment-action ideia-comment-reply" href="#reply">
-          <i class="fa fa-fw fa-lg fa-comments"></i> Responder
-        </a>
+        {$reply}
         <span class="ideia-comment-date">
           {$datetime}
         </span>

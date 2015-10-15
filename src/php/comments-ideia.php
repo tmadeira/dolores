@@ -31,11 +31,6 @@ function dolores_ideia_comment($comment, $args, $depth) {
   </div>
 
   <ul class="ideia-comments-list">
-    <?php
-    wp_list_comments(array(
-      'callback' => 'dolores_ideia_comment'
-    ));
-    ?>
     <li class="ideia-comment ideia-comment-form-container" id="respond">
       <?php
       if (is_user_logged_in()) {
@@ -65,5 +60,10 @@ function dolores_ideia_comment($comment, $args, $depth) {
           ></textarea>
       </form>
     </li>
+    <?php
+    wp_list_comments(array(
+      'callback' => 'dolores_ideia_comment'
+    ));
+    ?>
   </ul>
 </div>
