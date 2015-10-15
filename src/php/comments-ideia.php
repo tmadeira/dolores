@@ -1,57 +1,9 @@
 <?php
 require_once(__DIR__ . '/dlib/interact.php');
+require_once(__DIR__ . '/dlib/posts.php');
 
 function dolores_ideia_comment($comment, $args, $depth) {
-  $interact = DoloresInteract::get_instance();
-  list($up, $down) = $interact->get_comment_votes($comment->comment_ID);
-  $data = "href=\"#vote\" data-vote=\"comment_id|{$comment->comment_ID}\"";
-  ?>
-  <li class="ideia-comment" id="comment-<?php echo $comment->comment_ID; ?>">
-    <div class="ideia-comment-table">
-      <?php
-      $user = get_user_by('id', $comment->user_id);
-      $id = get_the_author_meta('ID');
-      require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
-      $picture = dolores_get_profile_picture($user);
-      $style = ' style="background-image: url(\'' . $picture. '\');"';
-      $url = get_author_posts_url(get_the_author_meta('ID'));
-      ?>
-      <a href="<?php echo $url; ?>" class="ideia-comment-picture">
-        <span class="grid-ideia-author-picture" <?php echo $style; ?>>
-        </span>
-      </a>
-      <div class="ideia-comment-block">
-        <div class="ideia-comment-text">
-          <span class="ideia-comment-author">
-            <a href="<?php echo $url; ?>">
-              <?php echo $user->display_name; ?>
-            </a>
-          </span>
-          <span class="ideia-comment-content">
-            <?php echo $comment->comment_content; ?>
-          </span>
-        </div>
-        <div class="ideia-comment-meta">
-          <a class="ideia-comment-action ideia-upvote" <?php echo $data; ?>>
-            <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-            <span class="number"><?php echo $up; ?></span>
-          </a>
-          <a class="ideia-comment-action ideia-downvote" <?php echo $data; ?>>
-            <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-            <span class="number"><?php echo $down; ?></span>
-          </a>
-          <a class="ideia-comment-action ideia-comment-reply" href="#reply">
-            <i class="fa fa-fw fa-lg fa-comments"></i> Responder
-          </a>
-          <span class="ideia-comment-date">
-            <?php echo get_comment_date(); ?>
-            às
-            <?php echo get_comment_time(); ?>
-          </span>
-        </div>
-      </div>
-    </div>
-  <?php
+  echo DoloresPosts::get_comment_html($comment);
 }
 ?>
 
@@ -102,9 +54,11 @@ function dolores_ideia_comment($comment, $args, $depth) {
         </div>
         <input type="hidden" name="post_id" value="<?php echo $post->ID; ?>" />
         <input type="hidden" name="parent" value="0" />
+        <i class="post-comment-spinner fa fa-fw fa-lg fa-refresh fa-spin"></i>
         <textarea
           aria-required="true"
           class="comment-textarea"
+          maxlength="600"
           name="text"
           placeholder="Escreva uma resposta"
           rows="1"

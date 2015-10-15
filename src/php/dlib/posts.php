@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__ . '/interact.php');
+require_once(__DIR__ . '/wp_util/user_meta.php');
+
 class DoloresPosts {
   const taxonomy = 'tema';
   const type = 'ideia';
@@ -78,10 +81,61 @@ class DoloresPosts {
       'comment_content' => $text
     );
 
-    if (!wp_insert_comment($comment)) {
+    $inserted = wp_insert_comment($comment);
+    if (!$inserted) {
       return array('error' => 'Erro ao cadastrar comentário.');
     }
 
-    return array();
+    return array("html" => static::get_comment_html(get_comment($inserted)));
+  }
+
+  public static function get_comment_html($comment) {
+    $interact = DoloresInteract::get_instance();
+    list($up, $down) = $interact->get_comment_votes($comment->comment_ID);
+    $data = "href=\"#vote\" data-vote=\"comment_id|{$comment->comment_ID}\"";
+    $user = get_user_by('id', $comment->user_id);
+    $picture = dolores_get_profile_picture($user);
+    $style = ' style="background-image: url(\'' . $picture. '\');"';
+    $url = get_author_posts_url($comment->user_id);
+    $format = get_option('date_format') . ' à\s ' . get_option('time_format');
+    $datetime = get_comment_date($format, $comment->comment_ID);
+    $content = <<<HTML
+<li class="ideia-comment" id="comment-{$comment->comment_ID}">
+  <div class="ideia-comment-table">
+    <a href="{$url}" class="ideia-comment-picture">
+      <span class="grid-ideia-author-picture" {$style}>
+      </span>
+    </a>
+    <div class="ideia-comment-block">
+      <div class="ideia-comment-text">
+        <span class="ideia-comment-author">
+          <a href="{$url}">
+            {$user->display_name}
+          </a>
+        </span>
+        <span class="ideia-comment-content">
+          {$comment->comment_content}
+        </span>
+      </div>
+      <div class="ideia-comment-meta">
+        <a class="ideia-comment-action ideia-upvote" {$data}>
+          <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
+          <span class="number">{$up}</span>
+        </a>
+        <a class="ideia-comment-action ideia-downvote" {$data}>
+          <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
+          <span class="number">{$down}</span>
+        </a>
+        <a class="ideia-comment-action ideia-comment-reply" href="#reply">
+          <i class="fa fa-fw fa-lg fa-comments"></i> Responder
+        </a>
+        <span class="ideia-comment-date">
+          {$datetime}
+        </span>
+      </div>
+    </div>
+  </div>
+HTML;
+    return $content;
   }
 };

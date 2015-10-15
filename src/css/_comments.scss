@@ -85,7 +85,19 @@
 
 .ideia-comment-form {
   display: table;
+  position: relative;
   width: 100%;
+}
+
+.post-comment-spinner {
+  color: $orange;
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 9px;
+  .ideia-comment-form.posting & {
+    display: block;
+  }
 }
 
 .ideia-comment-picture-container {

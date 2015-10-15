@@ -67,19 +67,31 @@ var setup = function() {
       text: $(this).find("textarea[name='text']").val()
     };
 
+    var form = $(this);
+    var textarea = $(this).find("textarea[name='text']");
+
     var post = function() {
+      form.addClass("posting");
+      textarea.prop("disabled", true);
+      window.setTimeout(function() {
       API.route("comment").post(request).done(function(response) {
+        form.removeClass("posting");
+        textarea.prop("disabled", false);
         if ("error" in response) {
           alert("Erro ao publicar ideia: " + response.error);
-        } else {
-          console.log("do something", response); // TODO
+        } else if ("html" in response) {
+          textarea.val("");
+          form.parent().after(response.html);
         }
       }).fail(function(response) {
+        form.removeClass("posting");
+        textarea.prop("disabled", false);
         console.log(response);
         if ("error" in response.responseJSON) {
           alert("Erro ao publicar resposta: " + response.responseJSON.error);
         }
       });
+      }, 1000);
     };
 
     var message = "Você precisa ser cadastrado para publicar uma resposta.";
