@@ -65,6 +65,7 @@ if (defined('GOOGLE_CLIENT_ID')) {
               type="text"
               name="s"
               placeholder="Buscar"
+              value="<?php if (array_key_exists('s', $_GET)) echo $_GET['s']; ?>"
               />
           </form>
         </li>
