@@ -65,6 +65,7 @@ class DoloresPosts {
     }
     $text = str_replace('<', '&lt;', $text);
     $text = str_replace('>', '&gt;', $text);
+    $text = nl2br($text);
 
     $comment = array(
       'user_id' => $user->ID,
