@@ -16,8 +16,12 @@ class DoloresSignupAPI extends DoloresBaseAPI {
       $this->_error($user['error']);
     }
 
+    if (!$user['id']) {
+      $this->_error('Erro na autenticação.');
+    }
+
     $auth_field = "auth_${auth['type']}";
-    $dolores_user = DoloresUsers::getUserByUniqueField($auth_field, $me['id']);
+    $dolores_user = DoloresUsers::getUserByUniqueField($auth_field, $user['id']);
 
     if ($dolores_user !== null) {
       DoloresUsers::signin($dolores_user);
