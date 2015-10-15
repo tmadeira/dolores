@@ -27,10 +27,17 @@ function dolores_grid($query = null) {
         }
         echo '</ul>';
       } else {
-        echo '<p>Nenhum post para mostrar.</p>';
+        echo '<p style="margin: 20px 0; text-align: center; font-size: 16px;">';
+        if (is_search()) {
+          echo 'Nenhum resultado encontrado.';
+        } else {
+          echo 'Nenhum post para mostrar.';
+        }
+        echo '</p>';
       }
 
-      if ($query->is_main_query()) {
+      if ($query->is_main_query() || is_search()) {
+        $paged = $query->get('paged', 1);
         if (!$paged) {
           $paged = 1;
         }
@@ -39,20 +46,30 @@ function dolores_grid($query = null) {
         $next_page = intval($paged) + 1;
 
         ?>
-        <div class="grid-pagination">
+        <div class="grid-ideias-pagination">
           <?php
-
-          if ($prev_page > 0) {
-            $prev_link = get_previous_posts_page_link();
-            ?>
-            <a class="btn-prev-page" href="<?php echo $prev_link; ?>"></a>
-            <?php
-          }
-
           if ($next_page <= $query->max_num_pages) {
-            $next_link = get_next_posts_page_link();
+            if (is_search()) {
+              $next_link = $_SERVER['REQUEST_URI'];
+              if (strpos($next_link, 'post_type=') === false) {
+                $next_link .= '&post_type=post';
+              }
+              if (strpos($next_link, 'page=') !== false) {
+                $next_link = preg_replace(
+                  '/page=[0-9]*/',
+                  'page=' . $next_page,
+                  $next_link
+                );
+              } else {
+                $next_link .= '&page=' . $next_page;
+              }
+            } else {
+              $next_link = get_next_posts_page_link();
+            }
             ?>
-            <a class="btn-next-page" href="<?php echo $next_link; ?>"></a>
+            <a class="grid-ideias-button" href="<?php echo $next_link; ?>">
+              Ver mais
+            </a>
             <?php
           }
           ?>
