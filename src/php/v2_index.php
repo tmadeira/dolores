@@ -1,4 +1,7 @@
 <?php
+global $wp_query;
+require_once(__DIR__ . '/grid.php');
+
 require_once(__DIR__ . '/dlib/assets.php');
 require_once(__DIR__ . '/dlib/wp_util/add_paged_class.php');
 require_once(__DIR__ . '/dlib/wp_admin/settings/home.php');
@@ -99,7 +102,7 @@ if (!$paged || $paged == 1) {
             class="home-main-item"
             style="background-image: url('<?php echo $image; ?>');"
             >
-            <a href="<?php echo $link; ?>" class="home-main-item-link">
+          <a href="<?php echo $link; ?>" class="home-main-item-link">
             <div class="home-main-item-wrap">
               <h3 class="home-main-item-title">
                 <?php echo $term->name; ?>
@@ -133,6 +136,44 @@ if (!$paged || $paged == 1) {
 
       <div class="home-button-container">
         <a class="home-button" href="/temas">Veja todos os temas</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-row">
+    <div class="wrap">
+      <div class="home-col">
+        <?php
+        $args = array_merge($wp_query->query_vars, array(
+          'posts_per_page' => 4
+        ));
+        $query = new WP_Query($args);
+        dolores_grid($query);
+        ?>
+      </div>
+      <div class="home-col">
+        <?php
+        $query = new WP_Query(array(
+          'category_name' => 'acoes'
+        ));
+        $query->the_post();
+        list($img_src) = wp_get_attachment_image_src(
+          get_post_thumbnail_id($post->ID),
+          'bigger'
+        );
+        $style = "style=\"background-image:url('$img_src');\"";
+        ?>
+        <div class="home-col-wrap"<?php echo $style; ?>>
+          <a class="home-main-item-link" href="<?php the_permalink(); ?>">
+            <h4 class="home-action-label">Ação</h4>
+            <h2 class="home-action-title">
+              <?php the_title(); ?>
+            </h2>
+            <button class="home-action-button home-main-item-action">
+              Vem junto!
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -177,14 +218,60 @@ if (!$paged || $paged == 1) {
           </a>
         </li>
       </ol>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="home-row">
+    <div class="wrap">
+      <div class="home-col">
+        <?php
+        $query = new WP_Query(array(
+          'category_name' => 'apoios',
+          'orderby' => 'rand'
+        ));
+        $query->the_post();
+        list($img_src) = wp_get_attachment_image_src(
+          get_post_thumbnail_id($post->ID),
+          'bigger'
+        );
+        $style = "style=\"background-image:url('$img_src');\"";
+        ?>
+        <div class="home-col-wrap"<?php echo $style; ?>>
+          <a class="home-main-item-link" href="<?php the_permalink(); ?>">
+            <h4 class="home-action-label">Quem apoia?</h4>
+            <h2 class="home-action-title no-button">
+              <?php the_title(); ?>
+            </h2>
+          </a>
+        </div>
+      </div>
+      <div class="home-col">
+        <?php
+        $args = array_merge($wp_query->query_vars, array(
+          'posts_per_page' => 4,
+          'paged' => 2
+        ));
+        $query = new WP_Query($args);
+        dolores_grid($query);
+        ?>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-footer-pagination">
+    <div class="wrap">
+      <div class="home-button-container">
+        <a class="home-button" href="/page/2">Ver mais</a>
+      </div>
+    </div>
+  </section>
 
   <?php
-}
 
-require_once(__DIR__ . '/grid.php');
-dolores_grid();
+} else {
+  require_once(__DIR__ . '/grid.php');
+  dolores_grid();
+}
 ?>
 
 <?php

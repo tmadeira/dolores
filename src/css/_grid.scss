@@ -61,6 +61,15 @@
       &:nth-child(4n) {
         margin-right: 0;
       }
+
+      .v2.home:not(.paged) & {
+        margin-bottom: 2%;
+        margin-right: 2%;
+        width: 49%;
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
     }
 
     @include breakpoint($break-desktop) {
