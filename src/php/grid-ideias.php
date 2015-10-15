@@ -1,6 +1,6 @@
 <?php
 function dolores_grid_ideias($query = null, $show_tax = false) {
-  global $wp_query;
+  global $wp_query, $post;
   if ($query === null) {
     $query = $wp_query;
   }
