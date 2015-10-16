@@ -128,7 +128,7 @@
 
         &.multi-select-options > li {
           @include opacity(0.6);
-          background-image: inline-image('checkbox-empty.svg');
+          background-image: url('static/images/checkbox-empty.svg');
           background-position: 5px center;
           background-size: 20px;
           background-repeat: no-repeat;
@@ -140,7 +140,7 @@
           }
 
           &.selected {
-            background-image: inline-image('checkbox-checked.svg');
+            background-image: url('static/images/checkbox-checked.svg');
           }
         }
 
@@ -160,13 +160,13 @@
     }
 
     .signup-input-email > input {
-      background-image: inline-image('icon-email.svg');
+      background-image: url('static/images/icon-email.svg');
       background-position: 6px center;
       background-size: auto 18px;
     }
 
     .signup-input-location > input {
-      background-image: inline-image('icon-location.svg');
+      background-image: url('static/images/icon-location.svg');
       background-position: 9px center;
       background-size: auto 24px;
     }

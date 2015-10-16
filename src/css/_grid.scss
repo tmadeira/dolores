@@ -79,9 +79,9 @@
 
   .btn-prev-page, .btn-next-page {
     background: no-repeat center center / 30px;
-    background-image: inline-image('arrow-down-gray.svg');
+    background-image: url('static/images/arrow-down-gray.svg');
     &:hover {
-      background-image: inline-image('arrow-down-black.svg');
+      background-image: url('static/images/arrow-down-black.svg');
     }
   }
 
