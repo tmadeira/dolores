@@ -21,7 +21,7 @@
   .signup-input {
     position: relative;
 
-    .fa {
+    .icon {
       left: 5px;
       margin-top: -8px;
       position: absolute;
@@ -60,13 +60,12 @@
       border: 0;
       bottom: 5px;
       color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 0 4px;
+      font-size: 16px;
+      padding: 5px;
       position: absolute;
       right: 5px;
       top: 5px;
-      width: 28px;
+      width: 26px;
     }
 
     .validation-error {
@@ -113,12 +112,16 @@
       display: none;
       font-size: 12px;
       overflow-y: auto;
-      max-height: 240px;
+      max-height: 120px;
       position: absolute;
       top: 37px;
       left: 0;
       right: 0;
       z-index: 2;
+
+      .check {
+        margin-right: 2px;
+      }
 
       &:not(.multi-select-options) > li {
         cursor: pointer;
@@ -130,19 +133,11 @@
 
       &.multi-select-options > li {
         @include opacity(0.6);
-        background-image: inline-image('checkbox-empty.svg');
-        background-position: 5px center;
-        background-size: 20px;
-        background-repeat: no-repeat;
         cursor: pointer;
-        padding: 5px 5px 5px 30px;
+        padding: 5px;
 
         &:hover {
           @include opacity(1);
-        }
-
-        &.selected {
-          background-image: inline-image('checkbox-checked.svg');
         }
       }
 

@@ -7,6 +7,7 @@ var cx = require("classnames");
 var API = require("../api");
 
 var SignupForm = require("./SignupForm.react");
+var ProfileForm = require("./ProfileForm.react");
 
 var defaultMessage = "Conecte-se e dê suas ideias para a cidade:";
 
@@ -21,6 +22,7 @@ var Authenticator = React.createClass({
       data: {},
       show: false,
       signup: false,
+      profile: false,
       waiting: false
     };
   },
@@ -49,6 +51,33 @@ var Authenticator = React.createClass({
         } else {
           this.setState(newState);
         }
+      }.bind(this),
+
+      editUserInfo: function() {
+        window.DoloresAuthenticator.signIn(null, function() {
+          this.setState({
+            profile: true,
+            show: true,
+            waiting: true
+          });
+          API.route("userinfo").get().done(function(response) {
+            this.setState({
+              profileData: response.data,
+              refreshCallback: defaultRefreshCallback,
+              waiting: false
+            });
+          }.bind(this)).fail(function(response) {
+            console.log(response);
+            if ("error" in response.responseJSON) {
+              alert("Erro: " + response.responseJSON.error);
+            }
+            this.setState({
+              profile: false,
+              show: false,
+              waiting: false
+            });
+          }.bind(this));
+        }.bind(this));
       }.bind(this),
 
       setAuth: function(auth) {
@@ -140,6 +169,16 @@ var Authenticator = React.createClass({
               refreshCallback={this.refresh}
               >
           </SignupForm>
+        </div>
+      );
+    } else if (this.state.profile) {
+      lightboxContent = (
+        <div className="lightbox-wrap">
+          <ProfileForm
+              data={this.state.profileData}
+              refreshCallback={this.refresh}
+              >
+          </ProfileForm>
         </div>
       );
     } else {

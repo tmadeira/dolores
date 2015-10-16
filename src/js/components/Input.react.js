@@ -57,7 +57,8 @@ var Input = React.createClass({
     var className = {
       "fa": true,
       "fa-fw": true,
-      "fa-lg": true
+      "fa-lg": true,
+      "icon": true
     };
     className["fa-" + this.props.icon] = true;
     return <i className={cx(className)}></i>;

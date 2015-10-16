@@ -10,7 +10,7 @@ var cx = require("classnames");
 var API = require("../api");
 var validate = require("../validate");
 
-var EditUserInfo = require("./EditUserInfo.react");
+var EditUserInfo = require("./V1EditUserInfo.react");
 var Input = require("./Input.react");
 
 var HeroSignup = React.createClass({

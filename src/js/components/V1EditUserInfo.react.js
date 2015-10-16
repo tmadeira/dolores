@@ -281,7 +281,7 @@ var EditUserInfo = React.createClass({
     var form = $(React.findDOMNode(this.refs.form));
     var params = form.serialize();
 
-    API.route("user_info").post(params).done(function() {
+    API.route("v1-userinfo").post(params).done(function() {
       this.setState({
         loading: false,
         isSent: true

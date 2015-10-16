@@ -1,12 +1,49 @@
 <?php
+require_once(__DIR__ . '/../locations.php');
 require_once(__DIR__ . '/../wp_util/user_meta.php');
 
 require_once(__DIR__ . '/DoloresBaseAPI.class.php');
 
 class DoloresUserInfoAPI extends DoloresBaseAPI {
+  private $fields = array(
+    'picture',
+    'location',
+    'phone',
+    'birthdate',
+    'occupation',
+    'school',
+    'course',
+    'interests',
+    'collaboration'
+  );
+
+  function get($request) {
+    if (!is_user_logged_in()) {
+      $this->_error('Esta ação requer que o usuário esteja autenticado.');
+    }
+
+    $user = wp_get_current_user();
+
+    $info = array(
+      'name' => $user->display_name,
+      'email' => $user->user_email
+    );
+    foreach ($this->fields as $key) {
+      $info[$key] = get_user_meta($user->ID, $key, true);
+      if (($key == "interests" || $key == "collaboration") && !$info[$key]) {
+        $info[$key] = array();
+      }
+    }
+
+    return array('data' => $info);
+  }
+
   function post($request) {
-    $name = $request['full_name'];
+    /*
+    $email = $request['email'];
     $phone = $request['phone'];
+    $location = $request['location'];
+    */
     $birthdate = $request['birthdate'];
     $occupation = $request['occupation'];
     $school = $request['school'];
@@ -14,15 +51,35 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     $interests = $request['interests'];
     $collab = $request['collaboration'];
 
-    $errors = array();
+    $form_errors = array();
 
-    if (strlen($phone)) {
-      $phone = preg_replace('/[^0-9]/', '', $phone);
-      if (strlen($phone) < 10 || strlen($phone) > 11) {
-        $errors['phone'] = 'O telefone digitado é inválido.';
+    /*
+    // Email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $form_errors['email'] = 'O e-mail digitado é inválido.';
+    } else {
+      $user_by_email = get_user_by('email', $value);
+      if ($user_by_email !== false) {
+        $form_errors['email'] = 'Este e-mail já está cadastrado.';
       }
     }
 
+    // Phone
+    if (strlen($phone)) {
+      $phone = preg_replace('/[^0-9]/', '', $phone);
+      if (strlen($phone) < 10 || strlen($phone) > 11) {
+        $form_errors['phone'] = 'O telefone digitado é inválido.';
+      }
+    }
+
+    // Location
+    $locations = DoloresLocations::get_instance();
+    if (!$locations->is_valid_location($location)) {
+      $form_errors['location'] = 'Escolha uma localização válida.';
+    }
+    */
+
+    // Birthdate
     if (strlen($birthdate)) {
       list($day, $month, $year) = explode('/', $birthdate);
       $birthdate = sprintf("%04d-%02d-%02d", $year, $month, $day);
@@ -30,12 +87,12 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
       if (!checkdate($month, $day, $year) ||
           $year >= $current_year ||
           $year < $current_year - 150) {
-        $errors['birthdate'] = 'A data digitada é inválida.';
+        $form_errors['birthdate'] = 'A data digitada é inválida.';
       }
     }
 
-    if (count($errors) > 0) {
-      $this->_response(400, $errors);
+    if (count($form_errors) > 0) {
+      $this->_response(400, array('formErrors' => $form_errors));
     }
 
     if (!is_user_logged_in()) {
@@ -45,59 +102,46 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     $user = wp_get_current_user();
     $user_id = $user->ID;
 
-    if (strlen($name)) {
-      $update = wp_update_user(array(
-        'ID' => $user_id,
-        'nickname' => $name,
-        'display_name' => $name
-      ));
-
-      if (is_wp_error($update)) {
-        $this->_error($update->get_error_message());
-      }
+    /*
+    if (!dolores_update_user_meta($user_id, 'phone', $phone)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (strlen($phone)) {
-      if (!dolores_update_user_meta($user_id, 'phone', $phone)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if (!dolores_update_user_meta($user_id, 'location', $location)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
+    }
+    */
+
+    if (!dolores_update_user_meta($user_id, 'birthdate', $birthdate)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (strlen($birthdate)) {
-      if (!dolores_update_user_meta($user_id, 'birthdate', $birthdate)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if (!dolores_update_user_meta($user_id, 'occupation', $occupation)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (strlen($occupation)) {
-      if (!dolores_update_user_meta($user_id, 'occupation', $occupation)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if (!dolores_update_user_meta($user_id, 'school', $school)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (strlen($school)) {
-      if (!dolores_update_user_meta($user_id, 'school', $school)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if (!dolores_update_user_meta($user_id, 'course', $course)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (strlen($course)) {
-      if (!dolores_update_user_meta($user_id, 'course', $course)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if ($interests && !is_array($interests)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (is_array($interests) && count($interests) > 0) {
-      if (!dolores_update_user_meta($user_id, 'interests', $interests)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if (!dolores_update_user_meta($user_id, 'interests', $interests)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (is_array($collab) && count($collab) > 0) {
-      if (!dolores_update_user_meta(
-          $user_id, 'collaboration', $collab)) {
-        $this->_error('Não foi possível cadastrar algumas informações.');
-      }
+    if ($collab && !is_array($collab)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
+    }
+
+    if (!dolores_update_user_meta($user_id, 'collaboration', $collab)) {
+      $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
@@ -107,8 +151,9 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
         'id' => MAILCHIMP_LIST_ID,
         'email' => array('email' => $user->user_email),
         'merge_vars' => array(
-          'NOME' => $name,
-          'CELULAR' => $phone,
+          //'EMAIL' => $email,
+          //'CELULAR' => $phone,
+          //'BAIRRO' => $location,
           'TEMAS' => is_array($interests) ? implode(", ", $interests) : "",
           'AREAS' => is_array($collab) ? implode(", ", $collab) : "",
           'NASCIMENTO' => $birthdate,
@@ -119,6 +164,13 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
       ));
     }
 
-    return array();
+    /*
+    wp_update_user(array(
+      'ID' => $user->ID,
+      'user_email' => $email
+    ));
+    */
+
+    return array('action' => 'refresh');
   }
 };

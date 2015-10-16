@@ -79,7 +79,7 @@ if (defined('GOOGLE_CLIENT_ID')) {
           $cur_url = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
           $logout = wp_logout_url($cur_url);
           $profile = get_author_posts_url($user->ID);
-          $edit = "javascript:alert('Em construção.');void(0);"; // TODO
+          $edit = "javascript:DoloresAuthenticator.editUserInfo();void(0);";
           ?>
           <li class="user-logged menu-item-has-children">
             <a

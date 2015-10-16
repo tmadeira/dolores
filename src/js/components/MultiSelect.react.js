@@ -12,9 +12,13 @@ var MultiSelect = React.createClass({
   },
 
   render: function() {
-    var className = cx(this.props.className, {focused: this.state.focused});
+    var className = cx(this.props.className, {
+      empty: this.props.selected.length === 0,
+      focused: this.state.focused
+    });
     return (
       <div className={className}>
+        {this.renderIcon()}
         {this.renderInput()}
         {this.props.selected.map(this.renderInputHidden)}
         {this.renderOptions()}
@@ -33,7 +37,22 @@ var MultiSelect = React.createClass({
       this.setState({focused: false});
     }.bind(this);
 
-    return <button className="multi-select-done" onClick={onClick}>✓</button>;
+    return (
+      <button className="multi-select-done" onClick={onClick}>
+        <i className="fa fa-check"></i>
+      </button>
+    );
+  },
+
+  renderIcon: function() {
+    var className = {
+      "fa": true,
+      "fa-fw": true,
+      "fa-lg": true,
+      "icon": true
+    };
+    className["fa-" + this.props.icon] = true;
+    return <i className={cx(className)}></i>;
   },
 
   renderInput: function() {
@@ -66,12 +85,30 @@ var MultiSelect = React.createClass({
   },
 
   renderOption: function(option) {
-    var className = cx({
-      selected: _.indexOf(this.props.selected, option) !== -1
-    });
+    var selected = _.indexOf(this.props.selected, option) !== -1;
+
+    var className = {
+      selected: selected
+    };
+
+    var checkmark = {
+      "fa": true,
+      "fa-fw": true,
+      "fa-lg": true,
+      "fa-check-square": selected,
+      "fa-square-o": !selected,
+      "check": true
+    };
+
+    var onOptionClick = function(e) {
+      this.props.onToggle(this.props.name, option);
+      e.preventDefault();
+    }.bind(this);
+
     return (
-      <li key={option} onClick={this.onOptionClick} className={className}>
-        {option}
+      <li key={option} onClick={onOptionClick} className={cx(className)}>
+        <i className={cx(checkmark)}></i>
+        <span>{option}</span>
       </li>
     );
   },
@@ -82,11 +119,6 @@ var MultiSelect = React.createClass({
     }
 
     return <div className="validation-error">{this.props.error}</div>;
-  },
-
-  onOptionClick: function(e) {
-    this.props.onToggle(this.props.name, e.target.innerHTML);
-    e.preventDefault();
   }
 });
 

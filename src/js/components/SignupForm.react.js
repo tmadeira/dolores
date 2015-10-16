@@ -30,7 +30,6 @@ var SignupForm = React.createClass({
     this.validate([name]);
   },
 
-
   onChange: function(name, value) {
     var dict = {};
     dict[name] = value;
