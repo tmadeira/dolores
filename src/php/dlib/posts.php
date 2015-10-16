@@ -41,9 +41,13 @@ class DoloresPosts {
       return array('error' => 'Erro ao cadastrar ideia.');
     }
 
+    if (!is_array($tags)) {
+      $tags = array();
+    }
+    $terms = array_merge(array($cat), $tags);
+
     // TODO: validate terms
 
-    $terms = array_merge(array($cat), explode(',', $tags));
     wp_set_object_terms($inserted, $terms, DoloresPosts::taxonomy);
 
     return array('url' => get_permalink($inserted));

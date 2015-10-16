@@ -1,18 +1,63 @@
 "use strict";
 
+var _ = require("lodash");
 var $ = require("jquery");
+var React = require("react");
 
 var API = require("./api");
 
+var MultiSelect = require("./components/MultiSelect.react");
+
 var setup = function() {
-  $("#form-tema").submit(function() {
-    var request = {
-      title: $(this).find("input[name='title']").val(),
-      text: $(this).find("textarea[name='text']").val(),
-      cat: $(this).find("input[name='cat']").val(),
-      tags: [] // TODO
+  var tagsContainer = $(".tema-tags-container");
+  var availableTags = $(".available-tags");
+
+  if (tagsContainer.length && availableTags.length) {
+    var selected = [];
+    var tags = availableTags.val().split("|");
+    var onToggle;
+
+    var options = [];
+    var valueMap = {};
+    for (var i = 0; i < tags.length; i++) {
+      var parts = tags[i].split("::");
+      options.push(parts[1]);
+      valueMap[parts[1]] = parts[0];
+    }
+
+    var renderTags = function() {
+      var multiSelect = (
+        <MultiSelect
+            className="tema-form-multiselect"
+            name="tags"
+            id="tema-form-tags"
+            options={options}
+            valueMap={valueMap}
+            selected={selected}
+            onToggle={onToggle}
+            placeholder="Escolha algumas palavras-chave"
+            ></MultiSelect>
+      );
+
+      React.render(multiSelect, tagsContainer[0]);
     };
 
+    onToggle = function(_name, value) {
+      var idx = _.indexOf(selected, value);
+      if (idx !== -1) {
+        selected.splice(idx, 1);
+      } else {
+        selected.push(value);
+      }
+
+      renderTags();
+    };
+
+    renderTags();
+  }
+
+  $("#form-tema").submit(function() {
+    var request = $(this).serialize();
     var button = $(this).find(".tema-form-button");
 
     var post = function() {

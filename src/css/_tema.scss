@@ -141,14 +141,19 @@ main.tema {
   letter-spacing: 0;
 }
 
-.tema-form-input, .tema-form-textarea, .tema-form-button {
+.tema-form-input,
+.tema-form-textarea,
+.tema-form-button,
+.tema-form-multiselect .multi-select-selected {
   font-size: 13px;
   @include breakpoint($break-tablet) {
     font-size: 16px;
   }
 }
 
-.tema-form-input, .tema-form-textarea {
+.tema-form-input,
+.tema-form-textarea,
+.tema-form-multiselect .multi-select-selected {
   @extend %text-font;
   background: #fff;
   border: 0;
@@ -158,6 +163,67 @@ main.tema {
 
 .tema-form-textarea {
   height: 140px;
+}
+
+.tema-form-multiselect {
+  position: relative;
+
+  .multi-select-options {
+    @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    background: #fff;
+    color: #000;
+    display: none;
+    font-size: 12px;
+    overflow-y: auto;
+    max-height: 120px;
+    position: absolute;
+    top: 29px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    .check {
+      margin-right: 2px;
+    }
+
+    & > li {
+      @include opacity(0.6);
+      cursor: pointer;
+      line-height: 1.5em;
+      padding: 5px;
+
+      &:hover {
+        @include opacity(1);
+      }
+    }
+
+    @include breakpoint($break-tablet) {
+      font-size: 14px;
+      top: 33px;
+    }
+  }
+
+  &.focused .multi-select-options {
+    display: block;
+  }
+
+  .multi-select-done {
+    background: $orange;
+    border: 0;
+    bottom: 2px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 26px;
+
+    @include breakpoint($break-tablet) {
+      font-size: 14px;
+      width: 28px;
+    }
+  }
 }
 
 .tema-form-button {

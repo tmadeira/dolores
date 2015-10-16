@@ -96,18 +96,42 @@ if (!$paged || $paged == 1) {
                 placeholder="Ideia (max. 600 caracteres)"
                 ></textarea>
           </p>
-          <p class="tema-form-item">
-            <label class="tema-form-label" for="tema-form-tags">
-              Tags
-            </label>
-            <input
-                type="text"
-                class="tema-form-input"
-                name="tags"
-                id="tema-form-tags"
-                placeholder="Escolha algumas palavras-chave"
-                />
-          </p>
+          <?php
+          $subterms = get_categories(array(
+            'taxonomy' => 'tema',
+            'child_of' => $term->term_id
+          ));
+
+          $tags = array();
+          foreach ($subterms as $subterm) {
+            $tags[] = $subterm->slug . "::" . $subterm->name;
+          }
+          $available_tags = implode("|", $tags);
+
+          if ($available_tags) {
+            ?>
+            <p class="tema-form-item">
+              <label class="tema-form-label" for="tema-form-tags">
+                Tags
+              </label>
+              <input
+                  type="hidden"
+                  class="available-tags"
+                  value="<?php echo $available_tags; ?>"
+                  />
+              <span class="tema-tags-container">
+                <input
+                    type="text"
+                    class="tema-form-input"
+                    name="dummy-tags"
+                    id="tema-form-tags"
+                    placeholder="Escolha algumas palavras-chave"
+                    />
+              </span>
+            </p>
+            <?php
+          }
+          ?>
           <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
             <input type="hidden" name="cat" value="<?php echo $term->slug; ?>" />
             <button class="tema-form-button" type="submit">

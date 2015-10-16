@@ -45,6 +45,9 @@ var MultiSelect = React.createClass({
   },
 
   renderIcon: function() {
+    if (!("icon" in this.props)) {
+      return null;
+    }
     var className = {
       "fa": true,
       "fa-fw": true,
@@ -73,7 +76,8 @@ var MultiSelect = React.createClass({
 
   renderInputHidden: function(option) {
     var name = this.props.name + "[]";
-    return <input type="hidden" name={name} key={option} value={option} />;
+    var value = "valueMap" in this.props ? this.props.valueMap[option] : option;
+    return <input type="hidden" name={name} key={option} value={value} />;
   },
 
   renderOptions: function() {
