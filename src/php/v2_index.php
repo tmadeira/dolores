@@ -188,11 +188,11 @@ if (!$paged || $paged == 1) {
     <div class="wrap">
       <ol class="flow-list">
         <li class="home-flow-item bg-pattern-light-purple">
-          <a href="/faca-voce-mesmo" class="flow-link">
+          <a href="/baixe-nossos-materiais" class="flow-link">
             <img class="flow-image" src="<?php echo $flow1; ?>" />
             <div class="flow-item-title-container">
               <h3 class="flow-item-title">
-                Faça você mesmo
+                Baixe nossos materiais
               </h3>
             </div>
           </a>
