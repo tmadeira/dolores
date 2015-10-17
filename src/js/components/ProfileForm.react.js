@@ -70,6 +70,8 @@ var ProfileForm = React.createClass({
           "Ilustração",
           "Motion Graphics",
           "Programação",
+          "Redação",
+          "Redes sociais",
           "Vídeo",
           "Web Design"
         ]
