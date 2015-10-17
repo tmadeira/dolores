@@ -62,7 +62,9 @@ function dolores_ideia_comment($comment, $args, $depth) {
     </li>
     <?php
     wp_list_comments(array(
-      'callback' => 'dolores_ideia_comment'
+      'callback' => 'dolores_ideia_comment',
+      'reverse_children' => true,
+      'reverse_top_level' => true
     ));
     ?>
   </ul>
