@@ -237,7 +237,7 @@ if (!$paged || $paged == 1) {
         $style = "style=\"background-image:url('$img_src');\"";
         ?>
         <div class="home-col-wrap"<?php echo $style; ?>>
-          <a class="home-main-item-link" href="<?php the_permalink(); ?>">
+          <a class="home-main-item-link" href="/secoes/apoios/">
             <h4 class="home-action-label">Quem apoia?</h4>
             <h2 class="home-action-title no-button">
               <?php the_title(); ?>
