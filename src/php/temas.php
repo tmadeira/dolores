@@ -118,17 +118,17 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
       Duis eu tincidunt metus. Proin tempor ante eget.
     </p>
 
-    <form class="temas-form-form">
+    <form class="temas-form-form" id="form-temas">
       <p class="tema-form-item">
         <label class="tema-form-label" for="tema-form-title">
           Título
         </label>
         <input
             type="text"
+            name="subject"
             class="tema-form-input"
             id="tema-form-title"
-            maxlength="100"
-            placeholder="Título (max. 100 caracteres)"
+            placeholder="Título"
             />
       </p>
       <p class="tema-form-item">
@@ -137,14 +137,16 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         </label>
         <textarea
             class="tema-form-textarea"
+            name="message"
             id="tema-form-content"
-            maxlength="600"
-            placeholder="Ideia (max. 600 caracteres)"
+            placeholder="Ideia"
             ></textarea>
       </p>
       <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
-        <button class="tema-form-button" onclick="alert('Em construção.')">
-          Enviar
+        <span class="tema-form-response"></span>
+        <button class="tema-form-button" type="submit">
+          <span class="if-not-sent">Enviar</span>
+          <i class="if-sending fa fa-fw fa-refresh fa-spin"></i>
         </button>
       </p>
     </form>

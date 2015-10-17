@@ -8,7 +8,7 @@ var API = require("./api");
 
 var MultiSelect = require("./components/MultiSelect.react");
 
-var setup = function() {
+var setupFormTema = function() {
   var tagsContainer = $(".tema-tags-container");
   var availableTags = $(".available-tags");
 
@@ -83,6 +83,48 @@ var setup = function() {
 
     return false;
   });
+};
+
+var setupFormTemas = function() {
+  $("#form-temas").submit(function() {
+    var form = $(this);
+    var request = form.serialize();
+    var fields = form.find("input, textarea");
+    var button = form.find(".tema-form-button");
+    var responseContainer = form.find(".tema-form-response");
+
+    var post = function() {
+      button.prop("disabled", true);
+      API.route("contact").post(request).done(function(response) {
+        if ("error" in response) {
+          button.prop("disabled", false);
+          responseContainer.html("Erro: " + response.error);
+        } else {
+          button.prop("disabled", false);
+          fields.val("");
+          responseContainer.html("Sua ideia foi enviada com sucesso!");
+        }
+      }).fail(function(response) {
+        button.prop("disabled", false);
+        console.log(response);
+        if ("error" in response.responseJSON) {
+          responseContainer.html("Erro: " + response.responseJSON.error);
+        } else {
+          alert("Erro ao enviar ideia.");
+        }
+      });
+    };
+
+    var message = "Você precisa se autenticar para enviar.";
+    window.DoloresAuthenticator.signIn(message, post);
+
+    return false;
+  });
+};
+
+var setup = function() {
+  setupFormTema();
+  setupFormTemas();
 };
 
 module.exports = {
