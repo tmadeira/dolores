@@ -33,4 +33,16 @@ class DoloresGoogle {
       'picture' => str_replace('sz=50', 'sz=300', $me['image']['url']),
     );
   }
+
+  public function getAuthenticatedClient() {
+    $this->client->setScopes(Google_Service_Calendar::CALENDAR_READONLY);
+    $accessToken = get_option('google_access_token');
+    $this->client->setAccessToken($accessToken);
+    if ($this->client->isAccessTokenExpired()) {
+      $this->client->refreshToken($this->client->getRefreshToken());
+      $accessToken = $this->client->getAccessToken();
+      update_option('google_access_token', $accessToken, 'no');
+    }
+    return $this->client;
+  }
 };

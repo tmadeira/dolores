@@ -1,0 +1,68 @@
+.calendar-table {
+  font-size: 15px;
+  line-height: 1.5em;
+  width: 100%;
+}
+
+.calendar-row {
+  display: block;
+  margin: 10px 0;
+
+  @include breakpoint($break-tablet) {
+    display: table-row;
+    margin: 0;
+  }
+}
+
+.calendar-cell {
+  display: block;
+  margin-left: 70px;
+
+  & > .event-title, & > .event-location, & > .event-description {
+    margin: 0;
+  }
+
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    margin: 0;
+    padding: 5px 0;
+    vertical-align: top;
+  }
+}
+
+.calendar-date {
+  float: left;
+  font-size: 13px;
+  margin: 0;
+  width: 70px;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  @include breakpoint($break-tablet) {
+    font-size: inherit;
+    float: none;
+    width: auto;
+  }
+}
+
+.calendar-time, .event-location, .event-description, .calendar-link-container {
+  font-size: 13px;
+  line-height: 1.6em;
+
+  &.calendar-time, &.calendar-link-container {
+    @include breakpoint($break-tablet) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+}
+
+.event-title {
+  line-height: 1em;
+  margin-bottom: 5px !important;
+
+  @include breakpoint($break-tablet) {
+    line-height: inherit;
+    margin: 0 !important;
+  }
+}
