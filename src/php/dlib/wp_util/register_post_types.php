@@ -21,7 +21,14 @@ function dolores_register_post_types() {
     'menu_position' => 5, /* Below posts */
     'public' => true,
     'show_in_menu' => true,
-    'supports' => array('title', 'editor', 'author', 'comments', 'revisions')
+    'supports' => array(
+      'title',
+      'editor',
+      'author',
+      'comments',
+      'revisions',
+      'thumbnail'
+    )
   );
 
   $cat_args = array(

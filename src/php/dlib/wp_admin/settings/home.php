@@ -67,31 +67,23 @@ class DoloresHome {
         $value[$i] = get_post($value[$i])->post_name;
       }
     }
+
+    for ($i = 0; $i < 3; $i++) {
+      if ($i != 0) {
+        echo "<br />";
+      }
+      ?>
+      <input
+        type="text"
+        class="regular-text"
+        id="dolores_home_ideia"
+        name="dolores_home_ideias[]"
+        placeholder="exemplo: criar-curso-publico-de-programacao"
+        value="<?php echo $value[$i]; ?>"
+        />
+      <?php
+    }
     ?>
-    <input
-      type="text"
-      class="regular-text"
-      id="dolores_home_ideia"
-      name="dolores_home_ideias[]"
-      placeholder="exemplo: criar-curso-publico-de-programacao"
-      value="<?php echo $value[0]; ?>"
-      /><br />
-    <input
-      type="text"
-      class="regular-text"
-      id="dolores_home_ideia"
-      name="dolores_home_ideias[]"
-      placeholder="exemplo: criar-curso-publico-de-programacao"
-      value="<?php echo $value[1]; ?>"
-      /><br />
-    <input
-      type="text"
-      class="regular-text"
-      id="dolores_home_ideia"
-      name="dolores_home_ideias[]"
-      placeholder="exemplo: criar-curso-publico-de-programacao"
-      value="<?php echo $value[2]; ?>"
-      />
     <p class="description">
       Use o nome da ideia conforme aparece no seu link permanente. Por exemplo,
       escreva <strong>criar-curso-publico-de-programacao</strong> se a página

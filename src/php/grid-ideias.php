@@ -24,10 +24,17 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
                   $tax['link'] = get_term_link($term, $taxonomy);
                   $tax['name'] = $term->name;
                   $tax['image'] = get_term_meta($term->term_id, 'image', true);
-                  $tax['bg'] = "background-image: url('{$tax['image']}');";
                   break;
                 }
               }
+              list($img_src) = wp_get_attachment_image_src(
+                get_post_thumbnail_id($post->ID),
+                'post-thumbnail'
+              );
+              if ($img_src) {
+                $tax['image'] = $img_src;
+              }
+              $tax['bg'] = "background-image: url('{$tax['image']}');";
               if ($tax['name']) {
                 ?>
                 <div class="grid-ideia-tax" style="<?php echo $tax['bg']; ?>">
