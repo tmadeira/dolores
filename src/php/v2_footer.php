@@ -38,14 +38,19 @@ $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
       </p>
 
       <p>
-        Copyleft &copy; <?php echo date("Y"); ?><br />
-        <?php bloginfo('name'); ?>
+        &copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?><br />
+        Conteúdo sob
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/br/">
+          licença Creative Commons (by-sa 3.0 BR)
+        </a>
       </p>
 
       <p>
-        O conteúdo deste site, exceto quando proveniente de outras fontes ou
-        onde especificado o contrário, está licenciado sob a Creative Commons
-        by-sa 3.0 BR.
+        <i class="fa fa-wordpress"></i>
+        Esta plataforma é livre e roda sobre WordPress.<br />
+        <a href="https://github.com/tmadeira/dolores">
+          <i class="fa fa-github"></i> Código-fonte no GitHub
+        </a>
       </p>
     </div>
   </div>

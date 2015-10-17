@@ -70,6 +70,13 @@
     p {
       margin-bottom: 20px;
     }
+
+    a {
+      color: $gray;
+      &:hover {
+        color: $orange;
+      }
+    }
   }
 }
 
