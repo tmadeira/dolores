@@ -17,9 +17,9 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow1; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Antes de tudo, fazemos um encontro aberto para discutir
-            coletivamente os problemas e ideias que temos para melhorar a
-            cidade.
+            Primeiro, escolhemos um tema e  fazemos um encontro aberto para
+            discutir coletivamente os problemas e ideias que temos para
+            melhorar esta área da cidade.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -32,9 +32,9 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <img class="flow-image" src="<?php echo $flow2; ?>" />
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
-            Você pode discutir aqui na plataforma todas as propostas que
-            surgiram no encontro presencial. Além disso, pode sugerir novas
-            ideias.
+            Após o encontro, abre-se um ciclo de discussão aqui na plataforma.
+            Você pode ver todas as propostas que surgiram no encontro
+            presencial e sugerir novas ideias.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -48,7 +48,7 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         <div class="temas-flow-item-description-container">
           <p class="temas-flow-item-description">
             A equipe de sistematização organizará todas as propostas que
-            surgiram nos encontros e receberam apoios na plataforma.
+            surgiram nos encontros e na plataforma.
           </p>
         </div>
         <div class="temas-flow-item-title-container">
@@ -115,7 +115,8 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
     </h2>
 
     <p class="temas-form-description">
-      Duis eu tincidunt metus. Proin tempor ante eget.
+      Tem ideias sobre algum tema que ainda não está em aberto? Escreva abaixo.
+      Assim que abrirmos um ciclo de discussão sobre o tema, te convidaremos!
     </p>
 
     <form class="temas-form-form" id="form-temas">
