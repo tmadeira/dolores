@@ -1,6 +1,11 @@
 <?php
 class DoloresAdminTaxonomy {
   private $tema_fields = array(
+    'active' => array(
+        'label' => 'Tema ativo?',
+        'description' => 'Marque se esse tema está aberto a debates.<br />' .
+                         '<strong>Esta opção não afeta subtemas/tags.</strong>'
+      ),
     'image' => array(
         'label' => 'Imagem',
         'description' => 'Endereço da imagem que é usada como destaque deste ' .
@@ -50,8 +55,8 @@ class DoloresAdminTaxonomy {
         <input
           name="<?php echo $name; ?>"
           id="tag-<?php echo $name; ?>"
-          type="text"
-          value=""
+          type="<?php echo ($name === 'active') ? 'checkbox' : 'text'; ?>"
+          value="<?php echo ($name === 'active') ? '1' : ''; ?>"
           size="40"
           />
         <p><?php echo $data['description']; ?></p>
@@ -62,12 +67,21 @@ class DoloresAdminTaxonomy {
 
   public function tema_edit_form_fields($term) {
     $values = array(
+      'active' => get_term_meta($term->term_id, 'active', true),
       'image' => get_term_meta($term->term_id, 'image', true),
       'video' => get_term_meta($term->term_id, 'video', true),
       'more' => get_term_meta($term->term_id, 'more', true)
     );
 
     foreach ($this->tema_fields as $name => $data) {
+      if ($name === 'active') {
+        $value = 'value="1"';
+        if ($values[$name]) {
+          $value .= ' checked="checked"';
+        }
+      } else {
+        $value = 'value="' . esc_attr($values[$name]) . '"';
+      }
       ?>
       <tr class="form-field term-<?php echo $name; ?>-wrap">
         <th scope="row">
@@ -79,8 +93,8 @@ class DoloresAdminTaxonomy {
           <input
             name="<?php echo $name; ?>"
             id="tag-<?php echo $name; ?>"
-            type="text"
-            value="<?php echo esc_attr($values[$name]); ?>"
+            type="<?php echo ($name === 'active') ? 'checkbox' : 'text'; ?>"
+            <?php echo $value; ?>
             size="40"
             />
           <p class="description">

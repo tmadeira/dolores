@@ -52,6 +52,7 @@
   @include breakpoint($break-tablet) {
     display: inline-block;
     margin-bottom: 30px;
+    vertical-align: top;
     width: 49%;
     &:nth-child(2n) {
       margin-left: 2%;
@@ -67,7 +68,7 @@
   height: 100%;
   text-align: center;
   width: 100%;
-  &:hover {
+  &[href]:hover {
     background: rgba(0, 0, 0, 0.7);
     .grid-tema-action {
       background: #fff;
@@ -93,6 +94,12 @@
   border: solid 2px #fff;
   padding: 6px 12px;
   text-transform: uppercase;
+}
+
+.grid-tema-soon {
+  font-size: 16px;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 .temas-form {

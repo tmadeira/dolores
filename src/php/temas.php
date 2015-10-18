@@ -85,19 +85,26 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
         'parent' => 0
       ));
       foreach ($terms as $term) {
-        $link = get_term_link($term, $taxonomy);
         $image = get_term_meta($term->term_id, 'image', true);
+        $active = get_term_meta($term->term_id, 'active', true);
         if ($image) {
           $style = ' style="background-image: url(\'' . $image . '\');"';
         } else {
           $style = '';
         }
+        if ($active) {
+          $href = ' href="' . get_term_link($term, $taxonomy) . '"';
+          $button = '<button class="grid-tema-action">Participe</button>';
+        } else {
+          $link = '';
+          $button = '<div class="grid-tema-soon">Em breve</div>';
+        }
         ?>
         <li class="grid-tema"<?php echo $style; ?>>
-          <a href="<?php echo $link; ?>" class="grid-tema-link">
+          <a<?php echo $href; ?> class="grid-tema-link">
             <div class="grid-tema-wrap">
               <h3 class="grid-tema-name"><?php echo $term->name; ?></h3>
-              <button class="grid-tema-action">Participe</button>
+              <?php echo $button; ?>
             </div>
           </a>
         </li>
