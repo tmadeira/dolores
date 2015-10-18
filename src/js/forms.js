@@ -85,8 +85,8 @@ var setupFormTema = function() {
   });
 };
 
-var setupFormTemas = function() {
-  $("#form-temas").submit(function() {
+var setupContactForm = function() {
+  $(".contact-form").submit(function() {
     var form = $(this);
     var request = form.serialize();
     var fields = form.find("input, textarea");
@@ -102,7 +102,7 @@ var setupFormTemas = function() {
         } else {
           button.prop("disabled", false);
           fields.val("");
-          responseContainer.html("Sua ideia foi enviada com sucesso!");
+          responseContainer.html("Sua mensagem foi enviada com sucesso!");
         }
       }).fail(function(response) {
         button.prop("disabled", false);
@@ -110,7 +110,7 @@ var setupFormTemas = function() {
         if ("error" in response.responseJSON) {
           responseContainer.html("Erro: " + response.responseJSON.error);
         } else {
-          alert("Erro ao enviar ideia.");
+          alert("Erro ao enviar mensagem.");
         }
       });
     };
@@ -124,7 +124,7 @@ var setupFormTemas = function() {
 
 var setup = function() {
   setupFormTema();
-  setupFormTemas();
+  setupContactForm();
 };
 
 module.exports = {
