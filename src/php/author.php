@@ -1,4 +1,10 @@
 <?php
+if ($_GET['ajax']) {
+  require_once(__DIR__ . '/grid-ideias.php');
+  dolores_grid_ideias();
+  die();
+}
+
 get_header();
 $info = isset($_GET['author_name']) ? get_user_by('slug', $author_name) :
     get_userdata(intval($author));

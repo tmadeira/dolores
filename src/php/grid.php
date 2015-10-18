@@ -44,7 +44,6 @@ function dolores_grid($query = null) {
 
         $prev_page = intval($paged) - 1;
         $next_page = intval($paged) + 1;
-
         ?>
         <div class="grid-ideias-pagination">
           <?php
@@ -67,7 +66,10 @@ function dolores_grid($query = null) {
               $next_link = get_next_posts_page_link();
             }
             ?>
-            <a class="grid-ideias-button" href="<?php echo $next_link; ?>">
+            <a
+                class="grid-ideias-button ajax-load-more"
+                href="<?php echo $next_link; ?>"
+                >
               Ver mais
             </a>
             <?php

@@ -1,4 +1,10 @@
 <?php
+if ($_GET['ajax']) {
+  require_once(__DIR__ . '/grid.php');
+  dolores_grid();
+  die();
+}
+
 global $wp_query;
 require_once(__DIR__ . '/grid.php');
 
@@ -142,7 +148,7 @@ if (!$paged || $paged == 1) {
 
   <section class="home-row">
     <div class="wrap">
-      <div class="home-col">
+      <div class="home-col grid-2">
         <?php
         $args = array_merge($wp_query->query_vars, array(
           'posts_per_page' => 4
@@ -245,7 +251,7 @@ if (!$paged || $paged == 1) {
           </a>
         </div>
       </div>
-      <div class="home-col">
+      <div class="home-col grid-2">
         <?php
         $args = array_merge($wp_query->query_vars, array(
           'posts_per_page' => 4,
@@ -258,10 +264,13 @@ if (!$paged || $paged == 1) {
     </div>
   </section>
 
-  <section class="home-footer-pagination">
+  <section class="site-grid home-grid-negative-margin">
     <div class="wrap">
-      <div class="home-button-container">
-        <a class="home-button" href="/page/2">Ver mais</a>
+      <ul></ul>
+      <div class="grid-ideias-pagination">
+        <a class="grid-ideias-button ajax-load-more" href="/page/2">
+          Ver mais
+        </a>
       </div>
     </div>
   </section>

@@ -282,3 +282,9 @@
   left: 20px;
   position: absolute;
 }
+
+.home-grid-negative-margin {
+  @include breakpoint($break-tablet) {
+    margin-top: -30px;
+  }
+}

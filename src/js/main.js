@@ -11,6 +11,7 @@ var google = require("./google");
 var hero = require("./hero");
 var interact = require("./interact");
 var menu = require("./menu");
+var pagination = require("./pagination");
 var twitter = require("./twitter");
 
 var Authenticator = require("./components/Authenticator.react");
@@ -45,5 +46,6 @@ $(function() {
   hero.setup();
   interact.setup();
   menu.setup();
+  pagination.setup();
   twitter.setup();
 });

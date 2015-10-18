@@ -141,6 +141,7 @@
 }
 
 .grid-ideias-pagination {
+  font-size: 16px;
   margin: 10px 0 40px;
   text-align: center;
 }
@@ -150,12 +151,21 @@
   background: none;
   border: solid 2px $purple;
   color: $purple;
+  display: block;
   font-size: 18px;
   letter-spacing: 0;
   padding: 5px 10px;
-  margin: 0 10px;
+  margin: 20px;
   &:hover {
     background: $purple;
     color: #fff;
   }
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+
+.pagination-spinner {
+  line-height: 1.8em;
 }

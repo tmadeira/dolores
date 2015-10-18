@@ -1,4 +1,10 @@
 <?php
+if ($_GET['ajax']) {
+  require_once(__DIR__ . '/grid.php');
+  dolores_grid();
+  die();
+}
+
 get_header();
 ?>
 

@@ -1,4 +1,10 @@
 <?php
+if ($_GET['ajax']) {
+  require_once(__DIR__ . '/grid-ideias.php');
+  dolores_grid_ideias();
+  die();
+}
+
 $term = get_queried_object();
 $active = get_term_meta($term->term_id, 'active', true);
 $video = get_term_meta($term->term_id, 'video', true);
