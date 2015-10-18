@@ -64,7 +64,12 @@ SQL;
     if (!$calculate) {
       $up = get_post_meta($post_id, $this->field_up, true);
       $down = get_post_meta($post_id, $this->field_down, true);
-      return array($up ? intval($up) : 0, $down ? intval($down) : 0);
+      $voted = "";
+      if (is_user_logged_in()) {
+        $voted = $this->voted($post_id, 0);
+      }
+
+      return array($up ? intval($up) : 0, $down ? intval($down) : 0, $voted);
     }
 
     $sql = <<<SQL
@@ -77,7 +82,8 @@ SQL;
     foreach ($results as $result) {
       $votes[$result->action] = intval($result->count);
     }
-    return array($votes['up'], $votes['down']);
+
+    return array($votes['up'], $votes['down'], $voted);
   }
 
   public function get_comment_votes($comment_id, $calculate = false) {
@@ -87,7 +93,11 @@ SQL;
     if (!$calculate) {
       $up = get_comment_meta($comment_id, $this->field_up, true);
       $down = get_comment_meta($comment_id, $this->field_down, true);
-      return array($up ? intval($up) : 0, $down ? intval($down) : 0);
+      $voted = "";
+      if (is_user_logged_in()) {
+        $voted = $this->voted(0, $comment_id);
+      }
+      return array($up ? intval($up) : 0, $down ? intval($down) : 0, $voted);
     }
 
     $sql = <<<SQL

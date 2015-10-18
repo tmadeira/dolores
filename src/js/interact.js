@@ -15,8 +15,10 @@ var vote = function(data, action) {
     $("[data-vote='" + data + "']").each(function() {
       if ($(this).hasClass("ideia-upvote")) {
         $(this).find(".number").html(response.up);
+        $(this).toggleClass("voted", response.voted === "up");
       } else {
         $(this).find(".number").html(response.down);
+        $(this).toggleClass("voted", response.voted === "down");
       }
     });
   }).fail(function(response) {
@@ -52,6 +54,9 @@ var setup = function() {
     if (!comment.find("> .children").length) {
       comment.append("<ul class=\"children\"></ul>");
     }
+
+    $(".replying").removeClass("replying");
+    comment.addClass("replying");
 
     $("#respond").detach().prependTo(comment.find("> .children"));
     $("#respond").find("input[name='parent']").val(commentId);

@@ -102,8 +102,16 @@ class DoloresPosts {
 
   public static function get_comment_html($comment) {
     $interact = DoloresInteract::get_instance();
-    list($up, $down) = $interact->get_comment_votes($comment->comment_ID);
+    list($up, $down, $voted) =
+      $interact->get_comment_votes($comment->comment_ID);
     $data = "href=\"#vote\" data-vote=\"comment_id|{$comment->comment_ID}\"";
+    $upvoted = $downvoted = "";
+    if ($voted === "up") {
+      $upvoted = " voted";
+    } else if ($voted === "down") {
+      $downvoted = " voted";
+    }
+
     $user = get_user_by('id', $comment->user_id);
     $picture = dolores_get_profile_picture($user);
     $style = ' style="background-image: url(\'' . $picture. '\');"';
@@ -138,11 +146,11 @@ HTML;
         </span>
       </div>
       <div class="ideia-comment-meta">
-        <a class="ideia-comment-action ideia-upvote" {$data}>
+        <a class="ideia-comment-action ideia-upvote{$upvoted}" {$data}>
           <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
           <span class="number">{$up}</span>
         </a>
-        <a class="ideia-comment-action ideia-downvote" {$data}>
+        <a class="ideia-comment-action ideia-downvote{$downvoted}" {$data}>
           <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
           <span class="number">{$down}</span>
         </a>

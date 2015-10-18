@@ -21,6 +21,14 @@
 
 .ideia-action {
   margin-right: 15px;
+  .fa {
+    @include opacity(0.5);
+  }
+  &.voted, &:hover {
+    .fa {
+      @include opacity(1);
+    }
+  }
 }
 
 #comments {
@@ -75,7 +83,13 @@
 .ideia-comment-action {
   margin-right: 8px;
   .fa {
+    @include opacity(0.5);
     color: $orange;
+  }
+  &.voted, .replying &.ideia-comment-reply, &:hover {
+    .fa {
+      @include opacity(1);
+    }
   }
 }
 

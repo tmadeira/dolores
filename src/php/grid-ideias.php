@@ -98,14 +98,26 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
               <?php
               require_once(__DIR__ . '/dlib/interact.php');
               $interact = new DoloresInteract();
-              list($up, $down) = $interact->get_post_votes($post->ID);
+              list($up, $down, $voted) = $interact->get_post_votes($post->ID);
               $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
+              $upvoted = $downvoted = "";
+              if ($voted === "up") {
+                $upvoted = " voted";
+              } else if ($voted === "down") {
+                $downvoted = " voted";
+              }
               ?>
-              <a class="grid-ideia-action ideia-upvote" <?php echo $data; ?>>
+              <a
+                  class="grid-ideia-action ideia-upvote<?php echo $upvoted; ?>"
+                  <?php echo $data; ?>
+                  >
                 <i class="fa fa-fw fa-thumbs-up"></i>
                 <span class="number"><?php echo $up; ?></span>
               </a>
-              <a class="grid-ideia-action ideia-downvote" <?php echo $data; ?>>
+              <a
+                  class="grid-ideia-action ideia-downvote<?php echo $downvoted; ?>"
+                  <?php echo $data; ?>
+                  >
                 <i class="fa fa-fw fa-thumbs-down"></i>
                 <span class="number"><?php echo $down; ?></span>
               </a>

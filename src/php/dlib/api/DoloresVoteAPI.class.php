@@ -39,7 +39,8 @@ class DoloresVoteAPI extends DoloresBaseAPI {
 
     return array(
       'up' => $votes[0],
-      'down' => $votes[1]
+      'down' => $votes[1],
+      'voted' => $votes[2]
     );
   }
 };

@@ -106,9 +106,15 @@
 .grid-ideia-action {
   margin-right: 8px;
   .fa {
+    @include opacity(0.5);
     color: $purple;
     .home & {
       color: $orange;
+    }
+  }
+  &.voted, &:hover {
+    .fa {
+      @include opacity(1);
     }
   }
 }
