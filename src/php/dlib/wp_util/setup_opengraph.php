@@ -3,6 +3,10 @@ require_once(__DIR__ . '/../assets.php');
 require_once(__DIR__ . '/../config.php');
 
 function dolores_add_opengraph() {
+  $author_url = DoloresConfig::ogAuthorUrl;
+  $author_name = DoloresConfig::ogAuthorName;
+  $fbAdmins = DoloresConfig::facebookAdmins;
+
   $site_name = get_bloginfo('name');
   $image = DoloresAssets::get_image_uri(DoloresConfig::ogDefaultImage);
 
@@ -11,9 +15,25 @@ function dolores_add_opengraph() {
     $title = get_bloginfo('name');
     $type = 'website';
     $url = get_bloginfo('url');
-  } else if (is_category()) {
-    $description = category_description();
+  } else if (is_tax()) {
+    $term = get_queried_object();
+    $description = trim(strip_tags(category_description()));
     $title = single_cat_title('', false);
+    $tax_img = get_term_meta($term->term_id, 'image', true);
+    if ($tax_img) {
+      $image = $tax_img;
+    }
+  } else if (is_author()) {
+    global $_GET, $author;
+    $info = isset($_GET['author_name']) ?
+        get_user_by('slug', $_GET['author_name']) :
+        get_userdata(intval($author));
+    require_once(__DIR__ . '/user_meta.php');
+    $picture = dolores_get_profile_picture($info);
+    if ($picture) {
+      $image = $picture;
+    }
+    $title = $info->display_name;
   } else if (is_single() || is_page()) {
     $tags = get_the_tags();
     if ($tags) {
@@ -39,6 +59,17 @@ function dolores_add_opengraph() {
         get_the_content(),
         $matches)) {
       $image = $matches[1];
+    } else if (get_post_type() === 'ideia') {
+      $terms = get_the_terms($post->ID, 'tema');
+      foreach ($terms as $term) {
+        if ($term->parent == 0) {
+          $tax_img = get_term_meta($term->term_id, 'image', true);
+          if ($tax_img) {
+            $image = $tax_img;
+          }
+          break;
+        }
+      }
     }
 
     $published = get_the_time('Y-m-d H:i:s');
@@ -49,6 +80,11 @@ function dolores_add_opengraph() {
         $section = $cat->name;
         break;
       }
+    }
+
+    if (get_post_type() === 'ideia') {
+      $author_url = get_author_posts_url(get_the_author_meta('ID'));
+      $author_name = get_the_author();
     }
   } else {
     $url = get_bloginfo('url') .
@@ -101,12 +137,8 @@ function dolores_add_opengraph() {
     echo "<meta property='og:url' content='$url' />\n";
   }
 
-  $author_url = DoloresConfig::ogAuthorUrl;
-  $author = DoloresConfig::ogAuthorName;
-  $fbAdmins = DoloresConfig::facebookAdmins;
-
   echo "<meta property='article:author' content='$author_url' />\n";
-  echo "<meta name='author' content='$author' />\n";
+  echo "<meta name='author' content='$author_name' />\n";
   echo "<meta property='fb:admins' content='$fbAdmins' />\n";
 
   if (defined('FACEBOOK_APP_ID')) {
