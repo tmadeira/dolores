@@ -12,6 +12,22 @@ get_header();
 
     <div class="entry">
       <?php the_content(); ?>
+
+      <?php
+      global $show_signin_button;
+      if ($show_signin_button) {
+        ?>
+        <div class="grid-ideias-pagination">
+          <button
+              class="grid-ideias-button"
+              onclick="DoloresAuthenticator.signIn(null, function() { location.href = '/temas'; })"
+              >
+            Gostou? Clique aqui para participar!
+          </button>
+        </div>
+        <?php
+      }
+    ?>
     </div>
 
     <div class="single-meta social-media">
