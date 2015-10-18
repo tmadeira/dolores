@@ -1,5 +1,5 @@
 <?php
-function dolores_grid($query = null) {
+function dolores_grid($query = null, $temas = "") {
   global $wp_query, $post;
   if ($query === null) {
     $query = $wp_query;
@@ -36,7 +36,7 @@ function dolores_grid($query = null) {
         echo '</p>';
       }
 
-      if ($query->is_main_query() || is_search()) {
+      if ($query->is_main_query() || is_search() || $temas) {
         $paged = $query->get('paged', 1);
         if (!$paged) {
           $paged = 1;
@@ -62,6 +62,8 @@ function dolores_grid($query = null) {
               } else {
                 $next_link .= '&page=' . $next_page;
               }
+            } else if ($temas) {
+              $next_link = $temas . $next_page;
             } else {
               $next_link = get_next_posts_page_link();
             }

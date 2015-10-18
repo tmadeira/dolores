@@ -1,5 +1,27 @@
 <?php
 /* Template Name: Temas */
+
+the_post();
+$base = get_permalink();
+
+function dolores_temas_grid() {
+  global $wp_query, $base;
+  $paged = intval(preg_replace('/[^0-9]*/', '', $wp_query->query['page']));
+  $paged = max($paged, 1);
+
+  require_once(__DIR__ . '/grid.php');
+  $query = new WP_Query(array(
+    'category_name' => 'encontros',
+    'paged' => $paged
+  ));
+  dolores_grid($query, $base);
+}
+
+if ($_GET['ajax']) {
+  dolores_temas_grid();
+  die();
+}
+
 require_once(__DIR__ . '/dlib/assets.php');
 
 get_header();
@@ -168,11 +190,7 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
     </h2>
 
     <?php
-    require_once(__DIR__ . '/grid.php');
-    $query = new WP_Query(array(
-      'category_name' => 'encontros'
-    ));
-    dolores_grid($query);
+    dolores_temas_grid();
     ?>
   </div>
 </section>

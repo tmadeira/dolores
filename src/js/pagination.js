@@ -21,7 +21,6 @@ var loadData = function(url, data, section) {
 };
 
 var setup = function() {
-  // TODO: ajax-load-more in home (v2_index.php)
   var spinner =
       "<i class=\"pagination-spinner fa fa-refresh fa-spin fa-lg\"></i>";
   $(document).on("click", ".ajax-load-more", function(e) {
