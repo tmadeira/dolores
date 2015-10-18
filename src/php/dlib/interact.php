@@ -124,15 +124,20 @@ SQL;
       'action' => $action
     );
 
-    if ($this->voted($post_id, $comment_id)) {
+    $voted = $this->voted($post_id, $comment_id);
+
+    if ($voted) {
       $this->unvote($post_id, $comment_id);
     }
 
-    $wpdb->insert($this->table_name, $fields);
+    if ($voted !== $action) {
+      $wpdb->insert($this->table_name, $fields);
+    }
+
     $this->update_count($post_id, $comment_id);
   }
 
-  public function voted($post_id, $comment_id) {
+  private function voted($post_id, $comment_id) {
     global $wpdb;
 
     if (!is_user_logged_in()) {
@@ -144,13 +149,13 @@ SQL;
     $comment_id = intval($comment_id);
 
     $sql = <<<SQL
-SELECT COUNT(*) FROM {$this->table_name} WHERE
+SELECT action FROM {$this->table_name} WHERE
   user_id = '$user_id' AND
   post_id = '$post_id' AND
   comment_id = '$comment_id'
 SQL;
 
-    return $wpdb->get_var($sql) === "1";
+    return $wpdb->get_var($sql);
   }
 
   private function unvote($post_id, $comment_id) {
