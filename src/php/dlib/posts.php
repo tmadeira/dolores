@@ -46,7 +46,25 @@ class DoloresPosts {
     }
     $terms = array_merge(array($cat), $tags);
 
-    // TODO: validate terms
+    $term = get_term_by('slug', $cat, 'tema');
+    if ($term === false ||
+        $term->parent != 0 ||
+        !get_term_meta($term->term_id, 'active', true)) {
+      return array('error' => 'Este tema não está aberto no momento.');
+    }
+    $subterms = get_categories(array(
+      'taxonomy' => 'tema',
+      'child_of' => $term->term_id
+    ));
+    $valid = array();
+    foreach ($subterms as $subterm) {
+      $valid[$subterm->slug] = 1;
+    }
+    foreach ($tags as $tag) {
+      if (!array_key_exists($tag, $valid)) {
+        return array('error' => 'Foi selecionada uma tag que não existe.');
+      }
+    }
 
     wp_set_object_terms($inserted, $terms, DoloresPosts::taxonomy);
 
