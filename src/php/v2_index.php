@@ -64,7 +64,7 @@ if (!$paged || $paged == 1) {
   if (DoloresStreaming::get_active()) {
     $title = esc_html(DoloresStreaming::get_title());
     $youtube_id = DoloresStreaming::get_youtube_id();
-    $params = "rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1";
+    $params = "rel=0&amp;showinfo=0&amp;autoplay=1";
     $url = "//youtube.com/embed/${youtube_id}?${params}";
     ?>
     <section class="site-streaming">
