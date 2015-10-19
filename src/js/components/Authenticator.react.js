@@ -115,7 +115,14 @@ var Authenticator = React.createClass({
 
   refresh: function() {
     $("body").addClass("logged-in");
-    // TODO: async fetch/set header
+
+    API.route("userheader").get().done(function(response) {
+      console.log("response", response);
+      $(".user-signin").replaceWith(response.html);
+    }).fail(function(response) {
+      console.log("Error getting user header", response);
+    });
+
     this.setState(this.getInitialState());
     this.state.refreshCallback();
   },

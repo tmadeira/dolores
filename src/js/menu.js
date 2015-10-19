@@ -43,7 +43,10 @@ var hideActiveSubmenus = function() {
 var setup = function() {
   $(".site-header .sub-menu").hide();
 
-  $(".site-header .menu-item-has-children > a").click(function(e) {
+  $(document).on(
+      "click",
+      ".site-header .menu-item-has-children > a",
+      function(e) {
     var li = $(this).parent();
     var isActive = li.hasClass("active");
 

@@ -70,51 +70,8 @@ if (defined('GOOGLE_CLIENT_ID')) {
           </form>
         </li>
         <?php
-        if (is_user_logged_in()) {
-          $user = wp_get_current_user();
-          require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
-          $picture = dolores_get_profile_picture($user);
-          $style = ' style="background-image: url(\'' . $picture. '\');"';
-
-          $cur_url = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-          $logout = wp_logout_url($cur_url);
-          $profile = get_author_posts_url($user->ID);
-          $edit = "javascript:DoloresAuthenticator.editUserInfo();void(0);";
-          ?>
-          <li class="user-logged menu-item-has-children">
-            <a
-                href="<?php echo $profile; ?>"
-                title="<?php echo esc_attr($user->display_name); ?>"
-                >
-              <span class="user-logged-picture"<?php echo $style; ?>></span>
-              <span class="user-logged-name">
-                <?php echo $user->display_name; ?>
-              </span>
-            </a>
-            <div class="sub-menu user-logged-menu">
-              <div class="user-logged-menu-picture"<?php echo $style; ?>></div>
-              <div class="user-logged-menu-info">
-                <h3 class="user-logged-menu-name">
-                  <?php echo $user->display_name; ?>
-                </h3>
-                <ul class="user-logged-menu-ul">
-                  <li><a href="<?php echo $profile; ?>">Ver perfil</a></li>
-                  <li><a href="<?php echo $edit; ?>">Editar perfil</a></li>
-                  <li><a href="<?php echo $logout; ?>">Sair</a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <?php
-        } else {
-          ?>
-          <li class="user-signin">
-            <a href="javascript:DoloresAuthenticator.signIn();void(0)">
-              <i class="fa fa-user"></i> Entrar
-            </a>
-          </li>
-          <?php
-          }
+        require_once(__DIR__ . '/dlib/users.php');
+        echo DoloresUsers::getUserHeaderLi();
         ?>
       </ul>
       <?php } ?>

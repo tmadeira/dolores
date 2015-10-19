@@ -165,4 +165,56 @@ class DoloresUsers {
 
     return $results['url'];
   }
+
+  public static function getUserHeaderLi() {
+    if (is_user_logged_in()) {
+      $user = wp_get_current_user();
+      $picture = dolores_get_profile_picture($user);
+      $style = ' style="background-image: url(\'' . $picture. '\');"';
+
+      $cur_url = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+      $logout = wp_logout_url($cur_url);
+      $profile = get_author_posts_url($user->ID);
+      $edit = "javascript:DoloresAuthenticator.editUserInfo();void(0);";
+
+      $display_name = esc_attr($user->display_name);
+
+      $html = <<<HTML
+<li class="user-logged menu-item-has-children">
+  <a
+      href="{$profile}"
+      title="{$display_name}"
+      >
+    <span class="user-logged-picture"{$style}></span>
+    <span class="user-logged-name">
+      {$user->display_name}
+    </span>
+  </a>
+  <div class="sub-menu user-logged-menu">
+    <div class="user-logged-menu-picture"{$style}></div>
+    <div class="user-logged-menu-info">
+      <h3 class="user-logged-menu-name">
+        {$user->display_name}
+      </h3>
+      <ul class="user-logged-menu-ul">
+        <li><a href="{$profile}">Ver perfil</a></li>
+        <li><a href="{$edit}">Editar perfil</a></li>
+        <li><a href="{$logout}">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+</li>
+HTML;
+    } else {
+      $html = <<<HTML
+<li class="user-signin">
+  <a href="javascript:DoloresAuthenticator.signIn();void(0)">
+    <i class="fa fa-user"></i> Entrar
+  </a>
+</li>
+HTML;
+    }
+
+    return $html;
+  }
 };
