@@ -1,6 +1,25 @@
 <?php
 /* Template Name: Agenda */
 the_post();
+$base = get_permalink();
+
+function dolores_temas_grid() {
+  global $wp_query, $base;
+  $paged = intval(preg_replace('/[^0-9]*/', '', $wp_query->query['page']));
+  $paged = max($paged, 1);
+
+  require_once(__DIR__ . '/grid.php');
+  $query = new WP_Query(array(
+    'category_name' => 'encontros',
+    'paged' => $paged
+  ));
+  dolores_grid($query, $base);
+}
+
+if ($_GET['ajax']) {
+  dolores_temas_grid();
+  die();
+}
 
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/dlib/external/google.php');
@@ -111,6 +130,18 @@ get_header();
     </div>
   </article>
 </main>
+
+<section class="temas-posts">
+  <div class="wrap">
+    <h2 class="temas-posts-title">
+      <span>Encontros que já rolaram</span>
+    </h2>
+
+    <?php
+    dolores_temas_grid();
+    ?>
+  </div>
+</section>
 
 <?php
 get_footer();
