@@ -24,19 +24,32 @@ if ($_GET['ajax']) {
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/dlib/external/google.php');
 
-$google = new DoloresGoogle();
-$client = $google->getAuthenticatedClient();
+$calendar_cache = get_option('dolores_calendar_cache');
 
-$service = new Google_Service_Calendar($client);
-$calendarId = 'ss06he4nh7ulaoa1i26mmkd2fo@group.calendar.google.com';
-$optParams = array(
-  'maxResults' => 100,
-  'orderBy' => 'startTime',
-  'singleEvents' => TRUE,
-  'timeMin' => date('c'),
-);
+if (!is_array($calendar_cache) ||
+    $calendar_cache['time'] < time() - 1800 ||
+    (is_user_logged_in() && current_user_can('manage_options'))) {
+  $google = new DoloresGoogle();
+  $client = $google->getAuthenticatedClient();
 
-$results = $service->events->listEvents($calendarId, $optParams);
+  $service = new Google_Service_Calendar($client);
+  $calendarId = 'ss06he4nh7ulaoa1i26mmkd2fo@group.calendar.google.com';
+  $optParams = array(
+    'maxResults' => 100,
+    'orderBy' => 'startTime',
+    'singleEvents' => TRUE,
+    'timeMin' => date('c'),
+  );
+
+  $results = $service->events->listEvents($calendarId, $optParams);
+  $calendar_cache = array(
+    'time' => time(),
+    'events' => $results->getItems()
+  );
+  update_option('dolores_calendar_cache', $calendar_cache, 'no');
+}
+
+$events = $calendar_cache['events'];
 
 get_header();
 ?>
@@ -52,7 +65,7 @@ get_header();
 
     <div class="entry">
       <?php
-      if (count($results->getItems()) == 0) {
+      if (count($events) == 0) {
         echo "<p>Nenhum evento previsto no próximo período.</p>";
       } else {
         ?>
@@ -61,7 +74,7 @@ get_header();
             <?php
             $date_format = "D d/M";
             $time_format = "H:i";
-            foreach ($results->getItems() as $event) {
+            foreach ($events as $event) {
               $start = $event->start->dateTime;
               if (empty($start)) {
                 $start = $event->start->date;
