@@ -1,357 +1,72 @@
-.v1 {
-  .site-hero {
-    background: #000 no-repeat;
-    background-position: -270px 0;
-    background-size: auto 500px;
-    padding-top: 400px;
-    position: relative;
+.site-hero {
+  background-position: bottom center;
+  background-size: cover;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
 
-    @include breakpoint($break-tablet) {
-      background-position: -360px 0;
-      background-size: auto;
-      height: 630px;
-    }
-
-    @include breakpoint($break-desktop) {
-      background-position: center top;
-      background-size: auto;
-      height: 630px;
-    }
-  }
-
-  #react-hero-signup {
-    background: #000;
-    color: #fff;
-    padding: 0.1px 10px;
-
-    .signup-input, .signup-button {
-      display: block;
-      margin: 10px 0;
-      .fa {
-        display: none;
-      }
-    }
-
-    .signup-input {
-      position: relative;
-
-      & > input {
-        background-color: #fff;
-        background-repeat: no-repeat;
-        border: 0;
-        color: #000;
-        display: block;
-        font-size: 12px;
-        overflow: hidden;
-        padding: 10px 10px 10px 36px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 100%;
-
-        &[disabled] {
-          background-color: $gray;
-        }
-      }
-
-      .multi-select-done {
-        background: $orange;
-        border: 0;
-        bottom: 5px;
-        color: #fff;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 0 4px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        width: 28px;
-      }
-
-      .validation-error {
-        @include border-radius(5px);
-        @include box-shadow(0 0 4px rgba(0, 0, 0, 0.5));
-        background: $red;
-        bottom: 35px;
-        color: #fff;
-        font-size: 12px;
-        left: 3px;
-        padding: 5px 10px;
-        position: absolute;
-        z-index: 2;
-
-        @include breakpoint($break-tablet) {
-          bottom: 37px;
-        }
-
-        @include breakpoint($break-desktop) {
-          bottom: 39px;
-        }
-
-        &::after {
-          border-top: 5px solid $red;
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          bottom: -5px;
-          content: "";
-          height: 0;
-          left: 10px;
-          position: absolute;
-          width: 0;
-        }
-      }
-
-      &.focused > .multi-select-selected {
-        padding-right: 38px;
-      }
-
-      .suggestions, .multi-select-options {
-        @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
-        background: #fff;
-        color: #000;
-        display: none;
-        font-size: 12px;
-        overflow-y: auto;
-        max-height: 240px;
-        position: absolute;
-        top: 37px;
-        left: 0;
-        right: 0;
-        z-index: 2;
-
-        &:not(.multi-select-options) > li {
-          cursor: pointer;
-          padding: 5px;
-          &.selected, &:hover {
-            background: $gray;
-          }
-        }
-
-        &.multi-select-options > li {
-          @include opacity(0.6);
-          background-image: url('static/images/checkbox-empty.svg');
-          background-position: 5px center;
-          background-size: 20px;
-          background-repeat: no-repeat;
-          cursor: pointer;
-          padding: 5px 5px 5px 30px;
-
-          &:hover {
-            @include opacity(1);
-          }
-
-          &.selected {
-            background-image: url('static/images/checkbox-checked.svg');
-          }
-        }
-
-        @include breakpoint($break-tablet) {
-          font-size: 14px;
-          top: 39px;
-        }
-
-        @include breakpoint($break-desktop) {
-          top: 41px;
-        }
-      }
-
-      &.focused .suggestions, &.focused .multi-select-options {
-        display: block;
-      }
-    }
-
-    .signup-input-email > input {
-      background-image: url('static/images/icon-email.svg');
-      background-position: 6px center;
-      background-size: auto 18px;
-    }
-
-    .signup-input-location > input {
-      background-image: url('static/images/icon-location.svg');
-      background-position: 9px center;
-      background-size: auto 24px;
-    }
-
-    .signup-input-name > input {
-      background-image: url('static/images/icon-name.svg');
-      background-position: 6px center;
-      background-size: auto 24px;
-    }
-
-    .signup-input-phone > input {
-      background-image: url('static/images/icon-phone.svg');
-      background-position: 6px center;
-      background-size: auto 22px;
-    }
-
-    .signup-input-birthdate > input {
-      background-image: url('static/images/icon-birthdate.svg');
-      background-position: 6px center;
-      background-size: auto 20px;
-    }
-
-    .signup-input-occupation > input {
-      background-image: url('static/images/icon-occupation.svg');
-      background-position: 8px center;
-      background-size: auto 20px;
-    }
-
-    .signup-input-school > input {
-      background-image: url('static/images/icon-school.svg');
-      background-position: 6px center;
-      background-size: auto 24px;
-    }
-
-    .signup-input-course > input {
-      background-image: url('static/images/icon-course.svg');
-      background-position: 6px center;
-      background-size: auto 24px;
-    }
-
-    .signup-input-interests > .multi-select-selected {
-      background-image: url('static/images/icon-interests.svg');
-      background-position: 5px center;
-      background-size: auto 26px;
-    }
-
-    .signup-input-collaboration > .multi-select-selected {
-      background-image: url('static/images/icon-interests.svg');
-      background-position: 5px center;
-      background-size: auto 26px;
-    }
-
-    .signup-button {
-      @include transition(all 150ms ease);
-      background: $orange;
-      border: 0;
-      color: #fff;
-      font-weight: bold;
-      padding: 5px 10px;
-      text-transform: uppercase;
-
-      &:hover {
-        background: $purple;
-      }
-
-      &.is-basic-sent {
-        display: none;
-      }
-    }
-
-    @include breakpoint($break-tablet) {
-      background: rgba(0, 0, 0, 0.7);
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-
-      .basic-form {
-        padding: 10px 0;
-      }
-
-      .signup-input, .signup-button {
-        display: inline-block;
-        margin-right: 1%;
-        vertical-align: middle;
-        & > input {
-          font-size: 14px;
-        }
-      }
-
-      .signup-input {
-        width: 39%;
-      }
-
-      .signup-button {
-        margin-right: 0;
-        padding: 10px;
-        width: 20%;
-        &.is-basic-sent {
-          display: inline-block;
-        }
-      }
-    }
-
-    @include breakpoint($break-desktop) {
-      .signup-input, .signup-button {
-        & > input {
-          font-size: 16px;
-        }
-      }
-    }
+  @include breakpoint($break-tablet) {
+    height: 600px;
   }
 }
 
-.v2 {
-  .site-hero {
-    background-position: bottom center;
-    background-size: cover;
-    height: 500px;
-    overflow: hidden;
-    position: relative;
+.hero-video {
+  bottom: 0;
+  display: none;
+  position: absolute;
 
-    @include breakpoint($break-tablet) {
-      height: 600px;
-    }
+  @include breakpoint($break-desktop) {
+    display: block;
+    width: 100%;
   }
+}
 
-  .hero-video {
+.hero-logo-container {
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 60px;
+}
+
+.hero-logo-image {
+  height: 320px;
+  width: 266px;
+
+  @include breakpoint($break-tablet) {
+    height: 420px;
+    width: 349px;
+  }
+}
+
+.hero-button {
+  background: none;
+  border: solid 2px #fff;
+  bottom: 35px;
+  color: #fff;
+  font-weight: 700;
+  left: 50%;
+  margin-left: -133px;
+  padding: 10px 55px 10px 15px;
+  position: absolute;
+  text-transform: uppercase;
+
+  &::after {
+    border-left: solid 2px #fff;
     bottom: 0;
-    display: none;
-    position: absolute;
-
-    @include breakpoint($break-desktop) {
-      display: block;
-      width: 100%;
-    }
-  }
-
-  .hero-logo-container {
-    left: 0;
+    content: "▶";
+    padding: 10px;
     position: absolute;
     right: 0;
-    text-align: center;
-    top: 60px;
+    top: 0;
   }
 
-  .hero-logo-image {
-    height: 320px;
-    width: 266px;
-
-    @include breakpoint($break-tablet) {
-      height: 420px;
-      width: 349px;
-    }
+  &:hover {
+    background: #fff;
+    color: #000;
   }
 
-  .hero-button {
-    background: none;
-    border: solid 2px #fff;
-    bottom: 35px;
-    color: #fff;
-    font-weight: 700;
-    left: 50%;
-    margin-left: -133px;
-    padding: 10px 55px 10px 15px;
-    position: absolute;
-    text-transform: uppercase;
-
-    &::after {
-      border-left: solid 2px #fff;
-      bottom: 0;
-      content: "▶";
-      padding: 10px;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-    &:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    @include breakpoint($break-tablet) {
-      margin-left: -175px;
-    }
+  @include breakpoint($break-tablet) {
+    margin-left: -175px;
   }
 }

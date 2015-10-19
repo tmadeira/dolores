@@ -183,18 +183,6 @@ body.paged, body:not(.home) {
           background: #fff;
         }
 
-        .v1 & {
-          border: solid 2px #fff;
-          background: none;
-          color: #fff;
-
-          &:hover {
-            background: $orange;
-            border-color: $orange;
-            color: #fff;
-          }
-        }
-
         body.paged &, body:not(.home) &, body.home.show-opaque-header & {
           border: solid 2px #fff;
           background: none;

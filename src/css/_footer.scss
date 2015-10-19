@@ -1,129 +1,79 @@
-.v2 {
-  .site-footer {
-    background: #000;
-    color: #fff;
-    font-size: 0;
-    line-height: 0;
-    padding: 20px 0 0;
-    @include breakpoint($break-tablet) {
-      padding: 50px 0;
-    }
-  }
-
-  .footer-logo {
-    display: none;
-
-    @include breakpoint($break-tablet) {
-      display: inline-block;
-      padding: 0 80px 0 40px;
-      vertical-align: top;
-      width: 25%;
-    }
-  }
-
-  .footer-menu {
-    @include breakpoint($break-tablet) {
-      display: inline-block;
-      vertical-align: top;
-      width: 40%;
-    }
-
-    .menu > .menu-item {
-      display: inline-block;
-      font-size: 13px;
-      line-height: 2em;
-      padding: 0 10px 20px 10px;
-      vertical-align: top;
-      width: 50%;
-
-      @include breakpoint($break-tablet) {
-        font-size: 16px;
-        padding: 0 20px;
-      }
-    }
-
-    .menu-item-has-children {
-      & > a {
-        color: $orange;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-    }
-
-    .sub-menu {
-      font-size: 15px;
-    }
-  }
-
-  .footer-note {
-    font-size: 13px;
-    line-height: 1.4em;
-    padding: 10px;
-
-    @include breakpoint($break-tablet) {
-      display: inline-block;
-      padding: 0 40px 0 20px;
-      vertical-align: top;
-      width: 35%;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    a {
-      color: $gray;
-      &:hover {
-        color: $orange;
-      }
-    }
+.site-footer {
+  background: #000;
+  color: #fff;
+  font-size: 0;
+  line-height: 0;
+  padding: 20px 0 0;
+  @include breakpoint($break-tablet) {
+    padding: 50px 0;
   }
 }
 
-.v1 {
-  .site-footer {
-    background: #000;
-    color: #fff;
-    font-size: 0;
-    line-height: 0;
-    padding: 15px 0;
-    text-align: center;
-  }
+.footer-logo {
+  display: none;
 
-  .footer-list {
+  @include breakpoint($break-tablet) {
     display: inline-block;
-    padding: 0 8px;
-    vertical-align: middle;
+    padding: 0 80px 0 40px;
+    vertical-align: top;
+    width: 25%;
+  }
+}
 
-    & > li {
-      display: inline-block;
-      padding: 5px 2px;
-    }
+.footer-menu {
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+  }
+
+  .menu > .menu-item {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 2em;
+    padding: 0 10px 20px 10px;
+    vertical-align: top;
+    width: 50%;
 
     @include breakpoint($break-tablet) {
+      font-size: 16px;
       padding: 0 20px;
-
-      & > li {
-        padding: 8px 5px;
-      }
     }
   }
 
-  .footer-supporters {
-    border-left: solid 1px #fff;
-  }
-
-  .footer-social-icon {
-    height: 24px;
-    @include breakpoint($break-tablet) {
-      height: 36px;
+  .menu-item-has-children {
+    & > a {
+      color: $orange;
+      font-weight: bold;
+      text-transform: uppercase;
     }
   }
 
-  .footer-supporter-banner {
-    height: 30px;
-    @include breakpoint($break-tablet) {
-      height: auto;
+  .sub-menu {
+    font-size: 15px;
+  }
+}
+
+.footer-note {
+  font-size: 13px;
+  line-height: 1.4em;
+  padding: 10px;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    padding: 0 40px 0 20px;
+    vertical-align: top;
+    width: 35%;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: $gray;
+    &:hover {
+      color: $orange;
     }
   }
 }

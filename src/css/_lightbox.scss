@@ -1,192 +1,66 @@
-.v2 {
-  .lightbox-overlay {
-    background: rgba(0, 0, 0, 0.7);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 32;
-  }
+.lightbox-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 32;
+}
 
-  .lightbox {
-    @extend %align-middle-container;
-    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-    background: #fff;
-    bottom: 10px;
-    height: 95%;
-    height: calc(100% - 20px);
-    left: 10px;
-    padding: 15px;
-    position: fixed;
-    right: 10px;
-    top: 10px;
+.lightbox {
+  @extend %align-middle-container;
+  @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+  background: #fff;
+  bottom: 10px;
+  height: 95%;
+  height: calc(100% - 20px);
+  left: 10px;
+  padding: 15px;
+  position: fixed;
+  right: 10px;
+  top: 10px;
 
-    @include breakpoint($break-tablet) {
-      $height: 480px;
-      $width: 440px;
+  @include breakpoint($break-tablet) {
+    $height: 480px;
+    $width: 440px;
+    height: $height;
+    left: 50%;
+    margin-left: -$width/2;
+    margin-top: -$height/2;
+    top: 50%;
+    width: $width;
+
+    &.small {
+      $height: 240px;
       height: $height;
-      left: 50%;
-      margin-left: -$width/2;
       margin-top: -$height/2;
-      top: 50%;
-      width: $width;
-
-      &.small {
-        $height: 240px;
-        height: $height;
-        margin-top: -$height/2;
-      }
     }
-  }
-
-  .lightbox-close {
-    @extend %title-font;
-    background: none;
-    border: none;
-    color: $orange;
-    font-size: 14px;
-    padding: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .lightbox-wrap {
-    @extend %align-middle-element;
-
-    p {
-      margin-bottom: 15px;
-    }
-  }
-
-  .lightbox-title {
-    @extend %title-font;
-    margin-bottom: 15px;
-    text-align: center;
   }
 }
 
-.v1 {
-  #react-hero-signup .lightbox-edit-user-info {
-    & > h2 {
-      display: none;
-    }
+.lightbox-close {
+  @extend %title-font;
+  background: none;
+  border: none;
+  color: $orange;
+  font-size: 14px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
-    & > .success {
-      color: #fff;
-      font-size: 14px;
-      line-height: 1.5em;
+.lightbox-wrap {
+  @extend %align-middle-element;
 
-      p {
-        margin: 20px 0;
-      }
-
-      strong {
-        font-weight: 700;
-      }
-
-      .signup-button {
-        display: none;
-        @include breakpoint($break-tablet) {
-          display: block;
-        }
-      }
-    }
+  p {
+    margin-bottom: 15px;
   }
+}
 
-  @include breakpoint($break-tablet) {
-    #react-hero-signup {
-      .lightbox-overlay-tablet {
-        background: rgba(0, 0, 0, 0.7);
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 16;
-      }
-
-      .lightbox-edit-user-info {
-        $height: 480px;
-        $width: 450px;
-
-        @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-        background: $light-gray url('static/images/bg-pattern-gray.jpg') repeat;
-        height: $height;
-        left: 50%;
-        margin-left: -$width/2;
-        margin-top: -$height/2 - 50px;
-        position: fixed;
-        top: 50%;
-        width: $width;
-
-        & > h2 {
-          @include title-font;
-
-          background: $orange;
-          color: #fff;
-          display: block;
-          text-align: center;
-          padding: 15px 0;
-          position: relative;
-
-          &::after {
-            border-bottom: 5px solid #e5e0dd;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            bottom: 0;
-            content: "";
-            height: 0;
-            left: 50%;
-            margin-left: -5px;
-            position: absolute;
-            width: 0;
-          }
-        }
-
-        & > form, & > .success {
-          padding: 20px;
-        }
-
-        .success {
-          color: #000;
-          font-size: 16px;
-
-          p {
-            margin-top: 0;
-          }
-        }
-
-        .signup-input {
-          display: inline-block;
-          margin: 2px 0;
-          width: 100%;
-
-          &.signup-input-phone {
-            width: 49.4%;
-            margin-right: 1.2%;
-          }
-
-          &.signup-input-birthdate {
-            width: 49.4%;
-          }
-
-          & > input {
-            background-color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
-          }
-
-          .multi-select-options {
-            max-height: 175px;
-          }
-        }
-
-        .signup-button {
-          display: block;
-          width: 100%;
-        }
-      }
-    }
-  }
+.lightbox-title {
+  @extend %title-font;
+  margin-bottom: 15px;
+  text-align: center;
 }
