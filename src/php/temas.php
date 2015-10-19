@@ -118,7 +118,7 @@ $flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
           $href = ' href="' . get_term_link($term, $taxonomy) . '"';
           $button = '<button class="grid-tema-action">Participe</button>';
         } else {
-          $link = '';
+          $href = '';
           $button = '<div class="grid-tema-soon">Em breve</div>';
         }
         ?>
