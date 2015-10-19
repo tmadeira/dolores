@@ -172,7 +172,7 @@ class DoloresUsers {
       $picture = dolores_get_profile_picture($user);
       $style = ' style="background-image: url(\'' . $picture. '\');"';
 
-      $logout = site_url();
+      $logout = wp_logout_url(site_url());
       $profile = get_author_posts_url($user->ID);
       $edit = "javascript:DoloresAuthenticator.editUserInfo();void(0);";
 
