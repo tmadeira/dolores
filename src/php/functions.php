@@ -15,6 +15,8 @@ require_once(__DIR__ . '/dlib/wp_admin/taxonomy.php');
 require_once(__DIR__ . '/dlib/wp_admin/users.php');
 
 function dolores_get_version() {
+  return 2;
+
   if (array_key_exists('v', $_GET)) {
     return $_GET['v'];
   }
