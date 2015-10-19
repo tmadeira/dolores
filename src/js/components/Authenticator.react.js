@@ -11,20 +11,36 @@ var ProfileForm = require("./ProfileForm.react");
 
 var defaultMessage = "Conecte-se e dê suas ideias para a cidade:";
 
-var defaultRefreshCallback = function() {
-  location.reload();
-};
-
 var Authenticator = React.createClass({
   getInitialState: function() {
     return {
       auth: {},
       data: {},
+      share: false,
       show: false,
       signup: false,
       profile: false,
       waiting: false
     };
+  },
+
+  defaultRefreshCallback: function(from) {
+    if (from === "signup") {
+      this.setState({
+        share: true,
+        show: true
+      });
+    } else {
+      location.reload();
+    }
+  },
+
+  componentDidUpdate: function(prevProps, prevState) {
+    if (!prevState.share && this.state.share) {
+      // Generate social buttons in success message
+      window.FB.XFBML.parse();
+      window.twttr.widgets.load();
+    }
   },
 
   componentWillMount: function() {
@@ -43,7 +59,7 @@ var Authenticator = React.createClass({
         if (refreshCallback != null) {
           newState.refreshCallback = refreshCallback;
         } else {
-          newState.refreshCallback = defaultRefreshCallback;
+          newState.refreshCallback = this.defaultRefreshCallback;
         }
 
         if ($("body").hasClass("logged-in")) {
@@ -63,7 +79,7 @@ var Authenticator = React.createClass({
           API.route("userinfo").get().done(function(response) {
             this.setState({
               profileData: response.data,
-              refreshCallback: defaultRefreshCallback,
+              refreshCallback: this.defaultRefreshCallback,
               waiting: false
             });
           }.bind(this)).fail(function(response) {
@@ -113,18 +129,17 @@ var Authenticator = React.createClass({
     };
   },
 
-  refresh: function() {
+  refresh: function(from) {
     $("body").addClass("logged-in");
 
     API.route("userheader").get().done(function(response) {
-      console.log("response", response);
       $(".user-signin").replaceWith(response.html);
     }).fail(function(response) {
       console.log("Error getting user header", response);
     });
 
     this.setState(this.getInitialState());
-    this.state.refreshCallback();
+    this.state.refreshCallback(from);
   },
 
   hasAuth: function() {
@@ -176,6 +191,25 @@ var Authenticator = React.createClass({
               refreshCallback={this.refresh}
               >
           </SignupForm>
+        </div>
+      );
+    } else if (this.state.share) {
+      var shareUrl = "http://" + location.host + "/participe/";
+      lightboxContent = (
+        <div className="lightbox-wrap">
+          <div className="signup-logo"></div>
+          <h3 className="signup-social-header">
+            Agora espalhe a ideia para que outros amigos e amigas participem!
+          </h3>
+          <div className="signup-social-buttons social-media">
+            <div className="fb-share-button"
+                data-href={shareUrl}
+                data-layout="button_count"></div>
+            <a href="https://twitter.com/share"
+                className="twitter-share-button"
+                data-url={shareUrl}
+                data-lang="pt"></a>
+          </div>
         </div>
       );
     } else if (this.state.profile) {
