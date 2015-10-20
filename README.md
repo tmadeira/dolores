@@ -1,6 +1,6 @@
 *We do not support any language other than Portuguese at the moment.*
 
-**ATENÇÃO:** *Este projeto _não está pronto_ para ser usado. Seu código está disponível aqui apenas para tornar mais fácil que outros programadores acompanhem seu desenvolvimento.*
+**ATENÇÃO:** *Este projeto está em _constante desenvolvimento_, no momento focado no [Se a cidade fosse nossa](http://seacidadefossenossa.com.br/).*
 
 Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io), [grunt](http://gruntjs.com) e [Composer](https://getcomposer.org/).
 
@@ -46,3 +46,7 @@ $ make deploy
 ```
 
 Isso vai rodar `grunt prod` para gerar arquivos minificados em `dist/` e `script/deploy.sh` para copiar os arquivos gerados para produção.
+
+### Screenshot ###
+
+![alt tag](https://raw.githubusercontent.com/tmadeira/dolores/master/static/images/screenshot.png)
