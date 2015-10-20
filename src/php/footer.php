@@ -23,6 +23,8 @@ $img_psol = DoloresAssets::get_image_uri('logo-psol-carioca.png');
     ?>
 
     <div class="footer-note">
+      <h3 class="footer-title">Apoio</h3>
+
       <p>
         <a href="http://laurocampos.org.br/" target="_blank"
             title="Fundação Lauro Campos">
