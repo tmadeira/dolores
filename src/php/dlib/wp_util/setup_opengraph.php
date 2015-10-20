@@ -1,14 +1,14 @@
 <?php
 require_once(__DIR__ . '/../assets.php');
-require_once(__DIR__ . '/../config.php');
+
+require_once(__DIR__ . '/../wp_admin/settings/opengraph.php');
 
 function dolores_add_opengraph() {
-  $author_url = DoloresConfig::ogAuthorUrl;
-  $author_name = DoloresConfig::ogAuthorName;
-  $fbAdmins = DoloresConfig::facebookAdmins;
+  $author_url = DoloresOGSettings::get_author_url();
+  $author_name = DoloresOGSettings::get_author_name();
 
   $site_name = get_bloginfo('name');
-  $image = DoloresAssets::get_image_uri(DoloresConfig::ogDefaultImage);
+  $image = DoloresAssets::get_image_uri('og-default.jpg');
 
   if (is_home()) {
     $description = get_bloginfo('description');
@@ -139,7 +139,6 @@ function dolores_add_opengraph() {
 
   echo "<meta property='article:author' content='$author_url' />\n";
   echo "<meta name='author' content='$author_name' />\n";
-  echo "<meta property='fb:admins' content='$fbAdmins' />\n";
 
   if (defined('FACEBOOK_APP_ID')) {
     $fbAppID = FACEBOOK_APP_ID;
