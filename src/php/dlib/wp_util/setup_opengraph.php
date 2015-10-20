@@ -51,7 +51,7 @@ function dolores_add_opengraph() {
     if (has_post_thumbnail()) {
       list($image) = wp_get_attachment_image_src(
         get_post_thumbnail_id(get_the_ID()),
-        apply_filters('post_thumbnail_size', 'post-thumbnail'),
+        "full",
         false
       );
     } else if (preg_match(
