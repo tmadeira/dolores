@@ -68,7 +68,9 @@ var ProfileForm = React.createClass({
           "Design",
           "Fotografia",
           "Ilustração",
+          "Mobilização de rua",
           "Motion Graphics",
+          "Pesquisa",
           "Programação",
           "Redação",
           "Redes sociais",
@@ -172,7 +174,7 @@ var ProfileForm = React.createClass({
       name="school"
       onBlur={this.onBlur}
       onChange={this.onChange}
-      placeholder="Instituição de ensino"
+      placeholder="Instituição de ensino / Movimento"
       type="text"
       value={this.state.school}
       />;
