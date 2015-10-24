@@ -11,7 +11,6 @@ $video = get_term_meta($term->term_id, 'video', true);
 $image = get_term_meta($term->term_id, 'image', true);
 $more = get_term_meta($term->term_id, 'more', true);
 
-// TODO: use get_term_meta($term->term_id, 'image') as OpenGraph image
 get_header();
 
 if (!$paged || $paged == 1) {
@@ -117,7 +116,7 @@ if (!$paged || $paged == 1) {
                   name="text"
                   id="tema-form-content"
                   maxlength="600"
-                  placeholder="Ideia (max. 600 caracteres)"
+                  placeholder="Explique com mais detalhes a sua ideia (max. 600 caracteres)"
                   ></textarea>
             </p>
             <?php
