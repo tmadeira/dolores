@@ -7,6 +7,31 @@ var cx = require("classnames");
 
 require("jquery.maskedinput");
 
+var sanitizeString = function(str) {
+  str = str.toLowerCase();
+  str = str.trim();
+
+  var map = {
+    a: /[\xE0-\xE6]/g,
+    e: /[\xE8-\xEB]/g,
+    i: /[\xEC-\xEF]/g,
+    o: /[\xF2-\xF6]/g,
+    u: /[\xF9-\xFC]/g,
+    c: /\xE7/g,
+    n: /\xF1/g
+  };
+
+  for (var letter in map) {
+    str = str.replace(map[letter], letter);
+  }
+
+  return str;
+};
+
+var stringsMatch = function(a, b) {
+  return sanitizeString(a) === sanitizeString(b);
+};
+
 var Input = React.createClass({
   getInitialState: function() {
     return {
@@ -94,6 +119,18 @@ var Input = React.createClass({
         return;
       }
       var index = this.state.selectedSuggestion;
+      if (!_.isNumber(index)) {
+        if (this.props.suggestions.length === 1) {
+          index = 0;
+        } else {
+          for (var i = 0; i < this.props.suggestions.length; i++) {
+            if (stringsMatch(this.props.value, this.props.suggestions[i])) {
+              index = i;
+              break;
+            }
+          }
+        }
+      }
       if (_.isNumber(index)) {
         this.props.onChange(this.props.name, this.props.suggestions[index]);
       }
