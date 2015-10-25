@@ -60,7 +60,7 @@ assets_file=${dist}/dlib/generated_assets.php
 
 cat > ${assets_file} <<EOF
 <?php
-function dolores_assets_get_theme_uri(\$file) {
+function dolores_assets_get_theme_path(\$file) {
   \$assets = Array(
 EOF
 if [ "$?" != "0" ]; then
@@ -106,8 +106,7 @@ cat >> ${assets_file} <<EOF
     die("O arquivo '\$file' nao foi encontrado.");
   }
 
-  \$uri = get_template_directory_uri();
-  return \$uri . '/' . \$assets[\$file];
+  return \$assets[\$file];
 }
 
 function dolores_assets_print_style() {

@@ -10,11 +10,17 @@ if (file_exists($generated_assets_path)) {
 
 class DoloresAssets {
   public static function get_theme_uri($file) {
-    if (function_exists('dolores_assets_get_theme_uri')) {
-      return dolores_assets_get_theme_uri($file);
-    } else {
-      return get_template_directory_uri() . '/' . $file;
+    if (function_exists('dolores_assets_get_theme_path')) {
+      $file = dolores_assets_get_theme_path($file);
     }
+    return get_template_directory_uri() . '/' . $file;
+  }
+
+  public static function get_theme_path($file) {
+    if (function_exists('dolores_assets_get_theme_path')) {
+      $file = dolores_assets_get_theme_path($file);
+    }
+    return __DIR__ . '/../' . $file;
   }
 
   public static function print_style() {
@@ -35,6 +41,10 @@ class DoloresAssets {
 
   public static function get_static_uri($file) {
     return DoloresAssets::get_theme_uri('static/' . $file);
+  }
+
+  public static function get_static_path($file) {
+    return DoloresAssets::get_theme_path('static/' . $file);
   }
 
   public static function get_image_uri($file) {

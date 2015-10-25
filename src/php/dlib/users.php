@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/assets.php');
 require_once(__DIR__ . '/auth_cache.php');
 require_once(__DIR__ . '/external/facebook.php');
 require_once(__DIR__ . '/external/google.php');
@@ -92,6 +93,8 @@ class DoloresUsers {
       ));
     }
 
+    DoloresUsers::send_welcome_email($user_id);
+
     $auth_key = 'auth_' . $data['auth']['type'];
     $auth_val = $data['auth']['id'];
     if (!dolores_update_user_meta($user_id, $auth_key, $auth_val)) {
@@ -115,6 +118,22 @@ class DoloresUsers {
     }
 
     return get_user_by('id', $user_id);
+  }
+
+  public static function send_welcome_email($user_id) {
+    $user = get_user_by('id', $user_id);
+
+    $to = $user->user_email;
+
+    $subject = 'Seguimos na construção de uma cidade nossa!';
+
+    $template = DoloresAssets::get_static_path('templates/welcome_email.html');
+    $message = file_get_contents($template);
+    $message = str_replace('{NAME}', $user->display_name, $message);
+
+    $headers = "Content-type: text/html; charset=utf-8";
+
+    return wp_mail($to, $subject, $message, $headers);
   }
 
   public static function generate_login($name) {
