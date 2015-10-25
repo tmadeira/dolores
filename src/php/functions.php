@@ -13,3 +13,4 @@ require_once(__DIR__ . '/dlib/wp_util/setup_thumbnails.php');
 require_once(__DIR__ . '/dlib/wp_admin/settings.php');
 require_once(__DIR__ . '/dlib/wp_admin/taxonomy.php');
 require_once(__DIR__ . '/dlib/wp_admin/users.php');
+require_once(__DIR__ . '/dlib/wp_admin/users_stats.php');
