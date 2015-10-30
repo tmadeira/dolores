@@ -8,16 +8,16 @@ class DoloresContactAPI extends DoloresBaseAPI {
       $name = $user->display_name;
       $email = $user->user_email;
     } else {
-      $name = $request['name'];
-      $email = $request['email'];
+      $name = $request['data']['name'];
+      $email = $request['data']['email'];
 
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $this->_error('O e-mail digitado é inválido.');
       }
     }
 
-    $subject = $request['subject'];
-    $message = $request['message'];
+    $subject = $request['data']['subject'];
+    $message = $request['data']['message'];
 
     $headers = "Content-type: text/plain; charset=utf-8\r\n";
     $headers.= "From: $name <$email>\r\n";

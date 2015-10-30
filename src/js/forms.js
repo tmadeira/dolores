@@ -86,16 +86,21 @@ var setupFormTema = function() {
 };
 
 var setupContactForm = function() {
-  $(".contact-form").submit(function() {
+  $(".temas-form-form").submit(function() {
     var form = $(this);
-    var request = form.serialize();
     var fields = form.find("input, textarea");
     var button = form.find(".tema-form-button");
     var responseContainer = form.find(".tema-form-response");
 
+    var request = {};
+    var requestArray = form.serializeArray();
+    for (var i = 0; i < requestArray.length; i++) {
+      request[requestArray[i].name] = requestArray[i].value;
+    }
+
     var post = function() {
       button.prop("disabled", true);
-      API.route("contact").post(request).done(function(response) {
+      API.route("contact").post({data: request}).done(function(response) {
         if ("error" in response) {
           button.prop("disabled", false);
           responseContainer.html("Erro: " + response.error);
@@ -115,8 +120,12 @@ var setupContactForm = function() {
       });
     };
 
-    var message = "Você precisa se autenticar para enviar.";
-    window.DoloresAuthenticator.signIn(message, post);
+    if ($(this).hasClass("contact-form")) {
+      post();
+    } else {
+      var message = "Você precisa se autenticar para enviar.";
+      window.DoloresAuthenticator.signIn(message, post);
+    }
 
     return false;
   });
