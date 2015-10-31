@@ -26,6 +26,7 @@
 .single-meta {
   font-size: 12px;
   font-weight: 700;
+  line-height: 2.5em;
   margin: 15px 0;
 
   .single-ideia & {
@@ -45,10 +46,13 @@
   }
 
   @include breakpoint($break-tablet) {
+    display: table;
     font-size: 14px;
+    line-height: 1.5em;
 
-    & > .single-date {
-      display: inline-block;
+    & > * {
+      display: table-cell;
+      white-space: nowrap;
     }
   }
 }
@@ -56,9 +60,44 @@
 .single-meta-sep {
   display: none;
   @include breakpoint($break-tablet) {
-    display: inline-block;
+    display: table-cell;
+    padding: 0 8px;
     vertical-align: middle;
   }
+}
+
+.social-sep {
+  display: none !important;
+  @include breakpoint($break-tablet) {
+    display: table-cell !important;
+    padding: 0 10px;
+    width: 100%;
+    hr {
+      border: 0;
+      border-bottom: solid 1px #aaa;
+    }
+  }
+}
+
+.social-button {
+  @include border-radius(3px);
+  font-size: 14px;
+  margin-left: 5px;
+  padding: 5px 10px 5px 5px;
+  text-transform: uppercase;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.share-facebook {
+  background: #3b5998;
+  color: #fff;
+}
+
+.share-twitter {
+  background: #4099ff;
+  color: #fff;
 }
 
 .entry {

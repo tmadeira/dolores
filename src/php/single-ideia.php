@@ -65,9 +65,21 @@ foreach ($terms as $term) {
       <span class="single-date">
         <?php the_time('d \d\e F \d\e Y'); ?>
       </span>
-      <span class="single-meta-sep">·</span>
-      <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
+
+      <span class="social-sep">
+        <hr />
+      </span>
+
+      <span class="social-buttons">
+        <a class="social-button share-facebook" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank">
+          <i class="fa fa-fw fa-lg fa-facebook"></i>
+          Compartilhar
+        </a>
+        <a class="social-button share-twitter" href="http://twitter.com/share?text=<?php esc_attr_e(get_the_title()); ?>&amp;url=<?php the_permalink(); ?>" target="_blank">
+          <i class="fa fa-fw fa-lg fa-twitter"></i>
+          Tuitar
+        </a>
+      </span>
     </div>
 
     <div class="entry">
