@@ -88,6 +88,7 @@ var ProfileForm = React.createClass({
       icon="user"
       name="name"
       placeholder="Nome completo"
+      privacy="everyone"
       type="text"
       value={this.state.name}
       />;
@@ -102,6 +103,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="E-mail"
+      privacy="me"
       type="text"
       value={this.state.email}
       />;
@@ -116,6 +118,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
+      privacy="everyone"
       suggestions={this.state.suggestions.location}
       type="text"
       value={this.state.location}
@@ -132,6 +135,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Telefone (WhatsApp)"
+      privacy="me"
       type="text"
       value={this.state.phone}
       />;
@@ -147,6 +151,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Data de nascimento"
+      privacy="everyone"
       type="type"
       value={this.state.birthdate}
       />;
@@ -161,6 +166,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Profissão"
+      privacy="everyone"
       type="text"
       value={this.state.occupation}
       />;
@@ -175,6 +181,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Instituição de ensino / Movimento"
+      privacy="everyone"
       type="text"
       value={this.state.school}
       />;
@@ -189,6 +196,7 @@ var ProfileForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Curso"
+      privacy="me"
       type="text"
       value={this.state.course}
       />;
@@ -203,6 +211,7 @@ var ProfileForm = React.createClass({
       onToggle={this.onToggle}
       options={this.state.options.interests}
       placeholder="Áreas de interesse"
+      privacy="me"
       selected={this.state.interests}
       />;
   },
@@ -216,6 +225,7 @@ var ProfileForm = React.createClass({
       onToggle={this.onToggle}
       options={this.state.options.collaboration}
       placeholder="Quer colaborar? Quais seus talentos?"
+      privacy="me"
       selected={this.state.collaboration}
       />;
   },

@@ -19,6 +19,7 @@ var MultiSelect = React.createClass({
     return (
       <div className={className}>
         {this.renderIcon()}
+        {this.renderPrivacy()}
         {this.renderInput()}
         {this.props.selected.map(this.renderInputHidden)}
         {this.renderOptions()}
@@ -55,6 +56,22 @@ var MultiSelect = React.createClass({
       "icon": true
     };
     className["fa-" + this.props.icon] = true;
+    return <i className={cx(className)}></i>;
+  },
+
+  renderPrivacy: function() {
+    if (!("privacy" in this.props)) {
+      return null;
+    }
+
+    var icon = (this.props.privacy === "me" ? "lock" : "globe");
+
+    var className = {
+      "fa": true,
+      "fa-fw": true,
+      "privacy": true
+    };
+    className["fa-" + icon] = true;
     return <i className={cx(className)}></i>;
   },
 

@@ -27,6 +27,14 @@
     top: 50%;
   }
 
+  .privacy {
+    color: #555;
+    margin-top: -8px;
+    position: absolute;
+    right : 5px;
+    top: 50%;
+  }
+
   &.empty {
     color: $orange;
   }
@@ -39,7 +47,7 @@
     display: block;
     font-size: 12px;
     overflow: hidden;
-    padding: 10px 10px 10px 36px;
+    padding: 10px 32px 10px 36px;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;

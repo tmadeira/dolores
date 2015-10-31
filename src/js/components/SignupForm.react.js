@@ -157,6 +157,7 @@ var SignupForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Nome completo"
+      privacy="everyone"
       type="text"
       value={this.state.name}
       />;
@@ -172,6 +173,7 @@ var SignupForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Telefone (WhatsApp)"
+      privacy="me"
       type="text"
       value={this.state.phone}
       />;
@@ -186,6 +188,7 @@ var SignupForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="E-mail"
+      privacy="me"
       type="text"
       value={this.state.email}
       />;
@@ -200,6 +203,7 @@ var SignupForm = React.createClass({
       onBlur={this.onBlur}
       onChange={this.onChange}
       placeholder="Bairro (ou município, caso não seja capital)"
+      privacy="everyone"
       suggestions={this.state.suggestions.location}
       type="text"
       value={this.state.location}
