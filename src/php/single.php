@@ -60,6 +60,7 @@ get_header();
 
     <?php
     $yarpp_args = array(
+      'post_type' => 'post',
       'template' => 'yarpp-template-posts.php'
     );
     if (function_exists('yarpp_related') && yarpp_related_exist($yarpp_args)) {
