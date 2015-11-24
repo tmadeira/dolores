@@ -15,11 +15,11 @@ require_once(__DIR__ . '/dlib/wp_admin/settings/streaming.php');
 
 get_header();
 
-$hero_src = DoloresAssets::get_image_uri('hero-image.jpg');
 $logo_src = DoloresAssets::get_image_uri('logo.png');
 
-$video_mp4 = DoloresAssets::get_static_uri('videos/mare.mp4');
-$video_webm = DoloresAssets::get_static_uri('videos/mare.webm');
+$video_mp4 = DoloresAssets::get_static_uri('videos/futebol.mp4');
+$video_webm = DoloresAssets::get_static_uri('videos/futebol.webm');
+$hero_src = DoloresAssets::get_image_uri('hero-futebol.jpg');
 
 if (!$paged || $paged == 1) {
   ?>
