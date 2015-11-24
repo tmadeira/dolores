@@ -65,7 +65,14 @@ get_header();
 
     <div class="sidebar-section">
       <h2 class="sidebar-title">Participe</h2>
-      // TODO: Dê suas ideias para a cidade
+      <div style="text-align:center;">
+        <button
+            class="grid-ideias-button"
+            onclick="DoloresAuthenticator.signIn(null, function() { location.href = '/temas'; })"
+            >
+          Dê suas ideias para a cidade!
+        </button>
+      </div>
     </div>
 
   </section>
