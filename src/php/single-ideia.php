@@ -5,9 +5,11 @@ get_header();
 $taxonomy = 'tema';
 $terms = get_the_terms($post->ID, $taxonomy);
 $tax = null;
+$tax_id = null;
 $tags = array();
 foreach ($terms as $term) {
   if ($term->parent == 0) {
+    $tax_id = $term->term_id;
     $link = get_term_link($term, $taxonomy);
     $name = $term->name;
     $tax = "<a href=\"$link\">$name</a>";
@@ -90,6 +92,34 @@ foreach ($terms as $term) {
     comments_template('/comments-ideia.php');
     ?>
   </article>
+
+  <section class="single-sidebar">
+    <?php
+    if ($tax_id) {
+      ?>
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Tags mais usadas</h2>
+
+        <div class="tag-cloud">
+          <?php
+          wp_tag_cloud(array(
+            'child_of' => $tax_id,
+            'smallest' => 10,
+            'largest' => 20,
+            'taxonomy' => $taxonomy
+          ));
+          ?>
+        </div>
+      </div>
+      <?php
+    }
+    ?>
+
+    <div class="sidebar-section">
+      <h2 class="sidebar-title">Outras ideias</h2>
+      // TODO: Ideias relacionadas
+    </div>
+  </section>
 </main>
 <?php
 get_footer();

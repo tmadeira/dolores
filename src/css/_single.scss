@@ -6,6 +6,27 @@
   }
 }
 
+@include breakpoint($break-desktop) {
+  .single.wrap {
+    font-size: 0;
+  }
+
+  .single-content {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5%;
+    vertical-align: top;
+    width: 65%;
+  }
+
+  .single-sidebar {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: top;
+    width: 30%;
+  }
+}
+
 .single-taxonomy {
   @extend %title-font;
   background: #000;
@@ -162,6 +183,36 @@
     word-wrap: break-word;
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+  @include breakpoint($break-desktop) {
+    margin-bottom: 40px;
+  }
+}
+
+.sidebar-title {
+  @extend %title-font;
+  background: #000;
+  color: #fff;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.tag-cloud {
+  text-align: center;
+  & > a {
+    display: inline-block;
+    padding: 0 2px;
+    &::before {
+      content: "#";
+      color: $purple;
     }
   }
 }

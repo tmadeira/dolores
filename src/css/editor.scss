@@ -2,7 +2,6 @@
 @import "single";
 
 html {
-  @extend .single-content !optional;
   background: #fff;
   padding: 20px;
 }
