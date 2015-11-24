@@ -28,7 +28,8 @@ function dolores_register_post_types() {
       'comments',
       'revisions',
       'thumbnail'
-    )
+    ),
+    'yarpp_support' => true
   );
 
   $cat_args = array(

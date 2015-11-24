@@ -216,3 +216,21 @@
     }
   }
 }
+
+.yarpp-list {
+  list-style: square;
+  margin-left: 15px;
+}
+
+.yarpp-item {
+  padding: 3px 0;
+}
+
+.yarpp-link {
+  color: $purple;
+}
+
+.yarpp-date {
+  color: #222;
+  font-size: 85%;
+}

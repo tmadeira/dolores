@@ -58,10 +58,21 @@ get_header();
     }
     ?>
 
-    <div class="sidebar-section">
-      <h2 class="sidebar-title">Leia mais</h2>
-      // TODO: Posts relacionados
-    </div>
+    <?php
+    $yarpp_args = array(
+      'template' => 'yarpp-template-posts.php'
+    );
+    if (function_exists('yarpp_related') && yarpp_related_exist($yarpp_args)) {
+      ?>
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Leia também</h2>
+        <?php
+        yarpp_related($yarpp_args);
+        ?>
+      </div>
+      <?php
+    }
+    ?>
 
     <div class="sidebar-section">
       <h2 class="sidebar-title">Participe</h2>

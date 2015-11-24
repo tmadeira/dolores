@@ -29,6 +29,7 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 - Para que os usuários cadastrados sejam sincronizados com uma lista do Mailchimp, as constantes `MAILCHIMP_API_KEY` e `MAILCHIMP_LIST_ID` devem estar definidas em `wp-config.php`.
 - Para habilitar login via Facebook, as constantes `FACEBOOK_APP_ID` e `FACEBOOK_APP_SECRET` devem estar definidas em `wp-config.php`.
 - Para habilitar login via Google, as constantes `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` devem estar definidas em `wp-config.php`.
+- Para ativar posts relacionados, você deve instalar o plugin YARPP (Yet Another Related Posts Plugin).
 
 ### Versão do WordPress ###
 

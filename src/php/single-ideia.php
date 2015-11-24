@@ -115,10 +115,22 @@ foreach ($terms as $term) {
     }
     ?>
 
-    <div class="sidebar-section">
-      <h2 class="sidebar-title">Outras ideias</h2>
-      // TODO: Ideias relacionadas
-    </div>
+    <?php
+    $yarpp_args = array(
+      'post_type' => 'ideia',
+      'template' => 'yarpp-template-ideias.php'
+    );
+    if (function_exists('yarpp_related') && yarpp_related_exist($yarpp_args)) {
+      ?>
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Outras ideias</h2>
+        <?php
+        yarpp_related($yarpp_args);
+        ?>
+      </div>
+      <?php
+    }
+    ?>
   </section>
 </main>
 <?php
