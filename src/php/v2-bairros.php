@@ -26,14 +26,24 @@ get_header();
   <article class="single-content">
     <h2 class="single-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
     <div class="single-meta social-media">
-      <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
+      <span class="social-buttons">
+        <a class="social-button share-facebook" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank">
+          <i class="fa fa-fw fa-lg fa-facebook"></i>
+          Compartilhar
+        </a>
+        <a class="social-button share-twitter" href="http://twitter.com/share?text=<?php esc_attr_e(get_the_title()); ?>&amp;url=<?php the_permalink(); ?>" target="_blank">
+          <i class="fa fa-fw fa-lg fa-twitter"></i>
+          Tuitar
+        </a>
+      </span>
     </div>
 
     <div class="entry">
       <?php the_content(); ?>
     </div>
   </article>
+
+  <?php get_sidebar(); ?>
 </main>
 
 <section class="temas-posts">

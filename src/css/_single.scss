@@ -7,7 +7,7 @@
 }
 
 @include breakpoint($break-desktop) {
-  .single.wrap {
+  .single.wrap, .page.wrap {
     font-size: 0;
   }
 
