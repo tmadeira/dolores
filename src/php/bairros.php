@@ -1,54 +1,128 @@
 <?php
 /* Template Name: Bairros */
 
+if (empty($_GET['v']) || intval($_GET['v']) < 3) {
+  require_once("v2-bairros.php");
+  exit();
+}
+
 the_post();
-$base = get_permalink();
-
-function dolores_bairros_grid() {
-  global $wp_query, $base;
-  $paged = intval(preg_replace('/[^0-9]*/', '', $wp_query->query['page']));
-  $paged = max($paged, 1);
-
-  require_once(__DIR__ . '/grid.php');
-  $query = new WP_Query(array(
-    'category_name' => 'encontros-nos-bairros',
-    'paged' => $paged
-  ));
-  dolores_grid($query, $base);
-}
-
-if ($_GET['ajax']) {
-  dolores_temas_grid();
-  die();
-}
-
 get_header();
 ?>
-<main class="page wrap">
-  <article class="single-content">
-    <h2 class="single-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <div class="single-meta social-media">
-      <div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="pt"></a>
-    </div>
 
-    <div class="entry">
-      <?php the_content(); ?>
-    </div>
-  </article>
+<main class="flow">
+  <div class="wrap">
+    <h2 class="flow-title">
+      <span>Discuta, imagine e mobilize no seu bairro!</span>
+    </h2>
+    <ol class="flow-list">
+      <li class="bairros-flow-item">
+        <div class="bairros-flow-item-title-container">
+          <h3 class="flow-item-title">
+            Etapa #1
+          </h3>
+        </div>
+        <div class="bairros-flow-item-description-container">
+          <p class="bairros-flow-item-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </li>
+      <li class="bairros-flow-item">
+        <div class="bairros-flow-item-title-container">
+          <h3 class="flow-item-title">
+            Etapa #2
+          </h3>
+        </div>
+        <div class="bairros-flow-item-description-container">
+          <p class="bairros-flow-item-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </li>
+      <li class="bairros-flow-item">
+        <div class="bairros-flow-item-title-container">
+          <h3 class="flow-item-title">
+            Etapa #3
+          </h3>
+        </div>
+        <div class="bairros-flow-item-description-container">
+          <p class="bairros-flow-item-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </li>
+      <li class="bairros-flow-item">
+        <div class="bairros-flow-item-title-container">
+          <h3 class="flow-item-title">
+            Etapa #4
+          </h3>
+        </div>
+        <div class="bairros-flow-item-description-container">
+          <p class="bairros-flow-item-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
 </main>
 
-<section class="temas-posts">
+<section class="temas-form bg-pattern-light-purple">
   <div class="wrap">
-    <h2 class="temas-posts-title">
-      <span>Encontros de bairros que já rolaram</span>
+    <h2 class="temas-form-title">
+      Qual o seu bairro?
     </h2>
 
-    <?php
-    dolores_bairros_grid();
-    ?>
+    <p class="temas-form-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+
+    <form class="temas-form-form" id="form-temas">
+      <p class="tema-form-item">
+        <input
+            type="text"
+            name="subject"
+            class="tema-form-input"
+            id="tema-form-title"
+            placeholder="Bairro"
+        />
+      </p>
+      <p style="text-align: center;">
+        <span class="tema-form-response"></span>
+        <button class="tema-form-button" type="submit">
+          <span class="if-not-sent">Enviar</span>
+          <i class="if-sending fa fa-fw fa-refresh fa-spin"></i>
+        </button>
+      </p>
+    </form>
   </div>
 </section>
+
+<section class="locais-map-container">
+  <div id="locaisMap"></div>
+</section>
+
+<script type="text/javascript">
+  window.onload = function() {
+    window.addMapMarker({
+      position: {lat: -22.8833333, lng: -43.4333333},
+      title: "Realengo",
+      content: "" +
+      "<div class=\"map-marker\">" +
+        "<h3 class=\"map-marker-title\">Realengo</h3>" +
+        "<p class=\"map-marker-description\">" +
+          "<strong>Usuários cadastrados:</strong> 372<br />" +
+          "<strong>Ideias propostas:</strong> 228<br />" +
+          "<strong>Comentários:</strong> 1072" +
+        "</p>" +
+        "<p class=\"map-marker-description\">" +
+          "<a class=\"map-marker-button\" href=\"#\">Participar</a>" +
+        "</p>" +
+      "</div>"
+    });
+  };
+</script>
 
 <?php
 get_footer();

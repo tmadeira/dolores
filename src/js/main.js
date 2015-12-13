@@ -10,6 +10,7 @@ var forms = require("./forms");
 var google = require("./google");
 var hero = require("./hero");
 var interact = require("./interact");
+var maps = require("./maps");
 var menu = require("./menu");
 var pagination = require("./pagination");
 var twitter = require("./twitter");
@@ -29,6 +30,7 @@ $(function() {
   google.setup();
   hero.setup();
   interact.setup();
+  maps.setup();
   menu.setup();
   pagination.setup();
   twitter.setup();

@@ -158,3 +158,75 @@
     }
   }
 }
+
+.bairros-flow-item {
+  @extend .flow-item;
+  color: #000;
+  @include breakpoint($break-tablet) {
+    width: 25%;
+  }
+}
+
+.bairros-flow-item-description-container {
+  @extend %align-middle-container;
+  border-top: solid 2px #000;
+  height: 180px;
+  padding: 0 10px 20px;
+  position: relative;
+  &::after {
+    @include border-radius(20px);
+    border: solid 2px #000;
+    content: "•";
+    display: block;
+    font-size: 72px;
+    height: 40px;
+    left: 50%;
+    line-height: 33px;
+    margin-left: -20px;
+    position: absolute;
+    top: -22px;
+    width: 40px;
+  }
+}
+
+.bairros-flow-item-description {
+  @extend %align-middle-element;
+}
+
+.bairros-flow-item-title-container {
+  @extend .flow-item-title-container;
+  height: 100px;
+}
+
+.locais-map-container, .locais-map-container > * {
+  height: 480px;
+}
+
+.map-marker {
+  @extend %text-font;
+  font-size: 12px;
+  white-space: nowrap;
+  strong {
+    font-weight: 700;
+  }
+}
+
+.map-marker-title {
+  @extend %title-font;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.map-marker-description {
+  line-height: 1.1em;
+  margin: 8px 0;
+}
+
+.map-marker-button {
+  @extend %title-font;
+  background: $purple;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding: 3px 6px;
+}
