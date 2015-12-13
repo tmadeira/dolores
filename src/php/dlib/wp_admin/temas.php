@@ -1,5 +1,5 @@
 <?php
-class DoloresAdminTaxonomy {
+class DoloresAdminTema {
   private $tema_fields = array(
     'active' => array(
         'label' => 'Tema ativo?',
@@ -108,5 +108,5 @@ class DoloresAdminTaxonomy {
 }
 
 if (is_admin()) {
-  new DoloresAdminTaxonomy();
+  new DoloresAdminTema();
 }

@@ -2,8 +2,10 @@
 require_once(__DIR__ . '/../assets.php');
 
 require_once(__DIR__ . '/../wp_admin/settings/opengraph.php');
+require_once(__DIR__ . '/../posts.php');
 
 function dolores_add_opengraph() {
+  global $post;
   $author_url = DoloresOGSettings::get_author_url();
   $author_name = DoloresOGSettings::get_author_name();
 
@@ -60,15 +62,9 @@ function dolores_add_opengraph() {
         $matches)) {
       $image = $matches[1];
     } else if (get_post_type() === 'ideia') {
-      $terms = get_the_terms($post->ID, 'tema');
-      foreach ($terms as $term) {
-        if ($term->parent == 0) {
-          $tax_img = get_term_meta($term->term_id, 'image', true);
-          if ($tax_img) {
-            $image = $tax_img;
-          }
-          break;
-        }
+      list($cat) = DoloresPosts::get_post_terms($post->ID);
+      if ($cat && $tax_image = get_term_meta($cat->term_id, 'image', true)) {
+        $image = $tax_image;
       }
     }
 

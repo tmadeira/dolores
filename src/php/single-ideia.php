@@ -1,31 +1,22 @@
 <?php
+require_once(__DIR__ . '/dlib/posts.php');
+
 the_post();
 get_header();
 
-$taxonomy = 'tema';
-$terms = get_the_terms($post->ID, $taxonomy);
-$tax = null;
-$tax_id = null;
-$tags = array();
-foreach ($terms as $term) {
-  if ($term->parent == 0) {
-    $tax_id = $term->term_id;
-    $link = get_term_link($term, $taxonomy);
-    $name = $term->name;
-    $tax = "<a href=\"$link\">$name</a>";
-  } else {
-    $tags[] = array(
-      'name' => $term->name,
-      'link' => get_term_link($term, $taxonomy)
-    );
-  }
-}
+list($cat, $tags) = DoloresPosts::get_post_terms($post->ID);
 ?>
 <main class="single wrap">
   <article class="single-content">
     <?php
-    if ($tax) {
-      echo '<h4 class="single-taxonomy">' . $tax . '</h4>';
+    if ($cat) {
+      ?>
+      <h4 class="single-taxonomy">
+        <a href="<?php echo get_term_link($cat, $cat->taxonomy); ?>">
+          <?php echo $cat->name; ?>
+        </a>
+      </h4>
+      <?php
     }
     ?>
 
@@ -37,9 +28,11 @@ foreach ($terms as $term) {
       <p class="grid-ideia-tags">
         <?php
         foreach ($tags as $tag) {
+          $link = get_term_link($tag, $tag->taxonomy);
           ?>
-          <a class="grid-ideia-tag" href="<?php echo $tag['link']; ?>"
-              ><?php echo $tag['name']; ?></a>
+          <a class="grid-ideia-tag" href="<?php echo $link; ?>"><?php
+              echo $tag->name;
+          ?></a>
           <?php
         }
         ?>
@@ -95,7 +88,7 @@ foreach ($terms as $term) {
 
   <section class="single-sidebar">
     <?php
-    if ($tax_id) {
+    if ($cat && $cat->taxonomy == 'temas') {
       ?>
       <div class="sidebar-section">
         <h2 class="sidebar-title">Tags mais usadas</h2>
@@ -103,10 +96,10 @@ foreach ($terms as $term) {
         <div class="tag-cloud">
           <?php
           wp_tag_cloud(array(
-            'child_of' => $tax_id,
+            'child_of' => $cat->term_id,
             'smallest' => 10,
             'largest' => 20,
-            'taxonomy' => $taxonomy
+            'taxonomy' => $cat->taxonomy
           ));
           ?>
         </div>

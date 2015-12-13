@@ -32,7 +32,7 @@ function dolores_register_post_types() {
     'yarpp_support' => true
   );
 
-  $cat_args = array(
+  $tema_args = array(
     'label' => 'Temas',
     'labels' => array(
       'name' => 'Temas',
@@ -54,8 +54,31 @@ function dolores_register_post_types() {
     )
   );
 
+  $local_args = array(
+    'label' => 'Locais',
+    'labels' => array(
+      'name' => 'Locais',
+      'singular_name' => 'Local',
+      'add_new' => 'Adicionar Novo',
+      'add_new_item' => 'Adicionar novo local',
+      'edit_item' => 'Editar local',
+      'menu_name' => 'Locais',
+      'new_item' => 'Novo local',
+      'not_found' => 'Nenhum local encontrado',
+      'not_found_in_trash' => 'Nenhum local encontrado na lixeira',
+      'search_items' => 'Procurar locais',
+      'view_item' => 'Visualizar local'
+    ),
+    'hierarchical' => true,
+    'public' => true,
+    'rewrite' => array(
+      'hierarchical' => true
+    )
+  );
+
   register_post_type('ideia', $post_args);
-  register_taxonomy('tema', array('ideia'), $cat_args);
+  register_taxonomy('tema', array('ideia'), $tema_args);
+  register_taxonomy('local', array('ideia'), $local_args);
 }
 
 add_action('init', 'dolores_register_post_types');

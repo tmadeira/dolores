@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/dlib/posts.php');
+
 function dolores_grid_ideias($query = null, $show_tax = false) {
   global $wp_query, $post;
   if ($query === null) {
@@ -15,37 +17,31 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
           ?>
           <li class="grid-ideia<?php if ($show_tax) { echo " with-tax"; } ?>">
             <?php
-            if ($show_tax) {
-              $taxonomy = 'tema';
-              $terms = get_the_terms($post->ID, $taxonomy);
-              $tax = array();
-              foreach ($terms as $term) {
-                if ($term->parent == 0) {
-                  $tax['link'] = get_term_link($term, $taxonomy);
-                  $tax['name'] = $term->name;
-                  $tax['image'] = get_term_meta($term->term_id, 'image', true);
-                  break;
-                }
-              }
+            list($cat, $tags) = DoloresPosts::get_post_terms($post->ID);
+            if ($show_tax && $cat) {
+              $tax = array(
+                  'link' => get_term_link($cat, $cat->taxonomy),
+                  'name' => $cat->name,
+                  'image' => get_term_meta($cat->term_id, 'image', true)
+              );
+
               list($img_src) = wp_get_attachment_image_src(
-                get_post_thumbnail_id($post->ID),
-                'post-thumbnail'
+                  get_post_thumbnail_id($post->ID),
+                  'post-thumbnail'
               );
               if ($img_src) {
                 $tax['image'] = $img_src;
               }
               $tax['bg'] = "background-image: url('{$tax['image']}');";
-              if ($tax['name']) {
-                ?>
-                <div class="grid-ideia-tax" style="<?php echo $tax['bg']; ?>">
-                  <h4 class="grid-ideia-tax-title">
-                    <a href="<?php echo $tax['link']; ?>">
-                      <?php echo $tax['name']; ?>
-                    </a>
-                  </h4>
-                </div>
-                <?php
-              }
+              ?>
+              <div class="grid-ideia-tax" style="<?php echo $tax['bg']; ?>">
+                <h4 class="grid-ideia-tax-title">
+                  <a href="<?php echo $tax['link']; ?>">
+                    <?php echo $tax['name']; ?>
+                  </a>
+                </h4>
+              </div>
+              <?php
             }
             ?>
             <h3 class="grid-ideia-title">
@@ -54,25 +50,15 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
               </a>
             </h3>
             <?php
-            $taxonomy = 'tema';
-            $terms = get_the_terms($post->ID, $taxonomy);
-            $tags = array();
-            foreach ($terms as $term) {
-              if ($term->parent != 0) {
-                $tags[] = array(
-                  'name' => $term->name,
-                  'link' => get_term_link($term, $taxonomy)
-                );
-              }
-            }
             if (count($tags)) {
               ?>
               <p class="grid-ideia-tags">
                 <?php
                 foreach ($tags as $tag) {
                   ?>
-                  <a class="grid-ideia-tag" href="<?php echo $tag['link']; ?>"
-                      ><?php echo $tag['name']; ?></a>
+                  <a class="grid-ideia-tag"
+                     href="<?php echo get_term_link($tag, $tag->taxonomy); ?>"
+                  ><?php echo $tag->name; ?></a>
                   <?php
                 }
                 ?>
@@ -185,7 +171,7 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
           }
           ?>
 
-          <?php if (is_tax()) { ?>
+          <?php if (is_tax('tema')) { ?>
           <a class="grid-ideias-button" href="/temas">
             Ver todos os temas
           </a>

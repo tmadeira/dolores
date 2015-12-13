@@ -3,10 +3,9 @@ require_once(__DIR__ . '/interact.php');
 require_once(__DIR__ . '/wp_util/user_meta.php');
 
 class DoloresPosts {
-  const taxonomy = 'tema';
   const type = 'ideia';
 
-  public static function add_new_post($title, $text, $cat, $tags) {
+  public static function add_new_post($title, $text, $tema, $local, $tags) {
     if (!is_user_logged_in()) {
       return array('error' => 'Apenas usuários cadastrados podem fazer isto.');
     }
@@ -36,25 +35,32 @@ class DoloresPosts {
       'ping_status' => 'closed'
     );
 
-    $inserted = wp_insert_post($post);
-    if (!$inserted) {
-      return array('error' => 'Erro ao cadastrar ideia.');
+    $taxonomy = null;
+    if ($tema && !$local) {
+      $taxonomy = 'tema';
+      $term = $tema;
+    } else if (!$tema && $local) {
+      $taxonomy = 'local';
+      $term = $local;
+    } else {
+      return array('error' => 'Não foi selecionada uma categoria.');
     }
 
     if (!is_array($tags)) {
       $tags = array();
     }
-    $terms = array_merge(array($cat), $tags);
 
-    $term = get_term_by('slug', $cat, 'tema');
+    $terms = array_merge(array($term), $tags);
+
+    $term = get_term_by('slug', $term, $taxonomy);
     if ($term === false ||
         $term->parent != 0 ||
         !get_term_meta($term->term_id, 'active', true)) {
       return array('error' => 'Este tema não está aberto no momento.');
     }
     $subterms = get_categories(array(
-      'taxonomy' => 'tema',
-      'child_of' => $term->term_id
+        'taxonomy' => $taxonomy,
+        'child_of' => $term->term_id
     ));
     $valid = array();
     foreach ($subterms as $subterm) {
@@ -66,7 +72,12 @@ class DoloresPosts {
       }
     }
 
-    wp_set_object_terms($inserted, $terms, DoloresPosts::taxonomy);
+    $inserted = wp_insert_post($post);
+    if (!$inserted) {
+      return array('error' => 'Erro ao cadastrar ideia.');
+    }
+
+    wp_set_object_terms($inserted, $terms, $taxonomy);
 
     return array('url' => get_permalink($inserted));
   }
@@ -181,5 +192,29 @@ HTML;
   </div>
 HTML;
     return $content;
+  }
+
+  public static function get_post_terms($id) {
+    $temas = get_the_terms($id, 'tema');
+    $locais = get_the_terms($id, 'local');
+    if (!is_array($temas)) {
+      $temas = array();
+    }
+    if (!is_array($locais)) {
+      $locais = array();
+    }
+    $terms = array_merge($temas, $locais);
+
+    $cat = null;
+    $tags = array();
+    foreach ($terms as $term) {
+      if ($term->parent == 0) {
+        $cat = $term;
+      } else {
+        $tags[] = $term;
+      }
+    }
+
+    return array($cat, $tags);
   }
 };

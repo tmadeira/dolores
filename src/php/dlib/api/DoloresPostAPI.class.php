@@ -6,10 +6,11 @@ require_once(__DIR__ . '/../posts.php');
 class DoloresPostAPI extends DoloresBaseAPI {
   function post($request) {
     $post = DoloresPosts::add_new_post(
-      $request['title'],
-      $request['text'],
-      $request['cat'],
-      $request['tags']
+      $request['data']['title'],
+      $request['data']['text'],
+      $request['data']['tema'],
+      $request['data']['local'],
+      $request['data']['tags']
     );
 
     if (is_array($post) && array_key_exists('error', $post)) {

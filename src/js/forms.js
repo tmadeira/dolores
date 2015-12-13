@@ -11,6 +11,7 @@ var MultiSelect = require("./components/MultiSelect.react");
 var setupFormTema = function() {
   var tagsContainer = $(".tema-tags-container");
   var availableTags = $(".available-tags");
+  var i;
 
   if (tagsContainer.length && availableTags.length) {
     var selected = [];
@@ -19,7 +20,7 @@ var setupFormTema = function() {
 
     var options = [];
     var valueMap = {};
-    for (var i = 0; i < tags.length; i++) {
+    for (i = 0; i < tags.length; i++) {
       var parts = tags[i].split("::");
       options.push(parts[1]);
       valueMap[parts[1]] = parts[0];
@@ -57,12 +58,18 @@ var setupFormTema = function() {
   }
 
   $("#form-tema").submit(function() {
-    var request = $(this).serialize();
     var button = $(this).find(".tema-form-button");
+
+    var request = {};
+    var requestArray = $(this).serializeArray();
+    for (i = 0; i < requestArray.length; i++) {
+      request[requestArray[i].name] = requestArray[i].value;
+    }
 
     var post = function() {
       button.prop("disabled", true);
-      API.route("post").post(request).done(function(response) {
+      console.log(request);
+      API.route("post").post({data: request}).done(function(response) {
         if ("error" in response) {
           button.prop("disabled", false);
           alert("Erro ao publicar ideia: " + response.error);
@@ -72,7 +79,7 @@ var setupFormTema = function() {
       }).fail(function(response) {
         button.prop("disabled", false);
         console.log(response);
-        if ("error" in response.responseJSON) {
+        if ("responseJSON" in response && "error" in response.responseJSON) {
           alert("Erro ao publicar ideia: " + response.responseJSON.error);
         }
       });

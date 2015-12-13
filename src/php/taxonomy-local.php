@@ -22,12 +22,12 @@ if (!$paged || $paged == 1) {
       <?php if ($video) { ?>
         <div class="tema-video">
           <iframe
-            allowfullscreen
-            frameborder="0"
-            height="480"
-            src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
-            width="640"
-            >
+              allowfullscreen
+              frameborder="0"
+              height="480"
+              src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
+              width="640"
+          >
           </iframe>
         </div>
       <?php } else if ($image) {
@@ -70,7 +70,7 @@ if (!$paged || $paged == 1) {
               Se a<br />cidade<br />fosse<br />nossa?
             </h2>
             <p class="tema-form-description">
-              Você tem alguma ideia para o tema
+              Você tem alguma ideia para
               <strong><?php single_cat_title(); ?></strong>?
             </p>
             <p class="tema-form-description">
@@ -83,7 +83,7 @@ if (!$paged || $paged == 1) {
               Em breve
             </h2>
             <p class="tema-form-description">
-              Este tema não está aberto para debates no momento.
+              Este bairro não está aberto para debates no momento.
             </p>
             <?php
           }
@@ -105,7 +105,7 @@ if (!$paged || $paged == 1) {
                   id="tema-form-title"
                   maxlength="100"
                   placeholder="Título (max. 100 caracteres)"
-                  />
+              />
             </p>
             <p class="tema-form-item">
               <label class="tema-form-label" for="tema-form-content">
@@ -117,12 +117,12 @@ if (!$paged || $paged == 1) {
                   id="tema-form-content"
                   maxlength="600"
                   placeholder="Explique com mais detalhes a sua ideia (max. 600 caracteres)"
-                  ></textarea>
+              ></textarea>
             </p>
             <?php
             $subterms = get_categories(array(
-              'taxonomy' => 'tema',
-              'child_of' => $term->term_id
+                'taxonomy' => 'local',
+                'child_of' => $term->term_id
             ));
 
             $tags = array();
@@ -141,7 +141,7 @@ if (!$paged || $paged == 1) {
                     type="hidden"
                     class="available-tags"
                     value="<?php echo $available_tags; ?>"
-                    />
+                />
                 <span class="tema-tags-container">
                   <input
                       type="text"
@@ -149,14 +149,14 @@ if (!$paged || $paged == 1) {
                       name="dummy-tags"
                       id="tema-form-tags"
                       placeholder="Escolha algumas palavras-chave"
-                      />
+                  />
                 </span>
               </p>
               <?php
             }
             ?>
             <p class="tema-form-item" style="margin-top: 5px; text-align: right;">
-              <input type="hidden" name="tema" value="<?php echo $term->slug; ?>" />
+              <input type="hidden" name="local" value="<?php echo $term->slug; ?>" />
               <button class="tema-form-button" type="submit">
                 <span class="if-not-sent">Enviar</span>
                 <i class="if-sending fa fa-fw fa-refresh fa-spin"></i>
