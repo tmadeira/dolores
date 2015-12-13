@@ -8,3 +8,6 @@ composer.lock
 /\.sass-cache
 
 \.*\.swp
+
+/\.idea
+/dolores.iml
