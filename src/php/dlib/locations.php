@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/assets.php');
+
 class DoloresLocations {
   private static $instance;
   private $locations;
@@ -12,13 +14,17 @@ class DoloresLocations {
   }
 
   private function __construct() {
-    global $wpdb;
-    $query = "SELECT name, latitude, longitude FROM dolores_locations
-              ORDER BY name ASC";
-    $this->locations = $wpdb->get_results($query, OBJECT_K);
+    $terms = get_terms('local', array('hide_empty' => false));
 
-    foreach ($this->locations as $key => $obj) {
-      $obj->clean_name = remove_accents($key);
+    if (count($terms) == 0) {
+      $this->setup_locations();
+      $terms = get_terms('local', array('hide_empty' => false));
+    }
+
+    $this->locations = array();
+    foreach ($terms as $location) {
+      $location->clean_name = remove_accents($location->name);
+      $this->locations[$location->name] = $location;
     }
   }
 
@@ -35,5 +41,31 @@ class DoloresLocations {
       }
     }
     return $suggestions;
+  }
+
+  public function setup_locations() {
+    $data_files = array('bairros.csv', 'favelas.csv', 'municipios.csv');
+    foreach ($data_files as $file) {
+      $path = DoloresAssets::get_static_path('data/locations/' . $file);
+      $this->insert_csv($path);
+    }
+  }
+
+  public function insert_csv($file) {
+    $lines = file($file);
+    foreach ($lines as $line) {
+      list($name, $lat, $lng) = explode(",", $line);
+      $this->insert_location($name, $lat, $lng);
+    }
+  }
+
+  public function insert_location($name, $lat, $lng) {
+    $term = wp_insert_term($name, 'local');
+    if (is_wp_error($term)) {
+      return false;
+    }
+    update_term_meta($term['term_id'], 'lat', $lat);
+    update_term_meta($term['term_id'], 'lng', $lng);
+    return true;
   }
 };
