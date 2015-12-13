@@ -68,4 +68,18 @@ class DoloresLocations {
     update_term_meta($term['term_id'], 'lng', $lng);
     return true;
   }
+
+  public function get_missing($location) {
+    global $wpdb;
+
+    $sql = <<<SQL
+SELECT COUNT(user_id)
+  FROM {$wpdb->usermeta}
+  WHERE meta_key = 'location' AND meta_value = %s
+SQL;
+
+    $query = $wpdb->prepare($sql, $location);
+    $existing = intval($wpdb->get_var($query));
+    return 50 - $existing;
+  }
 };

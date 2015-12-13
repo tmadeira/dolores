@@ -80,6 +80,9 @@ var Input = React.createClass({
   },
 
   renderIcon: function() {
+    if (!("icon" in this.props)) {
+      return null;
+    }
     var className = {
       "fa": true,
       "fa-fw": true,
@@ -149,7 +152,11 @@ var Input = React.createClass({
         }
       }
       if (_.isNumber(index)) {
-        this.props.onChange(this.props.name, this.props.suggestions[index]);
+        this.props.onChange(
+          this.props.name,
+          this.props.suggestions[index],
+          true
+        );
       }
       blur();
     }.bind(this);
@@ -230,7 +237,7 @@ var Input = React.createClass({
   },
 
   onSuggestionClick: function(e) {
-    this.props.onChange(this.props.name, e.target.innerHTML);
+    this.props.onChange(this.props.name, e.target.innerHTML, true);
   },
 
   renderValidation: function() {

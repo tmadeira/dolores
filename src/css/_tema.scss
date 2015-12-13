@@ -144,7 +144,8 @@ main.tema {
 .tema-form-input,
 .tema-form-textarea,
 .tema-form-button,
-.tema-form-multiselect .multi-select-selected {
+.tema-form-multiselect .multi-select-selected,
+.bairros-form-location > input {
   font-size: 13px;
   @include breakpoint($break-tablet) {
     font-size: 16px;
@@ -153,12 +154,45 @@ main.tema {
 
 .tema-form-input,
 .tema-form-textarea,
-.tema-form-multiselect .multi-select-selected {
+.tema-form-multiselect .multi-select-selected,
+.bairros-form-location > input {
   @extend %text-font;
   background: #fff;
   border: 0;
   padding: 5px 10px;
   width: 100%;
+}
+
+.bairros-form-location {
+  position: relative;
+
+  .suggestions {
+    @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    background: #fff;
+    color: #000;
+    display: none;
+    font-size: 14px;
+    line-height: 1.1em;
+    overflow-y: auto;
+    max-height: 120px;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    & > li {
+      cursor: pointer;
+      padding: 5px;
+      &.selected, &:hover {
+        background: $gray;
+      }
+    }
+  }
+
+  &.focused .suggestions {
+    display: block;
+  }
 }
 
 .tema-form-textarea {

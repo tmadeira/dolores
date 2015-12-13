@@ -6,9 +6,10 @@ var React = require("react");
 
 var API = require("./api");
 
+var BairrosForm = require("./components/BairrosForm.react");
 var MultiSelect = require("./components/MultiSelect.react");
 
-var setupFormTema = function() {
+var setupTemaForm = function() {
   var tagsContainer = $(".tema-tags-container");
   var availableTags = $(".available-tags");
   var i;
@@ -92,6 +93,14 @@ var setupFormTema = function() {
   });
 };
 
+var setupBairrosForm = function() {
+  var container = document.getElementById("form-bairros");
+  if (container !== null) {
+    var form = <BairrosForm />;
+    React.render(form, container);
+  }
+};
+
 var setupContactForm = function() {
   $(".temas-form-form").submit(function() {
     var form = $(this);
@@ -139,7 +148,8 @@ var setupContactForm = function() {
 };
 
 var setup = function() {
-  setupFormTema();
+  setupTemaForm();
+  setupBairrosForm();
   setupContactForm();
 };
 

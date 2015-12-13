@@ -6,6 +6,8 @@ if (empty($_GET['v']) || intval($_GET['v']) < 3) {
   exit();
 }
 
+require_once(__DIR__ . '/dlib/locations.php');
+
 the_post();
 get_header();
 ?>
@@ -70,32 +72,46 @@ get_header();
 
 <section class="temas-form bg-pattern-light-purple">
   <div class="wrap">
-    <h2 class="temas-form-title">
-      Qual o seu bairro?
-    </h2>
 
-    <p class="temas-form-description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
+    <?php
+    if (is_user_logged_in()) {
+      $user = wp_get_current_user();
+      $bairro = get_user_meta($user->ID, 'location', true);
+      $missing = DoloresLocations::get_instance()->get_missing($bairro);
+      ?>
+      <h2 class="temas-form-title">
+        <?php echo $bairro; ?>
+      </h2>
 
-    <form class="temas-form-form" id="form-temas">
-      <p class="tema-form-item">
-        <input
-            type="text"
-            name="subject"
-            class="tema-form-input"
-            id="tema-form-title"
-            placeholder="Bairro"
-        />
+      <p class="bairros-form-description">
+        Faltam <strong><?php echo $missing; ?></strong> pessoas para desbloquear
+        seu bairro.
       </p>
-      <p style="text-align: center;">
-        <span class="tema-form-response"></span>
-        <button class="tema-form-button" type="submit">
-          <span class="if-not-sent">Enviar</span>
-          <i class="if-sending fa fa-fw fa-refresh fa-spin"></i>
+
+      <p class="bairros-button-container">
+        <button
+            class="bairros-button"
+            onclick="FB.ui({method: 'send', link: '<?php
+              echo site_url("/bairros/");
+            ?>'});">
+          Convide seus amigos
         </button>
       </p>
-    </form>
+      <?php
+    } else {
+      ?>
+      <h2 class="temas-form-title">
+        Qual o seu bairro?
+      </h2>
+
+      <p class="temas-form-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div id="form-bairros"></div>
+      <?php
+    }
+    ?>
   </div>
 </section>
 
