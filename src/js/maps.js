@@ -6,8 +6,16 @@ var gmapsKey = require("./config").gmapsKey;
 var mapContainer;
 var map = null;
 var markers = [];
+var clickCallback = null;
+var contents = {};
 
 window.initMap = function() {
+  var infoWindow = new window.google.maps.InfoWindow();
+  clickCallback = function() {
+    infoWindow.setContent(contents[this.getTitle()]);
+    infoWindow.open(map, this);
+  };
+
   map = new window.google.maps.Map(mapContainer, {
     center: {lat: -22.9209878, lng: -43.4785317},
     disableDefaultUI: true,
@@ -15,7 +23,9 @@ window.initMap = function() {
     zoomControl: true,
     zoom: 11
   });
-
+  map.addListener("click", function() {
+    infoWindow.close();
+  });
   markers.map(window.addMapMarker);
 };
 
@@ -24,13 +34,9 @@ window.addMapMarker = function(data) {
     markers.push(data);
   } else {
     var marker = new window.google.maps.Marker(data);
-    var infowindow = new window.google.maps.InfoWindow({
-      content: data.content
-    });
     marker.setMap(map);
-    marker.addListener("click", function() {
-      infowindow.open(map, marker);
-    });
+    marker.addListener("click", clickCallback);
+    contents[data.title] = data.content;
   }
 };
 
