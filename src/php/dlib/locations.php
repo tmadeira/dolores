@@ -69,7 +69,7 @@ class DoloresLocations {
     return true;
   }
 
-  public function get_missing($location) {
+  public function get_user_count($location) {
     global $wpdb;
 
     $sql = <<<SQL
@@ -79,7 +79,23 @@ SELECT COUNT(user_id)
 SQL;
 
     $query = $wpdb->prepare($sql, $location);
-    $existing = intval($wpdb->get_var($query));
-    return 50 - $existing;
+    return intval($wpdb->get_var($query));
+
+  }
+
+  public function get_missing($location) {
+    return 50 - $this->get_user_count($location);
+  }
+
+  public function get_active() {
+    return get_terms('local', array(
+        'hide_empty' => false,
+        'meta_query' => array(
+          array(
+            'key' => 'active',
+            'value' => '1'
+          )
+        )
+    ));
   }
 };

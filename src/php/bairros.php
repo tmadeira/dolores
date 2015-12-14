@@ -121,22 +121,40 @@ get_header();
 
 <script type="text/javascript">
   window.onload = function() {
-    window.addMapMarker({
-      position: {lat: -22.8833333, lng: -43.4333333},
-      title: "Realengo",
-      content: "" +
-      "<div class=\"map-marker\">" +
-        "<h3 class=\"map-marker-title\">Realengo</h3>" +
-        "<p class=\"map-marker-description\">" +
-          "<strong>Usuários cadastrados:</strong> 372<br />" +
-          "<strong>Ideias propostas:</strong> 228<br />" +
-          "<strong>Comentários:</strong> 1072" +
-        "</p>" +
-        "<p class=\"map-marker-description\">" +
-          "<a class=\"map-marker-button\" href=\"#\">Participar</a>" +
-        "</p>" +
-      "</div>"
-    });
+    <?php
+    $locations = DoloresLocations::get_instance();
+    $terms = $locations->get_active();
+    foreach ($terms as $term) {
+      $name = $term->name;
+      $lat = get_term_meta($term->term_id, 'lat', true);
+      $lng = get_term_meta($term->term_id, 'lng', true);
+      if (!$lat || !$lng) {
+        continue;
+      }
+      $link = get_term_link($term->term_id, $term->taxonomy);
+      $user_count = $locations->get_user_count($term->name);
+      $post_count = $term->count;
+      ?>
+      window.addMapMarker({
+        position: {lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?>},
+        title: "<?php echo $name; ?>",
+        content: "" +
+        "<div class=\"map-marker\">" +
+          "<h3 class=\"map-marker-title\"><?php echo $name; ?></h3>" +
+          "<p class=\"map-marker-description\">" +
+            "<strong>Usuários:</strong> <?php echo $user_count; ?><br />" +
+            "<strong>Ideias:</strong> <?php echo $post_count; ?>" +
+          "</p>" +
+          "<p class=\"map-marker-description\">" +
+            "<a class=\"map-marker-button\" href=\"<?php echo $link; ?>\">" +
+              "Participar" +
+            "</a>" +
+          "</p>" +
+        "</div>"
+      });
+      <?php
+    }
+    ?>
   };
 </script>
 
