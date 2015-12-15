@@ -93,8 +93,6 @@ class DoloresUsers {
       ));
     }
 
-    DoloresUsers::send_welcome_email($user_id);
-
     $auth_key = 'auth_' . $data['auth']['type'];
     $auth_val = $data['auth']['id'];
     if (!dolores_update_user_meta($user_id, $auth_key, $auth_val)) {
@@ -116,6 +114,8 @@ class DoloresUsers {
       wp_delete_user($user_id);
       return array('error' => 'Não foi possível cadastrar seu telefone.');
     }
+
+    DoloresUsers::send_welcome_email($user_id);
 
     return get_user_by('id', $user_id);
   }
