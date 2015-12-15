@@ -14,50 +14,6 @@ $more = get_term_meta($term->term_id, 'more', true);
 get_header();
 
 if (!$paged || $paged == 1) {
-  $vparams = "rel=0&amp;controls=0&amp;showinfo=0";
-  ?>
-
-  <main class="tema">
-    <div class="wrap">
-      <?php if ($video) { ?>
-        <div class="tema-video">
-          <iframe
-              allowfullscreen
-              frameborder="0"
-              height="480"
-              src="https://youtube.com/embed/<?php echo $video . "?" . $vparams; ?>"
-              width="640"
-          >
-          </iframe>
-        </div>
-      <?php } else if ($image) {
-        $style = ' style="background-image: url(\'' . $image . '\');"';
-        ?>
-        <div class="tema-video">
-          <div class="tema-video-image"<?php echo $style;?>> </div>
-        </div>
-      <?php } ?>
-
-      <div class="tema-info">
-        <h2 class="tema-name">
-          <?php
-          if ($term->parent != 0) {
-            echo "#";
-          }
-          single_cat_title();
-          ?>
-        </h2>
-        <p><?php echo category_description(); ?></p>
-        <?php if ($more) { ?>
-          <a class="tema-link-more" href="<?php echo $more; ?>">
-            Ver diagnóstico
-          </a>
-        <?php } ?>
-      </div>
-    </div>
-  </main>
-
-  <?php
   if ($term->parent == 0) {
     ?>
     <section class="tema-form bg-pattern-orange">
