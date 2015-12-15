@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/../locations.php');
+
 class DoloresUsersStats {
   public function __construct() {
     add_action('admin_menu', array($this, 'add_page'));
@@ -15,17 +17,7 @@ class DoloresUsersStats {
   }
 
   public function create_admin_page() {
-    global $wpdb;
-
-    $sql = <<<SQL
-SELECT meta_value AS location, COUNT(user_id) AS count
-  FROM {$wpdb->usermeta}
-  WHERE meta_key = 'location'
-  GROUP BY meta_value
-  ORDER BY count DESC
-SQL;
-
-    $rows = $wpdb->get_results($sql);
+    $rows = DoloresLocations::get_instance()->get_ranking();
     ?>
     <div class="wrap">
       <h2>Estatísticas dos usuários</h2>

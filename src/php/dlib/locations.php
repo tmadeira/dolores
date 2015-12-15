@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__ . '/assets.php');
 
+define('THRESHOLD_TO_ACTIVATE_LOCATION', 50);
+
 class DoloresLocations {
   private static $instance;
   private $locations;
@@ -84,7 +86,7 @@ SQL;
   }
 
   public function get_missing($location) {
-    return 50 - $this->get_user_count($location);
+    return THRESHOLD_TO_ACTIVATE_LOCATION - $this->get_user_count($location);
   }
 
   public function get_active() {
@@ -97,5 +99,19 @@ SQL;
           )
         )
     ));
+  }
+
+  public function get_ranking() {
+    global $wpdb;
+
+    $sql = <<<SQL
+SELECT meta_value AS location, COUNT(user_id) AS count
+  FROM {$wpdb->usermeta}
+  WHERE meta_key = 'location'
+  GROUP BY meta_value
+  ORDER BY count DESC
+SQL;
+
+    return $wpdb->get_results($sql);
   }
 };
