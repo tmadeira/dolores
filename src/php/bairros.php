@@ -109,7 +109,7 @@ get_header();
         </p>
         <?php
       } else {
-        $missing = DoloresLocations::get_instance()->get_missing($bairro);
+        $missing = DoloresLocations::get_instance()->get_missing($term);
         ?>
         <p class="bairros-form-description">
           Faltam <strong><?php echo $missing; ?></strong> pessoas para

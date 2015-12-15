@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/assets.php');
 require_once(__DIR__ . '/auth_cache.php');
+require_once(__DIR__ . '/locations.php');
 require_once(__DIR__ . '/external/facebook.php');
 require_once(__DIR__ . '/external/google.php');
 require_once(__DIR__ . '/wp_util/user_meta.php');
@@ -115,6 +116,7 @@ class DoloresUsers {
       return array('error' => 'Não foi possível cadastrar seu telefone.');
     }
 
+    DoloresLocations::get_instance()->get_missing($data['location']);
     DoloresUsers::send_welcome_email($user_id);
 
     return get_user_by('id', $user_id);

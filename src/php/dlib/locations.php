@@ -74,19 +74,36 @@ class DoloresLocations {
   public function get_user_count($location) {
     global $wpdb;
 
+    if (is_string($location)) {
+      if (!isset($this->locations[$location])) {
+        return 0;
+      }
+      $location = $this->locations[$location];
+    }
+
     $sql = <<<SQL
 SELECT COUNT(user_id)
   FROM {$wpdb->usermeta}
   WHERE meta_key = 'location' AND meta_value = %s
 SQL;
 
-    $query = $wpdb->prepare($sql, $location);
+    $query = $wpdb->prepare($sql, $location->name);
     return intval($wpdb->get_var($query));
-
   }
 
   public function get_missing($location) {
-    return THRESHOLD_TO_ACTIVATE_LOCATION - $this->get_user_count($location);
+    if (is_string($location)) {
+      if (!isset($this->locations[$location])) {
+        return 0;
+      }
+      $location = $this->locations[$location];
+    }
+    $missing = THRESHOLD_TO_ACTIVATE_LOCATION - $this->get_user_count($location);
+    if ($missing <= 0) {
+      update_term_meta($location->term_id, 'active', 1);
+      $missing = 1;
+    }
+    return $missing;
   }
 
   public function get_active() {
