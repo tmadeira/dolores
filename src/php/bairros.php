@@ -77,27 +77,56 @@ get_header();
     if (is_user_logged_in()) {
       $user = wp_get_current_user();
       $bairro = get_user_meta($user->ID, 'location', true);
-      $missing = DoloresLocations::get_instance()->get_missing($bairro);
       ?>
       <h2 class="temas-form-title">
         <?php echo $bairro; ?>
       </h2>
 
-      <p class="bairros-form-description">
-        Faltam <strong><?php echo $missing; ?></strong> pessoas para desbloquear
-        seu bairro.
-      </p>
-
-      <p class="bairros-button-container">
-        <button
-            class="bairros-button"
-            onclick="FB.ui({method: 'send', link: '<?php
-              echo site_url("/bairros/");
-            ?>'});">
-          Convide seus amigos
-        </button>
-      </p>
       <?php
+      $term = get_term_by('name', $bairro, 'local');
+      $active = get_term_meta($term->term_id, 'active', true);
+      $link = get_term_link($term->term_id, $term->taxonomy);
+      if ($active) {
+        ?>
+        <p class="bairros-form-description">
+          <?php
+          if ($term->count > 1) {
+            echo $term->count; ?>
+            ideias já estão sendo debatidas!
+            <?php
+          } else {
+            ?>
+            Clique no botão para entrar no debate!
+            <?php
+          }
+          ?>
+        </p>
+
+        <p class="bairros-button-container">
+          <a class="bairros-button" href="<?php echo $link; ?>">
+            Participe
+          </a>
+        </p>
+        <?php
+      } else {
+        $missing = DoloresLocations::get_instance()->get_missing($bairro);
+        ?>
+        <p class="bairros-form-description">
+          Faltam <strong><?php echo $missing; ?></strong> pessoas para
+          desbloquear seu bairro.
+        </p>
+
+        <p class="bairros-button-container">
+          <button
+              class="bairros-button"
+              onclick="FB.ui({method: 'send', link: '<?php
+              echo site_url("/bairros/");
+              ?>'});">
+            Convide seus amigos
+          </button>
+        </p>
+        <?php
+      }
     } else {
       ?>
       <h2 class="temas-form-title">
