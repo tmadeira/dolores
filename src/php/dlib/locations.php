@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/assets.php');
 
-define('THRESHOLD_TO_ACTIVATE_LOCATION', 50);
+define('THRESHOLD_TO_ACTIVATE_LOCATION', 20);
 
 class DoloresLocations {
   private static $instance;
