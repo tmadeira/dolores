@@ -35,14 +35,6 @@ module.exports = function(grunt) {
     compass: {
       default: {
         options: {
-          banner: "/*\n" +
-            "Theme Name: Dolores\n" +
-            "Theme URI: http://dolores/\n" +
-            "Author: Tiago Madeira\n" +
-            "Author URI: http://tiagomadeira.com/\n" +
-            "Description: dev stylesheet\n" +
-            "Version: 0.0.1\n" +
-            "*/\n",
           specify: 'src/css/**/*.scss',
           sassDir: 'src/css',
           cssDir: 'build',
@@ -96,7 +88,7 @@ module.exports = function(grunt) {
 
       default: {
         files: {
-          'build/style.min.css': ['build/style.css']
+          'build/scfn/style.min.css': ['build/scfn/style.css']
         }
       }
     },
@@ -144,14 +136,6 @@ module.exports = function(grunt) {
       }
     },
 
-    sass: {
-      default: {
-        files: {
-          'build/style.css': 'src/css/style.scss'
-        }
-      }
-    },
-
     uglify: {
       default: {
         files: {
@@ -187,7 +171,7 @@ module.exports = function(grunt) {
       },
 
       php: {
-        files: 'src/php/**/*.php',
+        files: 'src/php/**/*',
         tasks: ['copy:php']
       },
 
@@ -204,7 +188,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-eslint');

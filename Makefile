@@ -15,8 +15,8 @@ clean-dev:
 dev:
 	grunt dev
 
-deploy:
-	script/deploy.sh dolores_rj seacidadefossenossa.com.br
+deploy-scfn:
+	script/deploy.sh scfn seacidadefossenossa.com.br
 
 install-dev: bower.json package.json
 	npm install

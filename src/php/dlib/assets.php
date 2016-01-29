@@ -27,9 +27,9 @@ class DoloresAssets {
     if (function_exists('dolores_assets_print_style')) {
       return dolores_assets_print_style();
     } else {
+      $url = DoloresAssets::get_theme_uri(DOLORES_TEMPLATE . '/style.css');
       ?>
-      <link rel="stylesheet" type="text/css"
-          href="<?php bloginfo('stylesheet_url'); ?>" />
+      <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>" />
       <?php
     }
   }

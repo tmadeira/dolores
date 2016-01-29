@@ -6,14 +6,14 @@ build=${BASE_DIR}/build
 dist=${BASE_DIR}/dist
 
 if [ "$#" != 2 ]; then
-  echo "Usage: $0 <name> <domain>"
+  echo "Usage: $0 <template> <domain>"
   exit 1
 fi
 
-name=$1
+template=$1
 domain=$2
 
-theme_url=http://${domain}/wp-content/themes/${name}
+theme_url=http://${domain}/wp-content/themes/dolores
 
 # Remove dist/
 rm -rf ${dist}
@@ -42,7 +42,7 @@ done
 # Generate WP style.css
 cat > ${dist}/style.css <<EOF
 /*
-Theme Name: ${name}
+Theme Name: dolores
 Theme URI: https://github.com/tmadeira/dolores/
 Author: Tiago Madeira
 Author URI: http://tiagomadeira.com/
@@ -71,7 +71,7 @@ fi
 files=$(find ${build} -type f -not -name '*.php' \
   -not -path "${build}/vendor/*" | sed "s|${build}/||")
 
-css=`cat ${build}/style.min.css`
+css=`cat ${build}/${template}/style.min.css`
 
 mkdir ${dist}/assets
 for file in ${files}; do
@@ -121,7 +121,7 @@ if [ "$?" != "0" ]; then
 fi
 
 rsync -avu --delete -e ssh ${BASE_DIR}/dist/ \
-  www-data@${domain}:~/${domain}/wp-content/themes/${name}
+  www-data@${domain}:~/${domain}/wp-content/themes/dolores
 
 if [ "$?" != "0" ]; then
   echo "Can't copy files to server"

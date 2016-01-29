@@ -1,4 +1,9 @@
 <?php
+// Define DOLORES_TEMPLATE in wp-config.php to override this
+if (!defined('DOLORES_TEMPLATE')) {
+  define('DOLORES_TEMPLATE', 'scfn');
+}
+
 require_once(__DIR__ . '/dlib/wp_util/disable_admin_bar.php');
 require_once(__DIR__ . '/dlib/wp_util/disable_emojis.php');
 require_once(__DIR__ . '/dlib/wp_util/disable_yarpp_css.php');
