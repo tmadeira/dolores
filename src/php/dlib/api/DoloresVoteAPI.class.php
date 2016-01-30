@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/DoloresBaseAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/interact.php');
 
-require_once(__DIR__ . '/../interact.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
 
 class DoloresVoteAPI extends DoloresBaseAPI {
   function post($request) {

@@ -1,10 +1,10 @@
 <?php
-require_once(__DIR__ . '/assets.php');
-require_once(__DIR__ . '/auth_cache.php');
-require_once(__DIR__ . '/locations.php');
-require_once(__DIR__ . '/external/facebook.php');
-require_once(__DIR__ . '/external/google.php');
-require_once(__DIR__ . '/wp_util/user_meta.php');
+require_once(DOLORES_PATH . '/dlib/assets.php');
+require_once(DOLORES_PATH . '/dlib/auth_cache.php');
+require_once(DOLORES_PATH . '/dlib/locations.php');
+require_once(DOLORES_PATH . '/dlib/external/facebook.php');
+require_once(DOLORES_PATH . '/dlib/external/google.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
 class DoloresUsers {
   public static function getUserByUniqueField($field, $value) {
@@ -79,7 +79,7 @@ class DoloresUsers {
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(__DIR__ . '/external/mailchimp.php');
+      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
       $MailChimp->fireAndForget('lists/subscribe', Array(
         'id' => MAILCHIMP_LIST_ID,

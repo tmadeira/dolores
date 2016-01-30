@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/dlib/posts.php');
+require_once(DOLORES_PATH . '/dlib/posts.php');
 
 function dolores_grid_ideias($query = null, $show_tax = false) {
   global $wp_query, $post;
@@ -69,7 +69,7 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
             <p class="grid-ideia-author">
               <?php
               $id = get_the_author_meta('ID');
-              require_once(__DIR__ . '/dlib/wp_util/user_meta.php');
+              require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
               $picture = dolores_get_profile_picture(get_user_by('id', $id));
               $style = ' style="background-image: url(\'' . $picture. '\');"';
               $url = get_author_posts_url(get_the_author_meta('ID'));
@@ -82,7 +82,7 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
             </p>
             <p class="grid-ideia-interact">
               <?php
-              require_once(__DIR__ . '/dlib/interact.php');
+              require_once(DOLORES_PATH . '/dlib/interact.php');
               $interact = new DoloresInteract();
               list($up, $down, $voted) = $interact->get_post_votes($post->ID);
               $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";

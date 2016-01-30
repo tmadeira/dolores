@@ -1,8 +1,8 @@
 <?php
-require_once(__DIR__ . '/../assets.php');
-
-require_once(__DIR__ . '/../wp_admin/settings/opengraph.php');
-require_once(__DIR__ . '/../posts.php');
+require_once(DOLORES_PATH . '/dlib/assets.php');
+require_once(DOLORES_PATH . '/dlib/posts.php');
+require_once(DOLORES_PATH . '/dlib/wp_admin/settings/opengraph.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
 function dolores_add_opengraph() {
   global $post;
@@ -30,7 +30,6 @@ function dolores_add_opengraph() {
     $info = isset($_GET['author_name']) ?
         get_user_by('slug', $_GET['author_name']) :
         get_userdata(intval($author));
-    require_once(__DIR__ . '/user_meta.php');
     $picture = dolores_get_profile_picture($info);
     if ($picture) {
       $image = $picture;

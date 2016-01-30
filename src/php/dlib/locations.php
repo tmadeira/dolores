@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/assets.php');
+require_once(DOLORES_PATH . '/dlib/assets.php');
 
 define('THRESHOLD_TO_ACTIVATE_LOCATION', 20);
 

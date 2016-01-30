@@ -1,14 +1,14 @@
 <?php
-require_once(__DIR__ . '/DoloresCommentAPI.class.php');
-require_once(__DIR__ . '/DoloresContactAPI.class.php');
-require_once(__DIR__ . '/DoloresPostAPI.class.php');
-require_once(__DIR__ . '/DoloresSigninAPI.class.php');
-require_once(__DIR__ . '/DoloresSignupAPI.class.php');
-require_once(__DIR__ . '/DoloresSuggestAPI.class.php');
-require_once(__DIR__ . '/DoloresUserHeaderAPI.class.php');
-require_once(__DIR__ . '/DoloresUserInfoAPI.class.php');
-require_once(__DIR__ . '/DoloresValidateAPI.class.php');
-require_once(__DIR__ . '/DoloresVoteAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresCommentAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresContactAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresPostAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresSigninAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresSignupAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresSuggestAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresUserHeaderAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresUserInfoAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresValidateAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresVoteAPI.class.php');
 
 $DOLORES_ROUTES = Array(
   'comment' => 'DoloresCommentAPI',

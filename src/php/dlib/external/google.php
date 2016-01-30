@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../../vendor/autoload.php');
+require_once(DOLORES_PATH . '/vendor/autoload.php');
 
 class DoloresGoogle {
   public function __construct() {

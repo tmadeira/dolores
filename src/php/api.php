@@ -4,7 +4,7 @@
 assert(!headers_sent());
 Header('Content-Type: application/json; charset=utf-8');
 
-require_once(__DIR__ . '/dlib/api/routes.php');
+require_once(DOLORES_PATH . '/dlib/api/routes.php');
 
 if (array_key_exists('route', $_REQUEST)) {
   $route = $_REQUEST['route'];

@@ -1,6 +1,6 @@
 <?php
-require_once(__DIR__ . '/interact.php');
-require_once(__DIR__ . '/wp_util/user_meta.php');
+require_once(DOLORES_PATH . '/dlib/interact.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
 class DoloresPosts {
   const type = 'ideia';

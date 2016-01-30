@@ -7,7 +7,6 @@ function dolores_bairros_grid() {
   $paged = intval(preg_replace('/[^0-9]*/', '', $wp_query->query['page']));
   $paged = max($paged, 1);
 
-  require_once(__DIR__ . '/grid.php');
   $query = new WP_Query(array(
     'category_name' => 'encontros-nos-bairros',
     'paged' => $paged

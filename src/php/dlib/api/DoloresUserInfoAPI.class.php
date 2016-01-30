@@ -1,8 +1,8 @@
 <?php
-require_once(__DIR__ . '/../locations.php');
-require_once(__DIR__ . '/../wp_util/user_meta.php');
+require_once(DOLORES_PATH . '/dlib/locations.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
-require_once(__DIR__ . '/DoloresBaseAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
 
 class DoloresUserInfoAPI extends DoloresBaseAPI {
   private $fields = array(
@@ -145,7 +145,7 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
     }
 
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(__DIR__ . '/../external/mailchimp.php');
+      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
       $MailChimp->fireAndForget('lists/update-member', array(
         'id' => MAILCHIMP_LIST_ID,

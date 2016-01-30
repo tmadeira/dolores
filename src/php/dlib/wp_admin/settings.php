@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/settings/home.php');
-require_once(__DIR__ . '/settings/streaming.php');
-require_once(__DIR__ . '/settings/opengraph.php');
+require_once(DOLORES_PATH . '/dlib/wp_admin/settings/home.php');
+require_once(DOLORES_PATH . '/dlib/wp_admin/settings/streaming.php');
+require_once(DOLORES_PATH . '/dlib/wp_admin/settings/opengraph.php');
 
 class DoloresSettings {
   public function __construct() {

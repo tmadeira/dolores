@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/../locations.php');
+require_once(DOLORES_PATH . '/dlib/locations.php');
 
-require_once(__DIR__ . '/DoloresBaseAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
 
 class DoloresValidateAPI extends DoloresBaseAPI {
   function get($request) {

@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../locations.php');
+require_once(DOLORES_PATH . '/dlib/locations.php');
 
 class DoloresUsersStats {
   public function __construct() {
