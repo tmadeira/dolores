@@ -3,7 +3,8 @@
 var $ = require("jquery");
 
 var async = require("./async");
-var facebookAppID = require("./config").facebookAppID;
+
+var facebookAppID = window.doloresConfig.facebookAppID;
 
 var onFacebookStatusChange = function(response) {
   if (typeof window.DoloresAuthenticator === "undefined") {

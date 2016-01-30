@@ -2,7 +2,7 @@
 
 var $ = require("jquery");
 
-var apiBaseURL = require("./config").apiBaseURL;
+var apiBaseURL = window.doloresConfig.apiBaseURL;
 
 var route = function(endpoint) {
   var url = apiBaseURL + "?route=" + endpoint;

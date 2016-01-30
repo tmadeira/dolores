@@ -1,7 +1,8 @@
 "use strict";
 
 var async = require("./async");
-var googleAppId = require("./config").googleAppId;
+
+var googleAppId = window.doloresConfig.googleAppId;
 
 var setup = function() {
   async.include(

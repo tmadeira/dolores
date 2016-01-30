@@ -75,7 +75,8 @@ css=`cat ${build}/${template}/style.min.css`
 
 mkdir ${dist}/assets
 for file in ${files}; do
-  if [ "$file" = "style.css" ] || [ "$file" = "script.js" ]; then
+  fname=`basename $file`
+  if [ "$fname" = "style.css" ] || [ "$fname" = "script.js" ]; then
     continue
   fi
 

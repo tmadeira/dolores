@@ -10,9 +10,9 @@ module.exports = function(grunt) {
         transform: ['reactify', 'debowerify']
       },
 
-      default: {
-        src: ['src/js/main.js'],
-        dest: 'build/script.js'
+      scfn: {
+        src: ['src/js/scfn/main.js'],
+        dest: 'build/scfn/script.js'
       }
     },
 
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
         }
       },
 
-      default: {
-        src: 'build/script.js',
-        dest: 'build/script.gcc.js'
+      scfn: {
+        src: 'build/scfn/script.js',
+        dest: 'build/scfn/script.gcc.js'
       }
     },
 
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
     uglify: {
       default: {
         files: {
-          'build/script.min.js': 'build/script.gcc.js'
+          'build/scfn/script.min.js': 'build/scfn/script.gcc.js'
         }
       }
     },
@@ -167,7 +167,7 @@ module.exports = function(grunt) {
 
       js: {
         files: 'src/js/**/*.js',
-        tasks: ['eslint:dev', 'browserify']
+        tasks: ['eslint:dev', 'browserify:scfn']
       },
 
       php: {

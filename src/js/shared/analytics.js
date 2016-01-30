@@ -3,7 +3,8 @@
 var $ = require("jquery");
 
 var async = require("./async");
-var ganalyticsUA = require("./config").ganalyticsUA;
+
+var ganalyticsUA = window.doloresConfig.ganalyticsUA;
 
 var setup = function() {
   if (typeof window.ga !== "undefined") {

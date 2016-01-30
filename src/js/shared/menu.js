@@ -2,7 +2,7 @@
 
 var $ = require("jquery");
 
-var breakpoint = require("./config").breakpoint;
+var breakpoint = window.doloresConfig.breakpoint;
 
 var handleToggleMobileMenu = function(e) {
   $("body").toggleClass("show-mobile-menu");

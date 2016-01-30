@@ -35,7 +35,7 @@ class DoloresAssets {
   }
 
   public static function print_script() {
-    $src = DoloresAssets::get_theme_uri('script.js');
+    $src = DoloresAssets::get_theme_uri(DOLORES_TEMPLATE . '/script.js');
     echo '<script async type="text/javascript" src="' . $src . '"></script>';
   }
 

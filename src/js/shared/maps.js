@@ -1,7 +1,8 @@
 "use strict";
 
 var async = require("./async");
-var gmapsKey = require("./config").gmapsKey;
+
+var gmapsKey = window.doloresConfig.gmapsKey;
 
 var mapContainer;
 var map = null;
