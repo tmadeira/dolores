@@ -1,3 +1,5 @@
 <?php
-// TODO: Use DoloresAssets
-add_editor_style(get_template_directory_uri() . '/editor.css');
+require_once(DOLORES_PATH . '/dlib/assets.php');
+add_editor_style(
+  DoloresAssets::get_theme_uri(DOLORES_TEMPLATE . '/editor.css')
+);
