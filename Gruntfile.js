@@ -40,6 +40,7 @@ module.exports = function(grunt) {
           cssDir: 'build',
           fontsDir: 'static/fonts',
           imagesDir: 'static/images',
+          httpPath: '/wp-content/themes/dolores/',
           importPath: [
             'bower_components/breakpoint-sass/stylesheets',
             'bower_components/fontawesome/scss'

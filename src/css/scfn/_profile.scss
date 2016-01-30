@@ -2,7 +2,7 @@ $profile_bg: $teal;
 $profile_fg: #fff;
 
 main.profile {
-  background: $profile_bg url('static/images/bg-pattern-teal.jpg');
+  background: $profile_bg image-url('bg-pattern-teal.jpg');
   color: $profile_fg;
   padding: 20px 0;
   text-align: center;

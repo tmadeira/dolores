@@ -1,17 +1,17 @@
 .bg-pattern-orange {
-  background: $orange url('static/images/bg-pattern-orange.jpg');
+  background: $orange image-url('bg-pattern-orange.jpg');
 }
 
 .bg-pattern-teal {
-  background: $teal url('static/images/bg-pattern-teal.jpg');
+  background: $teal image-url('bg-pattern-teal.jpg');
 }
 
 .bg-pattern-light-purple {
-  background: $purple url('static/images/bg-pattern-light-purple.jpg');
+  background: $purple image-url('bg-pattern-light-purple.jpg');
 }
 
 .bg-pattern-dark-purple {
-  background: $dark-purple url('static/images/bg-pattern-dark-purple.jpg');
+  background: $dark-purple image-url('bg-pattern-dark-purple.jpg');
 }
 
 .flow-title {

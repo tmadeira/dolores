@@ -34,7 +34,7 @@ body.paged, body:not(.home) {
 
   body.paged &, body:not(.home) &, body.home.show-opaque-header & {
     @include box-shadow(0 0 15px #000);
-    background: $purple url('static/images/bg-pattern-light-purple.jpg') repeat;
+    background: $purple image-url('bg-pattern-light-purple.jpg') repeat;
     top: 0;
 
     .header-logo {

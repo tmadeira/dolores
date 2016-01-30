@@ -13,7 +13,7 @@ fi
 template=$1
 domain=$2
 
-theme_url=http://${domain}/wp-content/themes/dolores
+theme_url=/wp-content/themes/dolores
 
 # Remove dist/
 rm -rf ${dist}
@@ -95,7 +95,7 @@ for file in ${files}; do
       file=`echo $file | sed 's/\.min\././'`
     fi
     echo "    '${file}' => '${asset}'," >> ${assets_file}
-    css=$(echo $css | sed "s|${file}|${theme_url}/${asset}|g")
+    css=$(echo $css | sed "s|([^)]*${file}[^)]*)|(${theme_url}/${asset})|g")
   fi
 done
 
