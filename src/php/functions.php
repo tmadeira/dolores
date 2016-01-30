@@ -8,6 +8,7 @@ define('DOLORES_PATH', TEMPLATEPATH);
 define('DOLORES_TEMPLATE_PATH', DOLORES_PATH . '/tpl/' . DOLORES_TEMPLATE);
 
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_admin_bar.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/disable_embed_js.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_emojis.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_yarpp_css.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/modify_queries.php');
