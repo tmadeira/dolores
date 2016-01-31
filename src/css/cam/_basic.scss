@@ -1,0 +1,19 @@
+$fa-font-path: "static/fonts";
+
+@import "breakpoint";
+@import "compass";
+@import "font-awesome";
+
+@import "../shared/reset";
+@import "../shared/align";
+@import "../shared/wp-common";
+
+@import "fonts/blogger-sans";
+
+%text-font {
+  font: 400 16px/140% 'blogger-sans', Helvetica, Arial, sans-serif;
+}
+
+html {
+  @extend %text-font;
+}
