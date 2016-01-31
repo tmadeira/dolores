@@ -50,4 +50,4 @@ Isso vai rodar `grunt prod` para gerar arquivos minificados em `dist/` e `script
 
 ### Screenshot ###
 
-![alt tag](https://raw.githubusercontent.com/tmadeira/dolores/master/static/images/screenshot.png)
+![Se a cidade fosse nossa](https://raw.githubusercontent.com/tmadeira/dolores/master/static/images/scfn/screenshot.png)
