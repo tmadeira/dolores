@@ -10,6 +10,11 @@ module.exports = function(grunt) {
         transform: ['reactify', 'debowerify']
       },
 
+      cam: {
+        src: ['src/js/cam/main.js'],
+        dest: 'build/cam/script.js'
+      },
+
       scfn: {
         src: ['src/js/scfn/main.js'],
         dest: 'build/scfn/script.js'
@@ -24,6 +29,11 @@ module.exports = function(grunt) {
           language_in: 'ECMASCRIPT6',
           language_out: 'ECMASCRIPT5'
         }
+      },
+
+      cam: {
+        src: 'build/cam/script.js',
+        dest: 'build/cam/script.gcc.js'
       },
 
       scfn: {
@@ -89,6 +99,7 @@ module.exports = function(grunt) {
 
       default: {
         files: {
+          'build/cam/style.min.css': ['build/cam/style.css'],
           'build/scfn/style.min.css': ['build/scfn/style.css']
         }
       }
@@ -140,6 +151,7 @@ module.exports = function(grunt) {
     uglify: {
       default: {
         files: {
+          'build/cam/script.min.js': 'build/cam/script.gcc.js',
           'build/scfn/script.min.js': 'build/scfn/script.gcc.js'
         }
       }
@@ -168,7 +180,7 @@ module.exports = function(grunt) {
 
       js: {
         files: 'src/js/**/*.js',
-        tasks: ['eslint:dev', 'browserify:scfn']
+        tasks: ['eslint:dev', 'browserify:cam', 'browserify:scfn']
       },
 
       php: {
@@ -205,8 +217,10 @@ module.exports = function(grunt) {
     [
       // JS
       'eslint:prod',
-      'browserify',
-      'closureCompiler',
+      'browserify:cam',
+      'browserify:scfn',
+      'closureCompiler:cam',
+      'closureCompiler:scfn',
       'uglify',
 
       // CSS
