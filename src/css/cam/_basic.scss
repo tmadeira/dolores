@@ -9,9 +9,26 @@ $fa-font-path: "static/fonts";
 @import "../shared/wp-common";
 
 @import "fonts/blogger-sans";
+@import "fonts/just-another-hand";
 
+// Breakpoints
+$break-tablet: 850px;
+$break-desktop: 1150px;
+$break-big-desktop: 1400px;
+
+// Colors
+$gray: #ccc;
+$purple: #2C0E28;
+$yellow: #E1A80C;
+
+// Fonts
 %text-font {
   font: 400 16px/140% 'blogger-sans', Helvetica, Arial, sans-serif;
+}
+
+%title-font {
+  font: 400 16px/140% 'Just Another Hand', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 html {
