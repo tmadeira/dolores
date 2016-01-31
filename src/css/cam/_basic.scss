@@ -8,8 +8,8 @@ $fa-font-path: "static/fonts";
 @import "../shared/align";
 @import "../shared/wp-common";
 
-@import "fonts/blogger-sans";
-@import "fonts/just-another-hand";
+@import "../shared/fonts/blogger-sans";
+@import "../shared/fonts/just-another-hand";
 
 // Breakpoints
 $break-tablet: 850px;

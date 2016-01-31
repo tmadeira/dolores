@@ -26,7 +26,7 @@ $red: #c22;
 $teal: #258A8B;
 
 // Fonts
-@import "fonts/bitter";
+@import "../shared/fonts/bitter";
 
 %text-font {
   font: 400 16px/140% 'Bitter', Georgia, 'Times New Roman', sans-serif;
