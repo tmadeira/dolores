@@ -1,0 +1,102 @@
+.site-footer {
+  background: $purple;
+  color: #fff;
+  font-size: 0;
+  line-height: 0;
+  padding: 20px 0 0;
+  @include breakpoint($break-tablet) {
+    padding: 50px 0;
+  }
+}
+
+.footer-logo {
+  display: none;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    padding: 0 80px 0 40px;
+    vertical-align: top;
+    width: 25%;
+  }
+}
+
+.footer-menu {
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+  }
+
+  .menu > .menu-item {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 2em;
+    padding: 0 10px 20px 10px;
+    vertical-align: top;
+    width: 50%;
+
+    @include breakpoint($break-tablet) {
+      font-size: 20px;
+      padding: 0 20px;
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .menu-item-has-children {
+    & > a {
+      @extend %title-font;
+      color: $yellow;
+      cursor: text;
+      display: block;
+      font-size: 20px;
+      line-height: 2em;
+      text-decoration: none;
+    }
+  }
+
+  .sub-menu {
+    font-size: 15px;
+  }
+}
+
+.footer-title {
+  @extend %title-font;
+  color: $yellow;
+  font-size: 20px;
+  line-height: 2em;
+  padding-bottom: 20px;
+
+  @include breakpoint($break-tablet) {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+.footer-note {
+  font-size: 13px;
+  line-height: 1.4em;
+  padding: 10px;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    padding: 0 40px 0 20px;
+    vertical-align: top;
+    width: 35%;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: $gray;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
