@@ -79,9 +79,9 @@
 
   .btn-prev-page, .btn-next-page {
     background: no-repeat center center / 30px;
-    background-image: image-url('arrow-down-gray.svg');
+    background-image: image-url('scfn/arrow-down-gray.svg');
     &:hover {
-      background-image: image-url('arrow-down-black.svg');
+      background-image: image-url('scfn/arrow-down-black.svg');
     }
   }
 

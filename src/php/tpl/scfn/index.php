@@ -13,11 +13,11 @@ get_header();
 
 global $wp_query;
 
-$logo_src = DoloresAssets::get_image_uri('logo.png');
+$logo_src = DoloresAssets::get_image_uri('scfn/logo.png');
 
-$video_mp4 = DoloresAssets::get_static_uri('videos/futebol.mp4');
-$video_webm = DoloresAssets::get_static_uri('videos/futebol.webm');
-$hero_src = DoloresAssets::get_image_uri('hero-futebol.jpg');
+$video_mp4 = DoloresAssets::get_static_uri('videos/scfn/futebol.mp4');
+$video_webm = DoloresAssets::get_static_uri('videos/scfn/futebol.webm');
+$hero_src = DoloresAssets::get_image_uri('scfn/hero-futebol.jpg');
 
 if (!$paged || $paged == 1) {
   ?>
@@ -182,9 +182,9 @@ if (!$paged || $paged == 1) {
   </section>
 
   <?php
-  $flow1 = DoloresAssets::get_image_uri('home-flow-1.png');
-  $flow2 = DoloresAssets::get_image_uri('home-flow-2.png');
-  $flow3 = DoloresAssets::get_image_uri('home-flow-3.png');
+  $flow1 = DoloresAssets::get_image_uri('scfn/home-flow-1.png');
+  $flow2 = DoloresAssets::get_image_uri('scfn/home-flow-2.png');
+  $flow3 = DoloresAssets::get_image_uri('scfn/home-flow-3.png');
   ?>
 
   <section class="home-flow">

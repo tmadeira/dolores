@@ -129,7 +129,8 @@ class DoloresUsers {
 
     $subject = 'Seguimos na construção de uma cidade nossa!';
 
-    $template = DoloresAssets::get_static_path('templates/welcome_email.html');
+    $tpl_path = 'templates/' . DOLORES_TEMPLATE . '/welcome_email.html';
+    $template = DoloresAssets::get_static_path($tpl_path);
     $message = file_get_contents($template);
     $message = str_replace('{NAME}', $user->display_name, $message);
 

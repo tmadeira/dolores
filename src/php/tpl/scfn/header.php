@@ -22,14 +22,14 @@ if (defined('GOOGLE_CLIENT_ID')) {
 <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
-$favicon = DoloresAssets::get_image_uri('favicon-192.png');
+$favicon = DoloresAssets::get_image_uri('scfn/favicon-192.png');
 ?>
 <link rel="icon" sizes="192x192" href="<?php echo $favicon; ?>" />
 <?php
 DoloresAssets::print_style();
 DoloresAssets::print_script();
 wp_head();
-$logo_img = DoloresAssets::get_image_uri('logo-se-a-cidade-fosse-nossa.png');
+$logo_img = DoloresAssets::get_image_uri('scfn/logo-se-a-cidade-fosse-nossa.png');
 ?>
 </head>
 

@@ -48,8 +48,8 @@ class DoloresLocations {
   public function setup_locations() {
     $data_files = array('bairros.csv', 'favelas.csv', 'municipios.csv');
     foreach ($data_files as $file) {
-      $path = DoloresAssets::get_static_path('data/locations/' . $file);
-      $this->insert_csv($path);
+      $path = 'data/' . DOLORES_TEMPLATE . '/locations' . $file;
+      $this->insert_csv(DoloresAssets::get_static_path($file));
     }
   }
 

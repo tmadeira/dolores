@@ -23,10 +23,10 @@ if ($_GET['ajax']) {
 
 get_header();
 
-$flow1 = DoloresAssets::get_image_uri('temas-flow-1.png');
-$flow2 = DoloresAssets::get_image_uri('temas-flow-2.png');
-$flow3 = DoloresAssets::get_image_uri('temas-flow-3.png');
-$flow4 = DoloresAssets::get_image_uri('temas-flow-4.png');
+$flow1 = DoloresAssets::get_image_uri('scfn/temas-flow-1.png');
+$flow2 = DoloresAssets::get_image_uri('scfn/temas-flow-2.png');
+$flow3 = DoloresAssets::get_image_uri('scfn/temas-flow-3.png');
+$flow4 = DoloresAssets::get_image_uri('scfn/temas-flow-4.png');
 ?>
 
 <main class="flow">

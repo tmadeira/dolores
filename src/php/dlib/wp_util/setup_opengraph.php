@@ -10,7 +10,7 @@ function dolores_add_opengraph() {
   $author_name = DoloresOGSettings::get_author_name();
 
   $site_name = get_bloginfo('name');
-  $image = DoloresAssets::get_image_uri('og-default.jpg');
+  $image = DoloresAssets::get_image_uri(DOLORES_TEMPLATE . '/og-default.jpg');
 
   if (is_home()) {
     $description = get_bloginfo('description');
