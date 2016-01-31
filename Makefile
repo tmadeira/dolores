@@ -15,6 +15,9 @@ clean-dev:
 dev:
 	grunt dev
 
+deploy-cam:
+	script/deploy.sh cam compartilheamudanca.com.br
+
 deploy-scfn:
 	script/deploy.sh scfn seacidadefossenossa.com.br
 
