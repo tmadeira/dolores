@@ -1,0 +1,24 @@
+/**
+ * Inspired by http://csswizardry.com/2013/05/the-flag-object/
+ */
+
+%flag {
+  display: table;
+  width: 100%;
+}
+
+%flag-image, %flag-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+%flag-image {
+  img, i {
+    display: block;
+    max-width: none;
+  }
+}
+
+%flag-body {
+  width: 100%;
+}
