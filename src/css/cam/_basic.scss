@@ -31,6 +31,10 @@ $yellow: #E1A80C;
   text-transform: uppercase;
 }
 
+small {
+  font-size: 85%;
+}
+
 html {
   @extend %text-font;
 }

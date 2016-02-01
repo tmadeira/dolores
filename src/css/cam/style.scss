@@ -1,3 +1,9 @@
 @import "basic";
 
+.wrap {
+  margin: 0 auto;
+  max-width: $break-desktop;
+}
+
+@import "home";
 @import "footer";

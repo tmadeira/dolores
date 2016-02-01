@@ -1,0 +1,123 @@
+@import "../shared/flag";
+
+.home-calendar {
+  background: $purple;
+  color: #fff;
+  padding: 24px 12px 12px;
+  position: relative;
+  @include breakpoint($break-desktop) {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+  }
+}
+
+.home-calendar > .wrap {
+  border: dotted 2px #fff;
+  padding: 25px 5px 10px;
+  @include breakpoint($break-desktop) {
+    display: table;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+.home-next-event {
+  @extend %title-font;
+  font-size: 24px;
+  left: 50%;
+  margin-left: -65px;
+  position: absolute;
+  top: 5px;
+  @include breakpoint($break-desktop) {
+    display: table-cell;
+    margin: 0;
+    padding: 10px 20px;
+    position: static;
+    text-align: center;
+    vertical-align: middle;
+    width: 17%;
+  }
+}
+
+.home-event-title {
+  border-bottom: solid 1px #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2em;
+  margin-bottom: 10px;
+  padding: 0 10px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  @include breakpoint($break-desktop) {
+    border-bottom: 0;
+    border-left: solid 1px #fff;
+    border-right: solid 1px #fff;
+    display: table-cell;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 30%;
+  }
+}
+
+.home-event-info {
+  border-right: solid 1px #fff;
+  display: table-cell;
+  font-size: 14px;
+  line-height: 1em;
+  vertical-align: middle;
+  width: 60%;
+  @include breakpoint($break-desktop) {
+    font-size: 18px;
+    padding: 10px;
+    width: 36%;
+  }
+}
+
+.home-event-info-li {
+  padding: 5px 0;
+  @include breakpoint($break-desktop) {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+    max-width: 40%;
+  }
+}
+
+.home-event-info-50 {
+  display: inline-block;
+  width: 50%;
+  @include breakpoint($break-desktop) {
+    width: auto;
+  }
+}
+
+.home-event-info i {
+  margin-right: 5px;
+}
+
+.home-event-location {
+  @extend %flag;
+  color: $yellow;
+}
+
+.home-event-location-icon-container {
+  @extend %flag-image;
+}
+
+.home-event-location-text {
+  @extend %flag-body;
+}
+
+.home-calendar-button-container {
+  display: table-cell;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  width: 40%;
+  @include breakpoint($break-desktop) {
+    padding: 10px 20px;
+    width: 17%;
+  }
+}
