@@ -24,7 +24,7 @@ if (!$paged || $paged == 1) {
     <div class="home-calendar">
       <div class="wrap">
         <h2 class="home-next-event">
-          <img alt="Próximo evento" />
+          <span>Próximo evento</span>
         </h2><h3 class="home-event-title">
           Cine-debate com Samir de Oliveira sobre jornalismo socialista revolucionário
         </h3><ul class="home-event-info">
@@ -45,8 +45,11 @@ if (!$paged || $paged == 1) {
             </a>
           </li>
         </ul><div class="home-calendar-button-container">
-          <a class="home-calendar-button" href="#">
-            <img alt="Agenda completa" />
+          <a class="home-calendar-button" href="#" title="Agenda completa">
+            <?php
+            $uri = DoloresAssets::get_image_uri('cam/home-calendar-full.png');
+            ?>
+            <img alt="Agenda completa" src="<?php echo $uri; ?>" />
           </a>
         </div>
       </div>

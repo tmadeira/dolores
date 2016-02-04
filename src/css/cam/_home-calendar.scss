@@ -23,19 +23,28 @@
 
 .home-next-event {
   @extend %title-font;
+  background: image-url('cam/home-calendar-title-mobile.png') no-repeat center center;
   font-size: 24px;
+  height: 30px;
   left: 50%;
   margin-left: -65px;
   position: absolute;
-  top: 5px;
+  top: 10px;
+  width: 130px;
   @include breakpoint($break-desktop) {
+    background: image-url('cam/home-calendar-title-desktop.png') no-repeat center center;
     display: table-cell;
+    height: auto;
     margin: 0;
     padding: 10px 20px;
     position: static;
     text-align: center;
     vertical-align: middle;
     width: 17%;
+  }
+
+  & > span {
+    display: none;
   }
 }
 
