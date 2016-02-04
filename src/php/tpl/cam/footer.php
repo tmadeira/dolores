@@ -1,7 +1,10 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/assets.php');
 
-$img_flc = DoloresAssets::get_image_uri('logo-flc.png');
+$logo = DoloresAssets::get_image_uri('cam/logo-footer.png');
+
+$img_flc = DoloresAssets::get_image_uri('shared/logo-flc.png');
+$img_psol = DoloresAssets::get_image_uri('cam/logo-psol-rs.png');
 ?>
 <footer class="site-footer">
   <div class="wrap">

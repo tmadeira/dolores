@@ -14,7 +14,8 @@
 
   @include breakpoint($break-tablet) {
     display: inline-block;
-    padding: 0 80px 0 40px;
+    margin-top: 15px;
+    padding-right: 40px;
     vertical-align: top;
     width: 25%;
   }

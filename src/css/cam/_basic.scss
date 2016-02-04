@@ -35,6 +35,10 @@ small {
   font-size: 85%;
 }
 
+img, video {
+  max-width: 100%;
+}
+
 html {
   @extend %text-font;
 }
