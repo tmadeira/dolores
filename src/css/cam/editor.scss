@@ -1,0 +1,12 @@
+@import "basic";
+@import "single";
+
+html {
+  background: #fff;
+  padding: 20px;
+}
+
+body {
+  color: #000;
+  @extend .entry;
+}
