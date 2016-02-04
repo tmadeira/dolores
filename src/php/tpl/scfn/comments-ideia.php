@@ -51,7 +51,7 @@ function dolores_ideia_comment($comment, $args, $depth) {
         $picture = dolores_get_profile_picture($user);
       } else {
         $hash = md5("nobody");
-        $picture = "http://gravatar.com/avatar/$hash?d=mm&s=300";
+        $picture = "//gravatar.com/avatar/$hash?d=mm&s=300";
       }
       $style = ' style="background-image: url(\'' . $picture. '\');"';
       ?>
