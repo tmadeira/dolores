@@ -3,7 +3,7 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
 
 $logo = DoloresAssets::get_image_uri('scfn/logo.png');
 
-$img_flc = DoloresAssets::get_image_uri('scfn/logo-flc.png');
+$img_flc = DoloresAssets::get_image_uri('shared/logo-flc.png');
 $img_psol = DoloresAssets::get_image_uri('scfn/logo-psol-carioca.png');
 ?>
 <footer class="site-footer">
