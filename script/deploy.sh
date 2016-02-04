@@ -104,7 +104,8 @@ cat >> ${assets_file} <<EOF
   );
 
   if (!array_key_exists(\$file, \$assets)) {
-    die("O arquivo '\$file' nao foi encontrado.");
+    return "";
+    //die("O arquivo '\$file' nao foi encontrado.");
   }
 
   return \$assets[\$file];
