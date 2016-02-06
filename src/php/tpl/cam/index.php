@@ -1,6 +1,8 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/assets.php');
 
+$logo_src = DoloresAssets::get_image_uri('cam/logo-hero.png');
+
 get_header();
 
 if (!$paged || $paged == 1) {

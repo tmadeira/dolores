@@ -2,9 +2,12 @@
 
 .home-calendar {
   background: $purple;
+  bottom: 0;
   color: #fff;
+  left: 0;
   padding: 24px 12px 12px;
-  position: relative;
+  position: absolute;
+  right: 0;
   @include breakpoint($break-desktop) {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -14,6 +17,7 @@
 .home-calendar > .wrap {
   border: dotted 2px #fff;
   padding: 25px 5px 10px;
+  position: relative;
   @include breakpoint($break-desktop) {
     display: table;
     padding: 10px;
@@ -29,7 +33,7 @@
   left: 50%;
   margin-left: -65px;
   position: absolute;
-  top: 10px;
+  top: -14px;
   width: 130px;
   @include breakpoint($break-desktop) {
     background: image-url('cam/home-calendar-title-desktop.png') no-repeat center center;

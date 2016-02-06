@@ -1,0 +1,20 @@
+.site-presentation {
+  display: none;
+}
+
+.site-hero {
+  background: image-url('cam/hero.jpg') no-repeat center center / cover;
+  height: 650px;
+  position: relative;
+  @include breakpoint($break-desktop) {
+    height: 680px;
+  }
+}
+
+.hero-logo-container {
+  padding: 120px 10px 0;
+  text-align: center;
+  @include breakpoint($break-desktop) {
+    padding-top: 100px;
+  }
+}
