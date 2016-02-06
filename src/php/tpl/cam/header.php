@@ -1,6 +1,8 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/assets.php');
 require_once(DOLORES_PATH . '/dlib/users.php');
+
+$logo_img = DoloresAssets::get_image_uri('cam/logo-header.png');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" <?php

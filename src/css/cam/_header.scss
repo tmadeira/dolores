@@ -1,0 +1,57 @@
+.site-header {
+  background: $yellow;
+  box-shadow: 0 0 10px #000;
+  color: $purple;
+  height: 60px;
+  z-index: 4;
+  @include breakpoint($break-tablet) {
+    height: 90px;
+  }
+
+  .home & {
+    background: none;
+    box-shadow: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.site-header > .wrap {
+  display: table;
+  height: 60px;
+  width: 100%;
+  @include breakpoint($break-tablet) {
+    height: 90px;
+  }
+}
+
+.header-logo {
+  display: table-cell;
+  line-height: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  @include breakpoint($break-desktop) {
+    text-align: left;
+  }
+
+  .home & {
+    display: none;
+  }
+}
+
+.header-logo img {
+  height: 50px;
+  @include breakpoint($break-tablet) {
+    height: auto;
+  }
+}
+
+.header-nav {
+  display: none;
+  @include breakpoint($break-desktop) {
+    display: table-cell;
+  }
+}
