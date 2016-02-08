@@ -27,18 +27,37 @@ $yellow: #E1A80C;
 }
 
 %title-font {
-  font: 400 16px/140% 'Just Another Hand', Helvetica, Arial, sans-serif;
+  font: 400 16px/100% 'Just Another Hand', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
 }
 
-small {
-  font-size: 85%;
+button {
+  cursor: pointer;
+}
+
+html {
+  @extend %text-font;
 }
 
 img, video {
   max-width: 100%;
 }
 
-html {
-  @extend %text-font;
+small {
+  font-size: 85%;
+}
+
+@mixin dashed-button($font-size, $bg-color, $fg-color) {
+  @extend %title-font;
+  background: none;
+  border: 1px dashed $bg-color;
+  display: inline-block;
+  font-size: $font-size;
+  padding: $font-size / 10;
+  & > span {
+    background: $bg-color;
+    color: $fg-color;
+    display: inline-block;
+    padding: $font-size/3 $font-size/3 0;
+  }
 }

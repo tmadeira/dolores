@@ -20,7 +20,7 @@ if (!$paged || $paged == 1) {
       </a>
     </div>
     <button class="hero-button toggle-explanation">
-      Entenda
+      <span>Entenda</span>
     </button>
 
     <div class="home-calendar">

@@ -8,6 +8,7 @@
   padding: 24px 12px 12px;
   position: absolute;
   right: 0;
+  text-align: left;
   @include breakpoint($break-desktop) {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -80,7 +81,7 @@
   font-size: 14px;
   line-height: 1em;
   vertical-align: middle;
-  width: 60%;
+  width: 65%;
   @include breakpoint($break-desktop) {
     font-size: 18px;
     padding: 10px;
@@ -128,7 +129,7 @@
   padding: 0 10px;
   text-align: center;
   vertical-align: middle;
-  width: 40%;
+  width: 35%;
   @include breakpoint($break-desktop) {
     padding: 10px 20px;
     width: 17%;

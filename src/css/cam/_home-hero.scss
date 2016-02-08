@@ -6,6 +6,7 @@
   background: image-url('cam/hero.jpg') no-repeat center center / cover;
   height: 650px;
   position: relative;
+  text-align: center;
   @include breakpoint($break-desktop) {
     height: 680px;
   }
@@ -17,4 +18,19 @@
   @include breakpoint($break-desktop) {
     padding-top: 100px;
   }
+}
+
+.hero-logo-image {
+  width: 300px;
+  @include breakpoint($break-tablet) {
+    width: 400px;
+  }
+  @include breakpoint($break-desktop) {
+    width: 480px;
+  }
+}
+
+.hero-button {
+  @include dashed-button(30px, #fff, #000);
+  margin-top: 20px;
 }
