@@ -30,10 +30,12 @@
 .header-logo {
   display: table-cell;
   line-height: 0;
-  text-align: center;
+  padding-left: 10px;
+  text-align: left;
   vertical-align: middle;
   width: 100%;
   @include breakpoint($break-desktop) {
+    padding-left: 0;
     text-align: left;
   }
 
@@ -43,9 +45,33 @@
 }
 
 .header-logo img {
-  height: 50px;
+  height: 45px;
   @include breakpoint($break-tablet) {
     height: auto;
+  }
+}
+
+.header-toggle-menu {
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  min-width: 60px;
+  position: relative;
+
+  &:before {
+    border-bottom: 0.125em solid $purple;
+    border-top: 0.375em double $purple;
+    box-sizing: content-box;
+    content: "";
+    height: 0.125em;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    width: 1em;
+
+    .home & {
+      border-color: #fff;
+    }
   }
 }
 
