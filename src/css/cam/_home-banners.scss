@@ -1,0 +1,35 @@
+.home-banners {
+  font-size: 0;
+  line-height: 0;
+  @include breakpoint($break-tablet) {
+    margin: 20px 0;
+  }
+}
+
+.home-banner {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 350px;
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    margin: 0 1%;
+    width: 48%;
+  }
+  @include breakpoint($break-desktop) {
+    margin: 0;
+    width: 49%;
+    &:first-child {
+      margin-right: 2%;
+    }
+  }
+}
+
+.home-voluntario {
+  background-image: image-url('cam/home-voluntario.png');
+}
+
+.home-contribuicoes {
+  background-image: image-url('cam/home-contribuicoes.png');
+}

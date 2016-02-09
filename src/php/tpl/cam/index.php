@@ -80,6 +80,19 @@ if (!$paged || $paged == 1) {
   }
   ?>
 
+  <section class="home-banners">
+    <div class="wrap">
+      <a class="home-banner home-voluntario" href="#"
+          title="Seja um voluntário">
+        <span>Seja um voluntário</span>
+      </a>
+      <a class="home-banner home-contribuicoes" href="#"
+          title="Contribuições para o debate">
+        <span>Contribuições para o debate</span>
+      </a>
+    </div>
+  </section>
+
   <!-- TODO -->
 
   <?php
