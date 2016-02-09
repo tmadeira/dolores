@@ -38,10 +38,6 @@
     padding-left: 0;
     text-align: left;
   }
-
-  .home & {
-    display: none;
-  }
 }
 
 .header-logo img {
@@ -49,12 +45,15 @@
   @include breakpoint($break-tablet) {
     height: auto;
   }
+  .home & {
+    display: none;
+  }
 }
 
 .header-toggle-menu {
   cursor: pointer;
   display: none;
-  font-size: 40px;
+  font-size: 28px;
   min-width: 60px;
   position: relative;
 
@@ -65,8 +64,8 @@
     content: "";
     height: 0.125em;
     position: absolute;
-    right: 10px;
-    top: 16px;
+    right: 16px;
+    top: 22px;
     width: 1em;
 
     .home & {
