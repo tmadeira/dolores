@@ -6,13 +6,11 @@ module.exports = {
     bigDesktop: 1400
   },
 
-  apiBaseURL: "/api/"
+  apiBaseURL: "/api/",
 
-  /*
-  ganalyticsUA: "UA-65584348-1",
-  facebookAppID: "1053667657991384",
-  googleAppId: "1047432988645-m9vje9cnt4p3p352hh9cokdo8h77dvm5" +
+  ganalyticsUA: "UA-65584348-2",
+  facebookAppID: "441723852703315",
+  googleAppId: "828526175843-ijo9t5ljngg4kiokn76jjpj7nfap23h3" +
                ".apps.googleusercontent.com",
-  gmapsKey: "AIzaSyBfx8GXbX53YasBdY1rL36OcK98ykwckes"
-  */
+  gmapsKey: "AIzaSyBUCHOtNmKf9dsJILFwmGXnRqATM1g8TG8"
 };
