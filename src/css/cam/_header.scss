@@ -27,35 +27,12 @@
   }
 }
 
-.header-logo {
-  display: table-cell;
-  line-height: 0;
-  padding-left: 10px;
-  text-align: left;
-  vertical-align: middle;
-  width: 100%;
-  @include breakpoint($break-desktop) {
-    padding-left: 0;
-    text-align: left;
-  }
-}
-
-.header-logo img {
-  height: 45px;
-  @include breakpoint($break-tablet) {
-    height: auto;
-  }
-  .home & {
-    display: none;
-  }
-}
-
 .header-toggle-menu {
   cursor: pointer;
-  display: none;
+  display: table-cell;
   font-size: 28px;
-  min-width: 60px;
   position: relative;
+  width: 60px;
 
   &:before {
     border-bottom: 0.125em solid $purple;
@@ -72,11 +49,133 @@
       border-color: #fff;
     }
   }
+
+  @include breakpoint($break-desktop) {
+    display: none;
+  }
+}
+
+.header-logo {
+  display: table-cell;
+  line-height: 0;
+  text-align: left;
+  vertical-align: middle;
+  width: 112px;
+  @include breakpoint($break-desktop) {
+    width: 186px;
+  }
+  .home & {
+    display: none;
+  }
+}
+
+.header-logo img {
+  height: 45px;
+  @include breakpoint($break-tablet) {
+    height: auto;
+  }
 }
 
 .header-nav {
   display: none;
+  /*
   @include breakpoint($break-desktop) {
     display: table-cell;
+    vertical-align: middle;
   }
+  */
+}
+
+.header-search-user {
+  display: table-cell;
+  padding-right: 10px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.header-search {
+  color: $purple;
+  display: inline-block;
+  padding: 0 10px;
+  position: relative;
+  vertical-align: middle;
+  .home & {
+    color: #fff;
+  }
+  @include breakpoint($break-desktop) {
+    background: #fff;
+    color: $purple;
+    height: 34px;
+    width: 160px;
+    .home & {
+      opacity: 0.8;
+    }
+  }
+}
+
+.header-search-form {
+  @include breakpoint($break-desktop) {
+    bottom: 0;
+    color: $purple;
+    left: 0;
+    line-height: 34px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 0;
+    .fa-search {
+      margin-left: 6px;
+    }
+  }
+}
+
+.header-search-input {
+  @extend %title-font;
+  display: none;
+  font-size: 19px;
+  @include breakpoint($break-desktop) {
+    background: none;
+    border: none;
+    bottom: 0;
+    color: $purple;
+    display: inline-block;
+    left: 0;
+    line-height: 34px;
+    padding: 8px 0 0 32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.user-logged, .user-signin {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-signin > a {
+  @extend %title-font;
+  background: $purple;
+  color: #fff;
+  display: inline-block;
+  font-size: 19px;
+  padding: 8px 8px 4px;
+}
+
+.user-logged-picture {
+  @include border-radius(17px);
+  background-size: cover;
+  display: inline-block;
+  height: 34px;
+  vertical-align: middle;
+  width: 34px;
+}
+
+.user-logged-name {
+  display: none;
+}
+
+.site-header .menu-item-has-children .sub-menu {
+  display: none;
 }

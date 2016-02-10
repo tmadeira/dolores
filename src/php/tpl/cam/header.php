@@ -33,6 +33,8 @@ wp_head();
 <body <?php body_class(); ?>>
 <header class="site-header">
   <div class="wrap">
+    <div class="header-toggle-menu"></div>
+
     <h1 class="header-logo">
       <a href="<?php echo site_url(); ?>" title="Página inicial">
         <img src="<?php echo $logo_img; ?>" alt="<?php bloginfo('name'); ?>" />
@@ -47,27 +49,25 @@ wp_head();
         'container_class' => 'header-menu'
       ));
       ?>
-
-      <ul class="header-search-user">
-        <li class="header-search">
-          <form class="header-search-form" method="get" action="/">
-            <i class="fa fa-search"></i>
-            <input
-              class="header-search-input"
-              type="text"
-              name="s"
-              placeholder="Buscar"
-              value="<?php if (array_key_exists('s', $_GET)) echo $_GET['s']; ?>"
-              />
-          </form>
-        </li>
-        <?php
-        echo DoloresUsers::getUserHeaderLi();
-        ?>
-      </ul>
     </nav>
 
-    <div class="header-toggle-menu"></div>
+    <ul class="header-search-user">
+      <li class="header-search">
+        <form class="header-search-form" method="get" action="/">
+          <i class="fa fa-lg fa-search"></i>
+          <input
+            class="header-search-input"
+            type="text"
+            name="s"
+            placeholder="Buscar"
+            value="<?php if (array_key_exists('s', $_GET)) echo $_GET['s']; ?>"
+            />
+        </form>
+      </li>
+      <?php
+      echo DoloresUsers::getUserHeaderLi();
+      ?>
+    </ul>
   </div>
   <div class="header-overlay"></div>
 </header>
