@@ -2,7 +2,6 @@
 
 var $ = require("jquery");
 var React = require("react");
-var cx = require("classnames");
 
 var API = require("../api");
 
@@ -158,8 +157,8 @@ var Authenticator = React.createClass({
     this.setState(this.getInitialState());
   },
 
-  overlayClick: function(e) {
-    if (e.target.className === "lightbox-overlay") {
+  containerClick: function(e) {
+    if (e.target.className === "lightbox-cell") {
       this.hide();
     }
   },
@@ -169,23 +168,18 @@ var Authenticator = React.createClass({
       return null;
     }
 
-    var className = {
-      lightbox: true
-    };
     var lightboxContent = null;
-
     if (this.state.waiting) {
       var spinner = "fa fa-refresh fa-spin fa-4x";
-      className.small = true;
       lightboxContent = (
-        <div className="lightbox-wrap">
+        <div className="lightbox-content">
           <p style={{textAlign: "center"}}><i className={spinner}></i></p>
           <p style={{textAlign: "center"}}>Carregando...</p>
         </div>
       );
     } else if (this.state.signup) {
       lightboxContent = (
-        <div className="lightbox-wrap">
+        <div className="lightbox-content">
           <SignupForm
               data={this.state.data}
               refreshCallback={this.refresh}
@@ -196,7 +190,7 @@ var Authenticator = React.createClass({
     } else if (this.state.share) {
       var shareUrl = "http://" + location.host + "/participe/";
       lightboxContent = (
-        <div className="lightbox-wrap">
+        <div className="lightbox-content">
           <div className="signup-logo"></div>
           <h3 className="signup-social-header">
             Agora espalhe a ideia para que outros amigos e amigas participem!
@@ -214,7 +208,7 @@ var Authenticator = React.createClass({
       );
     } else if (this.state.profile) {
       lightboxContent = (
-        <div className="lightbox-wrap">
+        <div className="lightbox-content">
           <ProfileForm
               data={this.state.profileData}
               refreshCallback={this.refresh}
@@ -223,9 +217,8 @@ var Authenticator = React.createClass({
         </div>
       );
     } else {
-      className.small = true;
       lightboxContent = (
-        <div className="lightbox-wrap">
+        <div className="lightbox-content">
           <p className="signin-text">{this.state.message}</p>
           <button
               className="signin-button signin-facebook"
@@ -246,10 +239,14 @@ var Authenticator = React.createClass({
     }
 
     return (
-      <div className="lightbox-overlay" onClick={this.overlayClick}>
-        <div className={cx(className)}>
-          <button className="lightbox-close" onClick={this.hide}>X</button>
-          {lightboxContent}
+      <div className="lightbox-overlay">
+        <div className="lightbox-table">
+          <div className="lightbox-cell" onClick={this.containerClick}>
+            <div className="lightbox">
+              <button className="lightbox-close" onClick={this.hide}>X</button>
+              {lightboxContent}
+            </div>
+          </div>
         </div>
       </div>
     );

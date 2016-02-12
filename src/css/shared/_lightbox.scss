@@ -1,0 +1,54 @@
+.lightbox-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 32;
+}
+
+.lightbox-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.lightbox-cell {
+  display: table-cell;
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.lightbox {
+  @include box-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+  background: #fff;
+  margin: 0 auto;
+  max-width: 440px;
+  padding: 15px;
+  position: relative;
+}
+
+.lightbox-close {
+  @extend %text-font;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 14px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.lightbox-content {
+  p {
+    margin-bottom: 15px;
+  }
+}
+
+.lightbox-title {
+  @extend %title-font;
+  margin-bottom: 15px;
+  text-align: center;
+}
