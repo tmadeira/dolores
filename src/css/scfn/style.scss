@@ -5,9 +5,10 @@
   max-width: $break-desktop;
 }
 
+@import "../shared/authenticator";
+
 @import "header";
 @import "footer";
-@import "authenticator";
 @import "explanation";
 
 @import "404";
