@@ -55,7 +55,7 @@ class DoloresHome {
     <p class="description">
       Use o nome do tema conforme aparece no seu link permanente. Por exemplo,
       escreva <strong>cidades-colaborativas</strong> se a página do tema for
-      http://seacidadefossenossa.com.br/temas/cidades-colaborativas/.
+      seacidadefossenossa.com.br/temas/cidades-colaborativas/.
     </p>
     <?php
   }
@@ -88,7 +88,7 @@ class DoloresHome {
       Use o nome da ideia conforme aparece no seu link permanente. Por exemplo,
       escreva <strong>criar-curso-publico-de-programacao</strong> se a página
       da ideia for
-      http://seacidadefossenossa.com.br/ideia/criar-curso-publico-de-programacao/.
+      seacidadefossenossa.com.br/ideia/criar-curso-publico-de-programacao/.
     </p>
     <?php
   }

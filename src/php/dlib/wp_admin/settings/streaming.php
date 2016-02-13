@@ -97,7 +97,7 @@ class DoloresStreaming {
 
     <p class="description"><small>
       Por exemplo, se o endereço de uma transmissão no YouTube é
-      http://www.youtube.com/?watch=<strong>mRCEBA777TU</strong>, então o valor
+      https://youtube.com/?watch=<strong>mRCEBA777TU</strong>, então o valor
       que você deve usar é <strong>mRCEBA777TU</strong>.
     </small></p>
     <?php

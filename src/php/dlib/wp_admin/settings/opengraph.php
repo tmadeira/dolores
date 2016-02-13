@@ -56,7 +56,7 @@ class DoloresOGSettings {
       class="regular-text"
       id="dolores_og_author_url"
       name="dolores_og_author_url"
-      placeholder="exemplo: http://facebook.com/seacidadefossenossa"
+      placeholder="exemplo: https://facebook.com/seacidadefossenossa"
       value="<?php echo $value; ?>"
       />
     <?php

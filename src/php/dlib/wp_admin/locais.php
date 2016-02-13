@@ -17,7 +17,7 @@ class DoloresAdminLocal {
               '<br />' .
               '<small>' .
               '  Por exemplo, se o endereço do vídeo no YouTube é' .
-              '  http://www.youtube.com/watch?v=mRCEBA777TU, ' .
+              '  https://www.youtube.com/watch?v=mRCEBA777TU, ' .
               '  então o valor que você deve usar é ' .
               '  <strong>mRCEBA777TU</strong>.' .
               '</small>'

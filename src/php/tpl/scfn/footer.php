@@ -43,7 +43,7 @@ $img_psol = DoloresAssets::get_image_uri('scfn/logo-psol-carioca.png');
         &copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?><br />
         Conteúdo sob
         <a
-            href="http://creativecommons.org/licenses/by-sa/3.0/br/"
+            href="https://creativecommons.org/licenses/by-sa/3.0/br/"
             target="_blank"
             >
           licença Creative Commons (by-sa 3.0 BR)
