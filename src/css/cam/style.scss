@@ -5,6 +5,8 @@
   max-width: $break-desktop;
 }
 
+@import "../shared/authenticator";
+
 @import "header";
 @import "home";
 @import "footer";

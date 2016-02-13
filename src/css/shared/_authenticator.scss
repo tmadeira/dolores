@@ -3,16 +3,17 @@
 }
 
 .signin-button {
-  @extend %title-font;
+  @extend %text-font;
   border: none;
   color: #fff;
   font-size: 14px;
+  font-weight: bold;
   display: block;
-  letter-spacing: 0;
-  margin-bottom: 15px;
+  margin: 3px 0;
   padding: 15px 15px 15px 50px;
   position: relative;
   text-align: center;
+  text-transform: uppercase;
   width: 100%;
 
   .fa {
@@ -22,7 +23,7 @@
   }
 
   @include breakpoint($break-tablet) {
-    font-size: 15px;
+    font-size: 17px;
   }
 }
 
