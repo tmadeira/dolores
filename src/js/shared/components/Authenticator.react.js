@@ -188,22 +188,28 @@ var Authenticator = React.createClass({
         </div>
       );
     } else if (this.state.share) {
-      var shareUrl = "http://" + location.host + "/participe/";
+      var shareUrl = document.location.protocol + "//" + location.host;
+      var fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + shareUrl;
+      var ttUrl = "https://twitter.com/share?url=" + shareUrl;
       lightboxContent = (
         <div className="lightbox-content">
-          <div className="signup-logo"></div>
-          <h3 className="signup-social-header">
+          <p className="signin-text">
             Agora espalhe a ideia para que outros amigos e amigas participem!
-          </h3>
-          <div className="signup-social-buttons social-media">
-            <div className="fb-share-button"
-                data-href={shareUrl}
-                data-layout="button_count"></div>
-            <a href="https://twitter.com/share"
-                className="twitter-share-button"
-                data-url={shareUrl}
-                data-lang="pt"></a>
-          </div>
+          </p>
+          <p className="signin-text">
+            <a className="social-button share-facebook"
+                href={fbUrl}
+                target="_blank">
+              <i className="fa fa-fw fa-lg fa-facebook"></i>
+              Compartilhar
+            </a>
+            <a className="social-button share-twitter"
+                href={ttUrl}
+                target="_blank">
+              <i className="fa fa-fw fa-lg fa-twitter"></i>
+              Tuitar
+            </a>
+          </p>
         </div>
       );
     } else if (this.state.profile) {
