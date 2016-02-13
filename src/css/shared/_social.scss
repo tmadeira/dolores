@@ -1,0 +1,20 @@
+.social-button {
+  @include border-radius(3px);
+  font-size: 14px;
+  margin-left: 5px;
+  padding: 5px 10px 5px 5px;
+  text-transform: uppercase;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.share-facebook {
+  background: #3b5998;
+  color: #fff;
+}
+
+.share-twitter {
+  background: #4099ff;
+  color: #fff;
+}
