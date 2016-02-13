@@ -173,8 +173,8 @@ var Authenticator = React.createClass({
       var spinner = "fa fa-refresh fa-spin fa-4x";
       lightboxContent = (
         <div className="lightbox-content">
-          <p style={{textAlign: "center"}}><i className={spinner}></i></p>
-          <p style={{textAlign: "center"}}>Carregando...</p>
+          <p className="signin-text"><i className={spinner}></i></p>
+          <p className="signin-text">Carregando...</p>
         </div>
       );
     } else if (this.state.signup) {
@@ -220,20 +220,22 @@ var Authenticator = React.createClass({
       lightboxContent = (
         <div className="lightbox-content">
           <p className="signin-text">{this.state.message}</p>
-          <button
-              className="signin-button signin-facebook"
-              onClick={this.signinWithFacebook}
-              >
-            <i className="fa fa-2x fa-fw fa-facebook"></i>
-            Conectar com Facebook
-          </button>
-          <button
-              className="signin-button signin-google"
-              onClick={this.signinWithGoogle}
-              >
-            <i className="fa fa-2x fa-fw fa-google"></i>
-            Conectar com Google
-          </button>
+          <p>
+            <button
+                className="signin-button signin-facebook"
+                onClick={this.signinWithFacebook}
+                >
+              <i className="fa fa-2x fa-fw fa-facebook"></i>
+              Conectar com Facebook
+            </button>
+            <button
+                className="signin-button signin-google"
+                onClick={this.signinWithGoogle}
+                >
+              <i className="fa fa-2x fa-fw fa-google"></i>
+              Conectar com Google
+            </button>
+          </p>
         </div>
       );
     }
