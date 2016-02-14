@@ -19,6 +19,7 @@ require_once(DOLORES_PATH . '/dlib/wp_util/setup_editor.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_opengraph.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_permalinks.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_thumbnails.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/share_buttons.php');
 
 require_once(DOLORES_PATH . '/dlib/wp_admin/locais.php');
 require_once(DOLORES_PATH . '/dlib/wp_admin/settings.php');
