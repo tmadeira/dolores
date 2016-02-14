@@ -59,6 +59,14 @@
   }
 }
 
+.single-meta .social-buttons {
+  /* !important is used to override .single-meta > * */
+  display: block !important;
+  @include breakpoint($break-tablet) {
+    display: table-cell !important;
+  }
+}
+
 .entry {
   font-size: 18px;
   line-height: 1.3em;
