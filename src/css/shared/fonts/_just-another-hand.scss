@@ -1,12 +1,1 @@
-/* Dump from https://fonts.googleapis.com/css?family=Just+Another+Hand */
-
-/* latin */
-@font-face {
-  font-family: 'Just Another Hand';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Just Another Hand'), local('JustAnotherHand-Regular'), url(https://fonts.gstatic.com/s/justanotherhand/v7/fKV8XYuRNNagXr38eqbRfzpTO3zq7FUe5pJUVhf_ntc.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-
-// TODO: support woff for compatibility with IE, Edge, Safari, iOS Safari
+@import url('//fonts.googleapis.com/css?family=Just+Another+Hand');
