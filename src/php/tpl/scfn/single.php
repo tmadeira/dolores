@@ -1,5 +1,4 @@
 <?php
-require_once(DOLORES_PATH . '/dlib/wp_admin/settings/opengraph.php');
 the_post();
 get_header();
 ?>
