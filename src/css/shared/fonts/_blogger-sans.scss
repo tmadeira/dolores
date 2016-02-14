@@ -2,21 +2,25 @@
   font-family: 'blogger-sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Blogger Sans Regular'), font-url('blogger-sans-regular.woff2') format('woff2');
+  src: local('Blogger Sans Regular'),
+    font-url('blogger-sans-regular.woff2') format('woff2'),
+    font-url('blogger-sans-regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'blogger-sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Blogger Sans Bold'), font-url('blogger-sans-bold.woff2') format('woff2');
+  src: local('Blogger Sans Bold'),
+    font-url('blogger-sans-bold.woff2') format('woff2'),
+    font-url('blogger-sans-bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'blogger-sans';
   font-style: italic;
   font-weight: 400;
-  src: local('Blogger Sans Italic'), font-url('blogger-sans-italic.woff2') format('woff2');
+  src: local('Blogger Sans Italic'),
+    font-url('blogger-sans-italic.woff2') format('woff2'),
+    font-url('blogger-sans-italic.woff') format('woff');
 }
-
-// TODO: support woff for compatibility with IE, Edge, Safari, iOS Safari
