@@ -4,7 +4,7 @@
   color: $purple;
   height: 60px;
   z-index: 4;
-  @include breakpoint($break-tablet) {
+  @include breakpoint($break-desktop) {
     height: 90px;
   }
 
@@ -22,7 +22,7 @@
   display: table;
   height: 60px;
   width: 100%;
-  @include breakpoint($break-tablet) {
+  @include breakpoint($break-desktop) {
     height: 90px;
   }
 }
@@ -32,7 +32,7 @@
   line-height: 0;
   text-align: left;
   vertical-align: middle;
-  width: 112px;
+  width: 135px;
   @include breakpoint($break-desktop) {
     width: 100%;
   }
@@ -42,8 +42,8 @@
 }
 
 .header-logo img {
-  height: 45px;
-  @include breakpoint($break-tablet) {
+  height: 50px;
+  @include breakpoint($break-desktop) {
     height: auto;
   }
 }
