@@ -1,14 +1,11 @@
 @import "basic";
 
-.wrap {
-  margin: 0 auto;
-  max-width: $break-desktop;
-}
-
 @import "../shared/authenticator";
 @import "../shared/social";
 
 @import "header";
-@import "home";
 @import "footer";
 @import "lightbox";
+
+@import "home";
+@import "single";

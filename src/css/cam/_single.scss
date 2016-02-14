@@ -1,2 +1,123 @@
+@include breakpoint($break-tablet) {
+  .default-wrap {
+    font-size: 0;
+  }
+
+  .single-content {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5%;
+    vertical-align: top;
+    width: 65%;
+  }
+
+  .sinle-sidebar {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: top;
+    width: 30%;
+  }
+}
+
+.single-title {
+  @extend %title-font;
+  font-size: 36px;
+}
+
+.single-meta {
+  @extend %default-margin;
+  font-size: 14px;
+  margin-top: 0;
+  text-transform: uppercase;
+
+  @include breakpoint($break-tablet) {
+    display: table;
+    & > * {
+      display: table-cell;
+      padding-right: 5px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.single-date {
+  font-size: 12px;
+}
+
+.social-sep {
+  /* !important is used to override .single-meta > * */
+  display: none !important;
+
+  @include breakpoint($break-tablet) {
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+    hr {
+      border: 0;
+      border-bottom: solid 1px $gray;
+    }
+  }
+}
+
 .entry {
+  font-size: 18px;
+  line-height: 1.3em;
+
+  blockquote, code, div, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
+    @extend %default-margin;
+  }
+
+  h2 {
+    font-size: 180%;
+  }
+
+  h3 {
+    font-size: 140%;
+  }
+
+  h4 {
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: 80%;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: square;
+    margin-left: 20px;
+  }
+
+  ol {
+    list-style: decimal;
+    margin-left: 20px;
+  }
+
+  blockquote {
+    border-left: solid 10px $gray;
+    padding-left: 20px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  small {
+    font-size: 85%;
+  }
+
+  a {
+    color: $purple;
+    word-wrap: break-word;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

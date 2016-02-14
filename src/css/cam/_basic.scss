@@ -62,3 +62,25 @@ small {
     padding: $font-size/3 $font-size/3 0;
   }
 }
+
+.wrap {
+  margin: 0 auto;
+  max-width: $break-desktop;
+}
+
+.default-wrap {
+  padding: 20px 10px;
+  @include breakpoint($break-tablet) {
+    padding: 30px 15px;
+  }
+  @include breakpoint($break-desktop) {
+    padding: 30px 0;
+  }
+}
+
+%default-margin {
+  margin: 15px 0;
+  @include breakpoint($break-desktop) {
+    margin: 25px 0;
+  }
+}
