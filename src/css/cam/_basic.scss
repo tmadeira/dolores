@@ -32,6 +32,11 @@ $yellow: #E1A80C;
   text-transform: uppercase;
 }
 
+@mixin title-font {
+  font: 400 16px/100% 'Just Another Hand', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
 button {
   cursor: pointer;
 }

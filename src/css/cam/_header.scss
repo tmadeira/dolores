@@ -27,6 +27,41 @@
   }
 }
 
+.header-logo {
+  display: table-cell;
+  line-height: 0;
+  text-align: left;
+  vertical-align: middle;
+  width: 112px;
+  @include breakpoint($break-desktop) {
+    width: 100%;
+  }
+  .home & {
+    display: none;
+  }
+}
+
+.header-logo img {
+  height: 45px;
+  @include breakpoint($break-tablet) {
+    height: auto;
+  }
+}
+
+.header-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  .show-mobile-menu & {
+    display: block;
+  }
+}
+
 .header-toggle-menu {
   cursor: pointer;
   display: table-cell;
@@ -55,35 +90,86 @@
   }
 }
 
-.header-logo {
-  display: table-cell;
-  line-height: 0;
-  text-align: left;
-  vertical-align: middle;
-  width: 112px;
-  @include breakpoint($break-desktop) {
-    width: 186px;
+.header-nav {
+  @include box-shadow(0 0 15px #000);
+  @include transition(left 150ms ease-in-out);
+
+  background: $yellow;
+  bottom: 0;
+  color: $purple;
+  position: fixed;
+  left: -265px;
+  top: 0;
+  width: 250px;
+  z-index: 8;
+
+  .show-mobile-menu & {
+    left: 0;
   }
-  .home & {
+
+  li {
+    & > a {
+      border-bottom: solid 1px $purple;
+      display: block;
+      font-size: 16px;
+      padding: 15px;
+      text-transform: uppercase;
+    }
+  }
+
+  .sub-menu {
+    background: #fff;
+  }
+
+  @include breakpoint($break-desktop) {
+    @include box-shadow(none);
+
+    background: none;
+    display: table-cell;
+    font-size: 0;
+    padding-right: 15px;
+    position: static;
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+
+    li {
+      display: inline-block;
+      padding: 0 2px;
+      vertical-align: middle;
+
+      & > a {
+        @include title-font;
+        @include transition(all 150ms ease);
+        background: $purple;
+        border: 0;
+        color: $yellow;
+        font-size: 19px;
+        line-height: 26px;
+        padding: 8px 12px 0;
+        &:hover {
+          color: #fff;
+        }
+
+        .home & {
+          background: rgba(255, 255, 255, 0.8);
+          color: $purple;
+          &:hover {
+            background: #fff;
+            color: $purple;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Do not show first menu item (Home) in desktop */
+.header-menu > ul > li:first-child {
+  @include breakpoint($break-desktop) {
     display: none;
   }
-}
-
-.header-logo img {
-  height: 45px;
-  @include breakpoint($break-tablet) {
-    height: auto;
-  }
-}
-
-.header-nav {
-  display: none;
-  /*
-  @include breakpoint($break-desktop) {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  */
 }
 
 .header-search-user {
@@ -91,6 +177,7 @@
   padding-right: 10px;
   text-align: right;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .header-search {
@@ -106,7 +193,7 @@
     background: #fff;
     color: $purple;
     height: 34px;
-    width: 160px;
+    width: 170px;
     .home & {
       opacity: 0.8;
     }
@@ -114,9 +201,11 @@
 }
 
 .header-search-form {
+  display: none;
   @include breakpoint($break-desktop) {
     bottom: 0;
     color: $purple;
+    display: block;
     left: 0;
     line-height: 34px;
     position: absolute;
@@ -176,6 +265,25 @@
   display: none;
 }
 
-.site-header .menu-item-has-children .sub-menu {
-  display: none;
+.site-header .menu-item-has-children {
+  position: relative;
+  .sub-menu {
+    display: none;
+    text-align: left;
+    @include breakpoint($break-desktop) {
+      position: absolute;
+      li {
+        display: block;
+        padding: 0;
+        & > a {
+          background: #fff;
+          color: $purple;
+          &:hover {
+            background: $purple;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
