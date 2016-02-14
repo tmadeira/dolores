@@ -1,5 +1,9 @@
 @import "../shared/lightbox";
 
+.lightbox {
+  background: $light-gray;
+}
+
 .lightbox-close {
   color: $purple;
   font-weight: bold;
