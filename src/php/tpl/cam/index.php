@@ -80,6 +80,8 @@ if (!$paged || $paged == 1) {
   }
   ?>
 
+  <!-- TODO -->
+
   <section class="home-banners">
     <div class="wrap">
       <a class="home-banner home-voluntario" href="#"
@@ -93,7 +95,38 @@ if (!$paged || $paged == 1) {
     </div>
   </section>
 
-  <!-- TODO -->
+  <hr class="home-sep" />
+
+  <section class="site-grid">
+    <div class="wrap">
+      <ul class="grid-list">
+        <?php
+        while (have_posts()) {
+          the_post();
+          $cats = get_the_category();
+          if (count($cats) > 0) {
+            $cat = $cats[0]->cat_name;
+          }
+          list($img) = wp_get_attachment_image_src(
+            get_post_thumbnail_id($post->ID),
+            'grid-thumbnail'
+          );
+          ?>
+          <li>
+            <a href="<?php the_permalink(); ?>" class="grid-post">
+            <img class="grid-post-thumb" src="<?php echo $img; ?>" />
+            <div class="grid-post-text">
+              <h4 class="grid-post-category"><?php echo $cat; ?></h4>
+              <h3 class="grid-post-title"><?php the_title(); ?></h3>
+            </div>
+            </a>
+          </li>
+          <?php
+          }
+        ?>
+      </ul>
+    </div>
+  </section>
 
   <?php
 }

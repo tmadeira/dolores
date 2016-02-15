@@ -2,6 +2,9 @@
   font-size: 0;
   line-height: 0;
   @include breakpoint($break-tablet) {
+    margin: 20px 0;
+  }
+  @include breakpoint($break-desktop) {
     margin: 30px 0;
   }
 }

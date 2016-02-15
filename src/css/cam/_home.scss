@@ -1,3 +1,17 @@
+.home-sep {
+  @extend .wrap;
+  display: none;
+  @include breakpoint($break-tablet) {
+    background: none;
+    border: solid 1px #000;
+    display: block;
+    margin: 20px 10px;
+  }
+  @include breakpoint($break-desktop) {
+    margin: 30px auto;
+  }
+}
+
 @import "home-hero";
 @import "home-calendar";
 @import "home-banners";
