@@ -45,6 +45,12 @@ button {
 html {
   @extend %text-font;
   background: #f7f7f7;
+  font-feature-settings: "liga";
+  text-rendering: optimizelegibility;
+
+  // Fix Mac OS X font weight
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img, video {
