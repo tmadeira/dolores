@@ -24,7 +24,7 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Convide pessoas do seu bairro para participarem da discussão.
           </p>
         </div>
       </li>
@@ -36,7 +36,8 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Dê ideias para melhorar o seu bairro; leia e opine sobre as ideias
+            dos seus vizinhos.
           </p>
         </div>
       </li>
@@ -48,7 +49,8 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Quer organizar um encontro para discutir seu bairro?
+            <a href="/contato/">Entre em contato</a> para te ajudarmos!
           </p>
         </div>
       </li>
@@ -60,7 +62,8 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Será criado um programa para o bairro, a partir das demandas,
+            ideias e sugestões de quem vive nele.
           </p>
         </div>
       </li>
@@ -131,9 +134,11 @@ get_header();
         Qual o seu bairro?
       </h2>
 
+      <!--
       <p class="temas-form-description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </p>
+      -->
 
       <div id="form-bairros"></div>
       <?php
