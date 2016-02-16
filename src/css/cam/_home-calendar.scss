@@ -29,27 +29,31 @@
 .home-next-event {
   @extend %title-font;
   background: image-url('cam/home-calendar-title-mobile.png') no-repeat center center;
-  font-size: 24px;
+  color: $purple;
+  font-size: 22px;
   height: 30px;
   left: 50%;
   margin-left: -65px;
+  padding: 8px 10px;
   position: absolute;
   top: -14px;
   width: 130px;
   @include breakpoint($break-desktop) {
     background: image-url('cam/home-calendar-title-desktop.png') no-repeat center center;
+    color: #000;
     display: table-cell;
+    font-size: 30px;
+    line-height: 1.2em;
     height: auto;
     margin: 0;
-    padding: 10px 20px;
+    padding: 15px 20px 0;
     position: static;
     text-align: center;
     vertical-align: middle;
     width: 17%;
-  }
-
-  & > span {
-    display: none;
+    & > span {
+      font-size: 48px;
+    }
   }
 }
 
@@ -75,17 +79,26 @@
   }
 }
 
+.home-event-mobile-table {
+  display: table;
+  width: 100%;
+  @include breakpoint($break-desktop) {
+    display: block;
+    width: auto;
+  }
+}
+
 .home-event-info {
   border-right: solid 1px #fff;
   display: table-cell;
   font-size: 14px;
   line-height: 1em;
   vertical-align: middle;
-  width: 65%;
+  width: 95%;
   @include breakpoint($break-desktop) {
     font-size: 18px;
     padding: 10px;
-    width: 38%;
+    width: 48%;
   }
 }
 
@@ -101,6 +114,7 @@
 
 .home-event-info-50 {
   display: inline-block;
+  max-width: 100px;
   width: 50%;
   @include breakpoint($break-desktop) {
     width: auto;
@@ -129,9 +143,27 @@
   padding: 0 10px;
   text-align: center;
   vertical-align: middle;
-  width: 35%;
+  width: 5%;
   @include breakpoint($break-desktop) {
     padding: 10px 20px;
-    width: 15%;
+  }
+}
+
+.home-calendar-button {
+  @extend %title-font;
+  background: image-url('cam/home-calendar-full.png') no-repeat center center;
+  background-size: 100% 100%;
+  color: $purple;
+  display: inline-block;
+  font-size: 21px;
+  height: 62px;
+  padding: 7px;
+  width: 85px;
+  @include breakpoint($break-desktop) {
+    color: #000;
+    font-size: 28px;
+    height: 80px;
+    padding: 8px;
+    width: 110px;
   }
 }
