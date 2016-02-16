@@ -31,6 +31,9 @@
 }
 
 .hero-button {
-  @include dashed-button(30px, #fff, #000);
+  @include dashed-button(24px, #fff, #000);
   margin-top: 20px;
+  @include breakpoint($break-tablet) {
+    @include dashed-button(30px, #fff, #000);
+  }
 }

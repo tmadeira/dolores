@@ -61,8 +61,16 @@ small {
   font-size: 85%;
 }
 
+@mixin solid-button($font-size, $bg-color, $fg-color) {
+  @include title-font;
+  background: $bg-color;
+  color: $fg-color;
+  font-size: $font-size;
+  padding: $font-size/3 $font-size/3 0;
+}
+
 @mixin dashed-button($font-size, $bg-color, $fg-color) {
-  @extend %title-font;
+  @include title-font;
   background: none;
   border: 1px dashed $bg-color;
   display: inline-block;

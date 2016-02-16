@@ -80,6 +80,51 @@ if (!$paged || $paged == 1) {
   }
   ?>
 
+  <section class="home-temas">
+    <div class="wrap home-temas-wrap">
+      <div class="home-temas-element">
+        <h2 class="home-temas-title">Entre no debate</h2>
+
+        <ul class="home-temas-grid">
+          <li style="background-image: url('http://imirante.com/imagens/2015/02/10/publicoglbthor.jpg');">
+            <a class="home-temas-item" href="#">
+              <span class="home-temas-text-container">
+                <span class="tema">População LGBT</span>
+              </span>
+            </a>
+          </li>
+          <li style="background-image: url('http://www.adjoripr.com.br/polopoly_fs/1.1822772.1445369762!/imagens/14453697625000.jpg');">
+            <a class="home-temas-item" href="#">
+              <span class="home-temas-text-container">
+                <span class="tema">Educação</span>
+              </span>
+            </a>
+          </li>
+          <li style="background-image: url('http://1.bp.blogspot.com/-7V4zSbaNhhs/UD7eGU9GXhI/AAAAAAAAFyU/oBKpXWIyTj4/s1600/foto+negro.jpg');">
+            <a class="home-temas-item" href="#">
+              <span class="home-temas-text-container">
+                <span class="tema">Negros e negras</span>
+              </span>
+            </a>
+          </li>
+          <li style="background-image: url('http://www.socursosgratuitos.com.br/wp-content/uploads/2015/04/meio-ambiente.jpg');">
+            <a class="home-temas-item" href="#">
+              <span class="home-temas-text-container">
+                <span class="tema">Meio ambiente</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="home-temas-button-container">
+          <a class="home-temas-button" href="#">
+            Veja todos os temas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TODO -->
 
   <section class="home-banners">

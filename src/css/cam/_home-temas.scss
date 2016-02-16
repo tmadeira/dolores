@@ -1,0 +1,136 @@
+.home-temas {
+  font-size: 0;
+  line-height: 0;
+  @include breakpoint($break-tablet) {
+    margin: 20px 0;
+  }
+  @include breakpoint($break-desktop) {
+    margin: 30px 0;
+  }
+}
+
+.home-temas-wrap {
+  padding: 25px 10px 25px;
+  @include breakpoint($break-tablet) {
+    padding: 30px 10px 20px;
+  }
+  @include breakpoint($break-desktop) {
+    padding: 30px 0 10px;
+  }
+}
+
+.home-temas-element {
+  border: dashed 2px $yellow;
+  padding: 25px 10px 25px;
+  position: relative;
+  @include breakpoint($break-tablet) {
+    padding: 50px 15px 35px;
+  }
+  @include breakpoint($break-desktop) {
+    padding: 55px 20px 35px;
+  }
+}
+
+.home-temas-title {
+  background: image-url('cam/home-temas-title.png') no-repeat center center / contain;
+  height: 37px;
+  left: 50%;
+  margin-left: -79px;
+  position: absolute;
+  top: -19px;
+  width: 157px;
+  @include breakpoint($break-tablet) {
+    height: 74px;
+    margin-left: -157px;
+    top: -36px;
+    width: 314px;
+  }
+}
+
+.home-temas-button-container {
+  bottom: -15px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    bottom: -20px;
+  }
+}
+
+.home-temas-button {
+  @include solid-button(21px, $yellow, $purple);
+  @include breakpoint($break-tablet) {
+    @include solid-button(27px, $yellow, $purple);
+  }
+}
+
+.home-temas-grid {
+  & > li {
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+    height: 140px;
+    margin-left: 3%;
+    position: relative;
+    width: 48.5%;
+    @include breakpoint($break-tablet) {
+      height: 200px;
+      margin-left: 0.6666% !important;
+      width: 24.5%;
+      &:first-child {
+        margin-left: 0 !important;
+      }
+      &:nth-child(-n+2) {
+        margin-bottom: 0 !important;
+      }
+    }
+    @include breakpoint($break-desktop) {
+      height: 270px;
+    }
+    &:nth-child(-n+2) {
+      margin-bottom: 10px;
+    }
+    &:nth-child(2n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+.home-temas-item {
+  @include transition(all 150ms ease);
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  font-size: 18px;
+  left: 0;
+  line-height: 1.3em;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 21px;
+    padding: 5px;
+  }
+  @include breakpoint($break-tablet) {
+    font-size: 21px;
+    &:hover {
+      font-size: 24px;
+    }
+  }
+}
+
+.home-temas-text-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+  .tema {
+    @include text-shadow(#000 0 0 5px);
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+}
