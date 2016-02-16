@@ -83,7 +83,7 @@ var setup = function() {
         form.removeClass("posting");
         textarea.prop("disabled", false);
         if ("error" in response) {
-          alert("Erro ao publicar ideia: " + response.error);
+          alert("Erro ao publicar: " + response.error);
           textarea.focus();
         } else if ("html" in response) {
           textarea.val("");

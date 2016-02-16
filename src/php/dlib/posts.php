@@ -74,7 +74,7 @@ class DoloresPosts {
 
     $inserted = wp_insert_post($post);
     if (!$inserted) {
-      return array('error' => 'Erro ao cadastrar ideia.');
+      return array('error' => 'Erro ao cadastrar.');
     }
 
     wp_set_object_terms($inserted, $terms, $taxonomy);
@@ -92,7 +92,7 @@ class DoloresPosts {
     $user = wp_get_current_user();
 
     if (!comments_open($post_id)) {
-      return array('error' => 'Esta ideia não aceita comentários.');
+      return array('error' => 'Os comentários estão fechados.');
     }
 
     if ($parent) {

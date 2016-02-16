@@ -73,7 +73,7 @@ var setupTemaForm = function() {
       API.route("post").post({data: request}).done(function(response) {
         if ("error" in response) {
           button.prop("disabled", false);
-          alert("Erro ao publicar ideia: " + response.error);
+          alert("Erro ao publicar: " + response.error);
         } else if ("url" in response) {
           location.href = response.url;
         }
@@ -81,7 +81,7 @@ var setupTemaForm = function() {
         button.prop("disabled", false);
         console.log(response);
         if ("responseJSON" in response && "error" in response.responseJSON) {
-          alert("Erro ao publicar ideia: " + response.responseJSON.error);
+          alert("Erro ao publicar: " + response.responseJSON.error);
         }
       });
     };

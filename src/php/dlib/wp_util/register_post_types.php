@@ -1,21 +1,43 @@
 <?php
+$ideia_label = 'Ideia';
+$ideia_labels = array(
+  'name' => 'Ideias',
+  'singular_name' => 'Ideia',
+  'add_new' => 'Adicionar Nova',
+  'add_new_item' => 'Adicionar nova ideia',
+  'edit_item' => 'Editar ideia',
+  'menu_name' => 'Ideias',
+  'new_item' => 'Nova ideia',
+  'not_found' => 'Nenhuma ideia encontrada',
+  'not_found_in_trash' => 'Nenhuma ideia encontrada na lixeira',
+  'search_items' => 'Procurar ideias',
+  'view_item' => 'Visualizar ideia'
+);
+
+// TODO: Move this to template configuration
+if (DOLORES_TEMPLATE == 'cam') {
+  $ideia_label = 'Proposta';
+  $ideia_labels = array(
+    'name' => 'Propostas',
+    'singular_name' => 'Proposta',
+    'add_new' => 'Adicionar Nova',
+    'add_new_item' => 'Adicionar nova proposta',
+    'edit_item' => 'Editar proposta',
+    'menu_name' => 'Propostas',
+    'new_item' => 'Nova proposta',
+    'not_found' => 'Nenhuma proposta encontrada',
+    'not_found_in_trash' => 'Nenhuma proposta encontrada na lixeira',
+    'search_items' => 'Procurar propostas',
+    'view_item' => 'Visualizar proposta'
+  );
+}
+
 function dolores_register_post_types() {
+  global $ideia_label, $ideia_labels;
   $post_args = array(
-    'label' => 'Ideia',
-    'labels' => array(
-      'name' => 'Ideias',
-      'singular_name' => 'Ideia',
-      'add_new' => 'Adicionar Nova',
-      'add_new_item' => 'Adicionar nova ideia',
-      'edit_item' => 'Editar ideia',
-      'menu_name' => 'Ideias',
-      'new_item' => 'Nova ideia',
-      'not_found' => 'Nenhuma ideia encontrada',
-      'not_found_in_trash' => 'Nenhuma ideia encontrada na lixeira',
-      'search_items' => 'Procurar ideias',
-      'view_item' => 'Visualizar ideia'
-    ),
-    'description' => 'Ideia proposta por usuário da plataforma',
+    'label' => $ideia_label,
+    'labels' => $ideia_labels,
+    'description' => 'Proposta feita por usuário da plataforma',
     'has_archive' => true,
     'menu_icon' => 'dashicons-lightbulb',
     'menu_position' => 5, /* Below posts */

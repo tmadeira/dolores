@@ -8,8 +8,6 @@ var API = require("../api");
 var SignupForm = require("./SignupForm.react");
 var ProfileForm = require("./ProfileForm.react");
 
-var defaultMessage = "Conecte-se e dê suas ideias para a cidade:";
-
 var Authenticator = React.createClass({
   getInitialState: function() {
     return {
@@ -52,7 +50,7 @@ var Authenticator = React.createClass({
         if (message != null) {
           newState.message = message;
         } else {
-          newState.message = defaultMessage;
+          newState.message = window.doloresConfig.strings.authenticatorMessage;
         }
 
         if (refreshCallback != null) {

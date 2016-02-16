@@ -12,5 +12,10 @@ module.exports = {
   facebookAppID: "441723852703315",
   googleAppId: "828526175843-ijo9t5ljngg4kiokn76jjpj7nfap23h3" +
                ".apps.googleusercontent.com",
-  gmapsKey: "AIzaSyBUCHOtNmKf9dsJILFwmGXnRqATM1g8TG8"
+  gmapsKey: "AIzaSyBUCHOtNmKf9dsJILFwmGXnRqATM1g8TG8",
+
+  strings: {
+    authenticatorMessage: "Conecta e participa com tuas propostas para a " +
+                          "cidade:"
+  }
 };
