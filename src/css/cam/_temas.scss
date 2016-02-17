@@ -1,0 +1,112 @@
+.temas-title {
+  @extend %default-margin;
+  @extend %title-font;
+  background: image-url('cam/home-temas-title.png') no-repeat center center / contain;
+  color: $purple;
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 37px;
+  padding: 10px 14px;
+  white-space: nowrap;
+  width: 157px;
+  @include breakpoint($break-tablet) {
+    font-size: 48px;
+    height: 74px;
+    padding: 20px 33px;
+    width: 314px;
+  }
+}
+
+.temas-description {
+  @extend %default-margin;
+  font-size: 16px;
+  line-height: 1.3em;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    font-size: 20px;
+  }
+  @include breakpoint($break-desktop) {
+    font-size: 24px;
+  }
+}
+
+%any-temas-grid {
+  font-size: 0;
+  line-height: 0;
+  & > li {
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.temas-grid {
+  @extend %any-temas-grid;
+  & > li {
+    height: 160px;
+    margin: 5px 0 5px 3%;
+    width: 48.5%;
+    &:nth-child(2n+1) {
+      margin-left: 0;
+    }
+
+    @include breakpoint($break-tablet) {
+      height: 230px;
+      margin-left: 0.6666% !important;
+      width: 24.5%;
+      &:nth-child(4n+1) {
+        margin-left: 0 !important;
+      }
+    }
+    @include breakpoint($break-desktop) {
+      height: 180px;
+      width: 16%;
+      &:nth-child(n+1) {
+        margin-left: 0.8% !important;
+      }
+      &:nth-child(6n+1) {
+        margin-left: 0 !important;
+      }
+    }
+  }
+}
+
+.temas-item {
+  @include transition(all 150ms ease);
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  font-size: 18px;
+  left: 0;
+  line-height: 1.3em;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 21px;
+    padding: 5px;
+  }
+  @include breakpoint($break-tablet) {
+    font-size: 21px;
+    &:hover {
+      font-size: 24px;
+    }
+  }
+}
+
+.temas-text-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+  .tema {
+    @include text-shadow(#000 0 0 5px);
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+}

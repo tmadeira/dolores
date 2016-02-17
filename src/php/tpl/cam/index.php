@@ -83,38 +83,38 @@ if (!$paged || $paged == 1) {
         <h2 class="home-temas-title">Entre no debate</h2>
 
         <ul class="home-temas-grid">
-          <li style="background-image: url('http://imirante.com/imagens/2015/02/10/publicoglbthor.jpg');">
-            <a class="home-temas-item" href="#">
-              <span class="home-temas-text-container">
-                <span class="tema">População LGBT</span>
-              </span>
-            </a>
-          </li>
-          <li style="background-image: url('http://www.adjoripr.com.br/polopoly_fs/1.1822772.1445369762!/imagens/14453697625000.jpg');">
-            <a class="home-temas-item" href="#">
-              <span class="home-temas-text-container">
-                <span class="tema">Educação</span>
-              </span>
-            </a>
-          </li>
-          <li style="background-image: url('http://1.bp.blogspot.com/-7V4zSbaNhhs/UD7eGU9GXhI/AAAAAAAAFyU/oBKpXWIyTj4/s1600/foto+negro.jpg');">
-            <a class="home-temas-item" href="#">
-              <span class="home-temas-text-container">
-                <span class="tema">Negros e negras</span>
-              </span>
-            </a>
-          </li>
-          <li style="background-image: url('http://www.socursosgratuitos.com.br/wp-content/uploads/2015/04/meio-ambiente.jpg');">
-            <a class="home-temas-item" href="#">
-              <span class="home-temas-text-container">
-                <span class="tema">Meio ambiente</span>
-              </span>
-            </a>
-          </li>
+          <?php
+          $taxonomy = 'tema';
+          add_filter('get_terms_orderby', 'dolores_random_orderby');
+          $terms = get_terms($taxonomy, array(
+            'hide_empty' => false,
+            'number' => 4,
+            'parent' => 0
+          ));
+          remove_filter('get_terms_orderby', 'dolores_random_orderby');
+          foreach ($terms as $term) {
+            $image = get_term_meta($term->term_id, 'image', true);
+            if ($image) {
+              $style = ' style="background-image: url(\'' . $image . '\');"';
+            } else {
+              $style = '';
+            }
+            $href = get_term_link($term, $taxonomy);
+            ?>
+            <li<?php echo $style; ?>>
+              <a href="<?php echo $href; ?>" class="temas-item">
+                <span class="temas-text-container">
+                  <span class="tema"><?php echo $term->name; ?></span>
+                </span>
+              </a>
+            </li>
+            <?php
+          }
+          ?>
         </ul>
 
         <div class="home-temas-button-container">
-          <a class="home-temas-button" href="#">
+          <a class="home-temas-button" href="/temas/">
             Veja todos os temas
           </a>
         </div>
