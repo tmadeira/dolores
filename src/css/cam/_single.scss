@@ -1,8 +1,4 @@
 @include breakpoint($break-tablet) {
-  .default-wrap {
-    font-size: 0;
-  }
-
   .single-content {
     display: inline-block;
     font-size: 16px;
@@ -122,7 +118,8 @@
   }
 
   a {
-    color: $purple;
+    color: $red;
+    text-decoration: none;
     word-wrap: break-word;
     &:hover {
       text-decoration: underline;

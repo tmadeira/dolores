@@ -19,6 +19,7 @@ $break-big-desktop: 1400px;
 // Colors
 $gray: #ccc;
 $light-gray: #eee;
+$light-purple: #4A2C47;
 $purple: #2C0E28;
 $red: #9F0737;
 $yellow: #E1A80C;
@@ -92,6 +93,7 @@ small {
 .default-wrap {
   padding: 20px 10px;
   @include breakpoint($break-tablet) {
+    font-size: 0;
     padding: 30px 15px;
   }
   @include breakpoint($break-desktop) {
