@@ -80,51 +80,9 @@ if (!$paged || $paged == 1) {
   }
   ?>
 
-  <section class="home-default-section">
-    <div class="wrap">
-      <ul class="home-main-grid">
-        <li class="home-main-item home-bg-map">
-          <a href="/bairros" class="home-main-item-link home-main-item-link-no-alpha">
-            <div class="home-main-item-border"></div>
-            <div class="home-main-item-wrap">
-              <h3 class="home-main-item-title">
-                Que mudanças você quer para o seu bairro?
-              </h3>
-              <button class="home-main-item-action">Participe</button>
-            </div>
-          </a>
-        </li>
-
-        <?php
-        $taxonomy = 'tema';
-        $slug = DoloresHome::get_tema();
-        $term = get_term_by('slug', $slug, $taxonomy);
-        $link = get_term_link($term, $taxonomy);
-        $image = get_term_meta($term->term_id, 'image', true);
-        ?>
-        <li
-            class="home-main-item"
-            style="background-image: url('<?php echo $image; ?>');"
-            >
-          <a href="<?php echo $link; ?>" class="home-main-item-link">
-            <div class="home-main-item-wrap">
-              <h3 class="home-main-item-title">
-                <?php echo $term->name; ?>
-              </h3>
-              <p class="home-main-item-explanation">
-                E se as decisões fossem nossas?
-              </p>
-              <button class="home-main-item-action">Participe</button>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
   <section class="home-ideas">
     <div class="wrap">
-      <h2 class="home-title">Ideias em destaque</h2>
+      <h2 class="home-title">Você tem ideias para a cidade?</h2>
 
       <?php
       $list = DoloresHome::get_ideias();
@@ -138,7 +96,7 @@ if (!$paged || $paged == 1) {
       ?>
 
       <div class="home-button-container">
-        <a class="home-button" href="/temas">Veja todos os temas</a>
+        <a class="home-button" href="/temas">Veja todos os temas e participe</a>
       </div>
     </div>
   </section>
@@ -215,7 +173,7 @@ if (!$paged || $paged == 1) {
             <img class="flow-image" src="<?php echo $flow3; ?>" />
             <div class="flow-item-title-container">
               <h3 class="flow-item-title">
-                Participe:<br />seja voluntário
+                Colabore
               </h3>
             </div>
           </a>
