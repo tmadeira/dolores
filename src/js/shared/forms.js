@@ -64,7 +64,16 @@ var setupTemaForm = function() {
     var request = {};
     var requestArray = $(this).serializeArray();
     for (i = 0; i < requestArray.length; i++) {
-      request[requestArray[i].name] = requestArray[i].value;
+      var key = requestArray[i].name;
+      if (key.endsWith("[]")) {
+        key = key.substr(0, key.length - 2);
+        if (!(key in request)) {
+          request[key] = [];
+        }
+        request[key].push(requestArray[i].value);
+      } else {
+        request[key] = requestArray[i].value;
+      }
     }
 
     var post = function() {
