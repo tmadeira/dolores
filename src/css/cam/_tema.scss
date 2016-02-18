@@ -1,6 +1,79 @@
+.tema-form {
+  background: $red;
+  color: #fff;
+  & > .wrap {
+    @include breakpoint($break-tablet) {
+      display: table;
+      width: 100%;
+    }
+  }
+}
+
+.tema-form-closed-title {
+  @extend %default-margin;
+  font-size: 48px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+}
+
+.tema-form-closed-description {
+  @extend %default-margin;
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+.tema-form-ball {
+  @extend %align-middle-container;
+  @include border-radius(50%);
+  border: dashed 2px #fff;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+  width: 300px;
+  @include breakpoint($break-tablet) {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+.tema-form-ball-wrap {
+  @extend %align-middle-element;
+  padding: 0 25px;
+}
+
+.tema-form-ball-title {
+  @extend %default-margin;
+  @extend %title-font;
+  font-size: 38px;
+  @include breakpoint($break-tablet) {
+    font-size: 44px;
+  }
+}
+
+.tema-form-ball-description {
+  @extend %default-margin;
+  @extend %text-font;
+  font-size: 16px;
+}
+
 .tema-form-item {
   line-height: 0;
   padding: 5px 0;
+}
+
+.tema-form-explanation {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    vertical-align: middle;
+    width: 450px;
+  }
+}
+
+.tema-form-form {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
 
 .tema-form-label {
@@ -39,4 +112,65 @@
 
 .tema-form-button {
   @include dashed-transparent-button(24px, #fff);
+}
+
+.tema-form-multiselect {
+  position: relative;
+
+  .multi-select-options {
+    @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    background: #fff;
+    color: #000;
+    display: none;
+    font-size: 12px;
+    overflow-y: auto;
+    max-height: 120px;
+    position: absolute;
+    top: 29px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    .check {
+      margin-right: 2px;
+    }
+
+    & > li {
+      @include opacity(0.6);
+      cursor: pointer;
+      line-height: 1.5em;
+      padding: 5px;
+
+      &:hover {
+        @include opacity(1);
+      }
+    }
+
+    @include breakpoint($break-tablet) {
+      font-size: 14px;
+      top: 33px;
+    }
+  }
+
+  &.focused .multi-select-options {
+    display: block;
+  }
+
+  .multi-select-done {
+    background: $yellow;
+    border: 0;
+    bottom: 2px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 26px;
+
+    @include breakpoint($break-tablet) {
+      font-size: 14px;
+      width: 28px;
+    }
+  }
 }
