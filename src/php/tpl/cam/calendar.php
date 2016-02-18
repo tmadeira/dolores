@@ -4,9 +4,8 @@ require_once(DOLORES_PATH . '/dlib/calendar.php');
 the_post();
 get_header();
 
-$calendarId = '4spn2cn6gpde1jf0mpdu34ti7s@group.calendar.google.com';
-$calendarUrl = '//calendar.google.com/calendar/render?cid=' . $calendarId;
-$events = DoloresCalendar::get($calendarId);
+$calendarUrl = '//calendar.google.com/calendar/render?cid=' . CALENDAR_ID;
+$events = DoloresCalendar::get(CALENDAR_ID);
 ?>
 
 <main class="wrap default-wrap">

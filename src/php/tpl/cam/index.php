@@ -1,5 +1,6 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/assets.php');
+require_once(DOLORES_PATH . '/dlib/calendar.php');
 
 $logo_src = DoloresAssets::get_image_uri('cam/logo-hero.png');
 
@@ -23,35 +24,58 @@ if (!$paged || $paged == 1) {
       <span>Entenda</span>
     </button>
 
-    <div class="home-calendar">
-      <div class="wrap">
-        <h2 class="home-next-event">
-          Próximo <span>evento</span>
-        </h2><h3 class="home-event-title">
-          Cine-debate com Samir de Oliveira sobre jornalismo socialista revolucionário
-        </h3><div class="home-event-mobile-table"><ul class="home-event-info">
-          <li class="home-event-info-li home-event-info-50">
-            <i class="fa fa-fw fa-lg fa-calendar"></i>23/02
-          </li><li class="home-event-info-li home-event-info-50">
-            <i class="fa fa-fw fa-lg fa-clock-o"></i>14h
-          </li><li class="home-event-info-li">
-            <a class="home-event-location" href="#">
-              <div class="home-event-icon-container">
-                <i class="fa fa-fw fa-lg fa-map-marker"></i>
-              </div>
-              <div class="home-event-location-text">
-                Sede do PSOL
-                <br />
-                <small>(ver no mapa)</small>
-              </div>
+    <?php
+    $events = DoloresCalendar::get(CALENDAR_ID);
+    if (count($events) > 0) {
+      $date_format = "d/m";
+      $time_format = "H\\h";
+      $event = $events[0];
+      $start = $event->start->dateTime;
+      if (empty($start)) {
+        $start = $event->start->date;
+        $date = date_i18n($date_format, strtotime($start));
+        $time = "dia todo";
+      } else {
+        $date = date_i18n($date_format, strtotime($start));
+        $time = date_i18n($time_format, strtotime($start));
+      }
+
+      $maps = "https://maps.google.com/?q=" . $event['location'];
+      $location = preg_replace('/[,.].*/', '', $event['location']);
+      ?>
+      <div class="home-calendar">
+        <div class="wrap">
+          <h2 class="home-next-event">
+            Próximo <span>evento</span>
+          </h2><h3 class="home-event-title">
+            <?php echo $event['summary']; ?>
+          </h3><div class="home-event-mobile-table"><ul class="home-event-info">
+            <li class="home-event-info-li home-event-info-50">
+              <i class="fa fa-fw fa-lg fa-calendar"></i><?php echo $date; ?>
+            </li><li class="home-event-info-li home-event-info-50">
+              <i class="fa fa-fw fa-lg fa-clock-o"></i><?php echo $time; ?>
+            </li><li class="home-event-info-li">
+              <a class="home-event-location" href="<?php echo $maps; ?>">
+                <div class="home-event-icon-container">
+                  <i class="fa fa-fw fa-lg fa-map-marker"></i>
+                </div>
+                <div class="home-event-location-text">
+                  <?php echo $location; ?>
+                  <br />
+                  <small>(ver no mapa)</small>
+                </div>
+              </a>
+            </li>
+          </ul><div class="home-calendar-button-container">
+            <a class="home-calendar-button" href="/agenda/"
+                title="Agenda completa">
+              Agenda completa
             </a>
-          </li>
-        </ul><div class="home-calendar-button-container">
-          <a class="home-calendar-button" href="#" title="Agenda completa">
-            Agenda completa
-          </a>
-        </div></div>
-      </div>
+          </div></div>
+        </div>
+        <?php
+      }
+      ?>
     </div>
   </section>
 

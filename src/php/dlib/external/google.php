@@ -35,10 +35,11 @@ class DoloresGoogle {
   }
 
   public function getAuthenticatedClient() {
-    // You need to generate an access token before using this. To do so, set
-    // Google Auth scope to https://www.googleapis.com/auth/calendar.readonly
-    // in google.js, change authenticate() to log the access token (you can get
-    // it using $this->client->getAccessToken()), and sign in via Google.
+    // You need to generate an access token before using this. To do so, use
+    // Google API PHP client, set client secrets, set access to offline, and
+    // Google Auth scope to https://www.googleapis.com/auth/calendar.readonly.
+    // Then, sign in using your browser and put $client->getAccessToken() in
+    // wp_options table.
     // TODO: Improve this!
     $this->client->setScopes(Google_Service_Calendar::CALENDAR_READONLY);
     $accessToken = get_option('google_access_token');
