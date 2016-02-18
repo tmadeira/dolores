@@ -3,7 +3,7 @@
   box-shadow: 0 0 10px #000;
   color: $purple;
   height: 60px;
-  z-index: 4;
+  position: relative;
   @include breakpoint($break-desktop) {
     height: 90px;
   }
@@ -15,6 +15,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 4;
   }
 }
 
