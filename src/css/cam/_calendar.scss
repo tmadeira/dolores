@@ -1,0 +1,47 @@
+.calendar-events {
+  @extend %default-margin;
+  border-collapse: separate;
+  border-spacing: 5px;
+  display: table;
+  list-style: none !important;
+  margin-left: -5px !important;
+  margin-right: -5px;
+}
+
+.calendar-event {
+  display: table-row;
+  padding: 5px 0;
+}
+
+.event-date {
+  @include border-radius(3px);
+  background: $purple;
+  color: $yellow;
+  display: table-cell;
+  font-size: 0.85em;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 4px 8px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.event-info {
+  @include border-radius(3px);
+  background: #fff;
+  display: table-cell;
+  font-size: 0.7em;
+  padding: 10px;
+  vertical-align: top;
+  div {
+    display: block;
+    margin: 0;
+  }
+}
+
+.event-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
