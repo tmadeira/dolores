@@ -15,6 +15,19 @@
   }
 }
 
+.single-taxonomy {
+  margin-bottom: 15px;
+}
+
+.single-taxonomy > a {
+  @extend %title-font;
+  @include border-radius(3px);
+  background: $purple;
+  color: #fff;
+  font-size: 21px;
+  padding: 8px 8px 2px;
+}
+
 .single-title {
   @extend %title-font;
   font-size: 36px;
@@ -34,6 +47,22 @@
       white-space: nowrap;
     }
   }
+}
+
+.single-author {
+  font-weight: bold;
+}
+
+.author-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 32px;
 }
 
 .single-date {
