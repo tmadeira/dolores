@@ -75,7 +75,7 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
               $url = get_author_posts_url(get_the_author_meta('ID'));
               ?>
               <a href="<?php echo $url; ?>">
-                <span class="grid-ideia-author-picture" <?php echo $style; ?>>
+                <span class="author-picture" <?php echo $style; ?>>
                 </span>
                 <?php the_author(); ?>
               </a>

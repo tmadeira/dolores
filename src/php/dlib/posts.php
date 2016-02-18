@@ -160,7 +160,7 @@ HTML;
 <li class="ideia-comment" id="comment-{$comment->comment_ID}">
   <div class="ideia-comment-table">
     <a href="{$url}" class="ideia-comment-picture">
-      <span class="grid-ideia-author-picture" {$style}>
+      <span class="author-picture" {$style}>
       </span>
     </a>
     <div class="ideia-comment-block">
