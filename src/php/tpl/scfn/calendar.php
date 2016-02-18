@@ -1,6 +1,5 @@
 <?php
-require_once(DOLORES_PATH . '/vendor/autoload.php');
-require_once(DOLORES_PATH . '/dlib/external/google.php');
+require_once(DOLORES_PATH . '/dlib/calendar.php');
 
 the_post();
 $base = get_permalink();
@@ -22,32 +21,8 @@ if ($_GET['ajax']) {
   die();
 }
 
-$calendar_cache = get_option('dolores_calendar_cache');
-
-if (!is_array($calendar_cache) ||
-    $calendar_cache['time'] < time() - 1800 ||
-    (is_user_logged_in() && current_user_can('manage_options'))) {
-  $google = new DoloresGoogle();
-  $client = $google->getAuthenticatedClient();
-
-  $service = new Google_Service_Calendar($client);
-  $calendarId = 'ss06he4nh7ulaoa1i26mmkd2fo@group.calendar.google.com';
-  $optParams = array(
-    'maxResults' => 100,
-    'orderBy' => 'startTime',
-    'singleEvents' => TRUE,
-    'timeMin' => date('c'),
-  );
-
-  $results = $service->events->listEvents($calendarId, $optParams);
-  $calendar_cache = array(
-    'time' => time(),
-    'events' => $results->getItems()
-  );
-  update_option('dolores_calendar_cache', $calendar_cache, 'no');
-}
-
-$events = $calendar_cache['events'];
+$calendarId = 'ss06he4nh7ulaoa1i26mmkd2fo@group.calendar.google.com';
+$events = DoloresCalendar::get($calendarId);
 
 get_header();
 ?>
