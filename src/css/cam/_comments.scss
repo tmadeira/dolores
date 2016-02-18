@@ -1,0 +1,136 @@
+.ideia-comments-header {
+  background: $red;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 6px;
+  @include breakpoint($break-tablet) {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.ideia-comments-header .social-buttons {
+  display: inline-block;
+  font-weight: normal;
+  float: right;
+  .social-button {
+    font-size: 12px;
+    @include breakpoint($break-tablet) {
+      font-size: 14px;
+    }
+  }
+}
+
+.ideia-action {
+  margin-right: 4px;
+  .fa {
+    @include opacity(0.5);
+  }
+  &.voted, &:hover {
+    .fa {
+      @include opacity(1);
+    }
+  }
+}
+
+#comments {
+  background: #F0E8DB;
+}
+
+.ideia-comments-list {
+  font-size: 14px;
+  padding: 0 10px;
+  .children {
+    border-left: solid 1px $red;
+    margin-left: 40px;
+    padding-left: 10px;
+  }
+}
+
+.ideia-comment-author {
+  font-weight: 700;
+  padding-right: 6px;
+  text-transform: uppercase;
+}
+
+.ideia-comment {
+  border-top: solid 1px $red;
+  margin: 10px 0;
+  padding: 10px 0;
+  &:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+.ideia-comment-table {
+  display: table;
+  width: 100%;
+}
+
+.ideia-comment-picture {
+  display: table-cell;
+  width: 40px;
+}
+
+.ideia-comment-block {
+  display: table-cell;
+  padding-top: 5px;
+}
+
+.ideia-comment-meta {
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.ideia-comment-action {
+  margin-right: 8px;
+  .fa {
+    @include opacity(0.5);
+    color: $yellow;
+  }
+  &.voted, .replying &.ideia-comment-reply, &:hover {
+    .fa {
+      @include opacity(1);
+    }
+  }
+}
+
+.comment-reply-title {
+  display: none;
+}
+
+.ideia-comment-form {
+  display: table;
+  position: relative;
+  width: 100%;
+}
+
+.post-comment-spinner {
+  color: $red;
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 9px;
+  .ideia-comment-form.posting & {
+    display: block;
+  }
+}
+
+.ideia-comment-picture-container {
+  display: table-cell;
+  vertical-align: top;
+  width: 37px;
+}
+
+.comment-textarea {
+  @extend %text-font;
+  background: #f9f6f1;
+  border: 0;
+  display: table-cell;
+  font-size: 14px;
+  padding: 6px 8px;
+  vertical-align: top;
+  width: 100%;
+}
