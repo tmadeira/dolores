@@ -1,0 +1,130 @@
+.grid-ideias-list {
+  font-size: 0;
+  line-height: 0;
+}
+
+.grid-ideia {
+  @include border-radius(10px);
+  @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.3em;
+  padding: 15px 15px 75px 15px;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    height: 320px;
+    margin: 0 0 30px 2%;
+    width: 32%;
+
+    &.with-tax {
+      height: 560px;
+    }
+
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+.grid-ideia-title {
+  font-size: 24px;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  @include breakpoint($break-tablet) {
+    font-size: 28px;
+    max-height: 4.8em;
+    overflow: hidden;
+  }
+}
+
+.grid-ideia-tags {
+  font-size: 0;
+  line-height: 0;
+  margin: 10px 0;
+}
+
+.grid-ideia-tag {
+  @include border-radius(3px);
+  background: $yellow;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1em;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  &::before {
+    content: "#";
+  }
+}
+
+.grid-ideia-author {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.author-picture {
+  @include border-radius(16px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.grid-ideia-interact {
+  bottom: 45px;
+  position: absolute;
+  right: 15px;
+  text-align: right;
+}
+
+.grid-ideia-action {
+  margin-left: 7px;
+  .fa {
+    @include opacity(0.5);
+    color: $yellow;
+  }
+  &.voted, &:hover {
+    .fa {
+      @include opacity(1);
+    }
+  }
+}
+
+.grid-ideia-button {
+  @include border-corner-radius(bottom, left, 10px);
+  @include border-corner-radius(bottom, right, 10px);
+  background: $yellow;
+  border: 0;
+  bottom: 0;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  left: 0;
+  padding: 8px 15px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.grid-ideias-pagination {
+  font-size: 16px;
+  margin: 10px 0 40px;
+  text-align: center;
+}
+
+.pagination-spinner {
+  line-height: 1.8em;
+}
