@@ -41,6 +41,52 @@ get_header();
   </ul>
 </main>
 
+<section class="temas-form">
+  <div class="wrap default-wrap">
+    <h2 class="temas-form-title">
+      Quer discutir outro tema?
+    </h2>
+
+    <p class="temas-form-description">
+      Tem propostas para algum tema que não esteja na lista acima? Preencha o
+      formulário abaixo.
+    </p>
+
+    <form class="temas-form-form" id="form-temas">
+      <div class="tema-form-item">
+        <label class="tema-form-label" for="tema-form-title">
+          Título
+        </label>
+        <input
+            type="text"
+            name="subject"
+            class="tema-form-input"
+            id="tema-form-title"
+            placeholder="Título"
+            />
+      </div>
+      <div class="tema-form-item">
+        <label class="tema-form-label" for="tema-form-content">
+          Escreva sua proposta
+        </label>
+        <textarea
+            class="tema-form-textarea"
+            name="message"
+            id="tema-form-content"
+            placeholder="Proposta"
+            ></textarea>
+      </div>
+      <div class="tema-form-item" style="margin-top: 5px; text-align: center;">
+        <button class="tema-form-button" type="submit">
+          <span class="if-not-sent">Enviar</span>
+          <i class="if-sending fa fa-refresh fa-spin"></i>
+        </button>
+      </div>
+      <div class="temas-form-description tema-form-response"></div>
+    </form>
+  </div>
+</section>
+
 <?php
 get_footer();
 ?>

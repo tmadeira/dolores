@@ -1,0 +1,42 @@
+.tema-form-item {
+  line-height: 0;
+  padding: 5px 0;
+}
+
+.tema-form-label {
+  @extend %text-font;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tema-form-input,
+.tema-form-textarea,
+.tema-form-button,
+.tema-form-multiselect .multi-select-selected,
+.bairros-form-location > input {
+  font-size: 13px;
+  @include breakpoint($break-tablet) {
+    font-size: 16px;
+  }
+}
+
+.tema-form-input,
+.tema-form-textarea,
+.tema-form-multiselect .multi-select-selected,
+.bairros-form-location > input {
+  @extend %text-font;
+  background: #fff;
+  border: 0;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.tema-form-textarea {
+  height: 140px;
+}
+
+.tema-form-button {
+  @include dashed-transparent-button(24px, #fff);
+}

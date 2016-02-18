@@ -70,6 +70,16 @@ small {
   padding: $font-size/3 $font-size/3 0;
 }
 
+@mixin dashed-transparent-button($font-size, $fg-color) {
+  @include title-font;
+  background: none;
+  border: 1px dashed $fg-color;
+  color: $fg-color;
+  display: inline-block;
+  font-size: $font-size;
+  padding: $font-size/3 $font-size/3 0;
+}
+
 @mixin dashed-button($font-size, $bg-color, $fg-color) {
   @include title-font;
   background: none;
@@ -108,5 +118,19 @@ small {
   margin: 15px 0;
   @include breakpoint($break-desktop) {
     margin: 25px 0;
+  }
+}
+
+.if-not-sent {
+  display: inline-block;
+  button:disabled & {
+    display: none;
+  }
+}
+
+.if-sending {
+  display: none;
+  button:disabled & {
+    display: inline-block;
   }
 }

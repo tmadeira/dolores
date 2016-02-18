@@ -110,3 +110,35 @@
     vertical-align: middle;
   }
 }
+
+.temas-form {
+  background: $red;
+  color: #fff;
+}
+
+.temas-form-title {
+  @extend %default-margin;
+  @extend %title-font;
+  font-size: 32px;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    font-size: 44px;
+  }
+}
+
+.temas-form-description {
+  @extend %default-margin;
+  @extend .temas-description;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.temas-form-form {
+  @extend %default-margin;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  text-align: left;
+}
