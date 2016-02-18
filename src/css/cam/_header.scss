@@ -273,7 +273,7 @@
     text-align: left;
     @include breakpoint($break-desktop) {
       position: absolute;
-      li {
+      & > li {
         display: block;
         padding: 0;
         & > a {
@@ -286,5 +286,67 @@
         }
       }
     }
+  }
+}
+
+.user-logged-menu {
+  @include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fff;
+  padding: 10px;
+  position: absolute;
+  right: 3px;
+  top: 42px;
+  width: 300px;
+
+  &::after {
+    color: #fff;
+    content: "▲";
+    display: block;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: -14px;
+  }
+}
+
+.user-logged-menu-picture {
+  $sz: 100px;
+  @include border-radius($sz/2);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: $sz;
+  vertical-align: middle;
+  width: $sz;
+}
+
+.user-logged-menu-info {
+  display: inline-block;
+  margin-left: 15px;
+  max-width: 165px;
+  vertical-align: middle;
+}
+
+.user-logged-menu-name {
+  @extend %title-font;
+  @include border-radius(3px);
+  background: $purple;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0;
+  margin-bottom: 5px;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 8px 8px 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-logged-menu-ul  > li > a {
+  font-size: 14px;
+  text-transform: uppercase;
+  &:hover {
+    color: $red;
   }
 }
