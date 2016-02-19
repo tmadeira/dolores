@@ -104,14 +104,14 @@ if ($term->parent == 0) {
           </p>
           <p class="tema-form-item">
             <label class="tema-form-label" for="tema-form-content">
-              Escreva sua ideia
+              Escreva sua proposta
             </label>
             <textarea
                 class="tema-form-textarea"
                 name="text"
                 id="tema-form-content"
                 maxlength="600"
-                placeholder="Explique com mais detalhes a sua ideia (max. 600 caracteres)"
+                placeholder="Explique com mais detalhes a sua proposta (max. 600 caracteres)"
                 ></textarea>
           </p>
           <?php
