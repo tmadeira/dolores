@@ -2,6 +2,7 @@
 require_once(DOLORES_PATH . '/dlib/assets.php');
 require_once(DOLORES_PATH . '/dlib/auth_cache.php');
 require_once(DOLORES_PATH . '/dlib/locations.php');
+require_once(DOLORES_PATH . '/dlib/mailer.php');
 require_once(DOLORES_PATH . '/dlib/external/facebook.php');
 require_once(DOLORES_PATH . '/dlib/external/google.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
@@ -124,19 +125,8 @@ class DoloresUsers {
 
   public static function send_welcome_email($user_id) {
     $user = get_user_by('id', $user_id);
-
-    $to = $user->user_email;
-
-    $subject = 'Seguimos na construção de uma cidade nossa!';
-
-    $tpl_path = 'templates/' . DOLORES_TEMPLATE . '/welcome_email.html';
-    $template = DoloresAssets::get_static_path($tpl_path);
-    $message = file_get_contents($template);
-    $message = str_replace('{NAME}', $user->display_name, $message);
-
-    $headers = "Content-type: text/html; charset=utf-8";
-
-    return wp_mail($to, $subject, $message, $headers);
+    $args = array('NAME' => $user->display_name);
+    return dolores_mail($user->user_email, 'welcome_email.html', $args);
   }
 
   public static function generate_login($name) {

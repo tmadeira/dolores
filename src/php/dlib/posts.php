@@ -1,5 +1,6 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/interact.php');
+require_once(DOLORES_PATH . '/dlib/mailer.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
 class DoloresPosts {
@@ -78,6 +79,13 @@ class DoloresPosts {
     }
 
     wp_set_object_terms($inserted, $terms, $taxonomy);
+    $permalink = get_permalink($inserted);
+
+    $args = array(
+      'NAME' => $user->display_name,
+      'LINK' => $permalink
+    );
+    dolores_mail($user->user_email, 'new_post.html', $args);
 
     return array('url' => get_permalink($inserted));
   }
@@ -125,6 +133,14 @@ class DoloresPosts {
     if (!$inserted) {
       return array('error' => 'Erro ao cadastrar comentário.');
     }
+
+    $post_user = get_user_by('id', get_post_field('post_author', $post_id));
+    $args = array(
+      'NAME' => $post_user->display_name,
+      'IDEIA' => get_post_field('post_title', $post_id),
+      'LINK' => get_permalink($post_id)
+    );
+    dolores_mail($post_user->user_email, 'new_comment.html', $args);
 
     return array("html" => static::get_comment_html(get_comment($inserted)));
   }
