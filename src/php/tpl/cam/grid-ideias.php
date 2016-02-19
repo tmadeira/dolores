@@ -102,7 +102,7 @@ function dolores_grid_ideias($query = null) {
     ?>
     <section class="wrap default-wrap">
       <div class="entry">
-        <p>Nenhum post encontrado.</p>
+        <p>Ainda não há nenhuma proposta cadastrada. Escreva a primeira!</p>
       </div>
     </section>
     <?php

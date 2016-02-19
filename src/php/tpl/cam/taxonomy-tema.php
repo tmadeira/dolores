@@ -8,7 +8,7 @@ $more = get_term_meta($term->term_id, 'more', true);
 get_header();
 ?>
 
-<main class="tema">
+<main class="tema-header">
   <div class="wrap default-wrap">
     <?php
     if ($video) {
@@ -37,14 +37,16 @@ get_header();
 
     <div class="tema-info">
       <h2 class="tema-name">
-        <?php
-        if ($term->parent != 0) {
-          echo "#";
-        }
-        single_cat_title();
-        ?>
+        <span>
+          <?php
+          if ($term->parent != 0) {
+            echo "#";
+          }
+          single_cat_title();
+          ?>
+        </span>
       </h2>
-      <p><?php echo category_description(); ?></p>
+      <?php echo category_description(); ?>
       <?php if ($more) { ?>
         <a class="tema-link-more" href="<?php echo $more; ?>">
           Ver diagnóstico

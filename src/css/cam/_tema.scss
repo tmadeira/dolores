@@ -1,3 +1,68 @@
+.tema-header {
+  & > .wrap {
+    @include breakpoint($break-tablet) {
+      display: table;
+    }
+  }
+}
+
+.tema-video {
+  iframe {
+    max-height: 250px;
+    max-width: 100%;
+  }
+
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    vertical-align: middle;
+    width: 500px;
+    iframe {
+      max-height: 360px;
+    }
+  }
+}
+
+.tema-video-image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 100%;
+  @include breakpoint($break-tablet) {
+    height: 360px;
+  }
+}
+
+.tema-info {
+  font-size: 16px;
+  line-height: 1.2em;
+  & > p {
+    @extend %default-margin;
+  }
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding-left: 20px;
+    vertical-align: middle;
+  }
+}
+
+.tema-name {
+  @extend %default-margin;
+  & > span {
+    @extend %title-font;
+    @include border-radius(3px);
+    background: $purple;
+    color: #fff;
+    display: inline-block;
+    font-size: 26px;
+    padding: 7px 10px 2px 10px;
+    @include breakpoint($break-tablet) {
+      font-size: 32px;
+      padding: 10px 10px 0 10px;
+    }
+  }
+}
+
 .tema-form {
   background: $red;
   color: #fff;
