@@ -154,7 +154,7 @@ if (!$paged || $paged == 1) {
           title="Seja um voluntário">
         <span>Seja um voluntário</span>
       </a>
-      <a class="home-banner home-contribuicoes" href="#"
+      <a class="home-banner home-contribuicoes" href="/c/contribuicoes/"
           title="Contribuições para o debate">
         <span>Contribuições para o debate</span>
       </a>

@@ -2,6 +2,7 @@
   & > .wrap {
     @include breakpoint($break-tablet) {
       display: table;
+      width: 100%;
     }
   }
 }
