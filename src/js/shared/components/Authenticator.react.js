@@ -5,6 +5,7 @@ var React = require("react");
 
 var API = require("../api");
 
+var Lightbox = require("./Lightbox.react");
 var SignupForm = require("./SignupForm.react");
 var ProfileForm = require("./ProfileForm.react");
 
@@ -155,12 +156,6 @@ var Authenticator = React.createClass({
     this.setState(this.getInitialState());
   },
 
-  containerClick: function(e) {
-    if (e.target.className === "lightbox-cell") {
-      this.hide();
-    }
-  },
-
   render: function() {
     if (!this.state.show) {
       return null;
@@ -245,16 +240,9 @@ var Authenticator = React.createClass({
     }
 
     return (
-      <div className="lightbox-overlay">
-        <div className="lightbox-table">
-          <div className="lightbox-cell" onClick={this.containerClick}>
-            <div className="lightbox">
-              <button className="lightbox-close" onClick={this.hide}>X</button>
-              {lightboxContent}
-            </div>
-          </div>
-        </div>
-      </div>
+      <Lightbox close={this.hide}>
+        {lightboxContent}
+      </Lightbox>
     );
   }
 });
