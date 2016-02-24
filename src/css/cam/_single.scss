@@ -7,7 +7,7 @@
     width: 65%;
   }
 
-  .sinle-sidebar {
+  .single-sidebar {
     display: inline-block;
     font-size: 16px;
     vertical-align: top;
@@ -153,5 +153,22 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.sidebar-section {
+  @extend %default-margin;
+  margin-top: 0;
+}
+
+.sidebar-title {
+  @extend %title-font;
+  font-size: 24px;
+  margin-bottom: 10px;
+  & > span {
+    @include border-radius(3px);
+    color: #fff;
+    display: inline-block;
+    padding: 8px 8px 0;
   }
 }
