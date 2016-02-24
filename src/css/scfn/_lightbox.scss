@@ -3,3 +3,17 @@
 .lightbox-close {
   color: $orange;
 }
+
+.lightbox-content {
+  h2 {
+    @extend %title-font;
+    font-size: 24px;
+    letter-spacing: 0;
+    & > span {
+      background: $orange;
+      color: #fff;
+      display: inline-block;
+      padding: 5px 10px;
+    }
+  }
+}

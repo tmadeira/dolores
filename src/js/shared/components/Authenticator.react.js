@@ -181,7 +181,7 @@ var Authenticator = React.createClass({
         </div>
       );
     } else if (this.state.share) {
-      var shareUrl = document.location.protocol + "//" + location.host;
+      var shareUrl = location.protocol + "//" + location.host;
       var fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + shareUrl;
       var ttUrl = "https://twitter.com/share?url=" + shareUrl;
       lightboxContent = (

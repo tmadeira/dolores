@@ -84,7 +84,7 @@ var setupTemaForm = function() {
           button.prop("disabled", false);
           alert("Erro ao publicar: " + response.error);
         } else if ("url" in response) {
-          location.href = response.url;
+          location.href = response.url + "#share";
         }
       }).fail(function(response) {
         button.prop("disabled", false);
