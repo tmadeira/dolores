@@ -8,3 +8,17 @@
   color: $purple;
   font-weight: bold;
 }
+
+.lightbox-content {
+  h2 {
+    @extend %title-font;
+    font-size: 30px;
+    & > span {
+      @include border-radius(3px);
+      background: $purple;
+      color: #fff;
+      display: inline-block;
+      padding: 10px 10px 0;
+    }
+  }
+}

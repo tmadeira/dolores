@@ -31,7 +31,7 @@ var Share = React.createClass({
           <span>Proposta enviada!</span>
         </h2>
         <p className="signin-text">
-          Que tal compartilhar sua ideia com seus amigos?
+          {window.doloresConfig.strings.sharePost}
         </p>
         <p className="signin-text">
           <a className="social-button share-facebook"

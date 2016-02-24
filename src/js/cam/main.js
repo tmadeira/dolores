@@ -18,9 +18,11 @@ var pagination = require("../shared/pagination");
 var twitter = require("../shared/twitter");
 
 var Authenticator = require("../shared/components/Authenticator.react");
+var Share = require("../shared/components/Share.react");
 
 $(function() {
   React.render(<Authenticator />, $("#authenticator")[0]);
+  React.render(<Share />, $("#share-container")[0]);
 
   $(window).resize(menu.onResize);
   $(window).trigger("resize");

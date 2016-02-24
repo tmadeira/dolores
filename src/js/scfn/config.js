@@ -15,6 +15,7 @@ module.exports = {
   gmapsKey: "AIzaSyBfx8GXbX53YasBdY1rL36OcK98ykwckes",
 
   strings: {
-    authenticatorMessage: "Conecte-se e dê suas ideias para a cidade:"
+    authenticatorMessage: "Conecte-se e dê suas ideias para a cidade:",
+    sharePost: "Que tal compartilhar a ideia com seus amigos?"
   }
 };

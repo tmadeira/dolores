@@ -16,6 +16,7 @@ module.exports = {
 
   strings: {
     authenticatorMessage: "Conecta e participa com tuas propostas para a " +
-                          "cidade:"
+                          "cidade:",
+    sharePost: "Que tal compartilhar a ideia com teus amigos?"
   }
 };
