@@ -7,6 +7,10 @@ if (!defined('DOLORES_TEMPLATE')) {
 define('DOLORES_PATH', TEMPLATEPATH);
 define('DOLORES_TEMPLATE_PATH', DOLORES_PATH . '/tpl/' . DOLORES_TEMPLATE);
 
+if (!defined('DOLORES_ACTIVE_LOCATION_THRESHOLD')) {
+  define('DOLORES_ACTIVE_LOCATION_THRESHOLD', 0);
+}
+
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_admin_bar.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_embed_js.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/disable_emojis.php');

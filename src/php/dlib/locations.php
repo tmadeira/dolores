@@ -1,8 +1,6 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/assets.php');
 
-define('THRESHOLD_TO_ACTIVATE_LOCATION', 20);
-
 class DoloresLocations {
   private static $instance;
   private $locations;
@@ -48,8 +46,11 @@ class DoloresLocations {
   public function setup_locations() {
     $data_files = array('bairros.csv', 'favelas.csv', 'municipios.csv');
     foreach ($data_files as $file) {
-      $path = 'data/' . DOLORES_TEMPLATE . '/locations' . $file;
-      $this->insert_csv(DoloresAssets::get_static_path($file));
+      $path = 'data/' . DOLORES_TEMPLATE . '/locations/' . $file;
+      $asset = DoloresAssets::get_static_path($path);
+      if (is_file($asset)) {
+        $this->insert_csv($asset);
+      }
     }
   }
 
@@ -68,6 +69,9 @@ class DoloresLocations {
     }
     update_term_meta($term['term_id'], 'lat', $lat);
     update_term_meta($term['term_id'], 'lng', $lng);
+    if (DOLORES_ACTIVE_LOCATION_THRESHOLD == 0) {
+      update_term_meta($term['term_id'], 'active', 1);
+    }
     return true;
   }
 
@@ -98,7 +102,7 @@ SQL;
       }
       $location = $this->locations[$location];
     }
-    $missing = THRESHOLD_TO_ACTIVATE_LOCATION - $this->get_user_count($location);
+    $missing = DOLORES_ACTIVE_LOCATION_THRESHOLD - $this->get_user_count($location);
     if ($missing <= 0) {
       update_term_meta($location->term_id, 'active', 1);
       $missing = 1;
