@@ -53,12 +53,12 @@
     overflow: hidden;
     padding: 10px 32px 10px 36px;
     text-overflow: ellipsis;
-    text-transform: uppercase;
     white-space: nowrap;
     width: 100%;
 
     @include input-placeholder {
       color: $yellow;
+      text-transform: uppercase;
     }
 
     &[disabled] {
