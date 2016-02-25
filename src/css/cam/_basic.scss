@@ -39,6 +39,10 @@ $yellow: #E1A80C;
   text-transform: uppercase;
 }
 
+input, button {
+  @extend %text-font;
+}
+
 button {
   cursor: pointer;
 }

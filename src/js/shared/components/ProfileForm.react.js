@@ -233,7 +233,7 @@ var ProfileForm = React.createClass({
   renderButton: function() {
     return (
       <button className="signup-button" type="submit">
-        Enviar
+        <span>Enviar</span>
       </button>
     );
   },

@@ -216,7 +216,7 @@ var SignupForm = React.createClass({
           className="signup-button"
           type="submit"
           >
-        Cadastrar
+        <span>Cadastrar</span>
       </button>
     );
   }

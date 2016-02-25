@@ -1,0 +1,191 @@
+.signup-logo {
+  background-image: image-url('cam/logo-lightbox.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: none; /* Do not display on mobile because of the keyboard */
+  height: 180px;
+  margin: 20px 0;
+
+  @include breakpoint($break-desktop) {
+    display: block;
+  }
+}
+
+.signup-form {
+  margin: 10px 0;
+}
+
+.signup-input, .signup-button {
+  display: block;
+  margin: 3px 0;
+}
+
+.signup-input {
+  position: relative;
+
+  .icon {
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+  }
+
+  .privacy {
+    color: #555;
+    margin-top: -8px;
+    position: absolute;
+    right : 5px;
+    top: 50%;
+  }
+
+  &.empty {
+    color: $yellow;
+  }
+
+  & > input {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border: none;
+    color: #000;
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 32px 10px 36px;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 100%;
+
+    @include input-placeholder {
+      color: $yellow;
+    }
+
+    &[disabled] {
+      background-color: $gray;
+      border-color: $gray;
+    }
+
+    @include breakpoint($break-desktop) {
+      font-size: 16px;
+    }
+  }
+
+  .multi-select-done {
+    background: $red;
+    border: 0;
+    bottom: 5px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 26px;
+  }
+
+  .validation-error {
+    @include border-radius(5px);
+    @include box-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+    background: $red;
+    bottom: 35px;
+    color: #fff;
+    font-size: 12px;
+    left: 3px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 2;
+
+    @include breakpoint($break-tablet) {
+      bottom: 37px;
+    }
+
+    @include breakpoint($break-desktop) {
+      font-size: 14px;
+      bottom: 39px;
+    }
+
+    &::after {
+      border-top: 5px solid $red;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      bottom: -5px;
+      content: "";
+      height: 0;
+      left: 10px;
+      position: absolute;
+      width: 0;
+    }
+  }
+
+  &.focused > .multi-select-selected {
+    padding-right: 38px;
+  }
+
+  .suggestions, .multi-select-options {
+    @include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    background: #fff;
+    color: #000;
+    display: none;
+    font-size: 14px;
+    overflow-y: auto;
+    max-height: 120px;
+    position: absolute;
+    top: 37px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    .check {
+      margin-right: 2px;
+    }
+
+    &:not(.multi-select-options) > li {
+      cursor: pointer;
+      padding: 5px;
+      &.selected, &:hover {
+        background: $gray;
+      }
+    }
+
+    &.multi-select-options > li {
+      @include opacity(0.6);
+      cursor: pointer;
+      padding: 5px;
+
+      &:hover {
+        @include opacity(1);
+      }
+    }
+
+    @include breakpoint($break-tablet) {
+      top: 39px;
+    }
+
+    @include breakpoint($break-desktop) {
+      font-size: 16px;
+      top: 41px;
+    }
+  }
+
+  &.focused .suggestions, &.focused .multi-select-options {
+    display: block;
+  }
+}
+
+.signup-button {
+  @include dashed-button(24px, $purple, #fff);
+  margin-top: 10px;
+  width: 100%;
+  & > span {
+    width: 100%;
+  }
+}
+
+@include breakpoint($break-desktop) {
+  .signup-input, .signup-button {
+    & > input {
+      font-size: 14px;
+    }
+  }
+}
