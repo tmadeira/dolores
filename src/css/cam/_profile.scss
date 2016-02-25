@@ -1,0 +1,97 @@
+main.profile {
+  background: $red;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+
+  @include breakpoint($break-tablet) {
+    padding: 30px 0;
+    text-align: inherit;
+  }
+
+  & > .wrap {
+    display: table;
+    width: 100%;
+  }
+}
+
+.profile-picture {
+  $sz: 180px;
+  background-position: center center;
+  background-size: cover;
+  border-radius: $sz/2;
+  height: $sz;
+  margin: 0 auto;
+  width: $sz;
+
+  @include breakpoint($break-tablet) {
+    $sz: 250px;
+    border-radius: $sz/2;
+    display: table-cell;
+    height: $sz;
+    vertical-align: middle;
+    width: $sz;
+  }
+}
+
+.profile-info {
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding-left: 40px;
+    vertical-align: middle;
+  }
+}
+
+.profile-name {
+  @extend %title-font;
+  @include border-radius(3px);
+  background: #fff;
+  color: $red;
+  display: inline-block;
+  font-size: 24px;
+  letter-spacing: 0;
+  margin-top: -15px;
+  padding: 10px 10px 2px;
+
+  @include breakpoint($break-tablet) {
+    font-size: 30px;
+    padding: 12px 12px 4px;
+  }
+}
+
+.profile-stats {
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+.profile-data-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-transform: uppercase;
+  & > span {
+    border-bottom: dotted 2px #fff;
+    display: inline-block;
+  }
+}
+
+.profile-data {
+  strong {
+    font-weight: bold;
+    margin-right: 15px;
+    text-transform: uppercase;
+  }
+}
+
+.author-grid-title {
+  @extend %title-font;
+  color: $yellow;
+  font-size: 27px;
+  margin-top: 30px;
+  padding: 0 10px;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    font-size: 33px;
+    margin-top: 45px;
+  }
+}
