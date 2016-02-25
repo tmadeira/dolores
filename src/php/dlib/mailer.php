@@ -2,6 +2,9 @@
 function dolores_mail($to, $template, $args) {
   $tpl_path = 'templates/' . DOLORES_TEMPLATE . '/' . $template;
   $template = DoloresAssets::get_static_path($tpl_path);
+  if (!file_exists($template)) {
+    return 0;
+  }
 
   $message = file_get_contents($template);
   if ($message === FALSE) {
