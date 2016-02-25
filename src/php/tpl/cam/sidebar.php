@@ -6,7 +6,7 @@
     require(DOLORES_TEMPLATE_PATH . '/sidebar-related-ideias.php');
   }
 
-  require(DOLORES_TEMPLATE_PATH . '/sidebar-signup.php');
+  require(DOLORES_TEMPLATE_PATH . '/sidebar-temas.php');
   require(DOLORES_TEMPLATE_PATH . '/sidebar-subscribe.php');
   require(DOLORES_TEMPLATE_PATH . '/sidebar-facebook.php');
   ?>

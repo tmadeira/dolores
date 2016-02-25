@@ -78,19 +78,21 @@
     height: 140px;
     margin-left: 3%;
     width: 48.5%;
-    @include breakpoint($break-tablet) {
-      height: 200px;
-      margin-left: 0.6666% !important;
-      width: 24.5%;
-      &:first-child {
-        margin-left: 0 !important;
+    .home & {
+      @include breakpoint($break-tablet) {
+        height: 200px;
+        margin-left: 0.6666% !important;
+        width: 24.5%;
+        &:first-child {
+          margin-left: 0 !important;
+        }
+        &:nth-child(-n+2) {
+          margin-bottom: 0 !important;
+        }
       }
-      &:nth-child(-n+2) {
-        margin-bottom: 0 !important;
+      @include breakpoint($break-desktop) {
+        height: 270px;
       }
-    }
-    @include breakpoint($break-desktop) {
-      height: 270px;
     }
     &:nth-child(-n+2) {
       margin-bottom: 10px;

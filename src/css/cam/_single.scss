@@ -195,3 +195,14 @@
   color: $dark-gray;
   font-size: 0.85em;
 }
+
+.sidebar-temas-more {
+  color: $purple;
+  display: block;
+  font-size: 0.85em;
+  margin-top: 10px;
+  text-transform: uppercase;
+  &:hover {
+    @include opacity(0.8);
+  }
+}
