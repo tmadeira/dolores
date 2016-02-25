@@ -16,6 +16,7 @@ module.exports = {
 
   strings: {
     authenticatorMessage: "Conecte-se e dê suas ideias para a cidade:",
+    locationPlaceholder: "Bairro (ou município, caso não seja capital)",
     sharePost: "Que tal compartilhar a ideia com seus amigos?"
   }
 };
