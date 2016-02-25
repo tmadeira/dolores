@@ -58,6 +58,32 @@ var setupTemaForm = function() {
     renderTags();
   }
 
+  $("#form-subscribe").submit(function() {
+    var email = $(this).find("input[name='email']");
+    var msg = $(this).find(".subscribe-msg");
+    var button = $(this).find(".subscribe-button");
+    button.prop("disabled", true);
+
+    var request = {
+      email: email.val()
+    };
+    API.route("subscribe").post({data: request}).done(function() {
+      email.val("");
+      msg.html("E-mail cadastrado com sucesso!");
+      button.prop("disabled", false);
+    }).fail(function(response) {
+      console.log("fail", response);
+      if ("error" in response.responseJSON) {
+        msg.html(response.responseJSON.error);
+      } else {
+        msg.html("Erro inesperado. Tente novamente mais tarde.");
+      }
+      button.prop("disabled", false);
+    });
+
+    return false;
+  });
+
   $("#form-tema").submit(function() {
     var button = $(this).find(".tema-form-button");
 

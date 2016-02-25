@@ -4,6 +4,7 @@ require_once(DOLORES_PATH . '/dlib/api/DoloresContactAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresPostAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresSigninAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresSignupAPI.class.php');
+require_once(DOLORES_PATH . '/dlib/api/DoloresSubscribeAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresSuggestAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresUserHeaderAPI.class.php');
 require_once(DOLORES_PATH . '/dlib/api/DoloresUserInfoAPI.class.php');
@@ -16,6 +17,7 @@ $DOLORES_ROUTES = Array(
   'post' => 'DoloresPostAPI',
   'signin' => 'DoloresSigninAPI',
   'signup' => 'DoloresSignupAPI',
+  'subscribe' => 'DoloresSubscribeAPI',
   'suggest' => 'DoloresSuggestAPI',
   'userheader' => 'DoloresUserHeaderAPI',
   'userinfo' => 'DoloresUserInfoAPI',
