@@ -172,3 +172,26 @@
     padding: 8px 8px 0;
   }
 }
+
+.subscribe-input {
+  background: #fff;
+  border: solid 1px $gray;
+  display: block;
+  margin-bottom: 5px;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+.subscribe-button {
+  background: $yellow;
+  border: solid 1px $yellow;
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.subscribe-msg {
+  color: $dark-gray;
+  font-size: 0.85em;
+}
