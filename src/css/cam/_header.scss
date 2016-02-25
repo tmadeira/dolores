@@ -196,7 +196,7 @@
     height: 34px;
     width: 170px;
     .home & {
-      opacity: 0.8;
+      @include opacity(0.8);
     }
   }
 }
