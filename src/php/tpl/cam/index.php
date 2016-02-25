@@ -9,8 +9,11 @@ get_header();
 if (!$paged || $paged == 1) {
   ?>
   <section class="site-presentation explanation">
-    <div clsas="wrap explanation-wrap">
-      <!-- TODO -->
+    <div class="wrap explanation-wrap">
+      <p style="font-size: 36px; text-align: center; padding: 10px;">
+        Aqui vai o vídeo de apresentação
+        <!-- TODO -->
+      </p>
     </div>
   </section>
 
@@ -163,10 +166,9 @@ if (!$paged || $paged == 1) {
 
   <hr class="home-sep" />
 
-  <?php dolores_grid(); ?>
-
   <?php
 }
-?>
 
-<?php get_footer(); ?>
+dolores_grid();
+
+get_footer();
