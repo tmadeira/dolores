@@ -48,9 +48,9 @@ get_header();
       </h2>
       <?php echo category_description(); ?>
       <?php if ($more) { ?>
-        <a class="tema-link-more" href="<?php echo $more; ?>">
-          Ver diagnóstico
-        </a>
+        <p><a class="tema-link-more" href="<?php echo $more; ?>">
+          <span>Ver diagnóstico</span>
+        </a></p>
       <?php } ?>
     </div>
   </div>

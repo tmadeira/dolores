@@ -47,6 +47,10 @@
   }
 }
 
+.tema-link-more {
+  @include dashed-button(21px, $purple, #fff);
+}
+
 .tema-name {
   @extend %default-margin;
   & > span {
