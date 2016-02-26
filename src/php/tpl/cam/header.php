@@ -24,6 +24,10 @@ if (defined('GOOGLE_CLIENT_ID')) {
 <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
+$favicon = DoloresAssets::get_image_uri('cam/favicon-192.png');
+?>
+<link rel="icon" sizes="192x192" href="<?php echo $favicon; ?>" />
+<?php
 DoloresAssets::print_style();
 DoloresAssets::print_script();
 wp_head();
