@@ -31,6 +31,8 @@ if (!$paged || $paged == 1) {
     ?>
   </section>
 
+  <!-- TODO: link to live video -->
+
   <section class="home-temas">
     <div class="wrap home-temas-wrap">
       <div class="home-temas-element">

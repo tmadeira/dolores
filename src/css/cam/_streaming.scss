@@ -1,0 +1,30 @@
+.streaming {
+  background: $red;
+  color: #fff;
+  text-align: center;
+}
+
+.streaming-title {
+  @extend %default-margin;
+  @extend %title-font;
+  font-size: 32px;
+  margin-bottom: 10px;
+  @include breakpoint($break-tablet) {
+    font-size: 40px;
+  }
+  @include breakpoint($break-desktop) {
+    font-size: 48px;
+  }
+}
+
+.streaming-box {
+  @extend %default-margin;
+  height: 300px;
+  width: 100%;
+  @include breakpoint($break-tablet) {
+    height: 400px;
+  }
+  @include breakpoint($break-desktop) {
+    height: 500px;
+  }
+}
