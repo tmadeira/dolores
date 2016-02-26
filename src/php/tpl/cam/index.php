@@ -132,8 +132,7 @@ if (!$paged || $paged == 1) {
 
   <section class="home-banners">
     <div class="wrap">
-      <a class="home-banner home-voluntario"
-          onclick="DoloresAuthenticator.signIn(null, function() { /* TODO */ alert('Em construção.'); })"
+      <a class="home-banner home-voluntario" href="/seja-um-voluntario/"
           title="Seja um voluntário">
         <span>Seja um voluntário</span>
       </a>
