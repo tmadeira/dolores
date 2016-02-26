@@ -206,3 +206,14 @@
     @include opacity(0.8);
   }
 }
+
+.related-item {
+  margin: 5px 0;
+}
+
+.related-cat {
+  color: $red;
+  display: inline-block;
+  margin-right: 5px;
+  text-transform: uppercase;
+}
