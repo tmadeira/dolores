@@ -31,9 +31,11 @@ get_header();
   </div>
 </main>
 
-<?php
-// TODO: list videos
-?>
+<section>
+  <div class="wrap default-wrap no-sidebar-page">
+    <p>Aqui serão listados todos os vídeos já publicados no canal.</p>
+  </div>
+</section>
 
 <?php
 get_footer();

@@ -61,6 +61,10 @@ $img_psol = DoloresAssets::get_image_uri('cam/logo-psol-rs.png');
 <div id="authenticator"></div>
 <div id="share-container"></div>
 
+<?php
+require("streaming-lightbox.php");
+?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -18,12 +18,24 @@ var twitter = require("../shared/twitter");
 
 var Authenticator = require("../shared/components/Authenticator.react");
 var Share = require("../shared/components/Share.react");
+var StreamingLightbox = require("../shared/components/StreamingLightbox.react");
 
 var map = require("./map");
 
 $(function() {
-  React.render(<Authenticator />, $("#authenticator")[0]);
-  React.render(<Share />, $("#share-container")[0]);
+  if ($("#authenticator").length) {
+    React.render(<Authenticator />, $("#authenticator")[0]);
+  }
+  if ($("#share-container").length) {
+    React.render(<Share />, $("#share-container")[0]);
+  }
+  if ($("#streaming-lightbox").length) {
+    var title = $("#streaming-lightbox").attr("title");
+    React.render(
+        <StreamingLightbox title={title} />,
+        $("#streaming-lightbox")[0]
+    );
+  }
 
   $(window).resize(menu.onResize);
   $(window).trigger("resize");
