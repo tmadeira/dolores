@@ -39,16 +39,18 @@ $events = DoloresCalendar::get(CALENDAR_ID);
           $time_format = "H:i";
           foreach ($events as $event) {
             $start = $event->start->dateTime;
+            $offset = 3600 * get_option('gmt_offset');
             if (empty($start)) {
-              $start = $event->start->date;
-              $date = date_i18n($date_format, strtotime($start));
+              $start = strtotime($event->start->date) + $offset;
+              $date = date_i18n($date_format, $start);
               $time = "dia todo";
             } else {
-              $date = date_i18n($date_format, strtotime($start));
+              $start = strtotime($start) + $offset;
+              $date = date_i18n($date_format, $start);
 
-              $end =  $event->end->dateTime;
-              $start_time = date_i18n($time_format, strtotime($start));
-              $end_time = date_i18n($time_format, strtotime($end));
+              $end = strtotime($event->end->dateTime) + $offset;
+              $start_time = date_i18n($time_format, $start);
+              $end_time = date_i18n($time_format, $end);
               $time = "$start_time &mdash; $end_time";
             }
             ?>
