@@ -121,7 +121,8 @@ if (!$paged || $paged == 1) {
             <?php
             $subterms = get_categories(array(
               'taxonomy' => 'tema',
-              'child_of' => $term->term_id
+              'child_of' => $term->term_id,
+              'hide_empty' => false
             ));
 
             $tags = array();
