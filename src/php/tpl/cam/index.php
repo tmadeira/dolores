@@ -124,7 +124,11 @@ if (!$paged || $paged == 1) {
     </div>
   </section>
 
-  <!-- TODO -->
+  <section class="home-bairros">
+    <div class="wrap">
+      <?php require(DOLORES_TEMPLATE_PATH . '/bairros-map.php'); ?>
+    </div>
+  </section>
 
   <section class="home-banners">
     <div class="wrap">

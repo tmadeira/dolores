@@ -12,13 +12,14 @@ var forms = require("../shared/forms");
 var google = require("../shared/google");
 var hero = require("../shared/hero");
 var interact = require("../shared/interact");
-var maps = require("../shared/maps");
 var menu = require("../shared/menu");
 var pagination = require("../shared/pagination");
 var twitter = require("../shared/twitter");
 
 var Authenticator = require("../shared/components/Authenticator.react");
 var Share = require("../shared/components/Share.react");
+
+var map = require("./map");
 
 $(function() {
   React.render(<Authenticator />, $("#authenticator")[0]);
@@ -34,7 +35,7 @@ $(function() {
   google.setup();
   hero.setup();
   interact.setup();
-  maps.setup();
+  map.setup();
   menu.setup();
   pagination.setup();
   twitter.setup();

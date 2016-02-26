@@ -1,0 +1,41 @@
+.map-svg-container {
+  text-align: center;
+  .home & {
+    background: $purple;
+  }
+}
+
+.map-title {
+  @extend %title-font;
+  color: $purple;
+  font-size: 30px;
+  padding: 30px 0 10px;
+  @include breakpoint($break-desktop) {
+    font-size: 40px;
+    padding: 40px 0 20px;
+  }
+  .home & {
+    color: #fff;
+  }
+}
+
+.map-svg {
+  max-width: 100%;
+  width: 600px;
+}
+
+.map-polygon {
+  fill: $yellow;
+  stroke: $purple;
+  stroke-width: 0.9341;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.map-label {
+  display: none;
+  fill: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+}
