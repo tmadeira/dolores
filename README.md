@@ -2,7 +2,7 @@
 
 **ATENÇÃO:** *Este projeto está em _constante desenvolvimento_, no momento focado no [Se a cidade fosse nossa](http://seacidadefossenossa.com.br/).*
 
-Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io), [grunt](http://gruntjs.com) e [Composer](https://getcomposer.org/).
+Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io), [grunt](http://gruntjs.com), [Compass](http://compass-style.org/) e [Composer](https://getcomposer.org/).
 
 ### Dependências ###
 
@@ -14,7 +14,7 @@ $ make install-dev
 
 ### Desenvolvimento ###
 
-Para desenvolver, certifique-se de ter instalado **grunt** e as dependências acima, e use:
+Para desenvolver, certifique-se de ter instalado **grunt**, **Compass** e as dependências acima, e use:
 
 ```sh
 $ make dev
