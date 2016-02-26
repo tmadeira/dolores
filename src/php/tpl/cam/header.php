@@ -47,6 +47,16 @@ wp_head();
 
     <nav class="header-nav">
       <?php
+      if (DoloresStreaming::get_active()) {
+        function dolores_show_streaming_link($items, $args) {
+          if ($args->theme_location == 'header-menu') {
+            $items .= '<li class="menu-item"><a href="/streaming/">Ao vivo</a></li>';
+          }
+          return $items;
+        }
+        add_filter('wp_nav_menu_items', 'dolores_show_streaming_link', 10, 2);
+      }
+
       wp_nav_menu(Array(
         'theme_location' => 'header-menu',
         'container' => 'div',
