@@ -1,9 +1,4 @@
 <?php
-if (empty($_GET['v']) || intval($_GET['v']) < 3) {
-  require_once(DOLORES_TEMPLATE_PATH . '/v2-bairros.php');
-  exit();
-}
-
 require_once(DOLORES_PATH . '/dlib/locations.php');
 
 the_post();
