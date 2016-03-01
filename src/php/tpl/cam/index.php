@@ -18,6 +18,9 @@ if (!$paged || $paged == 1) {
   </section>
 
   <section class="site-hero">
+    <div class="hero-credit">
+      Foto: Ivo Gonçalves/PMPA
+    </div>
     <div class="hero-logo-container">
       <a href="<?php echo site_url(); ?>" title="Página inicial">
         <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
