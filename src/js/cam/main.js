@@ -51,4 +51,11 @@ $(function() {
   menu.setup();
   pagination.setup();
   twitter.setup();
+
+  // TODO: move this out of here
+  $("#load-tema-description-more").click(function() {
+    $(this).hide();
+    $("#tema-description-more").show();
+    return false;
+  });
 });

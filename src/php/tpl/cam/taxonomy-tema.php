@@ -1,9 +1,11 @@
 <?php
 $term = get_queried_object();
 $active = get_term_meta($term->term_id, 'active', true);
-$video = get_term_meta($term->term_id, 'video', true);
+$credit = get_term_meta($term->term_id, 'credit', true);
 $image = get_term_meta($term->term_id, 'image', true);
 $more = get_term_meta($term->term_id, 'more', true);
+$outline = get_term_meta($term->term_id, 'outline', true);
+$video = get_term_meta($term->term_id, 'video', true);
 
 get_header();
 ?>
@@ -29,7 +31,15 @@ get_header();
       $style = ' style="background-image: url(\'' . $image . '\');"';
       ?>
       <div class="tema-video">
-        <div class="tema-video-image"<?php echo $style;?>> </div>
+        <div class="tema-video-image"<?php echo $style;?>>
+          <?php
+          if ($credit) {
+            ?>
+            <div class="tema-credit">Foto: <?php echo $credit; ?></div>
+            <?php
+          }
+          ?>
+        </div>
       </div>
       <?php
     }
@@ -46,12 +56,25 @@ get_header();
           ?>
         </span>
       </h2>
-      <?php echo category_description(); ?>
-      <?php if ($more) { ?>
-        <p><a class="tema-link-more" href="<?php echo $more; ?>">
-          <span>Ver diagnóstico</span>
+      <?php
+      $description = category_description();
+      $parts = explode("\n", $description);
+      $first = array_shift($parts);
+      $rest = implode("\n", $parts);
+
+      echo $first;
+      if ($rest) {
+        ?>
+        <p><a class="tema-link-more" id="load-tema-description-more" href="#">
+          <span>Leia mais</span>
         </a></p>
-      <?php } ?>
+
+        <div id="tema-description-more">
+          <?php echo $rest; ?>
+        </div>
+        <?php
+      }
+      ?>
     </div>
   </div>
 </main>

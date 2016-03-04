@@ -15,7 +15,7 @@
 
   @include breakpoint($break-tablet) {
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
     width: 500px;
     iframe {
       max-height: 360px;
@@ -28,27 +28,41 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 250px;
+  position: relative;
   width: 100%;
   @include breakpoint($break-tablet) {
     height: 360px;
   }
 }
 
+.tema-credit {
+  @include text-shadow(0 0 2px #000);
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  right: 6px;
+}
+
 .tema-info {
   font-size: 16px;
   line-height: 1.2em;
-  & > p {
+  p {
     @extend %default-margin;
   }
   @include breakpoint($break-tablet) {
     display: table-cell;
     padding-left: 20px;
-    vertical-align: middle;
+    vertical-align: top;
   }
 }
 
 .tema-link-more {
   @include dashed-button(21px, $purple, #fff);
+}
+
+#tema-description-more {
+  display: none;
 }
 
 .tema-name {
