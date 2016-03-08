@@ -65,6 +65,31 @@
   display: none;
 }
 
+.tema-outline {
+  background: $purple;
+  color: #fff;
+}
+
+.outline-list {
+  font-size: 0;
+  text-align: center;
+  & > li {
+    font-size: 16px;
+    & > * {
+      margin: 10px 0;
+    }
+  }
+  @include breakpoint($break-tablet) {
+    display: table;
+    width: 100%;
+    & > li {
+      display: table-cell;
+      font-size: 18px;
+      width: 33.3333%;
+    }
+  }
+}
+
 .tema-name {
   @extend %default-margin;
   & > span {

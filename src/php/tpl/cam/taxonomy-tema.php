@@ -80,6 +80,29 @@ get_header();
 </main>
 
 <?php
+if (is_array($outline) && count($outline) > 0) {
+  ?>
+  <section class="tema-outline">
+    <div class="wrap default-wrap">
+      <ul class="outline-list">
+      <?php
+      foreach ($outline as $text) {
+        ?>
+        <li>
+          <i class="fa fa-4x fa-lightbulb-o"></i>
+          <p><?php echo $text; ?></p>
+        </li>
+        <?php
+      }
+      ?>
+      </ul>
+    </div>
+  </section>
+  <?php
+}
+?>
+
+<?php
 if ($term->parent == 0) {
   ?>
   <section class="tema-form">
