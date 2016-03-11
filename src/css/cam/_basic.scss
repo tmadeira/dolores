@@ -40,7 +40,7 @@ $yellow: #E1A80C;
   text-transform: uppercase;
 }
 
-input, button {
+input, button, select {
   @extend %text-font;
 }
 

@@ -58,4 +58,8 @@ $(function() {
     $("#tema-description-more").show();
     return false;
   });
+
+  $(".local-list").change(function() {
+    location.href = "/local/" + $(this).val();
+  });
 });

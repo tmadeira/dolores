@@ -5,17 +5,49 @@
   }
 }
 
+.map-title-container {
+  @include breakpoint($break-tablet) {
+    display: table;
+    width: 100%;
+  }
+}
+
 .map-title {
   @extend %title-font;
   color: $purple;
   font-size: 30px;
   padding: 30px 0 10px;
-  @include breakpoint($break-desktop) {
-    font-size: 40px;
-    padding: 40px 0 20px;
-  }
+  text-align: center;
   .home & {
     color: #fff;
+  }
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    font-size: 40px;
+    padding: 40px 30px 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+
+.local-list-container {
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    padding-right: 30px;
+    text-align: right;
+    vertical-align: middle;
+  }
+}
+
+.local-list {
+  background: $yellow;
+  border: 0;
+  color: $purple;
+  padding: 5px 8px;
+  @include breakpoint($break-tablet) {
+    margin-top: 10px;
   }
 }
 
