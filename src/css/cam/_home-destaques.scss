@@ -1,0 +1,109 @@
+.home-destaques {
+  background: #000;
+  color: #fff;
+  padding: 10px 10px 20px;
+  @include breakpoint($break-tablet) {
+    background: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.home-destaques > .wrap {
+  border: dashed 1px #fff;
+  padding: 0 10px;
+  position: relative;
+  @include breakpoint($break-tablet) {
+    padding: 15px 0;
+  }
+}
+
+.destaques-list {
+  @include breakpoint($break-tablet) {
+    display: table;
+    width: 100%;
+  }
+}
+
+.destaques-item {
+  border-top: solid 1px #fff;
+  padding: 10px 0;
+  text-align: left;
+  &:first-child {
+    border-top: 0;
+  }
+
+  @include breakpoint($break-tablet) {
+    border-left: solid 1px #fff;
+    border-top: 0;
+    display: table-cell;
+    padding: 0 15px;
+    vertical-align: middle;
+    width: 33.3333%;
+    &:first-child {
+      border-left: 0;
+    }
+  }
+
+  & > a {
+    display: table;
+    width: 100%;
+  }
+}
+
+.destaques-item-manifesto {
+  color: $yellow;
+}
+
+.destaques-item-image-container, .destaques-item-info {
+  display: table-cell;
+  vertical-align: middle;
+  &.destaques-item-info {
+    width: 100%;
+  }
+}
+
+.destaques-item-image {
+  @include border-radius(40px);
+  background: #fff;
+  background-position: center center;
+  background-size: cover;
+  height: 80px;
+  margin-right: 10px;
+  width: 80px;
+  @include breakpoint($break-desktop) {
+    margin-right: 15px;
+  }
+}
+
+.destaques-item-subtitle {
+  @include border-radius(3px);
+  @extend %title-font;
+  background: $yellow;
+  color: #000;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1em;
+  margin-bottom: 5px;
+  padding: 8px 8px 2px;
+}
+
+.destaques-item-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  @include breakpoint($break-desktop) {
+    font-size: 16px;
+  }
+}
+
+.destaques-more {
+  @include solid-button(21px, #fff, #000);
+  position: absolute;
+  bottom: -13px;
+  right: 13px;
+}

@@ -3,12 +3,15 @@
 }
 
 .site-hero {
-  background: image-url('cam/hero.jpg') no-repeat center center / cover;
-  height: 650px;
   position: relative;
   text-align: center;
-  @include breakpoint($break-desktop) {
-    height: 680px;
+}
+
+.hero {
+  background: image-url('cam/hero.jpg') no-repeat center center / cover;
+  height: 360px;
+  @include breakpoint($break-tablet) {
+    height: 600px;
   }
 }
 
@@ -22,7 +25,7 @@
 }
 
 .hero-logo-container {
-  padding: 120px 10px 0;
+  padding: 90px 10px 0;
   text-align: center;
   @include breakpoint($break-desktop) {
     padding-top: 100px;
@@ -35,7 +38,7 @@
     width: 400px;
   }
   @include breakpoint($break-desktop) {
-    width: 480px;
+    width: 430px;
   }
 }
 

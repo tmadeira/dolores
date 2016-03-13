@@ -12,6 +12,7 @@ if (!$_SESSION['active']) {
 }
 
 add_image_size('grid-thumbnail', 350, 230, true);
+add_image_size('home-destaques', 80, 80, true);
 require_once(DOLORES_TEMPLATE_PATH . '/grid.php');
 require_once(DOLORES_TEMPLATE_PATH . '/grid-ideias.php');
 
