@@ -52,6 +52,7 @@
   }
   @include breakpoint($break-tablet) {
     display: table-cell;
+    font-size: 18px;
     padding-left: 20px;
     vertical-align: top;
   }
@@ -61,31 +62,62 @@
   @include dashed-button(21px, $purple, #fff);
 }
 
-#tema-description-more {
-  display: none;
+.tema-outline {
+  background: $yellow;
+  color: $purple;
 }
 
-.tema-outline {
-  background: $purple;
-  color: #fff;
+.tema-outline-title {
+  @extend %default-margin;
+  @extend %title-font;
+  font-size: 28px;
+  text-align: center;
+  @include breakpoint($break-tablet) {
+    font-size: 40px;
+    &:before, &:after {
+      background: image-url('cam/outline-title-decoration.png');
+      content: "";
+      display: inline-block;
+      margin: 0 10px;
+      width: 77px;
+      vertical-align: 8px;
+      height: 9px;
+    }
+  }
 }
 
 .outline-list {
-  font-size: 0;
   text-align: center;
   & > li {
-    font-size: 16px;
+    @extend %default-margin;
+    font-size: 17px;
     & > * {
       margin: 10px 0;
     }
   }
+
+  .info-title {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 100%;
+    text-transform: uppercase;
+  }
+
   @include breakpoint($break-tablet) {
-    display: table;
-    width: 100%;
     & > li {
-      display: table-cell;
-      font-size: 18px;
-      width: 33.3333%;
+      display: table;
+      width: 100%;
+      & > .fa {
+        display: table-cell;
+        padding-right: 20px;
+        vertical-align: top;
+      }
+      & > .info {
+        display: table-cell;
+        text-align: left;
+        vertical-align: top;
+        width: 100%;
+      }
     }
   }
 }

@@ -53,9 +53,9 @@ $(function() {
   twitter.setup();
 
   // TODO: move this out of here
-  $("#load-tema-description-more").click(function() {
+  $(".load-more").click(function() {
     $(this).hide();
-    $("#tema-description-more").show();
+    $($(this).attr("href")).show();
     return false;
   });
 

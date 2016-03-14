@@ -1,4 +1,6 @@
 <?php
+define('DOLORES_TEMA_OUTLINE_LIMIT', 10);
+
 class DoloresAdminTema {
   private $tema_fields = array(
     'active' => array(
@@ -6,6 +8,11 @@ class DoloresAdminTema {
         'description' => 'Marque se esse tema está aberto a debates.<br />' .
                          '<strong>Esta opção não afeta subtemas/tags.</strong>',
         'hide' => DOLORES_TEMPLATE === 'cam'
+      ),
+    'headline' => array(
+        'label' => 'Título na página do tema',
+        'description' => 'Título que aparece na página do eixo temático.',
+        'hide' => DOLORES_TEMPLATE !== 'cam'
       ),
     'image' => array(
         'label' => 'Imagem',
@@ -20,7 +27,8 @@ class DoloresAdminTema {
     'outline' => array(
         'label' => 'Ideias iniciais',
         'description' => 'Itens que aparecem acima do formulário na página ' .
-                         'do tema.',
+                         'do tema. Na primeira linha, o título. A partir da ' .
+                         'segunda, a descrição.',
         'hide' => DOLORES_TEMPLATE !== 'cam'
       ),
     'video' => array(
@@ -92,25 +100,14 @@ class DoloresAdminTema {
       <label for="tag-outline">
         <?php echo $data['label'] ?>
       </label>
-      <input
-        name="outline[]"
-        id="tag-outline"
-        type="text"
-        value=""
-        size="40"
-        />
-      <input
-        name="outline[]"
-        type="text"
-        value=""
-        size="40"
-        />
-      <input
-        name="outline[]"
-        type="text"
-        value=""
-        size="40"
-        />
+      <textarea name="outline[]" id="tag-outline"></textarea>
+      <?php
+      for ($i = 1; $i < DOLORES_TEMA_OUTLINE_LIMIT; $i++) {
+        ?>
+        <textarea name="outline[]"></textarea>
+        <?php
+      }
+      ?>
       <p><?php echo $data['description']; ?></p>
     </div>
     <?php
@@ -195,25 +192,18 @@ class DoloresAdminTema {
         </label>
       </th>
       <td>
-        <input
-          name="outline[]"
-          id="tag-outline"
-          type="text"
-          value="<?php esc_attr_e($value[0]); ?>"
-          size="40"
-          />
-        <input
-          name="outline[]"
-          type="text"
-          value="<?php esc_attr_e($value[1]); ?>"
-          size="40"
-          />
-        <input
-          name="outline[]"
-          type="text"
-          value="<?php esc_attr_e($value[2]); ?>"
-          size="40"
-          />
+        <textarea name="outline[]" id="tag-outline"><?php
+          esc_html_e($value[0]);
+        ?></textarea>
+        <?php
+        for ($i = 1; $i < DOLORES_TEMA_OUTLINE_LIMIT; $i++) {
+          ?>
+          <textarea name="outline[]"><?php
+            esc_html_e($value[$i]);
+          ?></textarea>
+          <?php
+        }
+        ?>
         <p class="description">
           <?php echo $data['description']; ?>
         </p>

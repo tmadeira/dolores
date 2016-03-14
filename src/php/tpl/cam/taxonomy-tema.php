@@ -1,6 +1,7 @@
 <?php
 $term = get_queried_object();
 $active = get_term_meta($term->term_id, 'active', true);
+$headline = get_term_meta($term->term_id, 'headline', true);
 $credit = get_term_meta($term->term_id, 'credit', true);
 $image = get_term_meta($term->term_id, 'image', true);
 $more = get_term_meta($term->term_id, 'more', true);
@@ -49,27 +50,31 @@ get_header();
       <h2 class="tema-name">
         <span>
           <?php
-          if ($term->parent != 0) {
-            echo "#";
+          if ($headline) {
+            echo $headline;
+          } else {
+            if ($term->parent != 0) {
+                      echo "#";
+            }
+            single_cat_title();
           }
-          single_cat_title();
           ?>
         </span>
       </h2>
       <?php
       $description = category_description();
       $parts = explode("\n", $description);
-      $first = array_shift($parts);
+      $first = array_shift($parts) . "\n" . array_shift($parts);
       $rest = implode("\n", $parts);
 
       echo $first;
       if ($rest) {
         ?>
-        <p><a class="tema-link-more" id="load-tema-description-more" href="#">
+        <p><a class="load-more tema-link-more" href="#tema-description-more">
           <span>Leia mais</span>
         </a></p>
 
-        <div id="tema-description-more">
+        <div class="hidden" id="tema-description-more">
           <?php echo $rest; ?>
         </div>
         <?php
@@ -84,13 +89,37 @@ if (is_array($outline) && count($outline) > 0) {
   ?>
   <section class="tema-outline">
     <div class="wrap default-wrap">
+      <h3 class="tema-outline-title">
+        Ideias para iniciar a discussão
+      </h3>
       <ul class="outline-list">
       <?php
-      foreach ($outline as $text) {
+      for ($i = 0; $i < count($outline); $i++) {
+        $text = $outline[$i];
+        if (!$text) {
+          continue;
+        }
+        $parts = explode("\n", $text);
+        $title = array_shift($parts);
+        $text = nl2br(trim(implode("\n", $parts)));
         ?>
         <li>
-          <i class="fa fa-4x fa-lightbulb-o"></i>
-          <p><?php echo $text; ?></p>
+          <i class="fa fa-2x fa-lightbulb-o"></i>
+          <div class="info">
+            <h3 class="info-title"><?php echo $title; ?></h3>
+            <?php
+            if ($text) {
+              ?>
+              <p><a class="load-more" href="#outline-<?php echo $i; ?>">
+                Leia mais &raquo;
+              </a></p>
+              <p class="hidden" id="outline-<?php echo $i; ?>">
+                <?php echo $text; ?>
+              </p>
+              <?php
+            }
+            ?>
+          </div>
         </li>
         <?php
       }
