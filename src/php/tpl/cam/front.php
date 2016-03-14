@@ -37,7 +37,7 @@ get_header();
 <section class="home-temas">
   <div class="wrap home-temas-wrap">
     <div class="home-temas-element">
-      <h2 class="home-temas-title">Entre no debate</h2>
+      <h2 class="home-temas-title">Que mudanças você quer?</h2>
 
       <?php
       require(DOLORES_TEMPLATE_PATH . '/temas-grid.php');

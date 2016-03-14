@@ -38,19 +38,19 @@
   font-size: 25px;
   height: 37px;
   left: 50%;
-  margin-left: -79px;
+  margin-left: -112px;
   padding: 10px 14px;
   position: absolute;
   top: -19px;
   white-space: nowrap;
-  width: 157px;
+  width: 224px;
   @include breakpoint($break-tablet) {
     font-size: 48px;
     height: 74px;
-    margin-left: -157px;
+    margin-left: -220px;
     padding: 20px 33px;
     top: -36px;
-    width: 314px;
+    width: 440px;
   }
 }
 

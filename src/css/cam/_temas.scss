@@ -9,12 +9,12 @@
   height: 37px;
   padding: 10px 14px;
   white-space: nowrap;
-  width: 157px;
+  width: 224px;
   @include breakpoint($break-tablet) {
     font-size: 48px;
     height: 74px;
     padding: 20px 33px;
-    width: 314px;
+    width: 440px;
   }
 }
 

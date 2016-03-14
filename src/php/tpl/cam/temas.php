@@ -4,12 +4,12 @@ get_header();
 ?>
 
 <main class="wrap default-wrap no-sidebar-page">
-  <h2 class="temas-title">Entre no debate</h2>
+  <h2 class="temas-title">Que mudanças você quer?</h2>
 
   <p class="temas-description">
     Aqui você encontra a lista de temas que estão sendo debatidos na plataforma.
-    Se você quiser discutir outro assunto, entre em contato através do
-    formulário disponível no final da página.
+    Você também vai encontrar, dentro de cada tema, um espaço para dar as suas
+    sugestões.
   </p>
 
   <ul class="temas-grid">
