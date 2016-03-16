@@ -106,7 +106,12 @@
   text-transform: uppercase;
 }
 
-.list-post-author {
+.list-post-content {
   font-size: 14px;
+  line-height: 1.3em;
+}
+
+.list-post-author {
+  @extend .list-post-content;
   text-transform: uppercase;
 }

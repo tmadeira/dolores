@@ -98,3 +98,50 @@ function dolores_list($query = null) {
     <?php
   }
 }
+
+function dolores_projetos_list($query = null) {
+  global $wp_query, $post;
+  if ($query === null) {
+    $query = $wp_query;
+  }
+  if ($query->have_posts()) {
+    ?>
+    <section class="site-list">
+      <div class="wrap default-wrap">
+        <ul class="list-list">
+          <?php
+          while ($query->have_posts()) {
+            $query->the_post();
+            $link = get_post_meta(get_the_ID(), 'link', true);
+            ?>
+            <li>
+              <a href="<?php esc_attr_e($link); ?>"
+                  target="_blank" class="list-post">
+                <i class="fa fa-lg fa-check-circle"></i>
+                <div class="list-post-info">
+                  <h3 class="list-post-title"><?php the_title(); ?></h3>
+                  <div class="list-post-content">
+                    <?php
+                    the_content();
+                    ?>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <?php
+            }
+          ?>
+        </ul>
+      </div>
+    </section>
+    <?php
+  } else {
+    ?>
+    <section class="wrap default-wrap">
+      <div class="entry">
+        <p>Nenhum projeto encontrado.</p>
+      </div>
+    </section>
+    <?php
+  }
+}

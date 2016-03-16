@@ -12,7 +12,7 @@ add_filter('get_the_archive_title', function($title) {
     break;
   case 'Projetos na câmara':
     $title = 'Conheça nossos projetos na câmara municipal';
-    $display_type = 'list';
+    $display_type = 'projetos';
     break;
   }
   return $title;
@@ -38,6 +38,9 @@ get_header();
 switch ($display_type) {
 case 'list':
   dolores_list();
+  break;
+case 'projetos':
+  dolores_projetos_list();
   break;
 default:
   dolores_grid();
