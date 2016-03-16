@@ -1,4 +1,5 @@
 <?php
+the_post();
 get_header();
 ?>
 
@@ -8,13 +9,9 @@ get_header();
       Seja um voluntário
     </h2>
 
-    <p class="temas-form-description">
-      Quer ser voluntário e compartilhar a mudança em Porto Alegre? Coloque
-      seu talento à disposição da mudança! Nós queremos realizar atividades
-      nos bairros da cidade, reuniões e encontros presenciais para levar a
-      mudança até as localidades e compartilhar direitos com a população.
-      Nos diga como você pode ajudar neste processo!
-    </p>
+    <div class="temas-form-description">
+      <?php the_content(); ?>
+    </div>
 
     <form class="temas-form-form contact-form" id="form-temas">
       <?php
