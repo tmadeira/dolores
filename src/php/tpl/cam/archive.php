@@ -3,8 +3,13 @@ add_filter('get_the_archive_title', function($title) {
   if (is_category()) {
     $title = single_cat_title('', false);
   }
-  if ($title == 'Contribuições') {
+  switch ($title) {
+  case 'Contribuições':
     $title = 'Contribuições para o debate';
+    break;
+  case 'Projetos na câmara':
+    $title = 'Conheça nossos projetos na câmara municipal';
+    break;
   }
   return $title;
 });
