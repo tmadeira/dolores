@@ -217,10 +217,14 @@ class DoloresUsers {
 </li>
 HTML;
     } else {
+      $signin = "Entrar";
+      if (DOLORES_TEMPLATE == 'cam') {
+        $signin = "Participe";
+      }
       $html = <<<HTML
 <li class="user-signin">
   <a href="javascript:DoloresAuthenticator.signIn();void(0)">
-    <i class="fa fa-user"></i> Entrar
+    <i class="fa fa-user"></i> $signin
   </a>
 </li>
 HTML;

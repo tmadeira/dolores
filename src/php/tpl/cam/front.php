@@ -26,7 +26,7 @@ get_header();
       </a>
     </div>
     <button class="hero-button toggle-explanation">
-      <span>Entenda</span>
+      <span>Apresentação</span>
     </button>
   </div>
   <?php
