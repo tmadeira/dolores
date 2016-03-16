@@ -35,11 +35,14 @@ get_header();
 </main>
 
 <?php
+global $query_string;
 switch ($display_type) {
 case 'list':
+  query_posts($query_string . '&posts_per_page=-1');
   dolores_list();
   break;
 case 'projetos':
+  query_posts($query_string . '&posts_per_page=-1');
   dolores_projetos_list();
   break;
 default:
