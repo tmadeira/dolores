@@ -75,3 +75,38 @@
     line-height: 1.1em;
   }
 }
+
+.list-list {
+  font-size: 19px;
+  line-height: 1.3em;
+  & > li {
+    margin: 20px 0;
+  }
+}
+
+.list-post {
+  display: table;
+  width: 100%;
+  .fa {
+    color: $yellow;
+    display: table-cell;
+    padding-top: 2px;
+    vertical-align: top;
+  }
+  .list-post-info {
+    display: table-cell;
+    padding-left: 10px;
+    vertical-align: top;
+    width: 100%;
+  }
+}
+
+.list-post-title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.list-post-author {
+  font-size: 14px;
+  text-transform: uppercase;
+}
