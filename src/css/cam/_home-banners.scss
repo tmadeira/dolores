@@ -18,14 +18,16 @@
   height: 350px;
   @include breakpoint($break-tablet) {
     display: inline-block;
+    height: 240px;
     margin: 0 1%;
-    width: 48%;
+    width: 23%;
   }
   @include breakpoint($break-desktop) {
     margin: 0;
-    width: 49%;
+    margin-left: 1%;
+    width: 24.25%;
     &:first-child {
-      margin-right: 2%;
+      margin-left: 0;
     }
   }
 }
@@ -34,6 +36,14 @@
   background-image: image-url('cam/home-voluntario.png');
 }
 
+.home-reunioes {
+  background-image: image-url('cam/home-reunioes.png');
+}
+
 .home-contribuicoes {
   background-image: image-url('cam/home-contribuicoes.png');
+}
+
+.home-projetos {
+  background-image: image-url('cam/home-projetos.png');
 }

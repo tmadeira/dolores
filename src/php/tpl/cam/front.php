@@ -64,6 +64,14 @@ get_header();
         title="Seja um voluntário">
       <span>Seja um voluntário</span>
     </a>
+    <a class="home-banner home-reunioes" href="/reunioes-nos-bairros/"
+        title="Organize reuniões no seu bairro">
+      <span>Organize reuniões no seu bairro</span>
+    </a>
+    <a class="home-banner home-projetos" href="/c/projetos-na-camara/"
+        title="Projetos na câmara">
+      <span>Projetos na câmara</span>
+    </a>
     <a class="home-banner home-contribuicoes" href="/c/contribuicoes/"
         title="Contribuições para o debate">
       <span>Contribuições para o debate</span>
