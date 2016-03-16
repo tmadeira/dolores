@@ -44,10 +44,15 @@ function dolores_add_opengraph() {
       $keywords = implode(',', array_map('dolores_get_tag_name', $tags));
     }
 
+    $author = get_post_meta(get_the_ID(), 'autor', true);
     $description = get_the_excerpt();
-    $title = get_the_title();
+    $title = ($author ? "$author: " : "") . get_the_title();
     $type = 'article';
     $url = get_permalink();
+
+    if ($author) {
+      $author_name = $author;
+    }
 
     if (has_post_thumbnail()) {
       list($image) = wp_get_attachment_image_src(

@@ -12,6 +12,21 @@ get_header();
     </h2>
 
     <div class="single-meta social-media">
+      <?php
+      $autor = get_post_meta(get_the_ID(), 'autor', true);
+      if ($autor) {
+        ?>
+        <span class="single-author">
+          <?php echo $autor; ?>
+        </span>
+
+        <span class="social-sep">
+          <hr />
+        </span>
+        <?php
+      }
+      ?>
+
       <?php dolores_print_share_buttons(); ?>
     </div>
 
