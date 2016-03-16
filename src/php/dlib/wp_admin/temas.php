@@ -1,5 +1,5 @@
 <?php
-define('DOLORES_TEMA_OUTLINE_LIMIT', 10);
+define('DOLORES_TEMA_OUTLINE_LIMIT', 12);
 
 class DoloresAdminTema {
   private $tema_fields = array(
