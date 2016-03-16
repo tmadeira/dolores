@@ -12,6 +12,17 @@ get_header();
     </h2>
 
     <div class="single-meta social-media">
+      <?php
+      $autor = get_post_meta(get_the_ID(), 'autor', true);
+      if ($autor) {
+        ?>
+        <span class="single-author">
+          <?php echo $autor; ?>
+        </span>
+        <?php
+      }
+      ?>
+
       <span class="single-date">
         <?php the_time('d \d\e F \d\e Y'); ?>
       </span>
