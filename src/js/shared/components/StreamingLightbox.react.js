@@ -31,7 +31,11 @@ var StreamingLightbox = React.createClass({
           {this.props.title}
         </p>
         <p className="streaming-lightbox-text">
-          <a className="streaming-lightbox-button" href="/streaming/">
+          <a
+              className="streaming-lightbox-button"
+              href={this.props.url}
+              target="_blank"
+              >
             <span>Clique aqui para assistir</span>
           </a>
         </p>

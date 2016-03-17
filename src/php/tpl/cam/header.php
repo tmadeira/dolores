@@ -50,7 +50,15 @@ wp_head();
       if (DoloresStreaming::get_active()) {
         function dolores_show_streaming_link($items, $args) {
           if ($args->theme_location == 'header-menu') {
-            $items .= '<li class="menu-item"><a href="/streaming/">Ao vivo</a></li>';
+            $youtube_id = DoloresStreaming::get_youtube_id();
+            $link = '//youtu.be/' . $youtube_id;
+            $items .= <<<HTML
+<li class="menu-item">
+  <a href="$link" class="streaming" target="_blank">
+    <i class="fa fa-play-circle"></i>Ao vivo
+  </a>
+</li>
+HTML;
           }
           return $items;
         }

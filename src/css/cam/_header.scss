@@ -153,12 +153,23 @@
           color: #fff;
         }
 
+        &.streaming {
+          background: $red;
+        }
+
         .home & {
           background: rgba(255, 255, 255, 0.8);
           color: $purple;
           &:hover {
             background: #fff;
             color: $purple;
+          }
+
+          &.streaming {
+            color: $red;
+            &:hover {
+              color: $red;
+            }
           }
         }
       }
@@ -287,6 +298,10 @@
       }
     }
   }
+}
+
+.fa-play-circle {
+  margin-right: 5px;
 }
 
 .user-logged-menu {

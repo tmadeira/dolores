@@ -31,8 +31,9 @@ $(function() {
   }
   if ($("#streaming-lightbox").length) {
     var title = $("#streaming-lightbox").attr("title");
+    var url = $("#streaming-lightbox").attr("ref");
     React.render(
-        <StreamingLightbox title={title} />,
+        <StreamingLightbox title={title} url={url} />,
         $("#streaming-lightbox")[0]
     );
   }
