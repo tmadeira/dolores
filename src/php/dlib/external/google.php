@@ -40,7 +40,7 @@ class DoloresGoogle {
     // Google Auth scope to https://www.googleapis.com/auth/calendar.readonly.
     // Then, sign in using your browser and put $client->getAccessToken() in
     // wp_options table.
-    // TODO: Improve this!
+    // TODO: Improve access token generation.
     $this->client->setScopes(Google_Service_Calendar::CALENDAR_READONLY);
     $accessToken = get_option('google_access_token');
     $this->client->setAccessToken($accessToken);

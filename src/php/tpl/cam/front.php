@@ -10,7 +10,7 @@ get_header();
   <div class="wrap explanation-wrap">
     <p style="font-size: 36px; text-align: center; padding: 10px;">
       Aqui vai o vídeo de apresentação
-      <!-- TODO -->
+      <!-- TODO: add presentation video -->
     </p>
   </div>
 </section>

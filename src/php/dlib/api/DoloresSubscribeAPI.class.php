@@ -8,7 +8,7 @@ class DoloresSubscribeAPI extends DoloresBaseAPI {
       $this->_error('O e-mail digitado é inválido.');
     }
 
-    // TODO: Checar como Mailchimp trata cadastros duplicados.
+    // TODO: Check Mailchimp duplicate subscribes
     if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
       require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);

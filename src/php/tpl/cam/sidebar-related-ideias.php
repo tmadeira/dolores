@@ -1,6 +1,6 @@
 <?php
 /*
-TODO
+TODO: implement related ideias
 <div class="sidebar-section">
   <h2 class="sidebar-title">
     <span class="bg-red">Propostas relacionadas</span>
