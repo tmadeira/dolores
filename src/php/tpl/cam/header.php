@@ -67,12 +67,20 @@ wp_head();
 
     <ul class="header-search-user">
       <li class="header-search">
-        <form class="header-search-form" method="get" action="/">
+        <form
+						class="header-search-form"
+						method="get"
+						action="//cse.google.com/cse"
+						target="_blank">
+					<input
+						type="hidden"
+						name="cx"
+						value="015740526016573902934:1jok_zgstqg" />
           <i class="fa fa-lg fa-search"></i>
           <input
             class="header-search-input"
             type="text"
-            name="s"
+            name="q"
             placeholder="Buscar"
             value="<?php if (array_key_exists('s', $_GET)) echo $_GET['s']; ?>"
             />
