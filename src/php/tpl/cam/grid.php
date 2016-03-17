@@ -99,7 +99,7 @@ function dolores_list($query = null) {
   }
 }
 
-function dolores_projetos_list($query = null) {
+function dolores_list_content($query = null) {
   global $wp_query, $post;
   if ($query === null) {
     $query = $wp_query;
