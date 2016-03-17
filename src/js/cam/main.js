@@ -3,6 +3,8 @@
 var $ = window.jQuery = require("jquery");
 var React = require("react");
 
+require("jquery.maskedinput");
+
 window.doloresConfig = require("./config");
 
 var analytics = require("../shared/analytics");
@@ -63,4 +65,14 @@ $(function() {
   $(".local-list").change(function() {
     location.href = "/local/" + $(this).val();
   });
+
+  $("input[name='phone']").focusout(function() {
+    $(this).unmask();
+    var value = $(this).val().replace(/\D/g, "");
+    if (value.length > 10) {
+      $(this).mask("(99) 99999-999?9");
+    } else {
+      $(this).mask("(99) 9999-9999?9");
+    }
+  }).trigger("focusout");
 });

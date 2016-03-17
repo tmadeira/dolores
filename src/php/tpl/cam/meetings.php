@@ -43,9 +43,21 @@ get_header();
               placeholder="E-mail"
               />
         </div>
+        <div class="tema-form-item">
+          <label class="tema-form-label" for="tema-form-phone">
+            Seu telefone
+          </label>
+          <input
+              type="text"
+              name="phone"
+              class="tema-form-input"
+              id="tema-form-phone"
+              placeholder="Telefone"
+              />
+        </div>
         <?php
       }
-      // TODO: add phone and location
+      // TODO: add location
       ?>
       <div class="tema-form-item">
         <label class="tema-form-label" for="tema-form-content">
