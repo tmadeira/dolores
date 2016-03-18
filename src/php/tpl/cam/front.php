@@ -8,10 +8,14 @@ get_header();
 ?>
 <section class="site-presentation explanation">
   <div class="wrap explanation-wrap">
-    <p style="font-size: 36px; text-align: center; padding: 10px;">
-      Aqui vai o vídeo de apresentação
-      <!-- TODO: add presentation video -->
-    </p>
+    <iframe
+      width="853"
+      height="480"
+      src="https://www.youtube.com/embed/JD-ai252KIw?rel=0&amp;showinfo=0"
+      frameborder="0"
+      allowfullscreen
+      >
+    </iframe>
   </div>
 </section>
 
