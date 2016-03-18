@@ -40,6 +40,11 @@ function dolores_grid($query = null) {
             }
           ?>
         </ul>
+        <div class="pagination">
+          <?php
+          echo paginate_links();
+          ?>
+        </div>
       </div>
     </section>
     <?php

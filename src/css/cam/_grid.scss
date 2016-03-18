@@ -115,3 +115,22 @@
   @extend .list-post-content;
   text-transform: uppercase;
 }
+
+.pagination {
+  @extend %default-margin;
+  color: $purple;
+  font-size: 18px;
+  text-align: center;
+  a:hover {
+    text-decoration: underline;
+  }
+  .page-numbers {
+    display: inline-block;
+    padding: 5px 8px;
+  }
+  .current {
+    background: $purple;
+    color: #fff;
+    font-weight: bold;
+  }
+}

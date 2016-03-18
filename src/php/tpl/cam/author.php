@@ -31,7 +31,7 @@ if (!$paged || $paged == 1) {
           'location' => 'Bairro',
           'birthdate' => 'Aniversário',
           'occupation' => 'Profissão',
-          'school' => 'Instituição de ensino / Movimento'
+          'school' => 'Instituição/Movimento'
         );
         ?>
         <ul class="profile-data">

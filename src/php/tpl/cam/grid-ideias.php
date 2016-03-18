@@ -95,6 +95,17 @@ function dolores_grid_ideias($query = null) {
           }
           ?>
         </ul>
+        <?php
+        if (is_main_query()) {
+          ?>
+          <div class="pagination">
+            <?php
+            echo paginate_links();
+            ?>
+          </div>
+          <?php
+        }
+        ?>
       </div>
     </section>
     <?php
