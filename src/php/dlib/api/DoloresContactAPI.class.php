@@ -21,14 +21,15 @@ class DoloresContactAPI extends DoloresBaseAPI {
     $subject = $request['data']['subject'];
     $message = $request['data']['message'];
 
-    $message.= "\n\n";
-    $message.= "--\n";
-    $message.= "Mensagem enviada através de formulário de contato.\n\n";
-    $message.= "Nome: $nome\n";
-    $message.= "E-mail: $email\n";
-    $message.= "Telefone: $phone\n";
-    $message.= "Endereço IP: {$_SERVER['REMOTE_ADDR']}\n";
-    $message.= "Navegador: {$_SERVER['USER_AGENT']}\n";
+    $message.= "<br />\n<br />\n";
+    $message.= "--<br />\n";
+    $message.= "Mensagem enviada através de formulário de contato.<br />\n";
+    $message.= "<br />\n";
+    $message.= "Nome: $nome<br />\n";
+    $message.= "E-mail: $email<br />\n";
+    $message.= "Telefone: $phone<br />\n";
+    $message.= "Endereço IP: {$_SERVER['REMOTE_ADDR']}<br />\n";
+    $message.= "Navegador: {$_SERVER['HTTP_USER_AGENT']}\n";
 
     $headers = "Content-type: text/plain; charset=utf-8\r\n";
     $headers.= "From: $name <noreply@compartilheamudanca.com.br>\r\n";
