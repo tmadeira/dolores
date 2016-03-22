@@ -137,7 +137,9 @@ class DoloresPosts {
     $post_user = get_user_by('id', get_post_field('post_author', $post_id));
     $args = array(
       'NAME' => $post_user->display_name,
-      'IDEIA' => get_post_field('post_title', $post_id),
+      'COMMENT' => htmlspecialchars($text),
+      'POSTER' => $user->display_name,
+      'IDEIA' => htmlspecialchars(get_post_field('post_title', $post_id)),
       'LINK' => get_permalink($post_id)
     );
     dolores_mail($post_user->user_email, 'new_comment.html', $args);
