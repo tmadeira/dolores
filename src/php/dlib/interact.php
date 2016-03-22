@@ -184,4 +184,41 @@ SQL;
     $wpdb->delete($this->table_name, $fields);
     $this->update_count($post_id, $comment_id);
   }
+
+  public function remove($post_id, $comment_id) {
+    if (!is_user_logged_in()) {
+      return array('error' => 'Você precisa estar loggado para fazer isto.');
+    }
+
+    $cur_user = wp_get_current_user()->ID;
+
+    $post_id = intval($post_id);
+    $comment_id = intval($comment_id);
+
+    if ($post_id) {
+      $post = get_post($post_id);
+      if (!$post) {
+        return array('error' => 'Post não encontrado.');
+      }
+      $author = $post->post_author;
+      if ($cur_user != $author) {
+        return array('error' => 'Sem permissões suficientes.');
+      }
+
+      wp_delete_post($post_id);
+    } else if ($comment_id) {
+      $comment = get_comment($comment_id);
+      if (!$comment) {
+        return array('error' => 'Comentário não encontrado.');
+      }
+      $author = $comment->user_id;
+      if ($cur_user != $author) {
+        return array('error' => 'Sem permissões suficientes.');
+      }
+
+      wp_delete_comment($comment_id);
+    }
+
+    return array();
+  }
 };

@@ -37,6 +37,27 @@ var signInAndVote = function(data, action) {
   return false;
 };
 
+var remove = function(data) {
+  if (!window.confirm("Tem certeza que deseja excluir esse comentário?")) {
+    return false;
+  }
+
+  var split = data.split("|");
+  var request = {};
+  request[split[0]] = split[1];
+
+  API.route("remove").post(request).done(function() {
+    $("[data-remove='" + data + "']").parents(".ideia-comment").fadeOut();
+  }).fail(function(response) {
+    console.log(response.responseJSON);
+    if ("error" in response.responseJSON) {
+      alert("Erro: " + response.responseJSON.error);
+    }
+  });
+
+  return false;
+};
+
 var setup = function() {
   $(document).on("click", ".ideia-upvote", function() {
     return signInAndVote($(this).attr("data-vote"), "up");
@@ -119,6 +140,10 @@ var setup = function() {
       return false;
     }
     return true;
+  });
+
+  $(document).on("click", ".ideia-comment-remove", function() {
+    return remove($(this).attr("data-remove"));
   });
 };
 

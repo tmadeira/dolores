@@ -165,6 +165,20 @@ class DoloresPosts {
     $url = get_author_posts_url($comment->user_id);
     $format = get_option('date_format') . ' à\s ' . get_option('time_format');
     $datetime = get_comment_date($format, $comment->comment_ID);
+
+    $remove = "";
+    if (is_user_logged_in()) {
+      $cur_user = wp_get_current_user();
+      if ($cur_user->ID == $comment->user_id) {
+        $remove = <<<HTML
+<a class="ideia-comment-action ideia-comment-remove"
+    href="#remove" data-remove="comment_id|{$comment->comment_ID}">
+  <i class="fa fa-fw fa-lg fa-remove"></i> Remover
+</a>
+HTML;
+      }
+    }
+
     if (!$comment->comment_parent) {
       $reply = <<<HTML
 <a class="ideia-comment-action ideia-comment-reply" href="#reply">
@@ -174,6 +188,7 @@ HTML;
     } else {
       $reply = "";
     }
+
     $content = <<<HTML
 <li class="ideia-comment" id="comment-{$comment->comment_ID}">
   <div class="ideia-comment-table">
@@ -201,6 +216,7 @@ HTML;
           <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
           <span class="number">{$down}</span>
         </a>
+        {$remove}
         {$reply}
         <span class="ideia-comment-date">
           {$datetime}
