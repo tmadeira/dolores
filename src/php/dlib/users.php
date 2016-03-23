@@ -72,7 +72,7 @@ class DoloresUsers {
       'user_email' => $data['email'],
       'display_name' => $data['name'],
       'nickname' => $data['name'],
-      'role' => 'None'
+      'role' => get_option('default_role')
     ));
 
     if (is_wp_error($user_id)) {
