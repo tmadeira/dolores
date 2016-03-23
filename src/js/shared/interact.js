@@ -93,6 +93,10 @@ var setup = function() {
       text: $(this).find("textarea[name='text']").val()
     };
 
+    if ($(this).find("input[name='user']:checked").length) {
+      request.user = $(this).find("input[name='user']:checked").val();
+    }
+
     var form = $(this);
     var textarea = $(this).find("textarea[name='text']");
 

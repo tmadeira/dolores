@@ -66,6 +66,22 @@ function dolores_ideia_comment($comment, $args, $depth) {
           placeholder="Escreva uma resposta"
           rows="1"
           ></textarea>
+        <?php
+        if (current_user_can('edit_posts')) {
+          ?>
+          <div class="switch-user">
+            <label>
+              <input type="radio" name="user" value="" checked="checked" />
+              Postar como <strong><?php echo $user->display_name; ?></strong>
+            </label>
+            <label>
+              <input type="radio" name="user" value="mod" />
+              Postar como <strong><?php echo get_bloginfo('name'); ?></strong>
+            </label>
+          </div>
+          <?php
+        }
+        ?>
       </form>
     </li>
     <?php

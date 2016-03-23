@@ -138,3 +138,17 @@
   vertical-align: top;
   width: 100%;
 }
+
+.switch-user {
+  margin-top: 5px;
+
+  label {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  strong {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

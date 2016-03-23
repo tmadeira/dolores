@@ -8,7 +8,8 @@ class DoloresCommentAPI extends DoloresBaseAPI {
     $comment = DoloresPosts::add_new_comment(
       $request['text'],
       $request['postId'],
-      $request['parent']
+      $request['parent'],
+      $request['user']
     );
 
     if (is_array($comment) && array_key_exists('error', $comment)) {

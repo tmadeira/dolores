@@ -1,4 +1,5 @@
 <?php
+require_once(DOLORES_PATH . '/dlib/assets.php');
 require_once(DOLORES_PATH . '/dlib/interact.php');
 require_once(DOLORES_PATH . '/dlib/mailer.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
@@ -90,7 +91,7 @@ class DoloresPosts {
     return array('url' => get_permalink($inserted));
   }
 
-  public static function add_new_comment($text, $post_id, $parent = 0) {
+  public static function add_new_comment($text, $post_id, $parent, $who) {
     global $_SERVER;
 
     if (!is_user_logged_in()) {
@@ -98,6 +99,10 @@ class DoloresPosts {
     }
 
     $user = wp_get_current_user();
+
+    if ($who && !current_user_can('edit_posts')) {
+      return array('error' => 'Sem permissões suficientes.');
+    }
 
     if (!comments_open($post_id)) {
       return array('error' => 'Os comentários estão fechados.');
@@ -134,11 +139,15 @@ class DoloresPosts {
       return array('error' => 'Erro ao cadastrar comentário.');
     }
 
+    if ($who) {
+      update_comment_meta($inserted, 'mod', true);
+    }
+
     $post_user = get_user_by('id', get_post_field('post_author', $post_id));
     $args = array(
       'NAME' => $post_user->display_name,
       'COMMENT' => htmlspecialchars($text),
-      'POSTER' => $user->display_name,
+      'POSTER' => $who ? get_bloginfo('name') : $user->display_name,
       'IDEIA' => htmlspecialchars(get_post_field('post_title', $post_id)),
       'LINK' => get_permalink($post_id)
     );
@@ -160,9 +169,6 @@ class DoloresPosts {
     }
 
     $user = get_user_by('id', $comment->user_id);
-    $picture = dolores_get_profile_picture($user);
-    $style = ' style="background-image: url(\'' . $picture. '\');"';
-    $url = get_author_posts_url($comment->user_id);
     $format = get_option('date_format') . ' à\s ' . get_option('time_format');
     $datetime = get_comment_date($format, $comment->comment_ID);
 
@@ -178,6 +184,25 @@ class DoloresPosts {
 HTML;
       }
     }
+
+    $mod = get_comment_meta($comment->comment_ID, 'mod', true);
+
+    $url = get_author_posts_url($comment->user_id);
+    if ($mod) {
+      $url = '/';
+    }
+
+    $user_name = $user->display_name;
+    if ($mod) {
+      $user_name = get_bloginfo('site_name');
+    }
+
+    $picture = dolores_get_profile_picture($user);
+    if ($mod) {
+      $picture = DoloresAssets::get_image_uri('cam/logo-square.png');
+    }
+
+    $style = ' style="background-image: url(\'' . $picture. '\');"';
 
     if (!$comment->comment_parent) {
       $reply = <<<HTML
@@ -200,7 +225,7 @@ HTML;
       <div class="ideia-comment-text">
         <span class="ideia-comment-author">
           <a href="{$url}">
-            {$user->display_name}
+            {$user_name}
           </a>
         </span>
         <span class="ideia-comment-content">
