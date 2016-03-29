@@ -66,9 +66,9 @@
 }
 
 .home-temas-button {
-  @include solid-button(21px, $yellow, $purple);
+  @include solid-button(24px, $yellow, $purple);
   @include breakpoint($break-tablet) {
-    @include solid-button(27px, $yellow, $purple);
+    @include solid-button(33px, $yellow, $purple);
   }
 }
 
