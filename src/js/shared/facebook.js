@@ -23,7 +23,9 @@ var onFacebookStatusChange = function(response) {
 };
 
 window.fbLogin = function() {
-  window.FB.login(onFacebookStatusChange, {scope: "public_profile,email"});
+  window.FB.login(onFacebookStatusChange, {
+    scope: window.doloresConfig.facebookScope
+  });
 };
 
 window.fbAsyncInit = function() {
