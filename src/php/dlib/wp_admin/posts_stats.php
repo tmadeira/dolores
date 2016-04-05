@@ -19,6 +19,9 @@ class DoloresPostsStats {
   }
 
   private function get_posts_info($query, $days) {
+    // TODO: Move constant elsewhere.
+    $seconds_per_day = 86400;
+
     $posts = array();
     while ($query->have_posts()) {
       $query->the_post();
@@ -220,7 +223,7 @@ class DoloresPostsStats {
     global $_GET;
     ?>
     <div class="wrap">
-      <h2>Relatório das propostas</h2>
+      <h2>Relatório da interação</h2>
 
       <ul class="subsubsub">
         <?php

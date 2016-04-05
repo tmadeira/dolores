@@ -73,7 +73,7 @@ SQL;
     }
 
     $and_days = "";
-    if ($days != 0 && false) {
+    if ($days != 0) {
       $and_days = "AND time >= NOW() - INTERVAL $days DAY";
     }
 
