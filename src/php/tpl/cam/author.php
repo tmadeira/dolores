@@ -31,7 +31,9 @@ if (!$paged || $paged == 1) {
           'location' => 'Bairro',
           'birthdate' => 'Aniversário',
           'occupation' => 'Profissão',
-          'school' => 'Instituição/Movimento'
+          'school' => 'Instituição/Movimento',
+          'auth_facebook' => 'Perfil',
+          'auth_google' => 'Perfil'
         );
         ?>
         <ul class="profile-data">
@@ -41,6 +43,12 @@ if (!$paged || $paged == 1) {
             if ($data) {
               if ($field === 'birthdate') {
                 $data = date_i18n('j \d\e F', strtotime($data));
+              }
+              if ($field === 'auth_facebook') {
+                $data = '<a target="_blank" href="//facebook.com/' . $data . '/">Facebook</a>';
+              }
+              if ($field === 'auth_google') {
+                $data = '<a target="_blank" href="//plus.google.com/' . $data . '/">Google+</a>';
               }
               echo '<li><strong>' . $label . '</strong> ' . $data . '</li>';
             }
