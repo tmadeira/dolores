@@ -10,7 +10,7 @@ class DoloresUsersStats {
     add_users_page(
       'Estatísticas',
       'Estatísticas',
-      'edit_themes',
+      'edit_posts',
       'dolores_users_stats',
       array($this, 'create_admin_page')
     );

@@ -18,6 +18,7 @@ require_once(DOLORES_PATH . '/dlib/wp_util/disable_yarpp_css.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/modify_queries.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/register_menus.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/register_post_types.php');
+require_once(DOLORES_PATH . '/dlib/wp_util/setup_admin_css.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_avatar.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_editor.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/setup_opengraph.php');
@@ -26,6 +27,7 @@ require_once(DOLORES_PATH . '/dlib/wp_util/setup_thumbnails.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/share_buttons.php');
 
 require_once(DOLORES_PATH . '/dlib/wp_admin/locais.php');
+require_once(DOLORES_PATH . '/dlib/wp_admin/posts_stats.php');
 require_once(DOLORES_PATH . '/dlib/wp_admin/settings.php');
 require_once(DOLORES_PATH . '/dlib/wp_admin/temas.php');
 require_once(DOLORES_PATH . '/dlib/wp_admin/users.php');

@@ -57,7 +57,7 @@ SQL;
     }
   }
 
-  public function get_post_votes($post_id, $calculate = false) {
+  public function get_post_votes($post_id, $calculate = false, $days = 0) {
     global $wpdb;
     $post_id = intval($post_id);
 
@@ -72,9 +72,14 @@ SQL;
       return array($up ? intval($up) : 0, $down ? intval($down) : 0, $voted);
     }
 
+    $and_days = "";
+    if ($days != 0 && false) {
+      $and_days = "AND time >= NOW() - INTERVAL $days DAY";
+    }
+
     $sql = <<<SQL
 SELECT action, COUNT(*) AS count FROM {$this->table_name} WHERE
-  post_id = '$post_id' GROUP BY action
+  post_id = '$post_id' $and_days GROUP BY action
 SQL;
 
     $votes = array('up' => 0, 'down' => 0);
@@ -220,5 +225,25 @@ SQL;
     }
 
     return array();
+  }
+
+  public function get_recent_interacted_posts($days) {
+    global $wpdb;
+
+    // TODO: Move constant elsewhere.
+    $seconds_per_day = 86400;
+
+    $time = time() - $days * $seconds_per_day;
+    $sql = <<<SQL
+SELECT DISTINCT(post_id) FROM {$this->table_name}
+  WHERE post_id != 0 AND time >= NOW() - INTERVAL $days DAY
+SQL;
+
+    $results = $wpdb->get_results($sql, ARRAY_N);
+    $map_function = function ($row) {
+      return $row[0];
+    };
+
+    return array_map($map_function, $results);
   }
 };
