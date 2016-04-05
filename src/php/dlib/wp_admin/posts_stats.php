@@ -45,7 +45,7 @@ class DoloresPostsStats {
         'author_link' => get_author_posts_url(get_the_author_meta('ID')),
         'author' => get_the_author(),
         'datetime' => get_the_time('U'),
-        'taxonomy_link' => get_term_link($cat, $cat->taxonomy),
+        'taxonomy_link' => $cat ? get_term_link($cat, $cat->taxonomy) : '',
         'taxonomy' => $cat->name,
         'up_votes' => $up,
         'down_votes' => $down,
