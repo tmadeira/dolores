@@ -3,8 +3,9 @@ require_once(DOLORES_PATH . '/vendor/autoload.php');
 require_once(DOLORES_PATH . '/dlib/external/google.php');
 
 class DoloresCalendar {
-  public static function get($calendarId) {
-    $calendar_cache = get_option('dolores_calendar_cache_' . $calendarId);
+  public static function get($calendarId, $past = false) {
+    $key = $calendarId . '_' . ($past ? 'past' : 'future');
+    $calendar_cache = get_option('dolores_calendar_cache_' . $key);
 
     if (!is_array($calendar_cache) ||
         $calendar_cache['time'] < time() - 1800 ||
@@ -16,17 +17,23 @@ class DoloresCalendar {
       $optParams = array(
         'maxResults' => 100,
         'orderBy' => 'startTime',
-        'singleEvents' => TRUE,
-        'timeMin' => date('c'),
+        'singleEvents' => TRUE
       );
 
+      if ($past) {
+        $optParams['timeMax'] = date('c');
+      } else {
+        $optParams['timeMin'] = date('c');
+      }
+
       $results = $service->events->listEvents($calendarId, $optParams);
+      $events = $results->getItems();
       $calendar_cache = array(
         'time' => time(),
-        'events' => $results->getItems()
+        'events' => $past ? array_reverse($events) : $events
       );
       update_option(
-        'dolores_calendar_cache_' . $calendarId,
+        $key,
         $calendar_cache,
         'no'
       );

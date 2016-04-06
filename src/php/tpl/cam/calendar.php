@@ -4,8 +4,13 @@ require_once(DOLORES_PATH . '/dlib/calendar.php');
 the_post();
 get_header();
 
+$past = false;
+if (array_key_exists('past', $_GET) && $_GET['past'] == 1) {
+  $past = true;
+}
+$prev_or_next = $past ? 'Eventos passados' : 'Próximos eventos';
 $calendarUrl = '//calendar.google.com/calendar/render?cid=' . CALENDAR_ID;
-$events = DoloresCalendar::get(CALENDAR_ID);
+$events = DoloresCalendar::get(CALENDAR_ID, $past);
 ?>
 
 <main class="wrap default-wrap">
@@ -24,13 +29,25 @@ $events = DoloresCalendar::get(CALENDAR_ID);
       <p>
         Para acompanhar nossa agenda através do Google Calendar,
         <a href="<?php echo $calendarUrl; ?>">clique aqui</a>.
+        <br />
+        <?php
+        if ($past) {
+          ?>
+          Para ver os próximos eventos, <a href="?">clique aqui</a>.
+          <?php
+        } else {
+          ?>
+          Para ver os eventos passados, <a href="?past=1">clique aqui</a>.
+          <?php
+        }
+        ?>
       </p>
 
-      <h3>Próximos eventos</h3>
+      <h3><?php echo $prev_or_next; ?></h3>
 
       <?php
       if (count($events) == 0) {
-        echo "<p>Nenhum evento previsto no próximo período.</p>";
+        echo "<p>Nenhum evento para mostrar.</p>";
       } else {
         ?>
         <ul class="calendar-events">
