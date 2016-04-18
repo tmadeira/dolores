@@ -59,7 +59,7 @@ list($cat, $tags) = DoloresPosts::get_post_terms($post->ID);
     </div>
 
     <?php
-    comments_template('/comments-ideia.php');
+    comments_template('/comments.php');
     ?>
   </article>
 

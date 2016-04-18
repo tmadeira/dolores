@@ -38,9 +38,9 @@ get_header();
       <?php the_content(); ?>
     </div>
 
-    <div class="single-meta social-media">
-      <?php dolores_print_share_buttons(); ?>
-    </div>
+    <?php
+    comments_template('/comments.php');
+    ?>
   </article>
 
   <?php
