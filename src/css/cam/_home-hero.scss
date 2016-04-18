@@ -10,10 +10,7 @@
 
 .hero {
   background: image-url('cam/hero.jpg') no-repeat center center / cover;
-  height: 360px;
-  @include breakpoint($break-tablet) {
-    height: 600px;
-  }
+  height: 486px;
 }
 
 .hero-credit {
@@ -29,17 +26,14 @@
   padding: 90px 10px 0;
   text-align: center;
   @include breakpoint($break-desktop) {
-    padding-top: 100px;
+    padding-top: 110px;
   }
 }
 
 .hero-logo-image {
   width: 300px;
   @include breakpoint($break-tablet) {
-    width: 400px;
-  }
-  @include breakpoint($break-desktop) {
-    width: 430px;
+    width: 374px;
   }
 }
 

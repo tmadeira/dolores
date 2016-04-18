@@ -1,27 +1,26 @@
 .home-destaques {
-  background: #000;
-  color: #fff;
-  padding: 10px 10px 20px;
+  margin-top: -200px;
+  padding: 0 10px;
   @include breakpoint($break-tablet) {
-    background: rgba(0, 0, 0, 0.8);
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    position: absolute;
-    right: 0;
+    margin-top: -130px;
   }
 }
 
 .home-destaques > .wrap {
-  border: dashed 1px #fff;
-  padding: 0 10px;
+  @include border-radius(10px);
+  background: $yellow;
+  color: $purple;
+  margin: 0 auto;
+  max-width: 820px;
+  padding: 7px 12px;
   position: relative;
-  @include breakpoint($break-tablet) {
-    padding: 15px 0;
-  }
 }
 
 .destaques-list {
+  border-top: dashed 1px $purple;
+  &:first-child {
+    border-top: 0;
+  }
   @include breakpoint($break-tablet) {
     display: table;
     width: 100%;
@@ -29,81 +28,95 @@
 }
 
 .destaques-item {
-  border-top: solid 1px #fff;
-  padding: 10px 0;
+  border-top: dashed 1px $purple;
   text-align: left;
   &:first-child {
     border-top: 0;
   }
 
   @include breakpoint($break-tablet) {
-    border-left: solid 1px #fff;
+    border-left: dashed 1px $purple;
     border-top: 0;
     display: table-cell;
-    padding: 0 15px;
     vertical-align: middle;
-    width: 33.3333%;
+    width: 50%;
     &:first-child {
       border-left: 0;
+      border-top: 0;
     }
   }
-
-  & > a {
-    display: table;
-    width: 100%;
-  }
 }
 
-.destaques-item-manifesto {
-  color: $yellow;
+.destaques-item > a {
+  display: table;
 }
 
-.destaques-item-image-container, .destaques-item-info {
+.destaques-item-image-container {
   display: table-cell;
+  line-height: 0;
+  padding: 12px;
   vertical-align: middle;
-  &.destaques-item-info {
-    width: 100%;
-  }
+}
+
+.destaques-item-info {
+  display: table-cell;
+  padding-right: 12px;
+  vertical-align: middle;
+  width: 100%;
 }
 
 .destaques-item-image {
-  @include border-radius(40px);
-  background: #fff;
+  @include border-radius(45px);
   background-position: center center;
   background-size: cover;
-  height: 80px;
-  margin-right: 10px;
-  width: 80px;
-  @include breakpoint($break-desktop) {
-    margin-right: 15px;
-  }
+  display: inline-block;
+  height: 90px;
+  width: 90px;
 }
 
 .destaques-item-subtitle {
-  @include border-radius(3px);
-  @extend %title-font;
-  background: $yellow;
-  color: #000;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 1em;
-  margin-bottom: 5px;
-  padding: 8px 8px 2px;
-}
-
-.destaques-item-title {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1.2em;
-  text-transform: uppercase;
-  @include breakpoint($break-desktop) {
-    font-size: 16px;
+  margin: 5px 0;
+  & > span {
+    background: $purple;
+    color: $yellow;
+    font-size: 32px;
+    line-height: 1em;
+    padding: 4px 7px 2px;
+    text-transform: uppercase;
   }
 }
 
+.destaques-item-title {
+  font-size: 15px;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+.destaques-item-manifesto .destaques-item-title {
+  font-size: 19px;
+}
+
 .destaques-more {
-  @include solid-button(21px, #fff, #000);
-  position: absolute;
-  bottom: -13px;
-  right: 13px;
+  background: $purple;
+  color: $yellow;
+  line-height: 1.2em;
+  padding: 4px 6px;
+  & > span {
+    text-transform: uppercase;
+  }
+  & > .fa {
+    display: none;
+  }
+  @include breakpoint($break-tablet) {
+    padding: 5px 3px;
+    position: absolute;
+    right: 12px;
+    top: 106px;
+    & > span {
+      display: none;
+    }
+    & > .fa {
+      display: inline-block;
+    }
+  }
 }

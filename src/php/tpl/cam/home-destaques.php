@@ -8,7 +8,7 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
         <a href="/manifesto/">
           <div class="destaques-item-image-container">
             <?php
-            $url = DoloresAssets::get_image_uri('cam/luciana-80.jpg');
+            $url = DoloresAssets::get_image_uri('cam/luciana-90.jpg');
             $style = "background-image: url('$url');";
             ?>
             <div class="destaques-item-image" style="<?php echo $style; ?>">
@@ -16,26 +16,34 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
           </div>
           <div class="destaques-item-info">
             <h4 class="destaques-item-subtitle">
-              Manifesto
+              <span>
+                Manifesto
+              </span>
             </h4>
             <h3 class="destaques-item-title">
-              Compartilhar a mudança<br />(Por Luciana Genro)
+              Por Luciana Genro
             </h3>
           </div>
         </a>
       </li>
       <?php
       $query = new WP_Query(array(
-        'posts_per_page' => 2,
+        'posts_per_page' => 3,
         'tag' => 'destaque'
       ));
-      while ($query->have_posts()) {
+      for ($i = 0; $query->have_posts(); $i++) {
         $query->the_post();
         list($img) = wp_get_attachment_image_src(
           get_post_thumbnail_id($post->ID),
           'home-destaques'
         );
         $style = "background-image: url('$img');";
+        if ($i == 1) {
+          ?>
+          </ul>
+          <ul class="destaques-list">
+          <?php
+        }
         ?>
         <li class="destaques-item">
         <a href="<?php the_permalink(); ?>">
@@ -54,8 +62,9 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
       }
       ?>
     </ul>
-    <a class="destaques-more" href="/noticias/">
-      Ler mais notícias
+    <a class="destaques-more" href="/noticias/" title="Ler mais notícias">
+      <i class="fa fa-fw fa-angle-right"></i>
+      <span>Ler mais notícias</span>
     </a>
   </div>
 </div>

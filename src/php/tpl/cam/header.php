@@ -65,6 +65,23 @@ HTML;
         add_filter('wp_nav_menu_items', 'dolores_show_streaming_link', 10, 2);
       }
 
+      if (is_front_page()) {
+        function dolores_show_explanation_link($items, $args) {
+          if ($args->theme_location == 'header-menu') {
+            $new_item = <<<HTML
+<li class="menu-item">
+  <a class="toggle-explanation" href="#">
+    Apresentação
+  </a>
+</li>
+HTML;
+            $items = preg_replace('/<\/li>/', '</li>' . $new_item, $items, 1);
+          }
+          return $items;
+        }
+        add_filter('wp_nav_menu_items', 'dolores_show_explanation_link', 10, 2);
+      }
+
       wp_nav_menu(Array(
         'theme_location' => 'header-menu',
         'container' => 'div',

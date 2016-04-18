@@ -22,16 +22,13 @@ get_header();
 <section class="site-hero">
   <div class="hero">
     <div class="hero-credit">
-      Foto: Ivo Gonçalves/PMPA
+      Foto: Henri Bergius/CC BY-SA
     </div>
     <div class="hero-logo-container">
       <a href="<?php echo site_url(); ?>" title="Página inicial">
         <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
       </a>
     </div>
-    <button class="hero-button toggle-explanation">
-      <span>Apresentação</span>
-    </button>
   </div>
   <?php
   require(DOLORES_TEMPLATE_PATH . '/home-destaques.php');
