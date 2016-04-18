@@ -26,7 +26,7 @@ if (!$paged || $paged == 1) {
       <iframe
         width="853"
         height="480"
-        src="https://www.youtube.com/embed/XTXlM-F4zpQ?rel=0&amp;showinfo=0"
+        src="https://www.youtube.com/embed/_vUWfGD-1bQ?rel=0&amp;showinfo=0"
         frameborder="0"
         allowfullscreen
         >
