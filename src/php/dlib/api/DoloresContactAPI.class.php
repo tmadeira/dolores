@@ -31,8 +31,9 @@ class DoloresContactAPI extends DoloresBaseAPI {
     $message.= "Endereço IP: {$_SERVER['REMOTE_ADDR']}<br />\n";
     $message.= "Navegador: {$_SERVER['HTTP_USER_AGENT']}\n";
 
+    $admin_email = get_option('admin_email');
     $headers = "Content-type: text/plain; charset=utf-8\r\n";
-    $headers.= "From: $name <noreply@compartilheamudanca.com.br>\r\n";
+    $headers.= "From: $name <$admin_email>\r\n";
     $headers.= "Reply-To: $name <$email>\r\n";
 
     $to = get_option('admin_email');
