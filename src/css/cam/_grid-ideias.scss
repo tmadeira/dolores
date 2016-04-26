@@ -83,13 +83,17 @@
 
 .grid-ideia-interact {
   bottom: 45px;
+  font-size: 12px;
   position: absolute;
   right: 15px;
   text-align: right;
+  @include breakpoint($break-desktop) {
+    font-size: 14px;
+  }
 }
 
 .grid-ideia-action {
-  margin-left: 7px;
+  margin-left: 3px;
   .fa {
     @include opacity(0.5);
     color: $yellow;
@@ -99,6 +103,10 @@
       @include opacity(1);
     }
   }
+}
+
+.grid-ideia-interact .ideia-votes-count {
+  text-transform: uppercase;
 }
 
 .grid-ideia-button {

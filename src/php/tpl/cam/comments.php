@@ -26,14 +26,24 @@ function dolores_ideia_comment($comment, $args, $depth) {
         <?php echo $data; ?>
         >
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-      <span class="number"><?php echo $up; ?></span>
+    </a>
+    <a class="ideia-votes-count" href="#">
+      <span>Anastasia + <?php echo $up; ?></span>
+      <ul class="ideia-votes-list">
+        <li>Adria Meira</li>
+      </ul>
     </a>
     <a
         class="ideia-action ideia-downvote<?php echo $downvoted; ?>"
         <?php echo $data; ?>
         >
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-      <span class="number"><?php echo $down; ?></span>
+    </a>
+    <a class="ideia-votes-count" href="#">
+      <span>Wanderley + <?php echo $down; ?></span>
+      <ul class="ideia-votes-list">
+        <li>Israel Dutra</li>
+      </ul>
     </a>
 
     <?php dolores_print_share_buttons(); ?>

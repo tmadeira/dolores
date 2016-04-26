@@ -14,10 +14,10 @@ var vote = function(data, action) {
   API.route("vote").post(request).done(function(response) {
     $("[data-vote='" + data + "']").each(function() {
       if ($(this).hasClass("ideia-upvote")) {
-        $(this).find(".number").html(response.up);
+        $(this).next(".ideia-votes-count").html(response.up);
         $(this).toggleClass("voted", response.voted === "up");
       } else {
-        $(this).find(".number").html(response.down);
+        $(this).next(".ideia-votes-count").html(response.down);
         $(this).toggleClass("voted", response.voted === "down");
       }
     });

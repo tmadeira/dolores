@@ -11,19 +11,23 @@
 }
 
 .ideia-comments-header .social-buttons {
-  display: inline-block;
+  display: block;
   font-weight: normal;
-  float: right;
+  margin-top: 8px;
   .social-button {
     font-size: 12px;
-    @include breakpoint($break-tablet) {
+  }
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    float: right;
+    margin-top: 0;
+    .social-button {
       font-size: 14px;
     }
   }
 }
 
 .ideia-action {
-  margin-right: 4px;
   .fa {
     @include opacity(0.5);
   }
@@ -32,6 +36,17 @@
       @include opacity(1);
     }
   }
+}
+
+.ideia-comments-header .ideia-votes-count {
+  font-size: 13px;
+  font-weight: normal;
+  margin-right: 5px;
+  text-transform: uppercase;
+}
+
+.ideia-votes-list {
+  display: none;
 }
 
 #comments {
