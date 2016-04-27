@@ -308,7 +308,8 @@ HTML;
     }
 
     $content.= <<<HTML
-
+          </ul>
+        </div>
         {$remove}
         {$reply}
         <span class="ideia-comment-date">
