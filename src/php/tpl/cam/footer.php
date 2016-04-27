@@ -59,6 +59,7 @@ $img_psol = DoloresAssets::get_image_uri('cam/logo-psol-rs.png');
 </footer>
 
 <div id="authenticator"></div>
+<div id="likes"></div>
 <div id="share-container"></div>
 
 <?php

@@ -27,12 +27,24 @@ function dolores_ideia_comment($comment, $args, $depth) {
         >
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
     </a>
-    <a class="ideia-votes-count" href="#">
+    <div class="ideia-votes-count">
       <span>Anastasia + <?php echo $up; ?></span>
       <ul class="ideia-votes-list">
-        <li>Adria Meira</li>
+        <?php
+        $src = 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p160x160/11230972_10207153339330644_7791537750886754740_n.jpg?oh=13f17c13ec4db5ee052e99f805fc0373&oe=57A2FB2D&__gda__=1471172693_6cb4e2f3ac31478cbd4c0938e85a81e5';
+        ?>
+        <li>
+          <a href="#">
+            <div class="ideia-votes-list-pic-container">
+              <div class="ideia-votes-list-pic"
+                  style="background-image: url('<?php echo $src; ?>');">
+              </div>
+            </div>
+            <div class="ideia-votes-list-name">Adria Meira</div>
+          </a>
+        </li>
       </ul>
-    </a>
+    </div>
     <a
         class="ideia-action ideia-downvote<?php echo $downvoted; ?>"
         <?php echo $data; ?>

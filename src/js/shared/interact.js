@@ -1,9 +1,12 @@
 "use strict";
 
 var $ = require("jquery");
+var React = require("react");
 var autosize = require("autosize");
 
 var API = require("./api");
+
+var Lightbox = require("./components/Lightbox.react");
 
 var vote = function(data, action) {
   var split = data.split("|");
@@ -65,6 +68,24 @@ var setup = function() {
 
   $(document).on("click", ".ideia-downvote", function() {
     return signInAndVote($(this).attr("data-vote"), "down");
+  });
+
+  $(document).on("click", ".ideia-votes-count", function() {
+    var list = $(this).find(".ideia-votes-list").prop("outerHTML");
+    var hide = function() {
+      $("#likes").hide();
+    };
+    React.render(
+      <Lightbox close={hide} lightboxStyle={{maxHeight: "400px"}}>
+        <div
+            className="lightbox-content"
+            dangerouslySetInnerHTML={{__html: list}}
+            />
+      </Lightbox>,
+      $("#likes")[0]
+    );
+    $("#likes").show();
+    return false;
   });
 
   $(document).on("click", ".ideia-comment-reply", function() {
