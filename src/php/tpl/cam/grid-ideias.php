@@ -64,7 +64,7 @@ function dolores_grid_ideias($query = null) {
 
                 $up_string = '0';
                 if (count($up) > 0) {
-                  $up_string = $up[0]['name'];
+                  $up_string = preg_replace('/ .*/', '', $up[0]['name']);
                   if ($voted === "up") {
                     $up_string = "Você";
                     $upvoted = " voted";
@@ -76,7 +76,7 @@ function dolores_grid_ideias($query = null) {
 
                 $down_string = '0';
                 if (count($down) > 0) {
-                  $down_string = $down[0]['name'];
+                  $down_string = preg_replace('/ .*/', '', $down[0]['name']);
                   if ($voted === "down") {
                     $down_string = "Você";
                     $downvoted = " voted";

@@ -81,7 +81,7 @@ SQL;
       $votes[$result->action][] = array(
         'pic' => dolores_get_profile_picture($user),
         'url' => get_author_posts_url($user->ID),
-        'name' => preg_replace('/ .*/', '', $user->display_name)
+        'name' => $user->display_name
       );
     }
 
