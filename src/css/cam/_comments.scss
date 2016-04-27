@@ -142,7 +142,6 @@
 }
 
 .ideia-comment-action {
-  margin-right: 8px;
   .fa {
     @include opacity(0.5);
     color: $yellow;
@@ -152,6 +151,10 @@
       @include opacity(1);
     }
   }
+}
+
+.ideia-comment-meta .ideia-votes-count {
+  margin-right: 5px;
 }
 
 .ideia-comment-remove {

@@ -1,8 +1,6 @@
 <?php
 class DoloresInteract {
   private static $instance;
-  private $field_up = 'dolores_votes_up';
-  private $field_down = 'dolores_votes_down';
 
   public static function get_instance() {
     if (null === static::$instance) {
@@ -43,18 +41,6 @@ SQL;
     return $wpdb->get_var($sql) === $this->table_name;
   }
 
-  private function update_count($post_id, $comment_id) {
-    if ($post_id) {
-      return;
-    }
-
-    if ($comment_id) {
-      list($up, $down) = $this->get_comment_votes($comment_id, true);
-      update_comment_meta($comment_id, $this->field_up, $up);
-      update_comment_meta($comment_id, $this->field_down, $down);
-    }
-  }
-
   public function get_post_votes($post_id, $days = 0) {
     global $wpdb;
     $post_id = intval($post_id);
@@ -88,31 +74,32 @@ SQL;
     return array($votes['up'], $votes['down'], $voted);
   }
 
-  public function get_comment_votes($comment_id, $calculate = false) {
+  public function get_comment_votes($comment_id) {
     global $wpdb;
     $comment_id = intval($comment_id);
 
-    if (!$calculate) {
-      $up = get_comment_meta($comment_id, $this->field_up, true);
-      $down = get_comment_meta($comment_id, $this->field_down, true);
-      $voted = "";
-      if (is_user_logged_in()) {
-        $voted = $this->voted(0, $comment_id);
-      }
-      return array($up ? intval($up) : 0, $down ? intval($down) : 0, $voted);
+    $voted = "";
+    if (is_user_logged_in()) {
+      $voted = $this->voted(0, $comment_id);
     }
 
     $sql = <<<SQL
-SELECT action, COUNT(*) AS count FROM {$this->table_name} WHERE
-  comment_id = '$comment_id' GROUP BY action
+SELECT action, user_id FROM {$this->table_name} WHERE
+  comment_id = '$comment_id' ORDER BY time DESC
 SQL;
 
-    $votes = array('up' => 0, 'down' => 0);
+    $votes = array('up' => array(), 'down' => array());
     $results = $wpdb->get_results($sql);
     foreach ($results as $result) {
-      $votes[$result->action] = intval($result->count);
+      $user = get_user_by('id', $result->user_id);
+      $votes[$result->action][] = array(
+        'pic' => dolores_get_profile_picture($user),
+        'url' => get_author_posts_url($user->ID),
+        'name' => $user->display_name
+      );
     }
-    return array($votes['up'], $votes['down']);
+
+    return array($votes['up'], $votes['down'], $voted);
   }
 
   public function vote($post_id, $comment_id, $action) {
@@ -145,8 +132,6 @@ SQL;
     if ($voted !== $action) {
       $wpdb->insert($this->table_name, $fields);
     }
-
-    $this->update_count($post_id, $comment_id);
   }
 
   private function voted($post_id, $comment_id) {
@@ -184,7 +169,6 @@ SQL;
     );
 
     $wpdb->delete($this->table_name, $fields);
-    $this->update_count($post_id, $comment_id);
   }
 
   public function remove($post_id, $comment_id) {

@@ -161,11 +161,31 @@ class DoloresPosts {
     list($up, $down, $voted) =
       $interact->get_comment_votes($comment->comment_ID);
     $data = "href=\"#vote\" data-vote=\"comment_id|{$comment->comment_ID}\"";
+
     $upvoted = $downvoted = "";
-    if ($voted === "up") {
-      $upvoted = " voted";
-    } else if ($voted === "down") {
-      $downvoted = " voted";
+
+    $up_string = '0';
+    if (count($up) > 0) {
+      $up_string = preg_replace('/ .*/', '', $up[0]['name']);
+      if ($voted === "up") {
+        $up_string = "Você";
+        $upvoted = " voted";
+      }
+      if (count($up) > 1) {
+        $up_string.= ' + ' . (count($up) - 1);
+      }
+    }
+
+    $down_string = '0';
+    if (count($down) > 0) {
+      $down_string = preg_replace('/ .*/', '', $down[0]['name']);
+      if ($voted === "down") {
+        $down_string = "Você";
+        $downvoted = " voted";
+      }
+      if (count($down) > 1) {
+        $down_string.= ' + ' . (count($down) - 1);
+      }
     }
 
     $user = get_user_by('id', $comment->user_id);
@@ -235,12 +255,60 @@ HTML;
       <div class="ideia-comment-meta">
         <a class="ideia-comment-action ideia-upvote{$upvoted}" {$data}>
           <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-          <span class="number">{$up}</span>
         </a>
+        <div class="ideia-votes-count">
+          <span>{$up_string}</span>
+          <ul class="ideia-votes-list">
+HTML;
+
+    foreach ($up as $user) {
+      $content.= <<<HTML
+        <li>
+          <a href="{$user['url']}">
+            <div class="ideia-votes-list-pic-container">
+              <div class="ideia-votes-list-pic"
+                  style="background-image: url('{$user['pic']}');">
+              </div>
+            </div>
+            <div class="ideia-votes-list-name">
+              {$user['name']}
+            </div>
+          </a>
+        </li>
+HTML;
+    }
+
+    $content.= <<<HTML
+          </ul>
+        </div>
+
         <a class="ideia-comment-action ideia-downvote{$downvoted}" {$data}>
           <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-          <span class="number">{$down}</span>
         </a>
+        <div class="ideia-votes-count">
+          <span>{$down_string}</span>
+          <ul class="ideia-votes-list">
+HTML;
+
+    foreach ($down as $user) {
+      $content.= <<<HTML
+        <li>
+          <a href="{$user['url']}">
+            <div class="ideia-votes-list-pic-container">
+              <div class="ideia-votes-list-pic"
+                  style="background-image: url('{$user['pic']}');">
+              </div>
+            </div>
+            <div class="ideia-votes-list-name">
+              {$user['name']}
+            </div>
+          </a>
+        </li>
+HTML;
+    }
+
+    $content.= <<<HTML
+
         {$remove}
         {$reply}
         <span class="ideia-comment-date">
