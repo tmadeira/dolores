@@ -45,9 +45,7 @@ SQL;
 
   private function update_count($post_id, $comment_id) {
     if ($post_id) {
-      list($up, $down) = $this->get_post_votes($post_id);
-      update_post_meta($post_id, $this->field_up, $up);
-      update_post_meta($post_id, $this->field_down, $down);
+      return;
     }
 
     if ($comment_id) {
@@ -72,14 +70,19 @@ SQL;
     }
 
     $sql = <<<SQL
-SELECT action, COUNT(*) AS count FROM {$this->table_name} WHERE
-  post_id = '$post_id' $and_days GROUP BY action
+SELECT action, user_id FROM {$this->table_name} WHERE
+  post_id = '$post_id' $and_days ORDER BY time DESC
 SQL;
 
-    $votes = array('up' => 0, 'down' => 0);
+    $votes = array('up' => array(), 'down' => array());
     $results = $wpdb->get_results($sql);
     foreach ($results as $result) {
-      $votes[$result->action] = intval($result->count);
+      $user = get_user_by('id', $result->user_id);
+      $votes[$result->action][] = array(
+        'pic' => dolores_get_profile_picture($user),
+        'url' => get_author_posts_url($user->ID),
+        'name' => preg_replace('/ .*/', '', $user->display_name)
+      );
     }
 
     return array($votes['up'], $votes['down'], $voted);

@@ -71,15 +71,19 @@ var setup = function() {
   });
 
   $(document).on("click", ".ideia-votes-count", function() {
-    var list = $(this).find(".ideia-votes-list").prop("outerHTML");
+    var list = $(this).find(".ideia-votes-list");
+    if (list.children().length === 0) {
+      return false;
+    }
+
     var hide = function() {
       $("#likes").hide();
     };
     React.render(
-      <Lightbox close={hide} lightboxStyle={{maxHeight: "400px"}}>
+      <Lightbox close={hide} lightboxStyle={{height: "400px"}}>
         <div
             className="lightbox-content"
-            dangerouslySetInnerHTML={{__html: list}}
+            dangerouslySetInnerHTML={{__html: list.prop("outerHTML")}}
             />
       </Lightbox>,
       $("#likes")[0]

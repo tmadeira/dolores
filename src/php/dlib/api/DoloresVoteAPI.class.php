@@ -33,6 +33,8 @@ class DoloresVoteAPI extends DoloresBaseAPI {
     $interact = new DoloresInteract();
     if ($post_id) {
       $votes = $interact->get_post_votes($post_id);
+      $votes[0] = count($votes[0]);
+      $votes[1] = count($votes[1]);
     } else {
       $votes = $interact->get_comment_votes($comment_id);
     }

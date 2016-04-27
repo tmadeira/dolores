@@ -30,6 +30,8 @@ class DoloresPostsStats {
 
       $interact = DoloresInteract::get_instance();
       list($up, $down) = $interact->get_post_votes(get_the_ID(), $days);
+      $up = count($up);
+      $down = count($down);
 
       $comments = get_comments(array(
         'date_query' => array(

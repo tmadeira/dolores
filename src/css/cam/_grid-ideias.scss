@@ -105,10 +105,6 @@
   }
 }
 
-.grid-ideia-interact .ideia-votes-count {
-  text-transform: uppercase;
-}
-
 .grid-ideia-button {
   @include border-corner-radius(bottom, left, 10px);
   @include border-corner-radius(bottom, right, 10px);

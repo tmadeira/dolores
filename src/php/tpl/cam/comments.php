@@ -14,11 +14,31 @@ function dolores_ideia_comment($comment, $args, $depth) {
     $interact = DoloresInteract::get_instance();
     list($up, $down, $voted) = $interact->get_post_votes($post->ID);
     $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
+
     $upvoted = $downvoted = "";
-    if ($voted === "up") {
-      $upvoted = " voted";
-    } else if ($voted === "down") {
-      $downvoted = " voted";
+
+    $up_string = '0';
+    if (count($up) > 0) {
+      $up_string = $up[0]['name'];
+      if ($voted === "up") {
+        $up_string = "Você";
+        $upvoted = " voted";
+      }
+      if (count($up) > 1) {
+        $up_string.= ' + ' . (count($up) - 1);
+      }
+    }
+
+    $down_string = '0';
+    if (count($down) > 0) {
+      $down_string = $down[0]['name'];
+      if ($voted === "down") {
+        $down_string = "Você";
+        $downvoted = " voted";
+      }
+      if (count($down) > 1) {
+        $down_string.= ' + ' . (count($down) - 1);
+      }
     }
     ?>
     <a
@@ -28,21 +48,27 @@ function dolores_ideia_comment($comment, $args, $depth) {
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
     </a>
     <div class="ideia-votes-count">
-      <span>Anastasia + <?php echo $up; ?></span>
+      <span><?php echo $up_string; ?></span>
       <ul class="ideia-votes-list">
         <?php
-        $src = 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p160x160/11230972_10207153339330644_7791537750886754740_n.jpg?oh=13f17c13ec4db5ee052e99f805fc0373&oe=57A2FB2D&__gda__=1471172693_6cb4e2f3ac31478cbd4c0938e85a81e5';
-        ?>
-        <li>
-          <a href="#">
-            <div class="ideia-votes-list-pic-container">
-              <div class="ideia-votes-list-pic"
-                  style="background-image: url('<?php echo $src; ?>');">
+        foreach ($up as $user) {
+          ?>
+          <li>
+            <a href="<?php echo $user['url']; ?>">
+              <div class="ideia-votes-list-pic-container">
+                <div class="ideia-votes-list-pic"
+                    style="background-image: url('<?php
+                        echo $user['pic']; ?>');">
+                </div>
               </div>
-            </div>
-            <div class="ideia-votes-list-name">Adria Meira</div>
-          </a>
-        </li>
+              <div class="ideia-votes-list-name">
+                <?php echo $user['name']; ?>
+              </div>
+            </a>
+          </li>
+          <?php
+        }
+        ?>
       </ul>
     </div>
     <a
@@ -51,12 +77,30 @@ function dolores_ideia_comment($comment, $args, $depth) {
         >
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
     </a>
-    <a class="ideia-votes-count" href="#">
-      <span>Wanderley + <?php echo $down; ?></span>
+    <div class="ideia-votes-count">
+      <span><?php echo $down_string; ?></span>
       <ul class="ideia-votes-list">
-        <li>Israel Dutra</li>
+        <?php
+        foreach ($down as $user) {
+          ?>
+          <li>
+            <a href="<?php echo $user['url']; ?>">
+              <div class="ideia-votes-list-pic-container">
+                <div class="ideia-votes-list-pic"
+                    style="background-image: url('<?php
+                        echo $user['pic']; ?>');">
+                </div>
+              </div>
+              <div class="ideia-votes-list-name">
+                <?php echo $user['name']; ?>
+              </div>
+            </a>
+          </li>
+          <?php
+        }
+        ?>
       </ul>
-    </a>
+    </div>
 
     <?php dolores_print_share_buttons(); ?>
   </div>
