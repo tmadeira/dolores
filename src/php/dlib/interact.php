@@ -45,7 +45,7 @@ SQL;
 
   private function update_count($post_id, $comment_id) {
     if ($post_id) {
-      list($up, $down) = $this->get_post_votes($post_id, true);
+      list($up, $down) = $this->get_post_votes($post_id);
       update_post_meta($post_id, $this->field_up, $up);
       update_post_meta($post_id, $this->field_down, $down);
     }
@@ -57,19 +57,13 @@ SQL;
     }
   }
 
-  public function get_post_votes($post_id, $calculate = false, $days = 0) {
+  public function get_post_votes($post_id, $days = 0) {
     global $wpdb;
     $post_id = intval($post_id);
 
-    if (!$calculate) {
-      $up = get_post_meta($post_id, $this->field_up, true);
-      $down = get_post_meta($post_id, $this->field_down, true);
-      $voted = "";
-      if (is_user_logged_in()) {
-        $voted = $this->voted($post_id, 0);
-      }
-
-      return array($up ? intval($up) : 0, $down ? intval($down) : 0, $voted);
+    $voted = "";
+    if (is_user_logged_in()) {
+      $voted = $this->voted($post_id, 0);
     }
 
     $and_days = "";

@@ -29,7 +29,7 @@ class DoloresPostsStats {
       list($cat) = DoloresPosts::get_post_terms(get_the_ID());
 
       $interact = DoloresInteract::get_instance();
-      list($up, $down) = $interact->get_post_votes(get_the_ID(), true, $days);
+      list($up, $down) = $interact->get_post_votes(get_the_ID(), $days);
 
       $comments = get_comments(array(
         'date_query' => array(
