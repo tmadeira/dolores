@@ -1,10 +1,10 @@
 <?php
 if (!is_page_template('streaming.php') && DoloresStreaming::get_active()) {
   $title = esc_attr(DoloresStreaming::get_title());
-  $seen = 'seen-' . md5($title);
-  if (!$_SESSION[$seen]) {
+  $youtube_id = DoloresStreaming::get_youtube_id();
+  $seen = 'seen-' . md5($title . $youtube_id);
+  if (is_front_page() || !$_SESSION[$seen]) {
     $_SESSION[$seen] = true;
-    $youtube_id = DoloresStreaming::get_youtube_id();
     $link = '//youtu.be/' . $youtube_id;
     ?>
     <div
