@@ -13,6 +13,8 @@ function dolores_ideia_comment($comment, $args, $depth) {
     <?php
     $interact = DoloresInteract::get_instance();
     list($up, $down, $voted) = $interact->get_post_votes($post->ID);
+    $up = count($up);
+    $down = count($down);
     $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
     $upvoted = $downvoted = "";
     if ($voted === "up") {

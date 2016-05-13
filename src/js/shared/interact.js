@@ -1,9 +1,50 @@
 "use strict";
 
 var $ = require("jquery");
+var _ = require("lodash");
+var React = require("react");
 var autosize = require("autosize");
 
 var API = require("./api");
+
+var Lightbox = require("./components/Lightbox.react");
+
+var votesToHTML = function(votes, voted) {
+  if (_.isNumber(votes)) {
+    return votes;
+  }
+
+  var str = "0";
+  if (votes.length > 0) {
+    str = votes[0].name.replace(/ .*/, "");
+    if (voted) {
+      str = "Você";
+    }
+    if (votes.length > 1) {
+      var count = votes.length - 1;
+      str += " + " + count;
+    }
+  }
+
+  var div = $($.parseHTML("<div class=\"ideia-votes-count\"></div>"));
+  div.append("<span>" + str + "</span>");
+  div.append("<ul class=\"ideia-votes-list\"></ul>");
+  var list = div.find(".ideia-votes-list");
+  for (var i = 0; i < votes.length; i++) {
+    var pic = $($.parseHTML("<div class=\"ideia-votes-list-pic\"></div>"));
+    pic.css("background-image", "url('" + votes[i].pic + "')");
+
+    var li = $($.parseHTML("<li><a href=\"" + votes[i].url + "\"></a></li>"));
+    var a = li.find("a");
+    a.append("<div class=\"ideia-votes-list-pic-container\"></div>");
+    a.append("<div class=\"ideia-votes-list-name\"></div>");
+    a.find(".ideia-votes-list-pic-container").append(pic);
+    a.find(".ideia-votes-list-name").html(votes[i].name);
+    list.append(li);
+  }
+
+  return div.prop("outerHTML");
+};
 
 var vote = function(data, action) {
   var split = data.split("|");
@@ -14,10 +55,30 @@ var vote = function(data, action) {
   API.route("vote").post(request).done(function(response) {
     $("[data-vote='" + data + "']").each(function() {
       if ($(this).hasClass("ideia-upvote")) {
-        $(this).find(".number").html(response.up);
+        if ($(this).find(".number").length) {
+          // Old templates with no support to see who voted (scfn, atm)
+          $(this).find(".number").html(response.up.length);
+        } else {
+          $(this).next(".ideia-votes-count").html(
+            votesToHTML(
+              response.up,
+              response.voted === "up"
+            )
+          );
+        }
         $(this).toggleClass("voted", response.voted === "up");
       } else {
-        $(this).find(".number").html(response.down);
+        if ($(this).find(".number").length) {
+          // Old templates with no support to see who voted (scfn, atm)
+          $(this).find(".number").html(response.down.length);
+        } else {
+          $(this).next(".ideia-votes-count").html(
+            votesToHTML(
+              response.down,
+              response.voted === "down"
+            )
+          );
+        }
         $(this).toggleClass("voted", response.voted === "down");
       }
     });
@@ -65,6 +126,28 @@ var setup = function() {
 
   $(document).on("click", ".ideia-downvote", function() {
     return signInAndVote($(this).attr("data-vote"), "down");
+  });
+
+  $(document).on("click", ".ideia-votes-count", function() {
+    var list = $(this).find(".ideia-votes-list");
+    if (list.children().length === 0) {
+      return false;
+    }
+
+    var hide = function() {
+      $("#likes").hide();
+    };
+    React.render(
+      <Lightbox close={hide} lightboxStyle={{height: "400px"}}>
+        <div
+            className="lightbox-content"
+            dangerouslySetInnerHTML={{__html: list.prop("outerHTML")}}
+            />
+      </Lightbox>,
+      $("#likes")[0]
+    );
+    $("#likes").show();
+    return false;
   });
 
   $(document).on("click", ".ideia-comment-reply", function() {

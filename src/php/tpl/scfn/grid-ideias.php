@@ -85,6 +85,8 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
               require_once(DOLORES_PATH . '/dlib/interact.php');
               $interact = new DoloresInteract();
               list($up, $down, $voted) = $interact->get_post_votes($post->ID);
+              $up = count($up);
+              $down = count($down);
               $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
               $upvoted = $downvoted = "";
               if ($voted === "up") {

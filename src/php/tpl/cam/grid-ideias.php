@@ -54,38 +54,105 @@ function dolores_grid_ideias($query = null) {
                   <?php the_author(); ?>
                 </a>
               </p>
-              <p class="grid-ideia-interact">
+              <div class="grid-ideia-interact">
                 <?php
                 $interact = new DoloresInteract();
                 list($up, $down, $voted) = $interact->get_post_votes($post->ID);
                 $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
+
                 $upvoted = $downvoted = "";
-                if ($voted === "up") {
-                  $upvoted = " voted";
-                } else if ($voted === "down") {
-                  $downvoted = " voted";
+
+                $up_string = '0';
+                if (count($up) > 0) {
+                  $up_string = preg_replace('/ .*/', '', $up[0]['name']);
+                  if ($voted === "up") {
+                    $up_string = "Você";
+                    $upvoted = " voted";
+                  }
+                  if (count($up) > 1) {
+                    $up_string.= ' + ' . (count($up) - 1);
+                  }
+                }
+
+                $down_string = '0';
+                if (count($down) > 0) {
+                  $down_string = preg_replace('/ .*/', '', $down[0]['name']);
+                  if ($voted === "down") {
+                    $down_string = "Você";
+                    $downvoted = " voted";
+                  }
+                  if (count($down) > 1) {
+                    $down_string.= ' + ' . (count($down) - 1);
+                  }
                 }
                 ?>
                 <a
                     class="grid-ideia-action ideia-upvote<?php echo $upvoted; ?>"
                     <?php echo $data; ?>
                     >
-                  <i class="fa fa-fw fa-thumbs-up"></i>
-                  <span class="number"><?php echo $up; ?></span>
+                  <i class="fa fa-lg fa-fw fa-thumbs-up"></i>
                 </a>
+                <div class="ideia-votes-count">
+                  <span><?php echo $up_string; ?></span>
+                  <ul class="ideia-votes-list">
+                    <?php
+                    foreach ($up as $user) {
+                      ?>
+                      <li>
+                        <a href="<?php echo $user['url']; ?>">
+                          <div class="ideia-votes-list-pic-container">
+                            <div class="ideia-votes-list-pic"
+                                style="background-image: url('<?php
+                                    echo $user['pic']; ?>');">
+                            </div>
+                          </div>
+                          <div class="ideia-votes-list-name">
+                            <?php echo $user['name']; ?>
+                          </div>
+                        </a>
+                      </li>
+                      <?php
+                    }
+                    ?>
+                  </ul>
+                </div>
                 <a
                     class="grid-ideia-action ideia-downvote<?php echo $downvoted; ?>"
                     <?php echo $data; ?>
                     >
-                  <i class="fa fa-fw fa-thumbs-down"></i>
-                  <span class="number"><?php echo $down; ?></span>
+                  <i class="fa fa-lg fa-fw fa-thumbs-down"></i>
                 </a>
+                <div class="ideia-votes-count">
+                  <span><?php echo $down_string; ?></span>
+                  <ul class="ideia-votes-list">
+                    <?php
+                    foreach ($down as $user) {
+                      ?>
+                      <li>
+                        <a href="<?php echo $user['url']; ?>">
+                          <div class="ideia-votes-list-pic-container">
+                            <div class="ideia-votes-list-pic"
+                                style="background-image: url('<?php
+                                    echo $user['pic']; ?>');">
+                            </div>
+                          </div>
+                          <div class="ideia-votes-list-name">
+                            <?php echo $user['name']; ?>
+                          </div>
+                        </a>
+                      </li>
+                      <?php
+                    }
+                    ?>
+                  </ul>
+                </div>
+
                 <a class="grid-ideia-action grid-ideia-discussion"
                     href="<?php the_permalink(); ?>#comments">
-                  <i class="fa fa-fw fa-comments"></i>
+                  <i class="fa fa-lg fa-fw fa-comments"></i>
                   <?php echo get_comments_number(); ?>
                 </a>
-              </p>
+              </div>
               <a class="grid-ideia-button" href="<?php the_permalink(); ?>">
                 Debata &nbsp;
                 <i class="fa fa-angle-right"></i>

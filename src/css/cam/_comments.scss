@@ -11,19 +11,23 @@
 }
 
 .ideia-comments-header .social-buttons {
-  display: inline-block;
+  display: block;
   font-weight: normal;
-  float: right;
+  margin-top: 8px;
   .social-button {
     font-size: 12px;
-    @include breakpoint($break-tablet) {
+  }
+  @include breakpoint($break-tablet) {
+    display: inline-block;
+    float: right;
+    margin-top: 0;
+    .social-button {
       font-size: 14px;
     }
   }
 }
 
 .ideia-action {
-  margin-right: 4px;
   .fa {
     @include opacity(0.5);
   }
@@ -32,6 +36,59 @@
       @include opacity(1);
     }
   }
+}
+
+.ideia-comments-header .ideia-votes-count {
+  font-size: 13px;
+  font-weight: normal;
+  margin-right: 5px;
+}
+
+.ideia-votes-count {
+  display: inline-block;
+  & > span {
+    cursor: pointer;
+  }
+}
+
+.ideia-votes-list {
+  font-size: 14px;
+
+  & > li {
+    border-top: solid 1px $gray;
+    display: table;
+    width: 100%;
+    &:first-child {
+      border-top: 0;
+    }
+    & > a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .ideia-votes-count & {
+    display: none;
+  }
+}
+
+.ideia-votes-list-pic-container, .ideia-votes-list-name {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ideia-votes-list-pic-container {
+  padding: 8px 8px 8px 0;
+}
+
+.ideia-votes-list-pic {
+  @include border-radius(20px);
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+}
+
+.ideia-votes-list-name {
+  width: 100%;
 }
 
 #comments {
@@ -85,7 +142,6 @@
 }
 
 .ideia-comment-action {
-  margin-right: 8px;
   .fa {
     @include opacity(0.5);
     color: $yellow;
@@ -95,6 +151,14 @@
       @include opacity(1);
     }
   }
+}
+
+.ideia-comment-meta .ideia-votes-count {
+  margin-right: 5px;
+}
+
+.ideia-comment-date {
+  margin-left: 5px;
 }
 
 .ideia-comment-remove {

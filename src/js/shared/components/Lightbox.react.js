@@ -14,7 +14,7 @@ var Lightbox = React.createClass({
       <div className="lightbox-overlay">
         <div className="lightbox-table">
           <div className="lightbox-cell" onClick={this.containerClick}>
-            <div className="lightbox">
+            <div className="lightbox" style={this.props.lightboxStyle}>
               <button className="lightbox-close" onClick={this.props.close}>
                 X
               </button>

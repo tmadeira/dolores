@@ -14,11 +14,31 @@ function dolores_ideia_comment($comment, $args, $depth) {
     $interact = DoloresInteract::get_instance();
     list($up, $down, $voted) = $interact->get_post_votes($post->ID);
     $data = "href=\"#vote\" data-vote=\"post_id|{$post->ID}\"";
+
     $upvoted = $downvoted = "";
-    if ($voted === "up") {
-      $upvoted = " voted";
-    } else if ($voted === "down") {
-      $downvoted = " voted";
+
+    $up_string = '0';
+    if (count($up) > 0) {
+      $up_string = preg_replace('/ .*/', '', $up[0]['name']);
+      if ($voted === "up") {
+        $up_string = "Você";
+        $upvoted = " voted";
+      }
+      if (count($up) > 1) {
+        $up_string.= ' + ' . (count($up) - 1);
+      }
+    }
+
+    $down_string = '0';
+    if (count($down) > 0) {
+      $down_string = preg_replace('/ .*/', '', $down[0]['name']);
+      if ($voted === "down") {
+        $down_string = "Você";
+        $downvoted = " voted";
+      }
+      if (count($down) > 1) {
+        $down_string.= ' + ' . (count($down) - 1);
+      }
     }
     ?>
     <a
@@ -26,15 +46,61 @@ function dolores_ideia_comment($comment, $args, $depth) {
         <?php echo $data; ?>
         >
       <i class="fa fa-fw fa-lg fa-thumbs-up"></i>
-      <span class="number"><?php echo $up; ?></span>
     </a>
+    <div class="ideia-votes-count">
+      <span><?php echo $up_string; ?></span>
+      <ul class="ideia-votes-list">
+        <?php
+        foreach ($up as $user) {
+          ?>
+          <li>
+            <a href="<?php echo $user['url']; ?>">
+              <div class="ideia-votes-list-pic-container">
+                <div class="ideia-votes-list-pic"
+                    style="background-image: url('<?php
+                        echo $user['pic']; ?>');">
+                </div>
+              </div>
+              <div class="ideia-votes-list-name">
+                <?php echo $user['name']; ?>
+              </div>
+            </a>
+          </li>
+          <?php
+        }
+        ?>
+      </ul>
+    </div>
     <a
         class="ideia-action ideia-downvote<?php echo $downvoted; ?>"
         <?php echo $data; ?>
         >
       <i class="fa fa-fw fa-lg fa-thumbs-down"></i>
-      <span class="number"><?php echo $down; ?></span>
     </a>
+    <div class="ideia-votes-count">
+      <span><?php echo $down_string; ?></span>
+      <ul class="ideia-votes-list">
+        <?php
+        foreach ($down as $user) {
+          ?>
+          <li>
+            <a href="<?php echo $user['url']; ?>">
+              <div class="ideia-votes-list-pic-container">
+                <div class="ideia-votes-list-pic"
+                    style="background-image: url('<?php
+                        echo $user['pic']; ?>');">
+                </div>
+              </div>
+              <div class="ideia-votes-list-name">
+                <?php echo $user['name']; ?>
+              </div>
+            </a>
+          </li>
+          <?php
+        }
+        ?>
+      </ul>
+    </div>
 
     <?php dolores_print_share_buttons(); ?>
   </div>
