@@ -55,20 +55,30 @@ var vote = function(data, action) {
   API.route("vote").post(request).done(function(response) {
     $("[data-vote='" + data + "']").each(function() {
       if ($(this).hasClass("ideia-upvote")) {
-        $(this).next(".ideia-votes-count").html(
-          votesToHTML(
-            response.up,
-            response.voted === "up"
-          )
-        );
+        if ($(this).find(".number").length) {
+          // Old templates with no support to see who voted (scfn, atm)
+          $(this).find(".number").html(response.up.length);
+        } else {
+          $(this).next(".ideia-votes-count").html(
+            votesToHTML(
+              response.up,
+              response.voted === "up"
+            )
+          );
+        }
         $(this).toggleClass("voted", response.voted === "up");
       } else {
-        $(this).next(".ideia-votes-count").html(
-          votesToHTML(
-            response.down,
-            response.voted === "down"
-          )
-        );
+        if ($(this).find(".number").length) {
+          // Old templates with no support to see who voted (scfn, atm)
+          $(this).find(".number").html(response.down.length);
+        } else {
+          $(this).next(".ideia-votes-count").html(
+            votesToHTML(
+              response.down,
+              response.voted === "down"
+            )
+          );
+        }
         $(this).toggleClass("voted", response.voted === "down");
       }
     });
