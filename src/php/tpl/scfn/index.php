@@ -80,107 +80,63 @@ if (!$paged || $paged == 1) {
   }
   ?>
 
-  <section class="home-ideas">
+  <h2 class="home-gray-title">Participe</h2>
+
+  <main class="grid-temas">
     <div class="wrap">
-      <h2 class="home-title">Você tem ideias para a cidade?</h2>
-
-      <?php
-      $list = DoloresHome::get_ideias();
-      $query = new WP_Query(array(
-        'orderby' => 'post__in',
-        'post__in' => $list,
-        'post_type' => 'ideia',
-        'posts_per_page' => 3
-      ));
-      dolores_grid_ideias($query, true);
-      ?>
-
-      <div class="home-button-container">
-        <a class="home-button" href="/temas">Veja todos os temas e participe</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-row">
-    <div class="wrap">
-      <div class="home-col grid-2">
+      <ul class="grid-temas-list">
         <?php
-        $args = array_merge($wp_query->query_vars, array(
-          'posts_per_page' => 4
-        ));
-        $query = new WP_Query($args);
-        dolores_grid($query);
-        ?>
-      </div>
-      <div class="home-col">
-        <?php
-        $query = new WP_Query(array(
-          'category_name' => 'acoes'
-        ));
-        $query->the_post();
-        list($img_src) = wp_get_attachment_image_src(
-          get_post_thumbnail_id($post->ID),
-          'bigger'
+        $items = array(
+          array(
+            "slug" => "proponha",
+            "text" => "Proponha e discuta ideias",
+            "link" => "/temas/"
+          ),
+          array(
+            "slug" => "participe",
+            "text" => "Participe de encontros",
+            "link" => "/agenda/"
+          ),
+          array(
+            "slug" => "organize",
+            "text" => "Organize encontros com seus vizinhos",
+            "link" => "/bairros/"
+          ),
+          array(
+            "slug" => "colabore",
+            "text" => "Colabore",
+            "link" => "/participe/"
+          )
         );
-        $style = "style=\"background-image:url('$img_src');\"";
+        foreach ($items as $item) {
+          $bg = "scfn/home-{$item['slug']}.jpg";
+          $icon = "scfn/home-icon-{$item['slug']}.png";
+
+          $bg = "url('" . DoloresAssets::get_image_uri($bg) . "')";
+          $icon = DoloresAssets::get_image_uri($icon);
+          ?>
+          <li class="grid-tema" style="background-image: <?php echo $bg; ?>;">
+            <a class="grid-tema-link" href="<?php echo $item['link']; ?>">
+              <div class="grid-tema-wrap">
+                <img class="home-participe-icon" src="<?php echo $icon; ?>" />
+                <h3 class="home-participe-text">
+                  <?php echo $item['text']; ?>
+                </h3>
+              </div>
+            </a>
+          </li>
+          <?php
+        }
         ?>
-        <div class="home-col-wrap"<?php echo $style; ?>>
-          <a class="home-main-item-link" href="<?php the_permalink(); ?>">
-            <h4 class="home-action-label">Ação</h4>
-            <h2 class="home-action-title">
-              <?php the_title(); ?>
-            </h2>
-            <button class="home-action-button home-main-item-action">
-              Vem junto!
-            </button>
-          </a>
-        </div>
-      </div>
+      </ul>
     </div>
-  </section>
+  </main>
 
-  <?php
-  $flow1 = DoloresAssets::get_image_uri('scfn/home-flow-1.png');
-  $flow2 = DoloresAssets::get_image_uri('scfn/home-flow-2.png');
-  $flow3 = DoloresAssets::get_image_uri('scfn/home-flow-3.png');
-  ?>
+  <h2 class="home-gray-title">Notícias</h2>
 
-  <section class="home-flow">
-    <div class="wrap">
-      <ol class="flow-list">
-        <li class="home-flow-item bg-pattern-light-purple">
-          <a href="/baixe-nossos-materiais" class="flow-link">
-            <img class="flow-image" src="<?php echo $flow1; ?>" />
-            <div class="flow-item-title-container">
-              <h3 class="flow-item-title">
-                Baixe nossos materiais
-              </h3>
-            </div>
-          </a>
-        </li>
-        <li class="home-flow-item bg-pattern-orange">
-          <a href="/calendario" class="flow-link">
-            <img class="flow-image" src="<?php echo $flow2; ?>" />
-            <div class="flow-item-title-container">
-              <h3 class="flow-item-title">
-                Chegue junto<br />das atividades
-              </h3>
-            </div>
-          </a>
-        </li>
-        <li class="home-flow-item bg-pattern-teal">
-          <a href="/participe" class="flow-link">
-            <img class="flow-image" src="<?php echo $flow3; ?>" />
-            <div class="flow-item-title-container">
-              <h3 class="flow-item-title">
-                Colabore
-              </h3>
-            </div>
-          </a>
-        </li>
-      </ol>
-    </div>
-  </section>
+  <?php dolores_grid(); ?>
+
+  <h2 class="home-gray-title">Apoios</h2>
 
   <section class="home-row">
     <div class="wrap">
@@ -188,7 +144,8 @@ if (!$paged || $paged == 1) {
         <?php
         $query = new WP_Query(array(
           'category_name' => 'apoios',
-          'orderby' => 'rand'
+          'orderby' => 'rand',
+          'posts_per_page' => 5
         ));
         $query->the_post();
         list($img_src) = wp_get_attachment_image_src(
@@ -199,7 +156,7 @@ if (!$paged || $paged == 1) {
         ?>
         <div class="home-col-wrap"<?php echo $style; ?>>
           <a class="home-main-item-link" href="/secoes/apoios/">
-            <h4 class="home-action-label">Quem apoia?</h4>
+            <h4 class="home-action-label"><span>Quem apoia?</span></h4>
             <h2 class="home-action-title no-button">
               <?php the_title(); ?>
             </h2>
@@ -208,11 +165,6 @@ if (!$paged || $paged == 1) {
       </div>
       <div class="home-col grid-2">
         <?php
-        $args = array_merge($wp_query->query_vars, array(
-          'posts_per_page' => 4,
-          'paged' => 2
-        ));
-        $query = new WP_Query($args);
         dolores_grid($query);
         ?>
       </div>
@@ -223,7 +175,7 @@ if (!$paged || $paged == 1) {
     <div class="wrap">
       <ul></ul>
       <div class="grid-ideias-pagination">
-        <a class="grid-ideias-button ajax-load-more" href="/page/2">
+        <a class="grid-ideias-button" href="/secoes/apoios">
           Ver mais
         </a>
       </div>
@@ -231,7 +183,6 @@ if (!$paged || $paged == 1) {
   </section>
 
   <?php
-
 } else {
   dolores_grid();
 }

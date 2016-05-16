@@ -253,12 +253,14 @@
 
 .home-action-label {
   @extend %title-font;
-  background: $orange;
-  display: inline-block;
   font-size: 36px;
   letter-spacing: 0;
-  padding: 7px 14px 7px 20px;
-  margin-top: 20px;
+  padding-top: 50px;
+  text-align: center;
+  & > span {
+    border: solid 2px #fff;
+    padding: 5px 15px;
+  }
 }
 
 .home-action-title {
@@ -283,5 +285,30 @@
 .home-grid-negative-margin {
   @include breakpoint($break-tablet) {
     margin-top: -30px;
+  }
+}
+
+.home-gray-title {
+  @extend %title-font;
+  color: $dark-gray;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 20px 0;
+  text-align: center;
+  &:before, &:after {
+    content: " – ";
+  }
+}
+
+.home-participe-text {
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.4em;
+  margin-top: 20px;
+  padding: 0 30px;
+  @include breakpoint($break-tablet) {
+    font-size: 36px;
+    padding: 0 40px;
   }
 }
