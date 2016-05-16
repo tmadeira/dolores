@@ -1,6 +1,6 @@
 *We do not support any language other than Portuguese at the moment.*
 
-**ATENÇÃO:** *Este projeto está em _constante desenvolvimento_, no momento focado no [Se a cidade fosse nossa](http://seacidadefossenossa.com.br/).*
+**ATENÇÃO:** *Este projeto está em _constante desenvolvimento_, no momento focado no [Se a cidade fosse nossa](http://seacidadefossenossa.com.br/) (scfn) e no [Compartilhe a mudança](https://compartilheamudanca.com.br/).*
 
 Para desenvolver este projeto, é necessário que seu sistema operacional tenha [npm](http://npmjs.com), [bower](http://bower.io), [grunt](http://gruntjs.com), [Compass](http://compass-style.org/) e [Composer](https://getcomposer.org/).
 
@@ -31,6 +31,7 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 - Para habilitar login via Google, as constantes `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` devem estar definidas em `wp-config.php`.
 - Para ativar debates para localizações que tenham apenas mais do que um determinado número de usuários, defina a constante `DOLORES_ACTIVE_LOCATION_THRESHOLD`.
 - Para ativar posts relacionados, você deve instalar o plugin YARPP (Yet Another Related Posts Plugin).
+- Para usar o template do **Compartilhe a mudança**, deve-se ainda definir a constante `DOLORES_TEMPLATE` com o valor `cam`.
 
 ### Versão do WordPress ###
 
