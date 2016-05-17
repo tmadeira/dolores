@@ -95,7 +95,7 @@ if (!$paged || $paged == 1) {
           array(
             "slug" => "participe",
             "text" => "Participe de encontros",
-            "link" => "/agenda/"
+            "link" => "/calendario/"
           ),
           array(
             "slug" => "organize",
