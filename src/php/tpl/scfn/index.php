@@ -89,17 +89,17 @@ if (!$paged || $paged == 1) {
         $items = array(
           array(
             "slug" => "proponha",
-            "text" => "Proponha e discuta ideias",
+            "text" => "Proponha",
             "link" => "/temas/"
           ),
           array(
             "slug" => "participe",
-            "text" => "Participe de encontros",
+            "text" => "Participe",
             "link" => "/calendario/"
           ),
           array(
             "slug" => "organize",
-            "text" => "Organize encontros com seus vizinhos",
+            "text" => "Organize",
             "link" => "/bairros/"
           ),
           array(
