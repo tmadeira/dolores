@@ -6,7 +6,6 @@ module.exports = function(grunt) {
 
     browserify: {
       options: {
-        debug: true,
         transform: ['reactify', 'debowerify']
       },
 
@@ -216,7 +215,6 @@ module.exports = function(grunt) {
     'prod',
     [
       // JS
-      'eslint:prod',
       'browserify:cam',
       'browserify:scfn',
       'closureCompiler:cam',
