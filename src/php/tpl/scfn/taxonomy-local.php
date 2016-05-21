@@ -131,7 +131,12 @@ if (!$paged || $paged == 1) {
   <?php
 }
 
-dolores_grid_ideias();
+dolores_grid_ideias(
+  null,
+  false,
+  'Ainda não há ideias para o seu bairro. Dê uma ideia e ' .
+      'chame seus vizinhos para participar!'
+);
 ?>
 
 <?php
