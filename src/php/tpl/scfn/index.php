@@ -48,14 +48,68 @@ if (!$paged || $paged == 1) {
       <source src="<?php echo $video_mp4; ?>" type="video/mp4" />
       <source src="<?php echo $video_webm; ?>" type="video/webm" />
     </video>
-    <div class="hero-logo-container">
-      <a href="<?php echo site_url(); ?>" title="Página inicial">
-        <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
-      </a>
+    <div class="hero-content">
+      <div class="wrap">
+        <div class="hero-left">
+          <div class="hero-logo-container">
+            <a href="<?php echo site_url(); ?>" title="Página inicial">
+              <img class="hero-logo-image" src="<?php echo $logo_src; ?>" />
+            </a>
+          </div>
+          <button class="hero-button toggle-explanation">
+            Entenda
+          </button>
+        </div>
+        <div class="hero-right">
+          <p class="hero-call">
+            Já parou para pensar como seria se a cidade fosse nossa? Cada um de
+            nós que vivemos e sentimos o Rio sabemos como torná-lo melhor. Quer
+            pensar junto soluções para os problemas que enfrentamos todos os
+            dias?
+          </p>
+
+          <form class="hero-form">
+            <div class="hero-form-item">
+              <label for="hero-email" class="hero-label">E-mail</label>
+              <input
+                class="hero-form-input"
+                type="text"
+                name="email"
+                id="hero-email"
+                placeholder="E-mail"
+                />
+            </div>
+            <div class="hero-form-item">
+              <label for="hero-phone" class="hero-label">Telefone</label>
+              <input
+                class="hero-form-input"
+                type="text"
+                name="phone"
+                id="hero-phone"
+                placeholder="Telefone"
+                />
+            </div>
+            <div class="hero-form-item">
+              <label for="hero-location" class="hero-label">Bairro</label>
+              <input
+                class="hero-form-input"
+                type="text"
+                name="location"
+                id="hero-location"
+                placeholder="Bairro"
+                />
+            </div>
+            <div class="hero-form-item">
+              <input type="hidden" name="origin" value="Home" />
+              <button class="hero-form-button" type="submit">
+                Quero
+              </button>
+            </div>
+            <div class="hero-form-response"></div>
+          </form>
+        </div>
+      </div>
     </div>
-    <button class="hero-button toggle-explanation">
-      Entenda
-    </button>
   </section>
 
   <?php
@@ -89,17 +143,17 @@ if (!$paged || $paged == 1) {
         $items = array(
           array(
             "slug" => "proponha",
-            "text" => "Proponha e discuta ideias",
+            "text" => "Proponha",
             "link" => "/temas/"
           ),
           array(
             "slug" => "participe",
-            "text" => "Participe de encontros",
-            "link" => "/agenda/"
+            "text" => "Participe",
+            "link" => "/calendario/"
           ),
           array(
             "slug" => "organize",
-            "text" => "Organize encontros com seus vizinhos",
+            "text" => "Organize",
             "link" => "/bairros/"
           ),
           array(

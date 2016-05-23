@@ -1,7 +1,7 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/posts.php');
 
-function dolores_grid_ideias($query = null, $show_tax = false) {
+function dolores_grid_ideias($query = null, $show_tax = false, $no_posts = null) {
   global $wp_query, $post;
   if ($query === null) {
     $query = $wp_query;
@@ -125,7 +125,9 @@ function dolores_grid_ideias($query = null, $show_tax = false) {
         echo '</ul>';
       } else {
         echo '<p style="margin: 20px 0; text-align: center;">';
-        if (is_search()) {
+        if ($no_posts) {
+          echo $no_posts;
+        } else if (is_search()) {
           echo 'Nenhum resultado encontrado.';
         } else {
           echo 'Nenhuma ideia para mostrar.';

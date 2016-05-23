@@ -1,7 +1,7 @@
 .site-hero {
   background-position: bottom center;
   background-size: cover;
-  height: 500px;
+  height: 960px;
   overflow: hidden;
   position: relative;
 
@@ -21,28 +21,59 @@
   }
 }
 
-.hero-logo-container {
+.site-hero > .hero-content {
+  bottom: 0;
+  font-size: 0;
   left: 0;
+  padding: 15px;
   position: absolute;
   right: 0;
-  text-align: center;
-  top: 60px;
+  top: 0;
+  & > .wrap {
+    height: 100%;
+  }
+  @include breakpoint($break-tablet) {
+    padding: 0;
+    & > .wrap {
+      display: table;
+      width: 100%;
+    }
+  }
+}
+
+.hero-left, .hero-right {
+  height: 480px;
+  @include breakpoint($break-tablet) {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    width: 50%;
+  }
+}
+
+.hero-left {
+  position: relative;
 }
 
 .hero-logo-image {
   height: 320px;
+  left: 50%;
+  margin-left: -133px;
+  position: absolute;
+  top: 60px;
   width: 266px;
 
   @include breakpoint($break-tablet) {
     height: 420px;
     width: 349px;
+    margin-left: -175px;
   }
 }
 
 .hero-button {
   background: none;
   border: solid 2px #fff;
-  bottom: 35px;
+  bottom: 30px;
   color: #fff;
   font-weight: 700;
   left: 50%;
@@ -67,6 +98,66 @@
   }
 
   @include breakpoint($break-tablet) {
+    bottom: 40px;
     margin-left: -175px;
   }
+}
+
+.hero-right {
+  @include breakpoint($break-tablet) {
+    padding-right: 20px;
+  }
+}
+
+.hero-call {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.3em;
+  margin-top: 30px;
+  @include breakpoint($break-tablet) {
+    font-size: 24px;
+  }
+}
+
+.hero-form {
+  line-height: 0;
+  margin-top: 20px;
+}
+
+.hero-form-item {
+  margin: 5px 0;
+  vertical-align: middle;
+  @include breakpoint($break-desktop) {
+    display: inline-block;
+    width: 49%;
+    &:nth-child(2n) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.hero-form-input, .hero-form-button {
+  border: 0;
+  display: block;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.hero-form-input {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-form-button {
+  background: $orange;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero-form-response {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5em;
+  text-align: center;
 }

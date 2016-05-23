@@ -182,10 +182,48 @@ var setupContactForm = function() {
   });
 };
 
+var setupHeroForm = function() {
+  $(".hero-form").submit(function() {
+    var form = $(this);
+    var fields = form.find("input");
+    var button = form.find(".hero-form-button");
+    var responseContainer = form.find(".hero-form-response");
+
+    var request = {};
+    var requestArray = form.serializeArray();
+    for (var i = 0; i < requestArray.length; i++) {
+      request[requestArray[i].name] = requestArray[i].value;
+    }
+
+    button.prop("disabled", true);
+    API.route("subscribe").post({data: request}).done(function(response) {
+      if ("error" in response) {
+        button.prop("disabled", false);
+        responseContainer.html("Erro: " + response.error);
+      } else {
+        button.prop("disabled", false);
+        fields.val("");
+        responseContainer.html("Cadastro realizado com sucesso!");
+      }
+    }).fail(function(response) {
+      button.prop("disabled", false);
+      console.log(response);
+      if ("error" in response.responseJSON) {
+        responseContainer.html("Erro: " + response.responseJSON.error);
+      } else {
+        alert("Erro ao efetuar cadastro.");
+      }
+    });
+
+    return false;
+  });
+};
+
 var setup = function() {
   setupTemaForm();
   setupBairrosForm();
   setupContactForm();
+  setupHeroForm();
 };
 
 module.exports = {

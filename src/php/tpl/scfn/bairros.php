@@ -19,7 +19,8 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Convide pessoas do seu bairro para participarem da discussão.
+						Dê ideias para melhorar o seu bairro; leia e opine sobre as ideias
+						dos seus vizinhos.
           </p>
         </div>
       </li>
@@ -31,8 +32,8 @@ get_header();
         </div>
         <div class="bairros-flow-item-description-container">
           <p class="bairros-flow-item-description">
-            Dê ideias para melhorar o seu bairro; leia e opine sobre as ideias
-            dos seus vizinhos.
+						Compartilhe sua ideia com vizinhos em chame mais pessoas para
+						participar.
           </p>
         </div>
       </li>
