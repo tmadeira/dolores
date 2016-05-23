@@ -71,3 +71,20 @@
     margin: 0 !important;
   }
 }
+
+.encontro-bairro{
+  text-align: center;
+  background-color: $dark-purple;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  box-sizing: border-box;
+  color: #fff;
+  & > h2 {
+    font-size: 2em;
+    padding: 1em;
+  }
+  & > a {
+    border: 1px solid #fff;
+    padding: .5em;
+  }
+}

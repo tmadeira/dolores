@@ -119,6 +119,14 @@ get_header();
   <?php get_sidebar(); ?>
 </main>
 
+<?php
+  $custom_fields = get_post_custom(get_the_ID());
+?>
+<section class="encontro-bairro">
+  <h2>Organize um encontro no seu bairro</h2>
+  <a href="<?php echo $custom_fields['link_bairro'][0]; ?>">VEJA MAIS</a>
+</section>
+
 <section class="temas-posts">
   <div class="wrap">
     <h2 class="temas-posts-title">
