@@ -65,11 +65,11 @@ get_header();
                 <td class="calendar-cell calendar-date">
                   <?php echo $date; ?>
                 </td>
-                <td class="calendar-cell calendar-time">
-                  <i class="fa fa-fw fa-clock-o"></i>
-                  <?php echo $time; ?>
-                </td>
                 <td class="calendar-cell calendar-summary">
+                  <p>
+                    <i class="fa fa-fw fa-clock-o"></i>
+                    <?php echo $time; ?>
+                  </p>
                   <h4 class="event-title">
                     <?php echo $event['summary']; ?>
                   </h4>
@@ -117,6 +117,14 @@ get_header();
 
   <?php get_sidebar(); ?>
 </main>
+
+<?php
+  $custom_fields = get_post_custom(get_the_ID());
+?>
+<section class="encontro-bairro">
+  <h2>Organize um encontro no seu bairro</h2>
+  <a href="<?php echo $custom_fields['link_bairro'][0]; ?>">Veja mais</a>
+</section>
 
 <section class="temas-posts">
   <div class="wrap">
