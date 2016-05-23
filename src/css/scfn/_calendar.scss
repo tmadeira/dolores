@@ -5,22 +5,11 @@
 }
 
 .calendar-row {
-  display: block;
+  display: flex;
   margin: 10px 0;
-
-  @include breakpoint($break-tablet) {
-    display: table-row;
-    margin: 0;
-  }
 }
 
 .calendar-cell {
-  display: block;
-  margin-left: 70px;
-
-  & > .event-title, & > .event-location, & > .event-description {
-    margin: 0;
-  }
 
   @include breakpoint($break-tablet) {
     display: table-cell;
@@ -28,21 +17,37 @@
     padding: 5px 0;
     vertical-align: top;
   }
+
+  display: block;
+  margin-left: 70px;
+
+  & > .event-title, & > .event-location, & > .event-description {
+    margin: 0;
+  }
 }
 
 .calendar-date {
-  float: left;
   font-size: 13px;
   margin: 0;
-  width: 70px;
   font-weight: bold;
   text-transform: capitalize;
+  background-color: $dark-purple;
+  color: $orange;
 
   @include breakpoint($break-tablet) {
     font-size: inherit;
-    float: none;
-    width: auto;
   }
+  width: 120px;
+  border-radius: 3px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.calendar-summary {
+  background: #fff;
+  padding: 1em;
+  border-radius: 3px;
 }
 
 .calendar-time, .event-location, .event-description, .calendar-link-container {

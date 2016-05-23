@@ -36,6 +36,7 @@ get_header();
     </div>
 
     <div class="entry">
+    <div class="entry">
       <?php
       if (count($events) == 0) {
         echo "<p>Nenhum evento previsto no próximo período.</p>";
@@ -65,11 +66,11 @@ get_header();
                 <td class="calendar-cell calendar-date">
                   <?php echo $date; ?>
                 </td>
-                <td class="calendar-cell calendar-time">
-                  <i class="fa fa-fw fa-clock-o"></i>
-                  <?php echo $time; ?>
-                </td>
                 <td class="calendar-cell calendar-summary">
+                  <p>
+                    <i class="fa fa-fw fa-clock-o"></i>
+                    <?php echo $time; ?>
+                  </p>
                   <h4 class="event-title">
                     <?php echo $event['summary']; ?>
                   </h4>
