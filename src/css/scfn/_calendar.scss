@@ -5,7 +5,7 @@
 }
 
 .calendar-row {
-  display: flex;
+  @include display-flex();
   margin: 10px 0;
 }
 
@@ -27,21 +27,21 @@
 }
 
 .calendar-date {
-  font-size: 13px;
-  margin: 0;
-  font-weight: bold;
-  text-transform: capitalize;
+  align-items: center;
   background-color: $dark-purple;
+  @include border-radius(3px);
   color: $orange;
+  display: flex;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  text-transform: capitalize;
+  width: 120px;
 
   @include breakpoint($break-tablet) {
     font-size: inherit;
   }
-  width: 120px;
-  border-radius: 3px;
-  display: flex;
-  text-align: center;
-  align-items: center;
 }
 
 .calendar-summary {
@@ -73,12 +73,12 @@
 }
 
 .encontro-bairro{
-  text-align: center;
   background-color: $dark-purple;
-  padding-top: 1em;
-  padding-bottom: 2em;
   box-sizing: border-box;
   color: #fff;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-align: center;
   & > h2 {
     font-size: 2em;
     padding: 1em;
@@ -86,5 +86,6 @@
   & > a {
     border: 1px solid #fff;
     padding: .5em;
+    text-transform: uppercase;
   }
 }

@@ -36,7 +36,6 @@ get_header();
     </div>
 
     <div class="entry">
-    <div class="entry">
       <?php
       if (count($events) == 0) {
         echo "<p>Nenhum evento previsto no próximo período.</p>";
@@ -124,7 +123,7 @@ get_header();
 ?>
 <section class="encontro-bairro">
   <h2>Organize um encontro no seu bairro</h2>
-  <a href="<?php echo $custom_fields['link_bairro'][0]; ?>">VEJA MAIS</a>
+  <a href="<?php echo $custom_fields['link_bairro'][0]; ?>">Veja mais</a>
 </section>
 
 <section class="temas-posts">
