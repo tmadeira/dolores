@@ -143,23 +143,23 @@ if (!$paged || $paged == 1) {
         $items = array(
           array(
             "slug" => "proponha",
-            "text" => "Proponha",
+            "text" => "Proponha e discuta ideias",
             "link" => "/temas/"
           ),
           array(
             "slug" => "participe",
-            "text" => "Participe",
+            "text" => "Participe e organize encontros",
             "link" => "/calendario/"
           ),
           array(
             "slug" => "organize",
-            "text" => "Organize",
-            "link" => "/bairros/"
+            "text" => "Proponha mudanças no seu bairro",
+            "link" => "/organize-um-encontro-do-se-a-cidade-fosse-nossa-no-seu-bairro/"
           ),
           array(
             "slug" => "colabore",
-            "text" => "Colabore",
-            "link" => "/participe/"
+            "text" => "Colabore com a comunicação",
+            "link" => "https://docs.google.com/forms/d/1GN2dXM-Bz-i11i8UH2Gnh82Heh1tJfEHWUSHtM_VLS4/viewform"
           )
         );
         foreach ($items as $item) {
