@@ -3,30 +3,19 @@ class DoloresAdminLocal {
   private $local_fields = array(
       'active' => array(
           'label' => 'Local ativo?',
-          'description' => 'Marque se esse local está aberto a debates.<br />' .
-              '<strong>Esta opção não afeta tags.</strong>'
+          'description' => 'Marque se esse local está aberto a debates.<br /><strong>Esta opção não afeta tags.</strong>'
       ),
       'image' => array(
           'label' => 'Imagem',
-          'description' => 'Endereço da imagem que é usada como destaque deste ' .
-              'local.'
+          'description' => 'Endereço da imagem que é usada como destaque deste local.'
       ),
       'video' => array(
           'label' => 'Vídeo',
-          'description' => 'ID do vídeo (YouTube) que vai aparecer neste local.' .
-              '<br />' .
-              '<small>' .
-              '  Por exemplo, se o endereço do vídeo no YouTube é' .
-              '  https://www.youtube.com/watch?v=mRCEBA777TU, ' .
-              '  então o valor que você deve usar é ' .
-              '  <strong>mRCEBA777TU</strong>.' .
-              '</small>'
+          'description' => 'ID do vídeo (YouTube) que vai aparecer neste local. <br /><small>Por exemplo, se o endereço do vídeo no YouTube é https://www.youtube.com/watch?v=mRCEBA777TU, então o valor que você deve usar é <strong>mRCEBA777TU</strong>.</small>'
       ),
       'more' => array(
           'label' => 'Link para diagnóstico',
-          'description' => 'Endereço do link do diagnóstico completo (para o ' .
-              'qual o usuário é redirecionado quando clica em ' .
-              '<strong>Ver diagnóstico</strong>).'
+          'description' => 'Endereço do link do diagnóstico completo (para o qual o usuário é redirecionado quando clica em <strong>Ver diagnóstico</strong>).'
       )
   );
 

@@ -1,54 +1,44 @@
 <?php
 define('DOLORES_TEMA_OUTLINE_LIMIT', 12);
 
+define('DOLORES_TEMPLATE_IS_CAM', DOLORES_TEMPLATE === 'cam');
+define('DOLORES_TEMPLATE_IS_NOT_CAM', DOLORES_TEMPLATE !== 'cam');
+
 class DoloresAdminTema {
   private $tema_fields = array(
     'active' => array(
         'label' => 'Tema ativo?',
-        'description' => 'Marque se esse tema está aberto a debates.<br />' .
-                         '<strong>Esta opção não afeta subtemas/tags.</strong>',
-        'hide' => DOLORES_TEMPLATE === 'cam'
+        'description' => 'Marque se esse tema está aberto a debates.<br /><strong>Esta opção não afeta subtemas/tags.</strong>',
+        'hide' => DOLORES_TEMPLATE_IS_CAM
       ),
     'headline' => array(
         'label' => 'Título na página do tema',
         'description' => 'Título que aparece na página do eixo temático.',
-        'hide' => DOLORES_TEMPLATE !== 'cam'
+        'hide' => DOLORES_TEMPLATE_IS_NOT_CAM
       ),
     'image' => array(
         'label' => 'Imagem',
-        'description' => 'Endereço da imagem que é usada como destaque deste ' .
-                         'tema (aparece na página de temas, por exemplo).'
+        'description' => 'Endereço da imagem que é usada como destaque deste tema (aparece na página de temas, por exemplo).'
       ),
     'credit' => array(
         'label' => 'Créditos da imagem',
         'description' => 'Exemplo: Guilherme Prado/Nexo',
-        'hide' => DOLORES_TEMPLATE !== 'cam'
+        'hide' => DOLORES_TEMPLATE_IS_NOT_CAM
       ),
     'outline' => array(
         'label' => 'Ideias iniciais',
-        'description' => 'Itens que aparecem acima do formulário na página ' .
-                         'do tema. Na primeira linha, o título. A partir da ' .
-                         'segunda, a descrição.',
-        'hide' => DOLORES_TEMPLATE !== 'cam'
+        'description' => 'Itens que aparecem acima do formulário na página do tema. Na primeira linha, o título. A partir da segunda, a descrição.',
+        'hide' => DOLORES_TEMPLATE_IS_NOT_CAM
       ),
     'video' => array(
         'label' => 'Vídeo',
-        'description' => 'ID do vídeo (YouTube) que vai aparecer neste tema.' .
-                         '<br />' .
-                         '<small>' .
-                         '  Por exemplo, se o endereço do vídeo no YouTube é' .
-                         '  https://youtube.com/watch?v=mRCEBA777TU, ' .
-                         '  então o valor que você deve usar é ' .
-                         '  <strong>mRCEBA777TU</strong>.' .
-                         '</small>',
-        'hide' => DOLORES_TEMPLATE === 'cam'
+        'description' => 'ID do vídeo (YouTube) que vai aparecer neste tema.<br /><small>Por exemplo, se o endereço do vídeo no YouTube é https://youtube.com/watch?v=mRCEBA777TU, então o valor que você deve usar é <strong>mRCEBA777TU</strong>.</small>',
+        'hide' => DOLORES_TEMPLATE_IS_CAM
       ),
     'more' => array(
         'label' => 'Link para diagnóstico',
-        'description' => 'Endereço do link do diagnóstico completo (para o ' .
-                         'qual o usuário é redirecionado quando clica em ' .
-                         '<strong>Ver diagnóstico</strong>).',
-        'hide' => DOLORES_TEMPLATE === 'cam'
+        'description' => 'Endereço do link do diagnóstico completo (para o qual o usuário é redirecionado quando clica em <strong>Ver diagnóstico</strong>).',
+        'hide' => DOLORES_TEMPLATE_IS_CAM
       )
   );
 
