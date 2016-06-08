@@ -3,7 +3,7 @@
   $taxonomy = 'tema';
   add_filter('get_terms_orderby', 'dolores_random_orderby');
   $terms = get_terms($taxonomy, array(
-    'hide_empty' => false,
+    'hide_empty' => true,
     'number' => 4,
     'parent' => 0
   ));
