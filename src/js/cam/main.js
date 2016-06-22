@@ -63,7 +63,7 @@ $(function() {
   });
 
   $(".local-list").change(function() {
-    location.href = "/local/" + $(this).val();
+    location.href = "/local/" + $(this).val() + "/";
   });
 
   $("input[name='phone']").focusout(function() {
