@@ -10,9 +10,14 @@ class DoloresSubscribeAPI extends DoloresBaseAPI {
       $this->_error('O e-mail digitado é inválido.');
     }
 
+    $name = '';
+    if (array_key_exists('name', $request['data'])) {
+      $name = $request['data']['name'];
+    }
+
     $phone = '';
     if (array_key_exists('phone', $request['data'])) {
-      $phone = $request['data']['phone'];
+      $phone = preg_replace('/[^0-9]*/', '', $request['data']['phone']);
     }
 
     $location = '';
@@ -27,10 +32,11 @@ class DoloresSubscribeAPI extends DoloresBaseAPI {
 
     DoloresMailer::subscribe(array(
       'type' => 'subscriber',
+      'name' => $name,
       'email' => $email,
       'origin' => $origin,
       'phone' => $phone,
-      'bairro' => $bairro
+      'bairro' => $location
     ));
 
     return array();
