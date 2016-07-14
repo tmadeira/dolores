@@ -21,6 +21,7 @@ var twitter = require("../shared/twitter");
 var Authenticator = require("../shared/components/Authenticator.react");
 var Share = require("../shared/components/Share.react");
 var StreamingLightbox = require("../shared/components/StreamingLightbox.react");
+var SubscribeLightbox = require("../shared/components/SubscribeLightbox.react");
 
 var map = require("./map");
 
@@ -38,6 +39,9 @@ $(function() {
         <StreamingLightbox title={title} url={url} />,
         $("#streaming-lightbox")[0]
     );
+  }
+  if ($("#subscribe-lightbox").length) {
+    React.render(<SubscribeLightbox />, $("#subscribe-lightbox")[0]);
   }
 
   $(window).resize(menu.onResize);

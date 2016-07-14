@@ -70,6 +70,7 @@ small {
 @mixin solid-button($font-size, $bg-color, $fg-color) {
   @include title-font;
   background: $bg-color;
+  border: 0;
   color: $fg-color;
   font-size: $font-size;
   padding: $font-size/3 $font-size/3 0;

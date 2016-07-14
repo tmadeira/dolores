@@ -33,3 +33,39 @@
 .streaming-lightbox-button {
   @include dashed-button(21px, $red, #fff);
 }
+
+.subscribe-lightbox-call {
+  color: $purple;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subscribe-lightbox-form-item {
+  margin: 5px 0;
+  .label {
+    display: none;
+  }
+}
+
+.subscribe-lightbox-form-input {
+  background: #fff;
+  border: 0;
+  display: block;
+  padding: 5px;
+  width: 100%;
+}
+
+.subscribe-lightbox-form-button {
+  @include solid-button(24px, $purple, #fff);
+  display: block;
+  width: 100%;
+}
+
+.subscribe-lightbox-form-close {
+  color: $dark-gray;
+  font-size: 0.9em;
+  text-align: center;
+}
