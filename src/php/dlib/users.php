@@ -79,21 +79,13 @@ class DoloresUsers {
       return array('error' => $user_id->get_error_message());
     }
 
-    if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
-      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
-      $MailChimp->fireAndForget('lists/subscribe', Array(
-        'id' => MAILCHIMP_LIST_ID,
-        'email' => array('email' => $data['email']),
-        'merge_vars' => array(
-          'NOME' => $data['name'],
-          'CELULAR' => $data['phone'],
-          'BAIRRO' => $data['location'],
-          'ORIGEM' => 'Site'
-        ),
-        'double_optin' => false
-      ));
-    }
+    DoloresMailer::subscribe(array(
+      'type' => 'user',
+      'email' => $data['email'],
+      'name' => $data['name'],
+      'phone' => $data['phone'],
+      'bairro' => $data['location']
+    ));
 
     $auth_key = 'auth_' . $data['auth']['type'];
     $auth_val = $data['auth']['id'];

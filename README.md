@@ -27,6 +27,7 @@ Para ver as modificações, basta instalar um [WordPress](http://wordpress.org/)
 ### Configuração ###
 
 - Para que os usuários cadastrados sejam sincronizados com uma lista do Mailchimp, as constantes `MAILCHIMP_API_KEY` e `MAILCHIMP_LIST_ID` devem estar definidas em `wp-config.php`.
+- Para usar Mailerlite no lugar de Mailchimp, a constante `USE_MAILERLITE` deve estar definida `wp-config.php`, junto com as as constantes `MAILERLITE_API_KEY`, `MAILERLITE_USERS_GROUP_ID` e `MAILERLITE_SUBSCRIBERS_GROUP_ID`.
 - Para habilitar login via Facebook, as constantes `FACEBOOK_APP_ID` e `FACEBOOK_APP_SECRET` devem estar definidas em `wp-config.php`.
 - Para habilitar login via Google, as constantes `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` devem estar definidas em `wp-config.php`.
 - Para ativar debates para localizações que tenham apenas mais do que um determinado número de usuários, defina a constante `DOLORES_ACTIVE_LOCATION_THRESHOLD`.

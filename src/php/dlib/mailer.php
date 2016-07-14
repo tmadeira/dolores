@@ -24,3 +24,96 @@ function dolores_mail($to, $template, $args) {
   $headers = "Content-type: text/html; charset=utf-8";
   return wp_mail($to, $subject, $message, $headers);
 }
+
+class DoloresMailer {
+  public static function subscribe($fields) {
+    if (!array_key_exists('email', $fields)) {
+      return;
+    }
+
+    if (defined('USE_MAILERLITE') && defined('MAILERLITE_API_KEY')) {
+      require_once(DOLORES_PATH . '/vendor/autoload.php');
+      $api = (new MailerLiteApi\MailerLite(MAILERLITE_API_KEY))->groups();
+
+      $group_id = MAILERLITE_SUBSCRIBERS_GROUP_ID;
+      if ($fields['type'] == 'user') {
+        $group_id = MAILERLITE_USERS_GROUP_ID;
+      }
+
+      $subscriber = array(
+        'email' => $fields['email'],
+        'fields' => array(
+          'name' => $fields['name'],
+          'phone' => $fields['phone'],
+          'bairro' => $fields['bairro']
+        )
+      );
+
+      $response = $api->addSubscriber($group_id, $subscriber);
+      return;
+    }
+
+    if (defined('MAILCHIMP_API_KEY')) {
+      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
+      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->fireAndForget('lists/subscribe', array(
+        'id' => MAILCHIMP_LIST_ID,
+        'email' => array('email' => $fields['email']),
+        'merge_vars' => array(
+          'ORIGEM' => 'Site',
+          'CADASTRO' => $fields['type'] == 'user' ? '' : $fields['origin'],
+          'NOME' => $fields['name'],
+          'CELULAR' => $fields['phone'],
+          'BAIRRO' => $fields['bairro']
+        ),
+        'double_optin' => false
+      ));
+    }
+  }
+
+  public static function update_member($fields) {
+    if (!array_key_exists('email', $fields)) {
+      return;
+    }
+
+    if (defined('USE_MAILERLITE')) {
+      require_once(DOLORES_PATH . '/vendor/autoload.php');
+      $api = (new MailerLiteApi\MailerLite(MAILERLITE_API_KEY))->subscribers();
+
+      $data = array(
+        'fields' => array(
+          'temas' => $fields['temas'],
+          'areas_de_atuacao' => $fields['areas'],
+          'data_de_nascimento' => $fields['nascimento'],
+          'profissao' => $fields['profissao'],
+          'escola' => $fields['escola'],
+          'curso' => $fields['curso']
+        )
+      );
+
+      $response = $api->update($fields['email'], $data);
+      $f = fopen("/tmp/test-response", "w");
+      fprintf($f, $respose);
+      fclose($f);
+      return;
+    }
+
+    if (defined('MAILCHIMP_API_KEY')) {
+      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
+      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
+      $MailChimp->fireAndForget('lists/update-member', array(
+        'id' => MAILCHIMP_LIST_ID,
+        'email' => array('email' => $fields['email']),
+        'merge_vars' => array(
+          'TEMAS' => $fields['temas'],
+          'AREAS' => $fields['areas'],
+          'NASCIMENTO' => $fields['nascimento'],
+          'PROFISSAO' => $fields['profissao'],
+          'ESCOLA' => $fields['escola'],
+          'CURSO' => $fields['curso']
+        ),
+        'double_optin' => false
+      ));
+    }
+  }
+};

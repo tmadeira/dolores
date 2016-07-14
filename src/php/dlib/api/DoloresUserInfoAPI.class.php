@@ -1,5 +1,6 @@
 <?php
 require_once(DOLORES_PATH . '/dlib/locations.php');
+require_once(DOLORES_PATH . '/dlib/mailer.php');
 require_once(DOLORES_PATH . '/dlib/wp_util/user_meta.php');
 
 require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
@@ -144,32 +145,16 @@ class DoloresUserInfoAPI extends DoloresBaseAPI {
       $this->_error('Não foi possível cadastrar algumas informações.');
     }
 
-    if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
-      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
-      $MailChimp->fireAndForget('lists/update-member', array(
-        'id' => MAILCHIMP_LIST_ID,
-        'email' => array('email' => $user->user_email),
-        'merge_vars' => array(
-          //'EMAIL' => $email,
-          //'CELULAR' => $phone,
-          //'BAIRRO' => $location,
-          'TEMAS' => is_array($interests) ? implode(", ", $interests) : "",
-          'AREAS' => is_array($collab) ? implode(", ", $collab) : "",
-          'NASCIMENTO' => $birthdate,
-          'PROFISSAO' => $occupation,
-          'ESCOLA' => $school,
-          'CURSO' => $course
-        )
-      ));
-    }
-
-    /*
-    wp_update_user(array(
-      'ID' => $user->ID,
-      'user_email' => $email
+    DoloresMailer::update_member(array(
+      'type' => 'user',
+      'email' => $user->user_email,
+      'temas' => is_array($interests) ? implode(", ", $interests) : "",
+      'areas' => is_array($collab) ? implode(", ", $collab) : "",
+      'nascimento' => $birthdate,
+      'profissao' => $occupation,
+      'escola' => $school,
+      'curso' => $course
     ));
-    */
 
     return array('action' => 'refresh');
   }

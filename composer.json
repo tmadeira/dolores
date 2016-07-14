@@ -1,6 +1,7 @@
 {
   "require": {
     "facebook/php-sdk-v4" : "~5.0",
-    "google/apiclient": "1.0.*@beta"
+    "google/apiclient": "1.0.*@beta",
+    "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5"
   }
 }

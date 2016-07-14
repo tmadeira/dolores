@@ -1,4 +1,6 @@
 <?php
+require_once(DOLORES_PATH . '/dlib/mailer.php');
+
 require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
 
 class DoloresSubscribeAPI extends DoloresBaseAPI {
@@ -23,22 +25,13 @@ class DoloresSubscribeAPI extends DoloresBaseAPI {
       $origin = $request['data']['origin'];
     }
 
-    // TODO: Check Mailchimp duplicate subscribes
-    if (defined('MAILCHIMP_API_KEY') && defined('MAILCHIMP_LIST_ID')) {
-      require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
-      $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
-      $MailChimp->fireAndForget('lists/subscribe', Array(
-        'id' => MAILCHIMP_LIST_ID,
-        'email' => array('email' => $email),
-        'merge_vars' => array(
-          'ORIGEM' => 'Site',
-          'CADASTRO' => $origin,
-          'CELULAR' => $phone,
-          'BAIRRO' => $location
-        ),
-        'double_optin' => false
-      ));
-    }
+    DoloresMailer::subscribe(array(
+      'type' => 'subscriber',
+      'email' => $email,
+      'origin' => $origin,
+      'phone' => $phone,
+      'bairro' => $bairro
+    ));
 
     return array();
   }
