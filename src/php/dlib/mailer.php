@@ -91,10 +91,7 @@ class DoloresMailer {
         )
       );
 
-      $response = $api->update($fields['email'], $data);
-      $f = fopen("/tmp/test-response", "w");
-      fprintf($f, $respose);
-      fclose($f);
+      $api->update($fields['email'], $data);
       return;
     }
 
