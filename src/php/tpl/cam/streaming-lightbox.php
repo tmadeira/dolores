@@ -1,4 +1,5 @@
 <?php
+$shown = false;
 if (!is_page_template('streaming.php') && DoloresStreaming::get_active()) {
   $title = esc_attr(DoloresStreaming::get_title());
   $youtube_id = DoloresStreaming::get_youtube_id();
@@ -6,6 +7,7 @@ if (!is_page_template('streaming.php') && DoloresStreaming::get_active()) {
   if (is_front_page() || !$_SESSION[$seen]) {
     $_SESSION[$seen] = true;
     $link = '//youtu.be/' . $youtube_id;
+    $shown = true;
     ?>
     <div
       id="streaming-lightbox"
@@ -14,4 +16,15 @@ if (!is_page_template('streaming.php') && DoloresStreaming::get_active()) {
     </div>
     <?php
   }
+}
+
+if (is_user_logged_in()) {
+  $_SESSION['seen-subscribe-lightbox'] = true;
+}
+
+if (!$shown && !$_SESSION['seen-subscribe-lightbox']) {
+  $_SESSION['seen-subscribe-lightbox'] = true;
+  ?>
+  <div id="subscribe-lightbox"></div>
+  <?php
 }
