@@ -27,10 +27,31 @@ function dolores_mail($to, $template, $args) {
 
 class DoloresMailer {
   public static function subscribe($fields) {
+    // Use PPL/MailerLite
+    if (defined('USE_PPL') && class_exists('PPL')) {
+      $ppl = new PPL(
+        PPL_DB_HOST,
+        PPL_DB_USER,
+        PPL_DB_PASS,
+        PPL_DB_NAME,
+        MAILERLITE_API_KEY
+      );
+
+      $group_id = MAILERLITE_SUBSCRIBERS_GROUP_ID;
+      if ($fields['type'] == 'user') {
+        $group_id = MAILERLITE_USERS_GROUP_ID;
+      }
+
+      $ppl->subscribe($fields, $group_id, false);
+      return;
+    }
+
+    // If we are not using PPL, we require an email address.
     if (!array_key_exists('email', $fields)) {
       return;
     }
 
+    // Use pure MailerLite
     if (defined('USE_MAILERLITE') && defined('MAILERLITE_API_KEY')) {
       require_once(DOLORES_PATH . '/vendor/autoload.php');
       $api = (new MailerLiteApi\MailerLite(MAILERLITE_API_KEY))->groups();
@@ -53,6 +74,7 @@ class DoloresMailer {
       return;
     }
 
+    // Use MailChimp
     if (defined('MAILCHIMP_API_KEY')) {
       require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
@@ -76,6 +98,7 @@ class DoloresMailer {
       return;
     }
 
+    // Use MailerLite
     if (defined('USE_MAILERLITE')) {
       require_once(DOLORES_PATH . '/vendor/autoload.php');
       $api = (new MailerLiteApi\MailerLite(MAILERLITE_API_KEY))->subscribers();
@@ -95,6 +118,7 @@ class DoloresMailer {
       return;
     }
 
+    // Use MailChimp
     if (defined('MAILCHIMP_API_KEY')) {
       require_once(DOLORES_PATH . '/dlib/external/mailchimp.php');
       $MailChimp = new DoloresMailChimp(MAILCHIMP_API_KEY);
