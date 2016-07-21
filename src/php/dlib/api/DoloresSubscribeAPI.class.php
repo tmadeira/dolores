@@ -5,9 +5,9 @@ require_once(DOLORES_PATH . '/dlib/api/DoloresBaseAPI.class.php');
 
 class DoloresSubscribeAPI extends DoloresBaseAPI {
   function post($request) {
-    $email = $request['data']['email'];
-    if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $this->_error('O e-mail digitado é inválido.');
+    $email = '';
+    if (isset($request['data']['email'])) {
+      $email = $request['data']['email'];
     }
 
     $name = '';
@@ -28,6 +28,27 @@ class DoloresSubscribeAPI extends DoloresBaseAPI {
     $origin = 'Sidebar';
     if (array_key_exists('origin', $request['data'])) {
       $origin = $request['data']['origin'];
+    }
+
+    if (isset($request['data']['check']) && $request['data']['check'] == 1) {
+      $form_errors = array();
+
+      if (!$name) {
+        $form_errors['name'] = 'Digite um nome.';
+      }
+
+      $locations = DoloresLocations::get_instance();
+      if (!$locations->is_valid_location($location)) {
+        $form_errors['location'] = 'Escolha uma localização válida.';
+      }
+
+      if (count($form_errors) > 0) {
+        $this->_response(400, array('formErrors' => $form_errors));
+      }
+    }
+
+    if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $this->_error('O e-mail digitado é inválido.');
     }
 
     DoloresMailer::subscribe(array(

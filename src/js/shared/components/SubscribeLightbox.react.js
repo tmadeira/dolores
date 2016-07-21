@@ -1,12 +1,13 @@
 "use strict";
 
+var _ = require("lodash");
 var $ = require("jquery");
 var React = require("react");
 
-require("jquery.maskedinput");
-
 var API = require("../api");
+var validate = require("../validate");
 
+var Input = require("./Input.react");
 var Lightbox = require("./Lightbox.react");
 
 var SubscribeLightbox = React.createClass({
@@ -16,21 +17,16 @@ var SubscribeLightbox = React.createClass({
       name: "",
       email: "",
       phone: "",
-      location: ""
-    };
-  },
-
-  componentDidMount: function() {
-    $("#subscribe-lightbox-name").focus();
-    $("#subscribe-lightbox-phone").focusout(function() {
-      $(this).unmask();
-      var value = $(this).val().replace(/\D/g, "");
-      if (value.length > 10) {
-        $(this).mask("(99) 99999-999?9");
-      } else {
-        $(this).mask("(99) 9999-9999?9");
+      errors: {},
+      waiting: false,
+      suggestions: {
+        location: []
+      },
+      schema: {
+        name: ["isNonEmpty"],
+        location: ["isNonEmpty", "isValidLocation"]
       }
-    }).trigger("focusout");
+    };
   },
 
   hide: function() {
@@ -40,8 +36,62 @@ var SubscribeLightbox = React.createClass({
     return false;
   },
 
-  submit: function() {
+  onBlur: function(name) {
+    this.validate([name]);
+  },
+
+  onChange: function(name, value) {
+    var dict = {};
+    dict[name] = value;
+    this.setState(dict);
+    if (name in this.state.suggestions) {
+      this.getSuggestions(name, value);
+    }
+  },
+
+  setError: function(name, error) {
+    var errors = this.state.errors;
+    errors[name] = error;
+    this.setState({errors: errors});
+  },
+
+  validate: function(fields) {
+    var errors = this.state.errors;
+
+    for (var i = 0; i < fields.length; i++) {
+      var name = fields[i];
+      if (name in this.state.schema) {
+        errors[name] = null;
+        validate(
+          name,
+          this.state[name],
+          this.state.schema[name],
+          this.setError
+        );
+      }
+    }
+
+    this.setState({errors: errors});
+  },
+
+  getSuggestions: _.debounce(function(name, value) {
+    var params = {key: name, value: value};
+    API.route("suggest").get(params).done(function(data) {
+      var suggestions = this.state.suggestions;
+      suggestions[name] = data.suggestions;
+      this.setState({suggestions: suggestions});
+    }.bind(this));
+  }, 150, {maxWait: 600}),
+
+  submit: function(e) {
+    e.preventDefault();
+
+    this.setState({
+      waiting: true
+    });
+
     var request = {
+      check: "1",
       name: this.state.name,
       email: this.state.email,
       phone: this.state.phone,
@@ -51,12 +101,50 @@ var SubscribeLightbox = React.createClass({
 
     API.route("subscribe").post({data: request}).done(function(response) {
       console.log("Subscribe done", response);
-    }).fail(function(respose) {
-      console.log("Subscribe failed", response);
-    });
+      this.hide();
+    }.bind(this)).fail(function(data) {
+      this.setState({
+        waiting: false
+      });
+      switch (data.status) {
+        case 400:
+          if ("formErrors" in data.responseJSON) {
+            console.log(data.responseJSON.formErrors);
+            for (var key in data.responseJSON.formErrors) {
+              if (data.responseJSON.formErrors.hasOwnProperty(key)) {
+                this.setError(key, data.responseJSON.formErrors[key]);
+              }
+            }
+          }
+          break;
+        default:
+          alert("Erro ao efetuar cadastro: " + data.responseJSON.error);
+      }
+    }.bind(this));
+  },
 
-    this.hide();
-    return false;
+  renderForm: function() {
+    if (this.state.waiting) {
+      var spinner = "fa fa-refresh fa-spin fa-4x";
+      return (
+        <div>
+          <p style={{textAlign: "center"}}><i className={spinner}></i></p>
+          <p style={{textAlign: "center"}}>Carregando...</p>
+        </div>
+      );
+    }
+
+    return (
+      <form ref="form" onSubmit={this.submit}>
+        <div className="signup-form">
+          {this.renderInputName()}
+          {this.renderInputLocation()}
+          {this.renderInputPhone()}
+          {this.renderInputEmail()}
+          {this.renderButton()}
+        </div>
+      </form>
+    );
   },
 
   render: function() {
@@ -64,83 +152,13 @@ var SubscribeLightbox = React.createClass({
       return null;
     }
 
-    var change = function(e) {
-      var st = {};
-      st[e.target.name] = e.target.value;
-      this.setState(st);
-    }.bind(this);
-
     var lightboxContent = (
       <div className="lightbox-content">
-        <form className="subscribe-lightbox-form" onSubmit={this.submit}>
-          <h3 className="subscribe-lightbox-call">Cadastre-se para ficar por dentro do movimento Compartilhe a Mudança!</h3>
-          <div className="subscribe-lightbox-form-item">
-            <label><span className="label">Nome</span>
-              <input
-                className="subscribe-lightbox-form-input"
-                onBlur={change}
-                onChange={change}
-                id="subscribe-lightbox-name"
-                type="text"
-                name="name"
-                placeholder="Seu nome"
-                value={this.state.name}
-                />
-            </label>
-          </div>
-          <div className="subscribe-lightbox-form-item">
-            <label><span className="label">E-mail</span>
-              <input
-                className="subscribe-lightbox-form-input"
-                onBlur={change}
-                onChange={change}
-                type="text"
-                name="email"
-                placeholder="Seu e-mail"
-                value={this.state.email}
-                />
-            </label>
-          </div>
-          <div className="subscribe-lightbox-form-item">
-            <label><span className="label">Telefone</span>
-              <input
-                className="subscribe-lightbox-form-input"
-                onBlur={change}
-                onChange={change}
-                id="subscribe-lightbox-phone"
-                type="text"
-                name="phone"
-                placeholder="Seu telefone (WhatsApp)"
-                value={this.state.phone}
-                />
-            </label>
-          </div>
-          <div className="subscribe-lightbox-form-item">
-            <label><span className="label">Bairro</span>
-              <input
-                className="subscribe-lightbox-form-input"
-                onBlur={change}
-                onChange={change}
-                type="text"
-                name="location"
-                placeholder="Seu bairro"
-                value={this.state.location}
-                />
-            </label>
-          </div>
-          <div className="subscribe-lightbox-form-item">
-            <input type="hidden" name="origin" value="Lightbox" />
-            <button className="subscribe-lightbox-form-button" type="submit">
-              Cadastrar
-            </button>
-          </div>
-          <div className="subscribe-ligthbox-form-response">
-            {this.state.response}
-          </div>
-          <div className="subscribe-lightbox-form-close">
-            <a onClick={this.hide} href="#">Não quero me cadastrar. Seguir para o site &raquo;</a>
-          </div>
-        </form>
+        <h3 className="subscribe-lightbox-call">É de Porto Alegre? Cadastre-se para ficar por dentro do nosso movimento!</h3>
+        {this.renderForm()}
+        <div className="subscribe-lightbox-form-close">
+          <a onClick={this.hide} href="#">Não quero me cadastrar. Seguir para o site &raquo;</a>
+        </div>
       </div>
     );
 
@@ -148,6 +166,76 @@ var SubscribeLightbox = React.createClass({
       <Lightbox close={this.hide}>
         {lightboxContent}
       </Lightbox>
+    );
+  },
+
+  renderInputName: function() {
+    return <Input
+      className="signup-input signup-input-name"
+      error={this.state.errors.name}
+      focusOnMount={true}
+      icon="user"
+      name="name"
+      onBlur={this.onBlur}
+      onChange={this.onChange}
+      placeholder="Nome completo"
+      type="text"
+      value={this.state.name}
+      />;
+  },
+
+  renderInputPhone: function() {
+    return <Input
+      className="signup-input signup-input-phone"
+      error={this.state.errors.phone}
+      icon="phone"
+      mask="phone"
+      name="phone"
+      onBlur={this.onBlur}
+      onChange={this.onChange}
+      placeholder="Telefone (WhatsApp)"
+      type="text"
+      value={this.state.phone}
+      />;
+  },
+
+  renderInputEmail: function() {
+    return <Input
+      className="signup-input signup-input-email"
+      error={this.state.errors.email}
+      icon="envelope"
+      name="email"
+      onBlur={this.onBlur}
+      onChange={this.onChange}
+      placeholder="E-mail"
+      type="text"
+      value={this.state.email}
+      />;
+  },
+
+  renderInputLocation: function() {
+    return <Input
+      className="signup-input signup-input-location"
+      error={this.state.errors.location}
+      icon="map-marker"
+      name="location"
+      onBlur={this.onBlur}
+      onChange={this.onChange}
+      placeholder={window.doloresConfig.strings.locationPlaceholder}
+      suggestions={this.state.suggestions.location}
+      type="text"
+      value={this.state.location}
+      />;
+  },
+
+  renderButton: function() {
+    return (
+      <button
+          className="signup-button"
+          type="submit"
+          >
+        <span>Cadastrar</span>
+      </button>
     );
   }
 });

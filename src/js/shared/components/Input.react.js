@@ -111,7 +111,11 @@ var Input = React.createClass({
 
   renderInput: function() {
     var onBlur = _.debounce(function() {
-      var value = React.findDOMNode(this.refs.input).value;
+      var element = React.findDOMNode(this.refs.input);
+      if (!element) {
+        return;
+      }
+      var value = element.value;
       this.props.onChange(this.props.name, value);
       if (this.props.onBlur) {
         this.props.onBlur(this.props.name);
