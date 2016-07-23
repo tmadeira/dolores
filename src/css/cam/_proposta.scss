@@ -1,0 +1,127 @@
+.proposta-main {
+  background: #fff;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 15px;
+  @include breakpoint($break-tablet) {
+    padding: 80px 100px;
+  }
+}
+
+.proposta-content {
+  font-size: 16px;
+  line-height: 1.6em;
+
+  @include breakpoint($break-tablet) {
+    font-size: 19px;
+    text-align: justify;
+  }
+
+  h1, h2, p, ul, ol, table, blockquote, hr {
+    margin: 20px 0;
+    @include breakpoint($break-tablet) {
+      margin: 30px 0;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    @include breakpoint($break-tablet) {
+      font-size: 36px;
+    }
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    @include breakpoint($break-tablet) {
+      font-size: 26px;
+    }
+  }
+
+  .proposta-entry {
+    a {
+      color: $light-purple;
+      &:hover {
+        color: $lighter-purple;
+      }
+    }
+
+    .back {
+      text-align: right;
+
+      a {
+        background: $purple;
+        color: #fff;
+        font-size: 0.8em;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        &:hover {
+          background: $light-purple;
+          color: #fff;
+        }
+      }
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    table {
+      background: $light-gray;
+      font-size: 0.9em;
+    }
+
+    thead {
+      background: $purple;
+      color: #fff;
+      font-size: 0.9em;
+      text-transform: uppercase;
+    }
+
+    th, td {
+      padding: 3px 7px;
+      @include breakpoint($break-tablet) {
+        padding: 5px 15px;
+      }
+    }
+
+    ul > li {
+      &:before {
+        content: "– ";
+      }
+    }
+
+    ol {
+      list-style: decimal;
+      margin-left: 30px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .foot {
+      font-size: 0.8em;
+    }
+
+    sup {
+      font-size: 0.6em;
+      font-weight: 700;
+      vertical-align: super;
+    }
+
+    hr {
+      background: 0;
+      border: 0;
+      border-top: solid 1px $gray;
+    }
+  }
+}
