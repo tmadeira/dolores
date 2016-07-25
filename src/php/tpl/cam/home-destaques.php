@@ -5,7 +5,7 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
   <div class="wrap">
     <ul class="destaques-list">
       <li class="destaques-item destaques-item-manifesto">
-        <a href="/manifesto/">
+        <a href="/proposta/">
           <div class="destaques-item-image-container">
             <?php
             $url = DoloresAssets::get_image_uri('cam/luciana-90.jpg');
@@ -16,9 +16,8 @@ require_once(DOLORES_PATH . '/dlib/assets.php');
           </div>
           <div class="destaques-item-info">
             <h4 class="destaques-item-subtitle">
-              <span>
-                Manifesto
-              </span>
+              <div><span>Proposta para</span></div>
+              <div><span>Porto Alegre</span></div>
             </h4>
             <h3 class="destaques-item-title">
               Por Luciana Genro

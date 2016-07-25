@@ -45,10 +45,10 @@
       border-top: 0;
     }
   }
-}
 
-.destaques-item > div {
-  display: table;
+  & > div, & > a {
+    display: table;
+  }
 }
 
 .destaques-item-image-container {
@@ -82,14 +82,24 @@
 }
 
 .destaques-item-subtitle {
+  font-size: 20px;
+  line-height: 1em;
   margin: 5px 0;
-  & > span {
-    background: $purple;
-    color: $yellow;
-    font-size: 32px;
-    line-height: 1em;
-    padding: 4px 7px 2px;
-    text-transform: uppercase;
+  text-transform: uppercase;
+  @include breakpoint($break-tablet) {
+    font-size: 26px;
+  }
+  & > div {
+    & > span {
+      background: $purple;
+      color: $yellow;
+      padding: 0 6px 1px;
+    }
+    &:first-child {
+      & > span {
+        padding: 3px 6px 0;
+      }
+    }
   }
 }
 
@@ -100,7 +110,10 @@
 }
 
 .destaques-item-manifesto .destaques-item-title {
-  font-size: 19px;
+  font-size: 16px;
+  @include breakpoint($break-tablet) {
+    font-size: 19px;
+  }
 }
 
 .destaques-more {
