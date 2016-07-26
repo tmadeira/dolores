@@ -62,10 +62,11 @@ if (!$paged || $paged == 1) {
         </div>
         <div class="hero-right">
           <p class="hero-call">
-            Já parou para pensar como seria se a cidade fosse nossa? Cada um de
-            nós que vivemos e sentimos o Rio sabemos como torná-lo melhor. Quer
-            pensar junto soluções para os problemas que enfrentamos todos os
-            dias?
+            <strong>Há um ano, mais de cinco mil pessoas vêm pensando em soluções para os problemas que enfrentamos todos os dias no Rio.</strong> Foram mais  de 60 encontros em 16 regiões da cidade.
+          </p>
+
+          <p class="hero-call">
+            <strong>Agora precisamos fazer essas ideias virarem realidade.</strong> Cadastre-se e receba os chamados para participar da mobilização no seu bairro:
           </p>
 
           <form class="hero-form">
